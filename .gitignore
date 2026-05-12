@@ -6,6 +6,7 @@ com.ecom.iml
 .settings
 .gitignore
 .git
+bin/
 
 
 target/
