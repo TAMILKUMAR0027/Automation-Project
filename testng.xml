@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<!-- currently no parallel exe -->
+
+<suite name="Automation Suite" thread-count="2">
+
+    <test name="Cucumber Test">
+        <classes>
+            <class name="com.runner.TestNgRunner"/>
+        </classes>
+    </test>
+
+</suite>
