@@ -2,6 +2,11 @@
 .idea
 .project
 .classpath
+com.ecom.iml
+.settings
+.gitignore
+.git
+
 
 target/
 target-output/
