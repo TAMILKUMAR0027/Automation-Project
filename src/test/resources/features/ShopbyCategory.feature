@@ -8,7 +8,7 @@ Feature: Shop By Category Navigation
   Background:
     Given the user launches the ecommerce application
     And the user is on the home page
-
+  @Smoke
   @ValidCategoryNavigation
   Scenario Outline: Verify user can navigate using valid Shop By Category options
     When the user clicks on the "Shop by Category" menu
