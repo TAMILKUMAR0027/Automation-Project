@@ -16,6 +16,7 @@ public class DriverClass {
     private static final Logger logger = LogManager.getLogger(DriverClass.class);
 
     public static WebDriver getDriver() {
+
         return driver.get();
     }
 
