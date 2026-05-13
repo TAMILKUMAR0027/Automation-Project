@@ -1,17 +1,19 @@
 package com.hooks;
 
 import com.driver.DriverClass;
-import io.cucumber.java.AfterAll;
-import io.cucumber.java.BeforeAll;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 public class Hooks {
 
-    @BeforeAll
+    @Before
     public static void setUp() {
+
         DriverClass.initDriver();
     }
 
-    @AfterAll
+    @After
     public static void tearDown() {
+
         DriverClass.quitDriver();
     }
 }
