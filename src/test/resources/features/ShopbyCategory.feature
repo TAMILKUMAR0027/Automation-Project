@@ -1,5 +1,5 @@
 @ShopByCategory
-Feature: Shop By Category Navigation
+Feature: Shop By Category Navigation --Samiha 13/05/2026
 
   Description:
   Verify that the user is able to navigate to different product categories
