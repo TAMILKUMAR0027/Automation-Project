@@ -1,5 +1,6 @@
 package com.driver;
 
+import com.utils.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,10 +21,10 @@ public class DriverClass {
 
     public static void initDriver() {
 
-        String browser = System.getProperty("browser", "chrome");
-        String headlessValue = System.getProperty("headless", "false");
+        String browser = ConfigReader.getProperties().getProperty("browser");
+        String headlessValue = ConfigReader.getProperties().getProperty("headless");
 
-        boolean headless = headlessValue.equalsIgnoreCase("true");
+        boolean headless = headlessValue != null && headlessValue.equalsIgnoreCase("true");
 
         logger.info("Initializing Browser: " + browser);
         logger.info("Headless Mode: " + headless);
@@ -31,26 +32,26 @@ public class DriverClass {
         if (browser.equalsIgnoreCase("chrome")) {
 
             WebDriverManager.chromedriver().setup();
-
             ChromeOptions options = new ChromeOptions();
+
             if (headless) {
                 options.addArguments("--headless=new");
             }
 
             driver.set(new ChromeDriver(options));
-        }
-        else if (browser.equalsIgnoreCase("firefox")) {
+
+        } else if (browser.equalsIgnoreCase("firefox")) {
 
             WebDriverManager.firefoxdriver().setup();
-
             FirefoxOptions options = new FirefoxOptions();
+
             if (headless) {
-                options.addArguments("--headless");
+                options.addArguments("--headless=new");
             }
 
             driver.set(new FirefoxDriver(options));
-        }
-        else {
+
+        } else {
             logger.error("Invalid Browser Name: " + browser);
             throw new RuntimeException("Invalid Browser Name: " + browser);
         }

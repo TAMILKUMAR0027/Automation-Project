@@ -19,3 +19,33 @@
 [INFO ] 2026-05-12 16:59:09.021 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
 [INFO ] 2026-05-12 16:59:11.664 [main] Launch - Logo Displayed Status: true
 [INFO ] 2026-05-12 16:59:11.669 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-12 17:12:53.330 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-12 17:12:53.330 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-12 17:13:00.162 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-12 17:13:00.538 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-12 17:13:06.546 [main] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-12 17:13:06.546 [main] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-12 17:13:06.569 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-12 17:13:08.423 [main] Launch - Page Title: Your Store
+[INFO ] 2026-05-12 17:13:08.428 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-12 17:13:11.178 [main] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-12 17:13:11.183 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-13 10:51:14.996 [main] DriverClass - Initializing Browser: "firefox"
+[INFO ] 2026-05-13 10:51:15.133 [main] DriverClass - Headless Mode: false
+[ERROR] 2026-05-13 10:51:15.133 [main] DriverClass - Invalid Browser Name: "firefox"
+[INFO ] 2026-05-13 10:53:19.439 [main] DriverClass - Initializing Browser: "firefox"
+[INFO ] 2026-05-13 10:53:19.439 [main] DriverClass - Headless Mode: false
+[ERROR] 2026-05-13 10:53:19.439 [main] DriverClass - Invalid Browser Name: "firefox"
+[INFO ] 2026-05-13 10:53:43.966 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-13 10:53:43.974 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 10:55:52.040 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-13 10:55:52.043 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 10:55:56.838 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 10:55:57.164 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 10:56:02.099 [main] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 10:56:02.101 [main] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 10:56:02.110 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 10:56:04.032 [main] Launch - Page Title: Your Store
+[INFO ] 2026-05-13 10:56:04.046 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 10:56:07.347 [main] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-13 10:56:07.354 [main] DriverClass - Closing browser session
