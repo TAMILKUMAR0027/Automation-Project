@@ -18,45 +18,22 @@ public class LoginPage extends BasePage {
 	}
 
 	@FindBy(xpath="//a[@role='button']//span[@class='title'][normalize-space()='My account']")
-	WebElement myAccLink;
+	
+	public WebElement myAccLink;
 	
 	@FindBy(xpath="//input[@id='input-email']")
-	WebElement LoginEmail;
+	public WebElement LoginEmail;
 	
 	@FindBy(xpath="//input[@id='input-password']")
-	WebElement LoginPassword;
+	public WebElement LoginPassword;
 	
 	@FindBy(xpath="//input[@value='Login']")
-	WebElement LoginButton;
+	public WebElement LoginButton;
 	
 	@FindBy(xpath="//h2[text()='My Account']")
-	WebElement LoginSuccessMessage;
+	public WebElement LoginSuccessMessage;
 	
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
-	WebElement LoginFailedMessage;
-	
-	public void clickMyAccountLink()
-	{
-		wait.until(ExpectedConditions.visibilityOf(myAccLink)).click();
-	}
-	
-	public void enterEmailAndPass(String username,String password)
-	{
-		wait.until(ExpectedConditions.visibilityOf(LoginEmail)).sendKeys(username);
-		LoginPassword.sendKeys(password);
-	}
-	public void clickLoginButton()
-	{
-		LoginButton.click();
-	}
-	
-	public String LoginSuccessMsg()
-	{
-		return wait.until(ExpectedConditions.visibilityOf(LoginSuccessMessage)).getText();
-	}
-	
-	public String LoginFailedMsg()
-	{
-		return wait.until(ExpectedConditions.visibilityOf(LoginFailedMessage)).getText();
-	}
+	public WebElement LoginFailedMessage;
+
 }
