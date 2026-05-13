@@ -19,6 +19,12 @@
 [INFO ] 2026-05-12 16:59:09.021 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
 [INFO ] 2026-05-12 16:59:11.664 [main] Launch - Logo Displayed Status: true
 [INFO ] 2026-05-12 16:59:11.669 [main] DriverClass - Closing browser session
+<<<<<<< HEAD
+[INFO ] 2026-05-13 11:12:11.671 [main] DriverClass - Initializing Browser: chrome
+[INFO ] 2026-05-13 11:12:11.675 [main] DriverClass - Headless Mode: false
+[INFO ] 2026-05-13 11:12:27.470 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 11:12:28.814 [main] DriverClass - Closing browser session
+=======
 [INFO ] 2026-05-12 17:12:53.330 [main] DriverClass - Initializing Browser: firefox
 [INFO ] 2026-05-12 17:12:53.330 [main] DriverClass - Headless Mode: true
 [INFO ] 2026-05-12 17:13:00.162 [main] DriverClass - Browser launched successfully
@@ -49,3 +55,4 @@
 [INFO ] 2026-05-13 10:56:04.046 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
 [INFO ] 2026-05-13 10:56:07.347 [main] Launch - Logo Displayed Status: true
 [INFO ] 2026-05-13 10:56:07.354 [main] DriverClass - Closing browser session
+>>>>>>> 58def6fea501c79ebf5986a38c4da2c193732197
