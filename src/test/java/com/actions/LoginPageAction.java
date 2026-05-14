@@ -28,6 +28,13 @@ public class LoginPageAction {
 		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail)).sendKeys(username);
 		lp.LoginPassword.sendKeys(password);
 	}
+	
+	public void enterPass(String password)
+	{
+		wait.until(ExpectedConditions.visibilityOf(lp.LoginPassword)).sendKeys(password);
+	}
+	
+	
 	public void clickLoginButton()
 	{
 		lp.LoginButton.click();
@@ -42,5 +49,11 @@ public class LoginPageAction {
 	{
 		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessage)).getText();
 	}
+	
+	public String LoginFailedMsgone()
+	{
+		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessageone)).getText();
+	}
+	
 
 }

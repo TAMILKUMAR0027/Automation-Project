@@ -7,6 +7,7 @@ com.ecom.iml
 .gitignore
 .git
 bin/
+logs/
 
 
 target/

@@ -220,3 +220,113 @@
 [INFO ] 2026-05-14 14:12:09.631 [main] DriverClass - Browser launched successfully
 [INFO ] 2026-05-14 14:12:20.327 [main] LoginSD - Login Unsuccessful as expected
 [INFO ] 2026-05-14 14:12:20.330 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-14 10:47:41.926 [main] DriverClass - Initializing Browser: chrome
+[INFO ] 2026-05-14 10:47:41.934 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 10:47:53.381 [main] DriverClass - Initializing Browser: chrome
+[INFO ] 2026-05-14 10:47:53.381 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 10:49:49.193 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 10:49:49.193 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 10:49:54.133 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 10:49:54.146 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 10:50:01.051 [main] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 10:50:01.051 [main] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 10:50:01.058 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-14 10:50:02.191 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 10:50:02.191 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 10:50:06.759 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 10:50:06.761 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 10:50:11.750 [main] Launch - Page Title: Your Store
+[INFO ] 2026-05-14 10:50:11.752 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-14 10:50:12.719 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 10:50:12.719 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 10:50:15.330 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 10:50:15.342 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 10:50:19.922 [main] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-14 10:50:19.923 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:24:20.690 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:24:20.831 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 12:24:56.738 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:25:08.025 [main] LoginSD - Login Successful
+[INFO ] 2026-05-14 12:25:08.027 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:25:09.132 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:25:09.132 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 12:25:11.907 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:25:21.971 [main] LoginSD - Login Unsuccessful as expected
+[INFO ] 2026-05-14 12:25:21.974 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:32:33.167 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:32:33.171 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: false
+[INFO ] 2026-05-14 12:32:40.535 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:32:40.712 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:32:58.482 [TestNG-test-Cucumber Test-1] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:32:58.483 [TestNG-test-Cucumber Test-1] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:32:58.488 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:32:59.863 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:32:59.864 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: false
+[INFO ] 2026-05-14 12:33:04.310 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:33:04.317 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:33:10.487 [TestNG-test-Cucumber Test-1] Launch - Page Title: Your Store
+[INFO ] 2026-05-14 12:33:10.489 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:33:11.747 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:33:11.747 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: false
+[INFO ] 2026-05-14 12:33:27.718 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:33:27.721 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:33:32.796 [TestNG-test-Cucumber Test-1] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-14 12:33:32.798 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:39:46.890 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:39:46.890 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 12:40:17.745 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:40:17.977 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:40:23.601 [TestNG-test-Cucumber Test-1] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:40:23.606 [TestNG-test-Cucumber Test-1] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:40:23.613 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:40:24.918 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:40:24.918 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 12:40:27.613 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:40:27.632 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:40:32.154 [TestNG-test-Cucumber Test-1] Launch - Page Title: Your Store
+[INFO ] 2026-05-14 12:40:32.157 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 12:40:32.985 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 12:40:32.985 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 12:40:35.348 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 12:40:35.352 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 12:40:41.257 [TestNG-test-Cucumber Test-1] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-14 12:40:41.257 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 13:02:59.099 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 13:02:59.102 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 13:03:08.094 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 13:03:08.325 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:03:14.118 [TestNG-test-Cucumber Test-1] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:03:14.118 [TestNG-test-Cucumber Test-1] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:03:14.124 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 13:03:15.100 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 13:03:15.101 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 13:03:19.942 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 13:03:19.957 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:03:30.406 [TestNG-test-Cucumber Test-1] Launch - Page Title: Your Store
+[INFO ] 2026-05-14 13:03:30.409 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 13:03:41.804 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 13:03:41.804 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 13:03:47.893 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 13:03:47.898 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:03:56.996 [TestNG-test-Cucumber Test-1] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-14 13:03:57.002 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 13:08:54.023 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 13:08:54.027 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 13:09:09.491 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 13:09:09.652 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:09:15.388 [TestNG-test-Cucumber Test-1] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:09:15.389 [TestNG-test-Cucumber Test-1] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:09:15.398 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 13:09:16.591 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 13:09:16.592 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 13:09:19.789 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 13:09:19.796 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:09:24.572 [TestNG-test-Cucumber Test-1] Launch - Page Title: Your Store
+[INFO ] 2026-05-14 13:09:24.576 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+[INFO ] 2026-05-14 13:09:25.682 [TestNG-test-Cucumber Test-1] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-14 13:09:25.682 [TestNG-test-Cucumber Test-1] DriverClass - Headless Mode: true
+[INFO ] 2026-05-14 13:09:28.594 [TestNG-test-Cucumber Test-1] DriverClass - Browser launched successfully
+[INFO ] 2026-05-14 13:09:28.598 [TestNG-test-Cucumber Test-1] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-14 13:09:34.216 [TestNG-test-Cucumber Test-1] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-14 13:09:34.219 [TestNG-test-Cucumber Test-1] DriverClass - Closing browser session
+
