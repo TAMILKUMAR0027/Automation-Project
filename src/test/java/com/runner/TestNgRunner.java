@@ -5,18 +5,27 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-		features = "src/test/resources/features/",
-		glue = { "com.stepDefinitions", "com.hooks" },
-		plugin = { "pretty",
+		features = "src/test/resources/features/login.feature",
+		glue = {"com.stepDefinitions", "com.hooks"},
+		plugin = {
+				"pretty",
 				"html:target/cucumber-report.html",
-				"json:target/cucumber-report.json"
-},
-		tags = "@Smoke", monochrome = true)
+				"json:target/cucumber-report.json",
+
+				// Extent Report Adapter
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+
+				// Allure Report Adapter
+				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+		},
+		tags = "@validCredentials or @invalidCredentials",
+		monochrome = true
+)
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 
 	@Override
-	@DataProvider
+	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
