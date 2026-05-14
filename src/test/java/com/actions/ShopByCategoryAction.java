@@ -1,30 +1,47 @@
 package com.actions;
 
-import org.openqa.selenium.By;
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.driver.DriverClass;
+import com.pages.ShopByCategoryPage;
 
-public class ShopByCategoryAction extends DriverClass {
-    WebDriver driver =DriverClass.getDriver();
-	public void launchApplication() {
+public class ShopByCategoryAction {
 
-		driver.get("https://ecommerce-playground.lambdatest.io/");
-		driver.manage().window().maximize();
-	}
+    WebDriver driver = DriverClass.getDriver();
+WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+    ShopByCategoryPage sbcp = new ShopByCategoryPage(driver);
 
-	public void clickShopByCategory() {
+    public void launchWebUrl() {
 
-		driver.findElement(By.xpath("//span[text()='Shop by Category']")).click();
-	}
+        driver.get("https://ecommerce-playground.lambdatest.io/");
+    }
 
-	public void selectCategory(String category) {
+    public void clickShopByCategory() {
 
-		driver.findElement(By.linkText(category)).click();
-	}
+         wait.until(ExpectedConditions.visibilityOf(sbcp.shopByCategoryMenu)).click();
+    }
 
-	public String getPageTitle() {
+    public void selectCategory(String category) {
+         if(category=="Desktops & Monitors") {
+        	 wait.until(ExpectedConditions.visibilityOf(sbcp.desktopsCategory)).click();
+         }
+         else if(category=="WebCameras") {
+        	 wait.until(ExpectedConditions.visibilityOf(sbcp.cameras)).click();
+         }
+         else if(category=="Phone, Tablets & Ipod") {
+        	 wait.until(ExpectedConditions.visibilityOf(sbcp.tablets)).click();
+         }
+         else if(category=="Laptops & Notebooks") {
+        	 wait.until(ExpectedConditions.visibilityOf(sbcp.laptops)).click();
+         }
+    }
 
-		return driver.getTitle();
-	}
+    public String getPageTitle() {
+
+        return driver.getTitle();
+    }
 }
