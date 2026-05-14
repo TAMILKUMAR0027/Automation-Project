@@ -8,7 +8,9 @@ import org.testng.annotations.DataProvider;
 		features = "src/test/resources/features/",
 		glue = { "com.stepDefinitions", "com.hooks" },
 		plugin = { "pretty",
-				"html:target/cucumber-report.html" },
+				"html:target/cucumber-report.html",
+				"json:target/cucumber-report.json"
+},
 		tags = "@Smoke", monochrome = true)
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
