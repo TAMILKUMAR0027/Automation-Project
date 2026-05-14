@@ -19,12 +19,10 @@
 [INFO ] 2026-05-12 16:59:09.021 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
 [INFO ] 2026-05-12 16:59:11.664 [main] Launch - Logo Displayed Status: true
 [INFO ] 2026-05-12 16:59:11.669 [main] DriverClass - Closing browser session
-<<<<<<< HEAD
 [INFO ] 2026-05-13 11:12:11.671 [main] DriverClass - Initializing Browser: chrome
 [INFO ] 2026-05-13 11:12:11.675 [main] DriverClass - Headless Mode: false
 [INFO ] 2026-05-13 11:12:27.470 [main] DriverClass - Browser launched successfully
 [INFO ] 2026-05-13 11:12:28.814 [main] DriverClass - Closing browser session
-=======
 [INFO ] 2026-05-12 17:12:53.330 [main] DriverClass - Initializing Browser: firefox
 [INFO ] 2026-05-12 17:12:53.330 [main] DriverClass - Headless Mode: true
 [INFO ] 2026-05-12 17:13:00.162 [main] DriverClass - Browser launched successfully
@@ -55,4 +53,37 @@
 [INFO ] 2026-05-13 10:56:04.046 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
 [INFO ] 2026-05-13 10:56:07.347 [main] Launch - Logo Displayed Status: true
 [INFO ] 2026-05-13 10:56:07.354 [main] DriverClass - Closing browser session
->>>>>>> 58def6fea501c79ebf5986a38c4da2c193732197
+[INFO ] 2026-05-13 12:22:18.773 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-13 12:22:18.777 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 12:22:33.380 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 12:22:33.699 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:22:39.589 [main] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:22:39.590 [main] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:22:39.598 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:22:41.396 [main] Launch - Page Title: Your Store
+[INFO ] 2026-05-13 12:22:41.400 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:22:44.541 [main] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-13 12:22:44.607 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-13 12:24:33.523 [main] DriverClass - Initializing Browser: firefox
+[INFO ] 2026-05-13 12:24:33.528 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 12:24:41.818 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 12:24:41.984 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:24:49.868 [main] Launch - Expected URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:24:49.869 [main] Launch - Actual URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:24:49.882 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:24:52.984 [main] Launch - Page Title: Your Store
+[INFO ] 2026-05-13 12:24:52.990 [main] Launch - Launching application URL: https://ecommerce-playground.lambdatest.io/index.php?route=common/home
+[INFO ] 2026-05-13 12:24:58.963 [main] Launch - Logo Displayed Status: true
+[INFO ] 2026-05-13 12:24:58.966 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-13 12:10:44.439 [main] DriverClass - Initializing Browser: chrome
+[INFO ] 2026-05-13 12:10:44.444 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 12:10:47.642 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 12:10:48.318 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-13 12:11:33.620 [main] DriverClass - Initializing Browser: chrome
+[INFO ] 2026-05-13 12:11:33.622 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 12:11:35.889 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 12:11:36.396 [main] DriverClass - Closing browser session
+[INFO ] 2026-05-13 12:12:47.998 [main] DriverClass - Initializing Browser: chrome
+[INFO ] 2026-05-13 12:12:48.003 [main] DriverClass - Headless Mode: true
+[INFO ] 2026-05-13 12:12:53.153 [main] DriverClass - Browser launched successfully
+[INFO ] 2026-05-13 12:12:53.654 [main] DriverClass - Closing browser session
