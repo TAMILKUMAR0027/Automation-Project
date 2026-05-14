@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-		features = "src/test/resources/features/login.feature",
+		features = "src/test/resources/features/",
 		glue = {"com.stepDefinitions", "com.hooks"},
 		plugin = {
 				"pretty",
@@ -18,7 +18,7 @@ import org.testng.annotations.DataProvider;
 				// Allure Report Adapter
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 		},
-		tags = "@validCredentials or @invalidCredentials",
+		tags = "@Smoke",
 		monochrome = true
 )
 
