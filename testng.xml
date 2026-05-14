@@ -2,7 +2,7 @@
 
 <!-- currently no parallel exe -->
 
-<suite name="Automation Suite" thread-count="2">
+<suite name="Automation Suite" thread-count="2" parallel="classes">
 
     <test name="Cucumber Test">
         <classes>
