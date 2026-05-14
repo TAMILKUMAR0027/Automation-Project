@@ -1,25 +1,44 @@
 package com.pages;
 
-import com.driver.DriverClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LaunchPages {
 
-    public void launchApplication(String url) {
-        DriverClass.getDriver().get(url);
-    }
+	WebDriver driver;
 
-    public String getCurrentUrl() {
-        return DriverClass.getDriver().getCurrentUrl();
-    }
+	public LaunchPages(WebDriver driver) {
 
-    public String getPageTitle() {
-        return DriverClass.getDriver().getTitle();
-    }
+		this.driver = driver;
 
-    public boolean getlogo() {
-        return DriverClass.getDriver()
-                .findElement(By.xpath("//img[@alt='Poco Electro']"))
-                .isDisplayed();
-    }
+		PageFactory.initElements(driver, this);
+	}
+
+	public void launchApplication(String url) {
+		driver.get(url);
+	}
+
+	public String getCurrentUrl() {
+		return driver.getCurrentUrl();
+	}
+
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
+
+	public boolean getlogo() {
+
+		return driver.findElement(
+				By.xpath("//img[@alt='Poco Electro']"))
+				.isDisplayed();
+	}
+
+	@FindBy(xpath = "//a[normalize-space()='Shop by Category']")
+	public WebElement shopByCategories;
+
+	@FindBy(xpath = "//span[normalize-space()='Desktops and Monitors']")
+	public WebElement Desktop;
 }

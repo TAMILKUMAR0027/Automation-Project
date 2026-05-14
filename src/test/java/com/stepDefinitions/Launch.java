@@ -1,5 +1,6 @@
 package com.stepDefinitions;
 
+import com.driver.DriverClass;
 import com.pages.LaunchPages;
 import com.utils.ConfigReader;
 import io.cucumber.java.en.Given;
@@ -11,7 +12,7 @@ import org.testng.Assert;
 public class Launch {
 
     private static final Logger logger = LogManager.getLogger(Launch.class);
-    LaunchPages lp = new LaunchPages();
+    LaunchPages lp = new LaunchPages(DriverClass.getDriver());
 
     @Given("User navigates to application url")
     public void user_navigates_to_application_url() {
