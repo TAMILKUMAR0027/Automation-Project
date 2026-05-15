@@ -9,7 +9,7 @@ When the user clicks login link
 And clicks on Forgotten Password 
 
 @validemail
-Scenario Outline:
+Scenario Outline:Reset password using valid registered email
 When the user enters the valid "<email>"
 Then the user should be able to receive a "<message>" stating reset link sent to email.
 
@@ -19,7 +19,7 @@ Examples:
 
 
 @invalidemail
-Scenario Outline:
+Scenario Outline:Reset password using invalid email
 When the user enters the invalid "<email>"
 Then the user should receive an "<error message>"
 
