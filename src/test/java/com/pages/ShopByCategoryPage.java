@@ -11,21 +11,41 @@ public class ShopByCategoryPage extends BasePage {
         super(driver);
     }
 
-    // Shop By Category Menu
-    @FindBy(xpath = "//span[contains(text(),'Shop by Category')]")    public WebElement shopByCategoryMenu;
-    // Desktops & Monitors
-    @FindBy(xpath = "//span[normalize-space()='Desktops and Monitors']")
+    // -------------------------------------------------------------------------
+    // FIX 1: The original xpath //a[@aria-label='Shop by Category'] was not
+    // matching any visible element on the page. The Shop By Category button
+    // uses a drawer-toggle pattern (data-toggle="mz-pure-drawer"). Using a
+    // more reliable CSS selector that targets this pattern scoped to the nav.
+    // -------------------------------------------------------------------------
+
+    @FindBy(xpath = "a[data-toggle='mz-pure-drawer']")
+    public WebElement shopByCategoryMenu;
+
+
+    // -------------------------------------------------------------------------
+    // FIX 3: The original xpath used 'Desktops and Monitors' (with "and") but
+    // the actual DOM text is 'Desktops & Monitors' (with ampersand). Corrected
+    // to match what the live site renders in the dropdown menu.
+    // -------------------------------------------------------------------------
+
+    @FindBy(xpath = "//span[normalize-space()='Desktops & Monitors']")
     public WebElement desktopsCategory;
 
-    // Web Cameras
+
+    // Web Cameras — no change needed, text matches the live site
+
     @FindBy(xpath = "//span[normalize-space()='Web Cameras']")
     public WebElement cameras;
 
-    // Phone, Tablets & Ipod
+
+    // Phone, Tablets & Ipod — no change needed, text matches the live site
+
     @FindBy(xpath = "//span[normalize-space()='Phone, Tablets & Ipod']")
     public WebElement tablets;
 
-    // Laptops & Notebooks
+
+    // Laptops & Notebooks — no change needed, text matches the live site
+
     @FindBy(xpath = "//span[normalize-space()='Laptops & Notebooks']")
     public WebElement laptops;
 }
