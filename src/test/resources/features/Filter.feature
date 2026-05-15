@@ -17,3 +17,8 @@ Feature: TamilKumar_13/05/2026 Product Filter Functionality
     When User send an option from the show products dropdown
     And User stores the displayed products in a list
     Then Displayed product count should match the selected dropdown value
+  @filterByAvailability
+Scenario: Validate product availability
+  When User clicks the in-stock filter option  and Products should display based on availability
+  And User clicks any one product
+  Then Product availability status should be displayed in product description

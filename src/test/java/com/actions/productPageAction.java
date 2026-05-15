@@ -11,4 +11,7 @@ public class productPageAction {
 	public String getBrandName() {
 		return pp.BrandName.getText();
 	}
+	public String getAvailability() {
+		return pp.availability.getText();
+	}
 }

@@ -19,6 +19,9 @@ public class LaunchPageAction  {
 	public void clickCategories() {
 		lp.shopByCategories.click();
 		wait.until(ExpectedConditions.elementToBeClickable(lp.Desktop));
+		
+	}
+	public void clickMonitor() {
 		lp.Desktop.click();
 	}
 }
