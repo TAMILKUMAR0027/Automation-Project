@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
 		features = "src/test/resources/features/",
 		glue = {"com.stepDefinitions", "com.hooks"},
+	    tags= "@LoginFeature or @RegisterFeature",
 		plugin = {
 				"pretty",
 				"html:target/cucumber-report.html",
