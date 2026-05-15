@@ -8,8 +8,6 @@ import org.testng.annotations.DataProvider;
 		features = "src/test/resources/features/",
 		glue = {"com.stepDefinitions", "com.hooks"},
 
-	    tags= "@Rest",
-
 		plugin = {
 				"pretty",
 				"html:target/cucumber-report.html",
