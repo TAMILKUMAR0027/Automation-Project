@@ -36,7 +36,7 @@ public class LaunchPages {
 				.isDisplayed();
 	}
 
-	@FindBy(xpath = "//a[normalize-space()='Shop by Category']")
+	@FindBy(xpath = "//div/a[normalize-space()='Shop by Category']")
 	public WebElement shopByCategories;
 
 	@FindBy(xpath = "//span[normalize-space()='Desktops and Monitors']")
