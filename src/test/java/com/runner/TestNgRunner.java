@@ -17,7 +17,7 @@ import org.testng.annotations.DataProvider;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				// Allure Report Adapter
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-		},tags="@smoke",
+		},tags="@ShopByCategory",
 
 		
 		monochrome = true
