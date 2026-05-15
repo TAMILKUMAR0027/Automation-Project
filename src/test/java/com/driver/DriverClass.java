@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverClass {
+	
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static final Logger logger = LogManager.getLogger(DriverClass.class);

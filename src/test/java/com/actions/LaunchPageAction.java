@@ -10,11 +10,10 @@ import com.driver.DriverClass;
 import com.pages.LaunchPages;
 
 public class LaunchPageAction  {
-	
 
-	WebDriver driver=DriverClass.getDriver();
-	LaunchPages lp=new LaunchPages(driver);
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+    WebDriver driver = DriverClass.getDriver();
+    LaunchPages lp = new LaunchPages(driver);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
 	public void clickCategories() {
 		lp.shopByCategories.click();
