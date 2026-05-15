@@ -24,4 +24,4 @@ Then the user should receive an "<error message>"
 
 Examples:
 |email              |error message                                                              |
-|testlogin@gmail.com|Warning: The E-Mail Address was not found in our records, please try again!|
+|testlogin1@gmail.com|Warning: The E-Mail Address was not found in our records, please try again!|
