@@ -14,10 +14,11 @@ import org.testng.annotations.DataProvider;
 
 				// Extent Report Adapter
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-
 				// Allure Report Adapter
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 		},
+		
+	
 		
 		monochrome = true
 )
