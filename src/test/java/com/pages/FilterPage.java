@@ -24,7 +24,10 @@ public class FilterPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='product-thumb']//h4")
     public List<WebElement> allProducts;
-
+    @FindBy(xpath = "//label[@for='mz-fss-0--1']")
+    public WebElement inStockAvailabilityOption;
+    @FindBy(xpath = "//a[@id='mz-product-grid-image-30-212408']//div[@class='carousel-item active']//img[@title='Canon EOS 5D']")
+    public WebElement Canon_EOS_5DProduct;
     public List<String> getProductNames() {
 
         List<String> productNames = new ArrayList<>();

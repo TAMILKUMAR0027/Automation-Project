@@ -39,4 +39,11 @@ public class FilterPageAction {
 
         return fp.allProducts.size();
     }
+    public void clickAvailability() {
+    	fp.inStockAvailabilityOption.click();
+    }
+    public void clickCanonProduct() {
+    	wait.until(ExpectedConditions.elementToBeClickable(fp.Canon_EOS_5DProduct));
+    	fp.Canon_EOS_5DProduct.click();
+    }
 }

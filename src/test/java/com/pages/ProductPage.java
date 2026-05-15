@@ -12,4 +12,7 @@ public class ProductPage extends BasePage{
 	}
 	@FindBy(xpath = "//ul[@class='list-unstyled m-0']//a[contains(text(),'Apple')]")
 	public WebElement BrandName;
+	@FindBy(xpath = "//span[@class='badge badge-success']")
+	
+	public WebElement availability;
 }

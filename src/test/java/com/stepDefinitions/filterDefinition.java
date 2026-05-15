@@ -40,13 +40,14 @@ public class filterDefinition {
 
             throw e;
         }
+        lpa.clickCategories();
+        lpa.clickMonitor();
     }
 
     @When("User clicks manufacturer filter any brand element")
     public void user_clicks_manufacturer_filter_any_brand_element() {
 
-        lpa.clickCategories();
-
+        
         fpa.clickManufacture();
     }
 
@@ -64,8 +65,7 @@ public class filterDefinition {
     	
         @When("User send an option from the show products dropdown")
         public void user_send_an_option_from_the_show_products_dropdown() {
-        	lpa.clickCategories();
-
+        	
             fpa.clickManufacture();
           
 
@@ -87,4 +87,26 @@ public class filterDefinition {
 
         Assert.assertEquals(25,fpa.getDisplayedProductCount());
     }
+
+@When("User clicks the in-stock filter option  and Products should display based on availability")
+public void user_clicks_the_in_stock_filter_option_and_products_should_display_based_on_availability() {
+    // Write code here that turns the phrase above into concrete actions
+    fpa.clickAvailability();
+}
+
+
+
+    @When("User clicks any one product")
+    public void user_clicks_any_one_product() {
+        // Write code here that turns the phrase above into concrete actions
+       fpa.clickCanonProduct();
+    }
+
+    @Then("Product availability status should be displayed in product description")
+    public void product_availability_status_should_be_displayed_in_product_description() {
+        // Write code here that turns the phrase above into concrete actions
+        Assert.assertEquals("In Stock", ppa.getAvailability());
+    }
+
+
 }
