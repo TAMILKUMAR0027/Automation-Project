@@ -57,6 +57,11 @@ public class RegisterPageAction {
 		return wait.until(ExpectedConditions.visibilityOf(rp.rSuccess)).getText();
 	}
 	
+	public String uncheckPPMsg()
+	{
+		return wait.until(ExpectedConditions.visibilityOf(rp.errMsgPP)).getText();
+	}
+	
 	
 
 }
