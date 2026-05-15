@@ -61,7 +61,19 @@ public class RegisterPageAction {
 	{
 		return wait.until(ExpectedConditions.visibilityOf(rp.errMsgPP)).getText();
 	}
-	
+	public String fieldEmptyWmsg()
+	{
+		return wait.until(ExpectedConditions.visibilityOf(rp.emptyFieldMsg)).getText();
+	}
+	public void enterPersonalDetailsone(DataTable dataTable) {
+		wait.until(ExpectedConditions.visibilityOf(rp.fname));
+		List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+		rp.lname.sendKeys(data.get(0).get("lname"));
+		rp.email.sendKeys(data.get(0).get("email"));
+		rp.telephone.sendKeys(data.get(0).get("telephone"));
+		rp.pass.sendKeys(data.get(0).get("password"));
+		rp.cpass.sendKeys(data.get(0).get("confirmpassword"));
+	}
 	
 
 }

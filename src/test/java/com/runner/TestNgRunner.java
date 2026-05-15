@@ -18,9 +18,6 @@ import org.testng.annotations.DataProvider;
 				// Allure Report Adapter
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 		},
-		
-	
-		
 		monochrome = true
 )
 

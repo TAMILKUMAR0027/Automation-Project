@@ -74,5 +74,27 @@ public class RegisterSD {
 			throw e;
 		}
 	}
+	@When("Enter your personal details except firstname")
+	public void enter_your_personal_details_except_firstname(io.cucumber.datatable.DataTable dataTable) {
+		rpa.enterPersonalDetailsone(dataTable);
+	}
+	
+	@Then("the user should see a warning message : First Name must be between one and thirtyTwo characters!")
+	public void the_user_should_see_a_warning_message_first_name_must_be_between_one_and_thirty_two_characters() {
+		 String actual=rpa.fieldEmptyWmsg();
+		  String expected="First Name must be between 1 and 32 characters!";
+		  try
+		  {
+			  Assert.assertEquals(actual, expected);
+			  log.info("Warning message thrown Successfully");
+		  }
+		  catch(AssertionError e)
+			{
+				log.error("Error message not thrown,Because: "+e.getMessage());
+				throw e;
+			}
+		}
 
-}
+	}
+	
+
