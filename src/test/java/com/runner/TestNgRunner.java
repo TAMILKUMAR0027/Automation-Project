@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
 		features = "src/test/resources/features/",
 		glue = {"com.stepDefinitions", "com.hooks"},
-	  
+
 		plugin = {
 				"pretty",
 				"html:target/cucumber-report.html",
@@ -17,7 +17,7 @@ import org.testng.annotations.DataProvider;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				// Allure Report Adapter
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-		},tags="@smoke",
+		},
 
 		
 		monochrome = true
