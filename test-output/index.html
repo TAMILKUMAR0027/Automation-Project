@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 4 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\win\AppData\Local\Temp\testng-eclipse-1947453548\testng-customsuite.xml</span>
+                    <span>C:\Users\win\AppData\Local\Temp\testng-eclipse--654338416\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,36 +92,36 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods,   4 passed</span>
+                    <span class="method-stats">4 methods, 4 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content failed suite-Default_suite">
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.runner.TestNgRunner" class="method navigator-link" hash-for-method="runScenario(&quot;Verify user can navigate using valid Shop By Category options&quot;, &quot;Shop By Category Navigation&quot;)">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.runner.TestNgRunner" class="method navigator-link" hash-for-method="runScenario(&quot;Verify user can navigate using valid Shop By Category options&quot;, &quot;Shop By Category Navigation&quot;)">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.runner.TestNgRunner" class="method navigator-link" hash-for-method="runScenario(&quot;Verify user can navigate using valid Shop By Category options&quot;, &quot;Shop By Category Navigation&quot;)">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.runner.TestNgRunner" class="method navigator-link" hash-for-method="runScenario(&quot;Verify user can navigate using valid Shop By Category options&quot;, &quot;Shop By Category Navigation&quot;)">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -133,9 +133,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.runner.TestNgRunner</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -145,6 +145,20 @@
                   </a> <!-- runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Verify user can navigate using valid Shop By Category options","Shop By Category Navigation")</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (341c6e81a2f6dc77d2215211d7b0cf8d)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61781}, goog:processID: 8572, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61781/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 341c6e81a2f6dc77d2215211d7b0cf8d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+
+</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
@@ -155,6 +169,20 @@
                   </a> <!-- runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Verify user can navigate using valid Shop By Category options","Shop By Category Navigation")</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (17adf4b5345092f6f9f66d33e6ea6987)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52034}, goog:processID: 22920, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52034/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 17adf4b5345092f6f9f66d33e6ea6987
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+
+</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
@@ -165,6 +193,20 @@
                   </a> <!-- runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Verify user can navigate using valid Shop By Category options","Shop By Category Navigation")</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (92e7258ef235dcf7e3f78ed83a2be244)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59414}, goog:processID: 17872, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59414/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 92e7258ef235dcf7e3f78ed83a2be244
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+
+</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
@@ -175,16 +217,30 @@
                   </a> <!-- runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Verify user can navigate using valid Shop By Category options","Shop By Category Navigation")</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (089980a40dc82b65dc2944882a01acc4)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64721}, goog:processID: 8272, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64721/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 089980a40dc82b65dc2944882a01acc4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+
+</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
+          </div> <!-- suite-Default_suite-class-failed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\win\AppData\Local\Temp\testng-eclipse-1947453548\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\win\AppData\Local\Temp\testng-eclipse--654338416\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -245,19 +301,19 @@ data.addRows(4);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.runner.TestNgRunner')
-data.setCell(0, 3, 35508);
+data.setCell(0, 3, 26620);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'runScenario')
 data.setCell(1, 2, 'com.runner.TestNgRunner')
-data.setCell(1, 3, 9776);
+data.setCell(1, 3, 24272);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'runScenario')
 data.setCell(2, 2, 'com.runner.TestNgRunner')
-data.setCell(2, 3, 8168);
+data.setCell(2, 3, 21958);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'runScenario')
 data.setCell(3, 2, 'com.runner.TestNgRunner')
-data.setCell(3, 3, 6934);
+data.setCell(3, 3, 21849);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -290,28 +346,36 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.runner.TestNgRunner</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@3a54638b)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@6c2f8ecb)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</span>
-                <span class="method-start">1379 ms</span>
+                <span class="method-start">901 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</span>
-                <span class="method-start">11159 ms</span>
+                <span class="method-start">27526 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</span>
-                <span class="method-start">46671 ms</span>
+                <span class="method-start">49486 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">runScenario("Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation")</span>
-                <span class="method-start">53610 ms</span>
+                <span class="method-start">73760 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">61785 ms</span>
+                <span class="method-start">95612 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

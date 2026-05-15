@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import com.actions.LaunchPageAction;
 import com.actions.ShopByCategoryAction;
 import com.driver.DriverClass;
 import com.pages.LaunchPages;
@@ -18,6 +19,7 @@ public class ShopByCategory {
     WebDriver driver=DriverClass.getDriver();
     ShopByCategoryAction sbc = new ShopByCategoryAction();
 LaunchPages lp=new LaunchPages(driver);
+LaunchPageAction lpa=new LaunchPageAction();
     @Given("the user launches the ecommerce application")
     public void the_user_launches_the_ecommerce_application() {
 
@@ -27,7 +29,7 @@ LaunchPages lp=new LaunchPages(driver);
     @When("the user clicks on the Shop by Category menu")
     public void the_user_clicks_on_the_shop_by_category_menu() {
 
-        sbc.clickShopByCategory();
+        lpa.clickCategories();
     }
 
     @When("the user selects the {string} category")

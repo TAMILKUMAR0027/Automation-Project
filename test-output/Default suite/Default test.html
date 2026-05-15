@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>4/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/4/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri May 15 11:29:15 IST 2026</td>
+<td>Started on:</td><td>Fri May 15 12:47:23 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>62 seconds (62404 ms)</td>
+<tr><td>Total time:</td><td>96 seconds (96011 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -77,23 +77,123 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation"</td>
-<td></td>
-<td>9</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (341c6e81a2f6dc77d2215211d7b0cf8d)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61781}, goog:processID: 8572, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61781/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 341c6e81a2f6dc77d2215211d7b0cf8d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2066777507", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2066777507'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (341c6e81a2f6dc77d2215211d7b0cf8d)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61781}, goog:processID: 8572, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61781/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 341c6e81a2f6dc77d2215211d7b0cf8d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div></td>
+<td>21</td>
 <td>com.runner.TestNgRunner@16c069df</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation"</td>
-<td></td>
-<td>35</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (17adf4b5345092f6f9f66d33e6ea6987)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52034}, goog:processID: 22920, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52034/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 17adf4b5345092f6f9f66d33e6ea6987
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1364803759", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1364803759'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (17adf4b5345092f6f9f66d33e6ea6987)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52034}, goog:processID: 22920, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52034/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 17adf4b5345092f6f9f66d33e6ea6987
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div></td>
+<td>21</td>
 <td>com.runner.TestNgRunner@16c069df</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation"</td>
-<td></td>
-<td>6</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (92e7258ef235dcf7e3f78ed83a2be244)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59414}, goog:processID: 17872, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59414/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 92e7258ef235dcf7e3f78ed83a2be244
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div><a href='#' onClick='toggleBox("stack-trace447482439", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace447482439'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (92e7258ef235dcf7e3f78ed83a2be244)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59414}, goog:processID: 17872, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59414/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 92e7258ef235dcf7e3f78ed83a2be244
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div></td>
+<td>26</td>
 <td>com.runner.TestNgRunner@16c069df</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user can navigate using valid Shop By Category options", "Shop By Category Navigation"</td>
-<td></td>
-<td>8</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (089980a40dc82b65dc2944882a01acc4)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64721}, goog:processID: 8272, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64721/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 089980a40dc82b65dc2944882a01acc4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div><a href='#' onClick='toggleBox("stack-trace91286940", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace91286940'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (089980a40dc82b65dc2944882a01acc4)] -&gt; css selector: div[id=&apos;entry_217827&apos;] span[class=&apos;icon svg-icon&apos;] svg]
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.168, chrome: {chromedriverVersion: 148.0.7778.167 (65db666ac2c..., userDataDir: C:\Users\win\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64721}, goog:processID: 8272, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64721/devtoo..., se:cdpVersion: 148.0.7778.168, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 089980a40dc82b65dc2944882a01acc4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.ShopByCategoryAction.clickShopByCategory(ShopByCategoryAction.java:25)
+	at com.stepDefinitions.ShopByCategory.the_user_clicks_on_the_shop_by_category_menu(ShopByCategory.java:30)
+	at ✽.the user clicks on the Shop by Category menu(file:///D:/Automation-Project/src/test/resources/features/ShopbyCategory.feature:14)
+</pre></div></td>
+<td>24</td>
 <td>com.runner.TestNgRunner@16c069df</td></tr>
 </table><p>
 </body>

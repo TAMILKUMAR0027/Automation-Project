@@ -12,7 +12,7 @@ import com.pages.ShopByCategoryPage;
 public class ShopByCategoryAction {
 
     WebDriver driver = DriverClass.getDriver();
-WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
     ShopByCategoryPage sbcp = new ShopByCategoryPage(driver);
 
     public void launchWebUrl() {
@@ -22,7 +22,7 @@ WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
 
     public void clickShopByCategory() {
     	
-         wait.until(ExpectedConditions.visibilityOf(sbcp.shopByCategoryMenu)).click();
+         wait.until(ExpectedConditions.elementToBeClickable(sbcp.shopByCategoryMenu)).click();
     }
 
     public void selectCategory(String category) {
