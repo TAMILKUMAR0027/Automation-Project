@@ -24,4 +24,4 @@ Description:This feature manages forget password functionality
     Examples:
       | email                | error message                                                               |
       | testlogin1@gmail.com | Warning: The E-Mail Address was not found in our records, please try again! |
-      | testlogin@gmail.com  | Warning: The E-Mail Address was not found in our records, please try again! |
+

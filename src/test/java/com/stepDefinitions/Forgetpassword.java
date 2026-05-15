@@ -50,6 +50,7 @@ public class Forgetpassword {
 	    }
 	   catch(AssertionError e){
 		   log.error("Failed to sent email"+e.getMessage());
+		   throw e;
 	   }
 		   
 	   
@@ -71,6 +72,7 @@ public class Forgetpassword {
 		    }
 		   catch(AssertionError e ){
 			   log.error("Failed to display warning message"+e.getMessage());
+			   throw e;
 		   }
 			   
 	}
