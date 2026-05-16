@@ -13,9 +13,9 @@ import org.testng.annotations.DataProvider;
                 "html:target/cucumber-report.html",
                 "json:target/cucumber-report.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+                "i"
+                + "o.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
-        tags="@LoginFeature or @RegisterFeature",
 
         monochrome = true)
 
