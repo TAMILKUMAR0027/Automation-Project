@@ -16,7 +16,7 @@ import org.testng.annotations.DataProvider;
                 "i"
                 + "o.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
-        tags="@LoginFeature or RegisterFeature",
+        tags="@LoginFeature or @RegisterFeature",
 
         monochrome = true)
 
