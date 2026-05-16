@@ -10,6 +10,5 @@ bin/
 logs/
 .factorypath
 src/test/java/com/runner/TestNgRunner.java
-
 target/
 target-output/
