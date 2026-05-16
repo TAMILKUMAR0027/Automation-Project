@@ -91,6 +91,7 @@ public class filterDefinition {
     public void displayed_product_count_should_match_the_selected_dropdown_value() {
 
         Assert.assertEquals(fpa.getDisplayedProductCount(), 25);
+
     }
 
     @When("User clicks the in-stock filter option")
@@ -148,4 +149,6 @@ public class filterDefinition {
 
         Assert.assertEquals(ppa.getOutStockAvailability(), "Out Of Stock");
     }
+
 }
+
