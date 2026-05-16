@@ -43,7 +43,14 @@ public class FilterPageAction {
     	fp.inStockAvailabilityOption.click();
     }
     public void clickCanonProduct() {
-    	wait.until(ExpectedConditions.elementToBeClickable(fp.Canon_EOS_5DProduct));
-    	fp.Canon_EOS_5DProduct.click();
+
+       wait.until(ExpectedConditions.elementToBeClickable(fp.canonProduct)).click();
+    }
+    public void clickOutofStockOption() {
+    	wait.until(ExpectedConditions.elementToBeClickable(fp.OutOfStockAvailabilityOption));
+    	fp.OutOfStockAvailabilityOption.click();
+    }
+    public void clickHTCTouchHD() {
+wait.until(ExpectedConditions.elementToBeClickable(fp.HTCTouchHDProduct)).click();
     }
 }

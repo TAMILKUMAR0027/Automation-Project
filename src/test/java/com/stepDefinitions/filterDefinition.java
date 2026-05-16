@@ -27,51 +27,58 @@ public class filterDefinition {
 
     List<String> products;
 
-    @Given("User is on Home page click on the Shop By categories Page and Click any one option")
-    public void user_is_on_home_page_click_on_the_shop_by_categories_page_and_click_any_one_option() {
+    @Given("User is on Home page")
+    public void user_is_on_home_page() {
 
-        try {
+        String url = ConfigReader.getProperties().getProperty("url");
 
-            String url = ConfigReader.getProperties().getProperty("url");
+        lp.launchApplication(url);
+    }
 
-            lp.launchApplication(url);
+    @Given("User clicks on Shop By Categories")
+    public void user_clicks_on_shop_by_categories() {
 
-        } catch (Exception e) {
-
-            throw e;
-        }
         lpa.clickCategories();
+    }
+
+    @Given("User selects any one category")
+    public void user_selects_any_one_category() {
+
         lpa.clickMonitor();
     }
 
-    @When("User clicks manufacturer filter any brand element")
-    public void user_clicks_manufacturer_filter_any_brand_element() {
+    @When("User clicks any manufacturer filter option")
+    public void user_clicks_any_manufacturer_filter_option() {
 
-        
         fpa.clickManufacture();
     }
 
-    @When("product should be displayed based on filtered results and Clicks any one product")
-    public void product_should_be_displayed_based_on_filtered_results_and_clicks_any_one_product() {
+    @When("Products should display based on selected manufacturer")
+    public void products_should_display_based_on_selected_manufacturer() {
+
+        System.out.println("Manufacturer products displayed");
+    }
+
+    @When("User clicks any one product")
+    public void user_clicks_any_one_product() {
 
         fpa.clickProduct();
     }
 
-    @Then("check the product brand name in description should be matches the filter")
-    public void check_the_product_brand_name_in_description_should_be_matches_the_filter() {
+    @Then("Product brand name in description should match the selected filter")
+    public void product_brand_name_in_description_should_match_the_selected_filter() {
 
         Assert.assertEquals(ppa.getBrandName(), "Apple");
     }
-    	
-        @When("User send an option from the show products dropdown")
-        public void user_send_an_option_from_the_show_products_dropdown() {
-        	
-            fpa.clickManufacture();
-          
 
-            fpa.selectDropdownByVisibleText("25");
-        }
-    
+    @When("User selects an option from the show products dropdown")
+    public void user_selects_an_option_from_the_show_products_dropdown() {
+
+        fpa.clickManufacture();
+
+        fpa.selectDropdownByVisibleText("25");
+    }
+
     @When("User stores the displayed products in a list")
     public void user_stores_the_displayed_products_in_a_list() {
 
@@ -83,30 +90,62 @@ public class filterDefinition {
     @Then("Displayed product count should match the selected dropdown value")
     public void displayed_product_count_should_match_the_selected_dropdown_value() {
 
-        
-
-        Assert.assertEquals(25,fpa.getDisplayedProductCount());
+        Assert.assertEquals(fpa.getDisplayedProductCount(), 25);
     }
 
-@When("User clicks the in-stock filter option  and Products should display based on availability")
-public void user_clicks_the_in_stock_filter_option_and_products_should_display_based_on_availability() {
-    // Write code here that turns the phrase above into concrete actions
-    fpa.clickAvailability();
-}
+    @When("User clicks the in-stock filter option")
+    public void user_clicks_the_in_stock_filter_option() {
 
+        fpa.clickAvailability();
+    }
 
+    @When("User clicks any one product based on instock")
+    public void user_clicks_any_one_product_based_on_instock() {
 
-    @When("User clicks any one product")
-    public void user_clicks_any_one_product() {
-        // Write code here that turns the phrase above into concrete actions
-       fpa.clickCanonProduct();
+        fpa.clickCanonProduct();
+    }
+
+    @When("Products should display based on availability")
+    public void products_should_display_based_on_availability() {
+
+        System.out.println("Availability products displayed");
     }
 
     @Then("Product availability status should be displayed in product description")
     public void product_availability_status_should_be_displayed_in_product_description() {
-        // Write code here that turns the phrase above into concrete actions
-        Assert.assertEquals("In Stock", ppa.getAvailability());
+
+        Assert.assertEquals(ppa.getInstockAvailability(), "In Stock");
     }
 
+    @When("User clicks the in-stock filter option and click one product")
+    public void user_clicks_the_in_stock_filter_option_and_click_one_product() {
 
+        fpa.clickAvailability();
+
+        fpa.clickCanonProduct();
+    }
+
+    @Then("In-stock products should display availability status in product description")
+    public void in_stock_products_should_display_availability_status_in_product_description() {
+
+        Assert.assertEquals(ppa.getInstockAvailability(), "In Stock");
+
+        DriverClass.getDriver().navigate().back();
+    }
+
+    @When("User clicks the out-of-stock filter option and click one product")
+    public void user_clicks_the_out_of_stock_filter_option_and_click_one_product() {
+
+        DriverClass.getDriver().navigate().refresh();
+
+        fpa.clickOutofStockOption();
+
+        fpa.clickHTCTouchHD();
+    }
+
+    @Then("Out-of-stock products should display availability status in product description")
+    public void out_of_stock_products_should_display_availability_status_in_product_description() {
+
+        Assert.assertEquals(ppa.getOutStockAvailability(), "Out Of Stock");
+    }
 }

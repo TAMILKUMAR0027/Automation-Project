@@ -21,15 +21,23 @@ public class FilterPage extends BasePage {
 
     @FindBy(xpath = "//select[@id='input-limit-212402']")
     public WebElement dropdownBtn;
-
     @FindBy(xpath = "//div[@class='product-thumb']//h4")
     public List<WebElement> allProducts;
     @FindBy(xpath = "//label[@for='mz-fss-0--1']")
     public WebElement inStockAvailabilityOption;
-    @FindBy(xpath = "//a[@id='mz-product-grid-image-30-212408']//div[@class='carousel-item active']//img[@title='Canon EOS 5D']")
-    public WebElement Canon_EOS_5DProduct;
-    public List<String> getProductNames() {
+   @FindBy(xpath = "//a[@id='mz-product-grid-image-30-212408']//div[@class='carousel-item active']//img[@title='Canon EOS 5D']")
+   public WebElement canonProduct;
+    @FindBy(xpath = "//label[@for='mz-fss-0-5']")
+    public WebElement OutOfStockAvailabilityOption;
+    @FindBy(xpath = "//img[@title='HTC Touch HD']")
+    public WebElement HTCTouchHDProduct;
+    @FindBy(xpath = "//span[contains(@class,'badge-success')]")
+    public WebElement instockAvailability;
 
+    @FindBy(xpath = "//span[contains(@class,'badge-danger')]")
+    public WebElement outstockAvailability;
+    public List<String> getProductNames() {
+    	
         List<String> productNames = new ArrayList<>();
         for (WebElement product : allProducts) {
             productNames.add(product.getText());

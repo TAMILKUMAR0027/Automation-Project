@@ -15,4 +15,7 @@ public class ProductPage extends BasePage{
 	@FindBy(xpath = "//span[@class='badge badge-success']")
 	
 	public WebElement availability;
+	 @FindBy(xpath = "//span[@class='badge badge-danger']")
+	    public WebElement availabilityOutOfStock;
+	 
 }
