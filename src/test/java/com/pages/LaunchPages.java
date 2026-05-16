@@ -36,9 +36,11 @@ public class LaunchPages {
 				.isDisplayed();
 	}
 
-	@FindBy(xpath = "//a[normalize-space()='Shop by Category']")
+	@FindBy(xpath = "//div/a[normalize-space()='Shop by Category']")
 	public WebElement shopByCategories;
 
 	@FindBy(xpath = "//span[normalize-space()='Desktops and Monitors']")
 	public WebElement Desktop;
+	@FindBy(xpath = "//a[@id='mz-product-listing-image-39218404-0-0']//div[@class='carousel-item active']//img[@title='Canon EOS 5D']")
+	public WebElement canonES5Product;
 }

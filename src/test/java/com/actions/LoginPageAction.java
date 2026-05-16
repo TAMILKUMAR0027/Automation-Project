@@ -10,7 +10,7 @@ import com.driver.DriverClass;
 import com.pages.LoginPage;
 
 public class LoginPageAction {
-	WebDriver driver = DriverClass.getDriver();
+	WebDriver driver=DriverClass.getDriver();
 	LoginPage lp = new LoginPage(driver);
 	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
 

@@ -41,7 +41,7 @@ public class RegisterPage extends BasePage {
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
 	public WebElement errMsgPP;
 	
-	@FindBy(xpath="//div[@class='text-danger']")
+	@FindBy(css=".text-danger")
 	public WebElement emptyFieldMsg;
 	
 

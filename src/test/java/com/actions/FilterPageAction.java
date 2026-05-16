@@ -39,4 +39,21 @@ public class FilterPageAction {
 
         return fp.allProducts.size();
     }
+    public void clickAvailability() {
+    	fp.inStockAvailabilityOption.click();
+    }
+    public void clickCanonProduct() {
+
+       wait.until(ExpectedConditions.elementToBeClickable(fp.canonProduct)).click();
+    }
+    public void clickOutofStockOption() {
+    	wait.until(ExpectedConditions.elementToBeClickable(fp.OutOfStockAvailabilityOption));
+    	fp.OutOfStockAvailabilityOption.click();
+    }
+    public void clickHTCTouchHD() {
+wait.until(ExpectedConditions.elementToBeClickable(fp.HTCTouchHDProduct)).click();
+    }
+    public String getSoftwareTitle() {
+    	return wait.until(ExpectedConditions.visibilityOf(fp.softwaretTitle)).getText();
+    }
 }

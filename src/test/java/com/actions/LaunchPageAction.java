@@ -10,15 +10,21 @@ import com.driver.DriverClass;
 import com.pages.LaunchPages;
 
 public class LaunchPageAction  {
-	
 
-	WebDriver driver=DriverClass.getDriver();
-	LaunchPages lp=new LaunchPages(driver);
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+    WebDriver driver = DriverClass.getDriver();
+    LaunchPages lp = new LaunchPages(driver);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
 	public void clickCategories() {
 		lp.shopByCategories.click();
 		wait.until(ExpectedConditions.elementToBeClickable(lp.Desktop));
+		
+	}
+	public void clickMonitor() {
 		lp.Desktop.click();
+	}
+	public void clickCanonES5Product() {
+		wait.until(ExpectedConditions.elementToBeClickable(lp.canonES5Product));
+		lp.canonES5Product.click();
 	}
 }

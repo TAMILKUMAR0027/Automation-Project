@@ -1,19 +1,39 @@
 @smoke
-Feature: TamilKumar_13/05/2026 Product Filter Functionality
+Feature: Product Filter Functionality
 
   Background:
-    Given User is on Home page click on the Shop By categories Page and Click any one option
+    Given User is on Home page
+    And User clicks on Shop By Categories
+    And User selects any one category
 
   @verifyByManufacture
   Scenario: Validate filter by manufacturer
 
-    When User clicks manufacturer filter any brand element
-    And product should be displayed based on filtered results and Clicks any one product
-    Then check the product brand name in description should be matches the filter
+    When User clicks any manufacturer filter option
+    And Products should display based on selected manufacturer
+    And User clicks any one product
+    Then Product brand name in description should match the selected filter
 
   @showByTotalProduct
   Scenario: Validate total displayed products based on selected count
 
-    When User send an option from the show products dropdown
+    When User selects an option from the show products dropdown
     And User stores the displayed products in a list
     Then Displayed product count should match the selected dropdown value
+
+  @filterByAvailability
+  Scenario: Validate product availability
+
+    When User clicks the in-stock filter option
+    And Products should display based on availability
+    And User clicks any one product based on instock
+    Then Product availability status should be displayed in product description
+
+  @filterByAvailabilityOptions
+  Scenario: Validate product availability based on different options
+
+    When User clicks the in-stock filter option and click one product
+    Then In-stock products should display availability status in product description
+
+    When User clicks the out-of-stock filter option and click one product
+    Then Out-of-stock products should display availability status in product description
