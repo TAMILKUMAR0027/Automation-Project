@@ -17,7 +17,6 @@ import org.testng.annotations.DataProvider;
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
 
-        tags = "@smoke or @productDetails",
         monochrome = true
 )
 
