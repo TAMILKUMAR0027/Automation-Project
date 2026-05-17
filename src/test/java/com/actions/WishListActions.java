@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WishListActions {
 
@@ -22,10 +24,6 @@ public class WishListActions {
         try { Thread.sleep(ms); } catch (InterruptedException ignored) {}
     }
 
-    /**
-     * Dismisses any native JS alert present on the page.
-     * Returns the alert text if one was found, null otherwise.
-     */
     private String dismissAlertIfPresent() {
         try {
             WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -35,75 +33,10 @@ public class WishListActions {
             System.out.println("Dismissed JS alert: " + text);
             return text;
         } catch (TimeoutException e) {
-            return null; // No alert — happy path
+            return null;
         }
     }
 
-    /**
-     * Core hover + force-reveal + JS-click pattern for any product card.
-     * Handles:
-     *   - CSS hover-revealed buttons (opacity/display:none)
-     *   - Already-wishlisted products (removes then re-adds)
-     *   - AJAX error alerts after click
-     */
-    private void hoverAndClickWishlist(WebElement productCard,
-                                       WebElement wishlistBtn,
-                                       String productLabel) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        Actions actions = new Actions(driver);
-
-        // Step 1: Scroll card into center view
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", productCard);
-        pause(500);
-
-        // Step 2: Hover to trigger CSS :hover state
-        actions.moveToElement(productCard).perform();
-        pause(700);
-
-        // Step 3: Force-reveal wishlist button
-        forceRevealElement(wishlistBtn, productLabel);
-
-        // Step 4: If already wishlisted, remove it first then re-add
-        try {
-            String btnClass = wishlistBtn.getAttribute("class");
-            if (btnClass != null && btnClass.contains("wished")) {
-                System.out.println("[" + productLabel + "] Already in wishlist — removing first...");
-                js.executeScript("arguments[0].click();", wishlistBtn);
-                pause(1200);
-                dismissAlertIfPresent();
-                pause(500);
-
-                // Re-hover and re-reveal after removal
-                actions.moveToElement(productCard).perform();
-                pause(700);
-                forceRevealElement(wishlistBtn, productLabel);
-                pause(300);
-            }
-        } catch (Exception e) {
-            System.out.println("[" + productLabel + "] Could not check wished state: " + e.getMessage());
-        }
-
-        // Step 5: Click wishlist button
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(wishlistBtn));
-            js.executeScript("arguments[0].click();", wishlistBtn);
-            System.out.println("[" + productLabel + "] Wishlist button clicked successfully");
-        } catch (Exception e) {
-            Assert.fail("[" + productLabel + "] Wishlist button click failed. Cause: " + e.getMessage());
-        }
-
-        // Step 6: Check for AJAX error alert immediately after click
-        String alertText = dismissAlertIfPresent();
-        if (alertText != null) {
-            Assert.fail("[" + productLabel + "] AJAX error after wishlist click. Alert: " + alertText +
-                    ". Product may already be in wishlist or session may have expired.");
-        }
-    }
-
-    /**
-     * Force CSS visibility on a hover-hidden button.
-     */
     private void forceRevealElement(WebElement element, String productLabel) {
         try {
             ((JavascriptExecutor) driver).executeScript(
@@ -116,6 +49,58 @@ public class WishListActions {
         } catch (Exception e) {
             Assert.fail("[" + productLabel + "] Wishlist button not found in DOM. " +
                     "Check XPath in WishListPage.java. Cause: " + e.getMessage());
+        }
+    }
+
+    private void hoverAndClickWishlist(WebElement productCard,
+                                       WebElement wishlistBtn,
+                                       String productLabel) {
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        Actions actions = new Actions(driver);
+
+        // 1. Scroll into view
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", productCard);
+        pause(500);
+
+        // 2. Hover to trigger CSS :hover
+        actions.moveToElement(productCard).perform();
+        pause(700);
+
+        // 3. Force-reveal button
+        forceRevealElement(wishlistBtn, productLabel);
+
+        // 4. Remove first if already wishlisted
+        try {
+            String btnClass = wishlistBtn.getAttribute("class");
+            if (btnClass != null && btnClass.contains("wished")) {
+                System.out.println("[" + productLabel + "] Already wishlisted — removing first...");
+                js.executeScript("arguments[0].click();", wishlistBtn);
+                pause(1200);
+                dismissAlertIfPresent();
+                pause(500);
+                actions.moveToElement(productCard).perform();
+                pause(700);
+                forceRevealElement(wishlistBtn, productLabel);
+                pause(300);
+            }
+        } catch (Exception e) {
+            System.out.println("[" + productLabel + "] Could not check wished state: " + e.getMessage());
+        }
+
+        // 5. Click to add
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(wishlistBtn));
+            js.executeScript("arguments[0].click();", wishlistBtn);
+            System.out.println("[" + productLabel + "] Wishlist button clicked successfully");
+        } catch (Exception e) {
+            Assert.fail("[" + productLabel + "] Click failed. Cause: " + e.getMessage());
+        }
+
+        // 6. Check for AJAX error alert
+        String alertText = dismissAlertIfPresent();
+        if (alertText != null) {
+            Assert.fail("[" + productLabel + "] AJAX error after click: " + alertText);
         }
     }
 
@@ -166,33 +151,25 @@ public class WishListActions {
         hoverAndClickWishlist(card, wp.ipodNanoWishlistBtn, "iPod Nano");
     }
 
-    // ========================= POPUP VALIDATIONS =========================
+    // ========================= TOAST — ADD =========================
 
-    /**
-     * Waits for a toast that contains the specific product name.
-     * Prevents reading a stale toast from a previously added product.
-     */
     public String getWishlistSuccessMessage(String productNameFragment) {
 
-        // Build a dynamic XPath that waits for THIS product's toast specifically
         By freshToast = By.xpath(
                 "//div[@id='notification-box-top']" +
                         "//*[contains(text(),'" + productNameFragment + "')]" +
-                        "/ancestor::div[contains(@class,'toast')]" +
-                        "//p"
+                        "/ancestor::div[contains(@class,'toast')]//p"
         );
 
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(freshToast));
-            WebElement toastText = driver.findElement(freshToast);
-            return toastText.getText().trim();
+            return driver.findElement(freshToast).getText().trim();
         } catch (TimeoutException e) {
-            // Fallback: return whatever is in the notification box
             try {
-                return wp.successNotification.getText().trim();
+                return wp.successNotificationFallback.getText().trim();
             } catch (Exception ex) {
-                Assert.fail("No success toast found for product [" + productNameFragment + "]. " +
-                        "Toast may not have appeared or AJAX call failed.");
+                Assert.fail("No success toast found for [" + productNameFragment + "]. " +
+                        "Toast did not appear or AJAX call failed.");
                 return "";
             }
         }
@@ -203,13 +180,66 @@ public class WishListActions {
         System.out.println("Clicked wishlist link from popup");
     }
 
+    // ========================= ALERT — REMOVE =========================
+
+    /**
+     * Reads the removal success alert:
+     * "Success: You have modified your wish list!"
+     *
+     * The alert uses:  //div[contains(@class,'alert-success')]
+     * NOT the toast — this is a page-level Bootstrap alert, not a toast popup.
+     * getText() on the div returns everything including the × button text,
+     * so we strip the icon text by getting just the meaningful text node.
+     */
+    public String getRemovalSuccessMessage() {
+
+        By alertDiv = By.xpath(
+                "//div[contains(@class,'alert-success') and contains(@class,'alert-dismissible')]"
+        );
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(alertDiv));
+
+            // Get full text — includes "×" from the close button
+            // Use JS to get only the text nodes (excludes child element text like <i> and <button>)
+            WebElement alert = driver.findElement(alertDiv);
+
+            String fullText = (String) ((JavascriptExecutor) driver).executeScript(
+                    "var el = arguments[0];" +
+                            "var text = '';" +
+                            "for (var i = 0; i < el.childNodes.length; i++) {" +
+                            "  if (el.childNodes[i].nodeType === 3) {" +   // Node.TEXT_NODE = 3
+                            "    text += el.childNodes[i].textContent;" +
+                            "  }" +
+                            "}" +
+                            "return text.trim();",
+                    alert
+            );
+
+            // Fallback: if JS text extraction returns empty, use full getText()
+            if (fullText == null || fullText.isEmpty()) {
+                fullText = alert.getText().trim();
+                // Remove the × close button character if present
+                fullText = fullText.replace("×", "").trim();
+            }
+
+            System.out.println("Removal alert text: " + fullText);
+            return fullText;
+
+        } catch (TimeoutException e) {
+            Assert.fail("Removal success alert not found. " +
+                    "Expected: 'Success: You have modified your wish list!' " +
+                    "Locator: //div[contains(@class,'alert-success')]");
+            return "";
+        }
+    }
+
     // ========================= WISHLIST PAGE =========================
 
     public void waitForWishlistPage() {
-        // Dismiss any lingering JS alert before interacting with the page
         String alertText = dismissAlertIfPresent();
         if (alertText != null) {
-            System.out.println("Dismissed stale alert on wishlist page: " + alertText);
+            System.out.println("Dismissed stale JS alert: " + alertText);
         }
         wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
     }
@@ -218,25 +248,77 @@ public class WishListActions {
         return driver.getTitle();
     }
 
-    public String getWishlistProductName() {
-        wait.until(ExpectedConditions.visibilityOf(wp.wishListProductName));
-        return wp.wishListProductName.getText().trim();
-    }
+    /**
+     * Returns ALL product names in the wishlist table (every row).
+     * Logs each name for debugging.
+     */
+    public List<String> getAllWishlistProductNames() {
+        wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+        wait.until(ExpectedConditions.visibilityOfAllElements(wp.wishListProductNames));
 
-    public String getWishlistProductPrice() {
-        wait.until(ExpectedConditions.visibilityOf(wp.wishListProductPrice));
-        return wp.wishListProductPrice.getText().trim();
+        List<String> names = new ArrayList<>();
+        for (WebElement el : wp.wishListProductNames) {
+            String name = el.getText().trim();
+            if (!name.isEmpty()) {
+                names.add(name);
+                System.out.println("  Wishlist row: " + name);
+            }
+        }
+        System.out.println("Total products in wishlist: " + names.size());
+        return names;
     }
 
     /**
-     * Searches wishlist table for a product by exact name.
-     * Uses contains() to handle products like 'Apple Cinema 30"' with inch symbol.
+     * Returns ALL prices in the wishlist table (every row).
      */
+    public List<String> getAllWishlistProductPrices() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(wp.wishListProductPrices));
+
+        List<String> prices = new ArrayList<>();
+        for (WebElement el : wp.wishListProductPrices) {
+            prices.add(el.getText().trim());
+        }
+        return prices;
+    }
+
     public boolean isProductPresentInWishlist(String productName) {
         By locator = By.xpath(
                 "//table[contains(@class,'table')]//tbody//tr//td[2]//a" +
                         "[contains(normalize-space(),'" + productName + "')]"
         );
         return !driver.findElements(locator).isEmpty();
+    }
+
+    // ========================= NAVIGATE VIA ACCOUNT =========================
+
+    public void navigateToWishlistViaAccount() {
+        wait.until(ExpectedConditions.elementToBeClickable(wp.wishListbtn)).click();
+        wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+        System.out.println("Navigated to wishlist page via account menu");
+    }
+
+    // ========================= REMOVE PRODUCT =========================
+
+    public void removeProductFromWishlist(String productName) {
+
+        wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+
+        // Locate the remove button in the row that contains the product name
+        By removeBtn = By.xpath(
+                "//table[contains(@class,'table')]//tbody//tr" +
+                        "[.//td[2]//a[contains(normalize-space(),'" + productName + "')]]" +
+                        "//a[@title='Remove' or contains(@href,'remove')]"
+        );
+
+        try {
+            WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(removeBtn));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btn);
+            pause(300);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+            System.out.println("Clicked remove for: " + productName);
+        } catch (TimeoutException e) {
+            Assert.fail("Remove button not found for [" + productName + "]. " +
+                    "Confirm product exists in wishlist table before removing.");
+        }
     }
 }
