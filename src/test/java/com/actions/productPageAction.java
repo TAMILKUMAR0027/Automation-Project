@@ -88,6 +88,13 @@ public class productPageAction {
 		wait.until(ExpectedConditions.elementToBeClickable(pp.minusBtn));
 		pp.minusBtn.click();
 	}
+	public void clickAddToCartbutton()
+	{
+		wait.until(ExpectedConditions.visibilityOf(pp.addToCartButton)).click();
+	}
+	public  void viewCartPP()
+	{
+		wait.until(ExpectedConditions.visibilityOf(pp.viewCartPopUpButton)).click();
 	public void clickCompareBtn() {
 		wait.until(ExpectedConditions.elementToBeClickable(pp.compareBtn)).click();
 	}

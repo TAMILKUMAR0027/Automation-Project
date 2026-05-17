@@ -27,6 +27,10 @@ public class LaunchPageAction  {
 		wait.until(ExpectedConditions.elementToBeClickable(lp.canonES5Product));
 		lp.canonES5Product.click();
 	}
+	
+	public void clickProductInTopCollection()
+	{
+		wait.until(ExpectedConditions.visibilityOf(lp.topCollectionProduct)).click();
 	public void clickiMac() {
 		wait.until(ExpectedConditions.elementToBeClickable(lp.iMac)).click();
 	}
