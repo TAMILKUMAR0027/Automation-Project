@@ -13,6 +13,7 @@ import org.testng.annotations.DataProvider;
                 "json:target/cucumber-report.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
         },
+        tags="@CartFeature or @RegisterFeature or @LoginFeature",
         monochrome = true)
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {

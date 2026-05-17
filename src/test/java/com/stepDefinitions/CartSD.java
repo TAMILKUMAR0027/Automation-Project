@@ -66,21 +66,74 @@ public class CartSD {
 	@Then("The user should see a success message quantity updated successfully")
 	public void the_user_should_see_a_success_message_quantity_updated_successfully() {
 		String actual = cpa.getQuantitySuccessMsg().trim();
-
 		String expected = "Success: You have modified your shopping cart!";
-
 		try {
-
 			Assert.assertTrue(actual.contains(expected));
-
 			log.info("Quantity is updated in cart product Successfully");
-
 		} catch (AssertionError e) {
-
 			log.error("Quantity doesn't added!, Error: " + e.getMessage());
-
 			throw e;
 		}
 	}
+	
+	@When("The user clicks product Remove button")
+	public void the_user_clicks_product_remove_button() {
+		cpa.clickRemoveButton();
+	  
+	}
+
+	@Then("The product should be removed from the cart and display no products in cart")
+	public void the_product_should_be_removed_from_the_cart_and_display_no_products_in_cart() {
+	   String actual=cpa.getCartEmptyMsg();
+	   String expected="Your shopping cart is empty!";
+	   try {
+			Assert.assertTrue(actual.contains(expected));
+			log.info("The product is removed from cart Successfully");
+		} catch (AssertionError e) {
+			log.error("product doesn't removed!, Error: " + e.getMessage());
+			throw e;
+		}
+	   
+	}
+	
+	@When("The user clicks on Estimate Shipping and Tax Link")
+	public void the_user_clicks_on_estimate_shipping_and_tax_link() {
+	   cpa.clickESTLink();
+	}
+
+	@When("select options from country and state dropdown")
+	public void select_options_from_country_and_state_dropdown(io.cucumber.datatable.DataTable dataTable) {
+	   cpa.selectCountryAndState(dataTable);
+	}
+	@When("The user clicks Quotes Button")
+	public void the_user_clicks_quotes_button() {
+	  cpa.clickgetQuotesButton();
+	}
+
+	@When("check the radio button in Flash Shipping popup")
+	public void check_the_radio_button_in_flash_shipping_popup() {
+	    cpa.checkRadioButton();
+	}
+
+	@When("clicks on Apply Shipping Button")
+	public void clicks_on_apply_shipping_button() {
+	    cpa.clickApplyShippingButton();
+	}
+
+	@Then("The user should see a Success Message")
+	public void the_user_should_see_a_success_message() {
+	    String actual=cpa.getSuccessETMsg();
+	    String expected="Success: Your shipping estimate has been applied!";
+	    try {
+			Assert.assertTrue(actual.contains(expected));
+			log.info("Shipping estimation applied successfully");
+		} catch (AssertionError e) {
+			log.error("Shipping estimation doesn't applied, Error: " + e.getMessage());
+			throw e;
+		}
+	    
+	}
+
+
 
 }
