@@ -31,6 +31,7 @@ public class LaunchPageAction  {
 	public void clickProductInTopCollection()
 	{
 		wait.until(ExpectedConditions.visibilityOf(lp.topCollectionProduct)).click();
+	}
 	public void clickiMac() {
 		wait.until(ExpectedConditions.elementToBeClickable(lp.iMac)).click();
 	}

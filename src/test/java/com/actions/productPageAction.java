@@ -95,6 +95,7 @@ public class productPageAction {
 	public  void viewCartPP()
 	{
 		wait.until(ExpectedConditions.visibilityOf(pp.viewCartPopUpButton)).click();
+	}
 	public void clickCompareBtn() {
 		wait.until(ExpectedConditions.elementToBeClickable(pp.compareBtn)).click();
 	}

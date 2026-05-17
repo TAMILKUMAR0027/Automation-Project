@@ -24,3 +24,25 @@ description:To verify the add to cart functionality in Ecommerce Lambda Test Web
     Examples:
       | quantity |
       | 5        |
+
+  @CartProductRemove
+  Scenario: To Check whether the product is removed from the cart by click on remove button
+    When The user clicks on a product in Top Collection menu
+    And The user clicks on add to cart button in Product details page
+    And The user clicks view-cart button in popup displayed
+    And The user clicks product Remove button
+    Then The product should be removed from the cart and display no products in cart
+
+  @CartShipAndEstimation
+  Scenario: To Check Whether The Estimate shipping and tax functionality
+    When The user clicks on a product in Top Collection menu
+    And The user clicks on add to cart button in Product details page
+    And The user clicks view-cart button in popup displayed
+    And The user clicks on Estimate Shipping and Tax Link
+    And select options from country and state dropdown
+      | country | state |
+      | 2       | 1     |
+    And The user clicks Quotes Button
+    And check the radio button in Flash Shipping popup
+    And clicks on Apply Shipping Button
+    Then The user should see a Success Message
