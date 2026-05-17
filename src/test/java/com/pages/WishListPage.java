@@ -10,27 +10,69 @@ public class WishListPage extends BasePage {
         super(driver);
     }
 
-    // Wishlist button (Header icon)
-    @FindBy(xpath = "//a[contains(@href,'account/wishlist')]")
-    public WebElement wishlistButton;
+    // ========================= NAVIGATION =========================
 
-    // Notification message after adding product to wishlist
-    @FindBy(xpath = "//div[@id='notification-box-top']//p")
-    public WebElement notificationMessage;
+    @FindBy(xpath = "//img[@alt='Poco Electro']")
+    public WebElement homeLogo;
 
-    // Success message close button (X)
-    @FindBy(xpath = "//div[@id='notification-box-top']//button[contains(@class,'close')]")
-    public WebElement closeNotification;
+    @FindBy(xpath = "//a[contains(@class,'navbar-brand')]")
+    public WebElement homeLogoAlt;
 
-    // Product name in wishlist table
-    @FindBy(xpath = "//div[@id='content']//table//td[@class='text-left']/a")
-    public WebElement wishlistProductName;
+    // ========================= TOP PRODUCTS =========================
 
-    // Remove button in wishlist
-    @FindBy(xpath = "//div[@id='content']//a[contains(@data-original-title,'Remove')]")
-    public WebElement removeButton;
+    @FindBy(xpath = "//h3[contains(text(),'Top Products')]")
+    public WebElement topProductsHeading;
 
-    // Empty wishlist message
-    @FindBy(xpath = "//div[@id='content']//p[contains(text(),'Your wish list is empty')]")
-    public WebElement emptyWishlistMessage;
+    // iMac card — anchored to product name, immune to dynamic ID changes
+    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iMac']]")
+    public WebElement imacListingBox;
+
+    // iMac wishlist button — relative to iMac card
+    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iMac']]//button[contains(@class,'wishlist')]")
+    public WebElement imacWishlistBtn;
+
+    // ========================= TOP COLLECTION =========================
+
+    @FindBy(xpath = "//h3[contains(text(),'Top Collection')]")
+    public WebElement topCollectionHeading;
+
+    // Apple Cinema 30 card — anchored to product name
+    // Note: The site shows 'Apple Cinema 30"' with inch symbol — adjust if needed
+    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[contains(normalize-space(),'Apple Cinema')]]")
+    public WebElement appleCinemaProduct;
+
+    // Apple Cinema 30 wishlist button — relative to its card
+    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[contains(normalize-space(),'Apple Cinema')]]//button[contains(@class,'wishlist')]")
+    public WebElement appleCinemaWishlistBtn;
+
+    // iPod Nano card — anchored to product name
+    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iPod Nano']]")
+    public WebElement ipodNanoProduct;
+
+    // iPod Nano wishlist button — relative to its card
+    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iPod Nano']]//button[contains(@class,'wishlist')]")
+    public WebElement ipodNanoWishlistBtn;
+
+    // ========================= SUCCESS POPUP =========================
+
+    // Toast notification paragraph text
+    @FindBy(xpath = "//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p")
+    public WebElement successNotification;
+
+    // Wishlist link inside popup
+    @FindBy(xpath = "//div[@id='notification-box-top']//a[contains(text(),'wish list')]")
+    public WebElement wishlistPopupLink;
+
+    // ========================= WISHLIST PAGE =========================
+
+    @FindBy(xpath = "//h1[contains(text(),'My Wish List')]")
+    public WebElement myWishListTitle;
+
+    // Product name in wishlist table row 1
+    @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr[1]//td[2]//a")
+    public WebElement wishListProductName;
+
+    // Product price in wishlist table row 1
+    @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr[1]//td[5]")
+    public WebElement wishListProductPrice;
 }
