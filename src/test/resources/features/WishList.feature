@@ -25,16 +25,8 @@ Feature: Wishlist Feature - LambdaTest Playground - Prasanna Venkatesh K - 15-05
     And the user clicks the wishlist link from the notification popup
     Then the user should be redirected to the "My Wish List" page
     Then all selected products should be displayed in the wishList page
-#
-#  @Regression @ValidateProductDetails
-#  Scenario: Validate wishlist product details
-#    When the user click the iMac product and add to the wishlist
-#    And the user clicks wishList button
-#    Then the application should navigate to the MyWishList page
-#    And the user should see correct product name "iMac"
-#    And the user should see correct product price
-#    And the user should see correct stock status
-#
+
+
 #  @Smoke @RemoveProduct
 #  Scenario: Remove product from wishlist
 #    When the user click the iMac product and add to the wishlist
