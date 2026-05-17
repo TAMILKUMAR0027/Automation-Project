@@ -55,4 +55,14 @@ public class ProductPage extends BasePage {
 	public WebElement mandatoryFields;
 	@FindBy(xpath = "//div[@id='entry_216841']//i[@class='fas fa-minus-circle']")
 	public WebElement minusBtn;
+	@FindBy(xpath = "//button[normalize-space()='Compare this Product']")
+	public WebElement compareBtn;
+	@FindBy(xpath = "//p[contains(text(),'Success: You have added')]")
+	public WebElement productComparisonMessage;
+	@FindBy(xpath = "//a[@class='btn btn-primary btn-block']")
+	public WebElement cartButton;
+	@FindBy(xpath = "//input[contains(@name,'quantity')]")
+	public WebElement quantityField;
+	@FindBy(xpath = "//a[@class='btn btn-secondary btn-block']")
+	public WebElement viewCompare;
 }

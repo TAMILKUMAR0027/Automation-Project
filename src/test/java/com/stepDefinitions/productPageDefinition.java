@@ -17,136 +17,156 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class productPageDefinition {
-	LaunchPages lp = new LaunchPages(DriverClass.getDriver());
-	LaunchPageAction lpa = new LaunchPageAction();
-	productPageAction ppa = new productPageAction();
-	private static Map<String, String> testData = ExcelUtils.getQuestionData();
-	FilterPageAction fpa=new FilterPageAction();
 
-	@Given("User launches the ecommerce application")
-	public void user_launches_the_ecommerce_application() {
-		// Write code here that turns the phrase above into concrete actions
-		String url = ConfigReader.getProperties().getProperty("url");
-		lp.launchApplication(url);
-	}
+    LaunchPages lp = new LaunchPages(DriverClass.getDriver());
+    LaunchPageAction lpa = new LaunchPageAction();
+    productPageAction ppa = new productPageAction();
+    FilterPageAction fpa = new FilterPageAction();
 
-	@Given("User opens a product details page")
-	public void user_opens_a_product_details_page() {
-		// Write code here that turns the phrase above into concrete actions
-		lpa.clickCanonES5Product();
-	}
+    private static Map<String, String> testData = ExcelUtils.getQuestionData();
 
-	@Then("Product title should be displayed")
-	public void product_title_should_be_displayed() {
-		// Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals("Canon EOS 5D", ppa.getProductTitle());
-	}
+    @Given("User launches the ecommerce application")
+    public void user_launches_the_ecommerce_application() {
 
-	@Then("Product price should be displayed")
-	public void product_price_should_be_displayed() {
-		// Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals("$134.00", ppa.getPrice());
-	}
+        String url = ConfigReader.getProperties().getProperty("url");
+        lp.launchApplication(url);
+    }
 
-	@Then("Product availability status should be displayed")
-	public void product_availability_status_should_be_displayed() {
-		// Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals("In Stock", ppa.getInstockAvailability());
-	}
+    @Given("user opens HP product details page")
+    public void user_opens_hp_product_details_page() {
 
-	@When("user updates product quantity to {string}")
-	public void user_updates_product_quantity_to(String string) {
-		// Write code here that turns the phrase above into concrete actions
-		ppa.setQuantity(string);
-	}
+        lpa.clickHpProduct();
+    }
 
-	@Then("product quantity should be updated successfully")
-	public void product_quantity_should_be_updated_successfully() {
-		// Write code here that turns the phrase above into concrete actions
-		System.out.println("The product quantity: " + ppa.getQuantity());
-	}
+    @Given("user opens Canon product details page")
+    public void user_opens_canon_product_details_page() {
 
-	@When("user clicks on Ask Question option")
-	public void user_clicks_on_ask_question_option() {
-		// Write code here that turns the phrase above into concrete actions
-		ppa.clickAskQuestion();
-	}
+        lpa.clickCanonES5Product();
+    }
 
-	@When("user fills enquiry form")
-	public void user_fills_enquiry_form() {
-		// Write code here that turns the phrase above into concrete actions
-		String name=testData.get("Name");
-		String email=testData.get("Email");
-		String Subject=testData.get("subject");
-		String Message=testData.get("Message");
-		ppa.setName(name);
-		ppa.setEmail(email);
-		ppa.setSubject(Subject);
-		ppa.setMessage(Message);
-		ppa.clickSendMessage();
-	}
+    @Then("Product title should be displayed")
+    public void product_title_should_be_displayed() {
 
-	@Then("enquiry should be sent successfully")
-	public void enquiry_should_be_sent_successfully() {
-		// Write code here that turns the phrase above into concrete actions
-	Assert.assertEquals("Your enquiry has been successfully sent to the store owner!",ppa.getAlertMessage());
-	}
+        Assert.assertEquals("Canon EOS 5D", ppa.getProductTitle());
+    }
 
-	@When("user clicks Add to Cart button")
-	public void user_clicks_add_to_cart_button() {
-		// Write code here that turns the phrase above into concrete actions
-		ppa.clickAddToCart();
-	}
+    @Then("Product price should be displayed")
+    public void product_price_should_be_displayed() {
 
-	@When("user clicks Wishlist button")
-	public void user_clicks_wishlist_button() {
-		// Write code here that turns the phrase above into concrete actions
-		ppa.clickWishListBtn();
-	}
+        Assert.assertEquals("$134.00", ppa.getPrice());
+    }
 
-	@Then("both actions should be triggered successfully")
-	public void both_actions_should_be_triggered_successfully() {
-		// Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals("Size required!",ppa.getAddTocartConfirmation());
-		Assert.assertEquals("wish list", ppa.getWishListConfirmation());
-	}
+    @Then("Product availability status should be displayed")
+    public void product_availability_status_should_be_displayed() {
 
-	@When("user clicks on breadcrumb category link Software")
-	public void user_clicks_on_breadcrumb_category_link_software() {
-		// Write code here that turns the phrase above into concrete actions
-	  ppa.clickSoftwareBreadcrumb();
-	}
+        Assert.assertEquals("In Stock", ppa.getInstockAvailability());
+    }
 
-	@Then("user should be navigated to product category page successfully")
-	public void user_should_be_navigated_to_product_category_page_successfully() {
-		// Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals("Software",fpa.getSoftwareTitle());
-	}
-	@When("user submits empty enquiry form")
-	public void user_submits_empty_enquiry_form() {
-	    // Write code here that turns the phrase above into concrete actions
-	    ppa.clickSendMessage();
-	}
+    @When("user updates product quantity to {string}")
+    public void user_updates_product_quantity_to(String string) {
 
-	@Then("validation message should be displayed for enquiry form")
-	public void validation_message_should_be_displayed_for_enquiry_form() {
-	    // Write code here that turns the phrase above into concrete actions
-	    Assert.assertEquals("Name must be between 3 and 32 characters!",ppa.getMadatoryFieldsMessage());
-	}
-	@When("user clicks minus button {int} times")
-	public void user_clicks_minus_button_times(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	   for(int i=0;i<int1;i++) {
-		   ppa.clickMinus();
-	   }
-	}
+        ppa.setQuantity(string);
+    }
 
-	@Then("product quantity should not be less than {int}")
-	public void product_quantity_should_not_be_less_than(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	    Assert.assertEquals("1",ppa.getQuantity());
-	}
+    @When("click the cart")
+    public void click_the_cart() {
 
+        ppa.clickAddToCart();
+        ppa.clickCart();
+    }
 
+    @Then("product quantity should be updated successfully in the cart {string}")
+    public void product_quantity_should_be_updated_successfully_in_the_cart(String string) {
 
+        Assert.assertEquals(string, ppa.getQuantityInCart());
+    }
+
+    @When("user clicks on Ask Question option")
+    public void user_clicks_on_ask_question_option() {
+
+        ppa.clickAskQuestion();
+    }
+
+    @When("user fills enquiry form")
+    public void user_fills_enquiry_form() {
+
+        String name = testData.get("Name");
+        String email = testData.get("Email");
+        String subject = testData.get("subject");
+        String message = testData.get("Message");
+
+        ppa.setName(name);
+        ppa.setEmail(email);
+        ppa.setSubject(subject);
+        ppa.setMessage(message);
+        ppa.clickSendMessage();
+    }
+
+    @Then("enquiry should be sent successfully")
+    public void enquiry_should_be_sent_successfully() {
+
+        Assert.assertEquals(
+                "Your enquiry has been successfully sent to the store owner!",
+                ppa.getAlertMessage());
+    }
+
+    @When("user clicks Add to Cart button")
+    public void user_clicks_add_to_cart_button() {
+
+        ppa.clickAddToCart();
+    }
+
+    @When("user clicks Wishlist button")
+    public void user_clicks_wishlist_button() {
+
+        ppa.clickWishListBtn();
+    }
+
+    @Then("both actions should be triggered successfully")
+    public void both_actions_should_be_triggered_successfully() {
+
+        Assert.assertEquals("Size required!", ppa.getAddTocartConfirmation());
+        Assert.assertEquals("wish list", ppa.getWishListConfirmation());
+    }
+
+    @When("user clicks on breadcrumb category link Software")
+    public void user_clicks_on_breadcrumb_category_link_software() {
+
+        ppa.clickSoftwareBreadcrumb();
+    }
+
+    @Then("user should be navigated to product category page successfully")
+    public void user_should_be_navigated_to_product_category_page_successfully() {
+
+        Assert.assertEquals("Software", fpa.getSoftwareTitle());
+    }
+
+    @When("user submits empty enquiry form")
+    public void user_submits_empty_enquiry_form() {
+
+        ppa.clickSendMessage();
+    }
+
+    @Then("validation message should be displayed for enquiry form")
+    public void validation_message_should_be_displayed_for_enquiry_form() {
+
+        Assert.assertEquals(
+                "Name must be between 3 and 32 characters!",
+                ppa.getMadatoryFieldsMessage());
+    }
+
+    @When("user clicks minus button {int} times")
+    public void user_clicks_minus_button_times(Integer int1) {
+
+        for (int i = 0; i < int1; i++) {
+
+            ppa.clickMinus();
+        }
+    }
+
+    @Then("product quantity should not be less than {int}")
+    public void product_quantity_should_not_be_less_than(Integer int1) {
+
+        Assert.assertEquals("1", ppa.getQuantity());
+    }
 }

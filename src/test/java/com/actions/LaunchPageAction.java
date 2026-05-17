@@ -27,4 +27,13 @@ public class LaunchPageAction  {
 		wait.until(ExpectedConditions.elementToBeClickable(lp.canonES5Product));
 		lp.canonES5Product.click();
 	}
+	public void clickiMac() {
+		wait.until(ExpectedConditions.elementToBeClickable(lp.iMac)).click();
+	}
+	public void clickProductCompare() {
+		lp.productCompareLink.click();
+	}
+	public void clickHpProduct() {
+		lp.HPLP3065Product.click();
+	}
 }
