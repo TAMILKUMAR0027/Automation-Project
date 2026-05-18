@@ -14,7 +14,7 @@ import org.testng.annotations.DataProvider;
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
         },
-        tags="@CartFeature or @RegisterFeature or @LoginFeature",
+        tags="@RegisterFeature or @LoginFeature or @CartFeature",
         monochrome = true)
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {

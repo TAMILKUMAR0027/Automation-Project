@@ -20,11 +20,20 @@ public class LoginPageAction {
 
 	public void clickMyAccountLink()
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
+		try
+		{
+			lp.myAccLink.isDisplayed();
+			lp.myAccLink.click();
+		}
+		catch(Exception e)
+		{
+			wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
+
+		}
 	}
 	
 	public void enterEmailAndPass(String username,String password)
-	{
+	{	
 		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail)).sendKeys(username);
 		lp.LoginPassword.sendKeys(password);
 	}

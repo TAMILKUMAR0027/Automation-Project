@@ -11,8 +11,8 @@ To validate the registration process of new user in ecommerce lambda test websit
     When The user clicks on myAccount link in navBar
     And clicks on Register link in Account page
     And Enter your personal details
-      | fname     | lname     | email            | telephone  | password | confirmpassword |
-      | Rishwanth | Adhishwar | good401@gmail.com | 5432109876 | testyou  | testyou         |
+      | fname     | lname     | email             | telephone  | password | confirmpassword |
+      | Rishwanth | Adhishwar | good904@gmail.com | 5432109876 | testyou  | testyou         |
     And check the privacy policy checbox
     And clicks on continue Button
     Then the user should see a page with confirmation text
@@ -22,8 +22,8 @@ To validate the registration process of new user in ecommerce lambda test websit
     When The user clicks on myAccount link in navBar
     And clicks on Register link in Account page
     And Enter your personal details
-      | fname     | lname     | email            | telephone  | password | confirmpassword |
-      | Rishwanth | Adhishwar | good402@gmail.com | 5432109876 | testyou  | testyou         |
+      | fname     | lname     | email             | telephone  | password | confirmpassword |
+      | Rishwanth | Adhishwar | good905@gmail.com | 5432109876 | testyou  | testyou         |
     And clicks on continue Button
     Then The user should see a Warning message  Warning: You must agree to the Privacy Policy!
 
@@ -32,7 +32,7 @@ To validate the registration process of new user in ecommerce lambda test websit
     When The user clicks on myAccount link in navBar
     And clicks on Register link in Account page
     And Enter your personal details except firstname
-      | lname     | email            | telephone  | password | confirmpassword |
-      | Adhishwar | game403@gmail.com | 5432108876 | testyou  | testyou         |
+      | lname     | email             | telephone  | password | confirmpassword |
+      | Adhishwar | game906@gmail.com | 5432108876 | testyou  | testyou         |
     And clicks on continue Button
     Then the user should see a warning message : First Name must be between one and thirtyTwo characters!
