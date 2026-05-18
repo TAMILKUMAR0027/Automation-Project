@@ -11,11 +11,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverClass {
+	
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static final Logger logger = LogManager.getLogger(DriverClass.class);
 
     public static WebDriver getDriver() {
+
         return driver.get();
     }
 
@@ -24,8 +26,7 @@ public class DriverClass {
         String browser = ConfigReader.getProperties().getProperty("browser");
         String headlessValue = ConfigReader.getProperties().getProperty("headless");
 
-        boolean headless = headlessValue != null &&
-                           headlessValue.equalsIgnoreCase("true");
+        boolean headless = headlessValue != null && headlessValue.equalsIgnoreCase("true");
 
         logger.info("Initializing Browser: " + browser);
         logger.info("Headless Mode: " + headless);
@@ -33,53 +34,39 @@ public class DriverClass {
         if (browser.equalsIgnoreCase("chrome")) {
 
             WebDriverManager.chromedriver().setup();
-
             ChromeOptions options = new ChromeOptions();
 
             if (headless) {
                 options.addArguments("--headless=new");
             }
 
-            options.addArguments("--remote-allow-origins=*");
-            options.addArguments("--disable-notifications");
-            options.addArguments("--disable-popup-blocking");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--no-sandbox");
-
             driver.set(new ChromeDriver(options));
 
         } else if (browser.equalsIgnoreCase("firefox")) {
 
             WebDriverManager.firefoxdriver().setup();
-
             FirefoxOptions options = new FirefoxOptions();
 
             if (headless) {
-                options.addArguments("--headless");
+                options.addArguments("--headless=new");
             }
 
             driver.set(new FirefoxDriver(options));
 
         } else {
-
             logger.error("Invalid Browser Name: " + browser);
             throw new RuntimeException("Invalid Browser Name: " + browser);
         }
 
         getDriver().manage().window().maximize();
-
         logger.info("Browser launched successfully");
     }
 
     public static void quitDriver() {
-
         if (getDriver() != null) {
-
             logger.info("Closing browser session");
-
             getDriver().quit();
-
             driver.remove();
         }
     }
-}
+} this is my driver class 
