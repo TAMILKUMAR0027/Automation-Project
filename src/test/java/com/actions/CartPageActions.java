@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -15,46 +16,54 @@ import com.pages.CartPage;
 import io.cucumber.datatable.DataTable;
 
 public class CartPageActions {
-	WebDriver driver=DriverClass.getDriver();
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+	WebDriver driver = DriverClass.getDriver();
+	BaseAction ba = new BaseAction();
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	CartPage cp = new CartPage(driver);
-	
-	public String getProductName()
-	{
+
+	public String getProductName() {
 		return wait.until(ExpectedConditions.visibilityOf(cp.productName)).getText();
 	}
-	
-	public void sendQuantity(String q)
-	{
-		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount)).sendKeys(q);
+
+	public void sendQuantity(String q) {
+		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount));
+		ba.sendKeys(cp.quantityCount, q);
+		
 	}
-	
-	public void clickQUpdateButton()
-	{
-		cp.updateButton.click();
+
+	public void clickQUpdateButton() {
+		ba.click(cp.updateButton);
 	}
-	public String getQuantitySuccessMsg()
-	{
+
+	public String getQuantitySuccessMsg() {
+		try {
+			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+			System.out.println("Alert Message: " + alert.getText());
+			alert.accept();
+		} catch (Exception e) {
+
+			System.out.println("No Alert Present");
+
+		}
+
 		return wait.until(ExpectedConditions.visibilityOf(cp.quantityUpdatedMsg)).getText();
 	}
-	
-	public void clickRemoveButton()
-	{
-		wait.until(ExpectedConditions.visibilityOf(cp.CartRemoveButton)).click();
+
+	public void clickRemoveButton() {
+		wait.until(ExpectedConditions.elementToBeClickable(cp.CartRemoveButton));
+		ba.click(cp.CartRemoveButton);
 	}
-	
-	public String getCartEmptyMsg()
-	{
+
+	public String getCartEmptyMsg() {
 		return wait.until(ExpectedConditions.visibilityOf(cp.noCartProductMsg)).getText();
 	}
-	
-	public void clickESTLink()
-	{
-		wait.until(ExpectedConditions.visibilityOf(cp.taxEstimateButton)).click();
+
+	public void clickESTLink() {
+		wait.until(ExpectedConditions.elementToBeClickable(cp.taxEstimateButton));
+		ba.click(cp.taxEstimateButton);
 	}
-	
-	public void selectCountryAndState(DataTable datatable)
-	{
+
+	public void selectCountryAndState(DataTable datatable) {
 		wait.until(ExpectedConditions.visibilityOf(cp.dropDownopt1));
 		List<Map<String, String>> data = datatable.asMaps(String.class, String.class);
 		int countryIndex = Integer.parseInt(data.get(0).get("country"));
@@ -64,25 +73,24 @@ public class CartPageActions {
 		Select state = new Select(cp.dropDownopt2);
 		state.selectByIndex(stateIndex);
 	}
-	
-	public void clickgetQuotesButton()
-	{
-		cp.getQuotesBUtton.click();
+
+	public void clickgetQuotesButton() {
+		ba.click(cp.getQuotesBUtton);
 	}
-	
-	public void checkRadioButton()
-	{
-		wait.until(ExpectedConditions.visibilityOf(cp.radioButton)).click();
+
+	public void checkRadioButton() {
+		wait.until(ExpectedConditions.elementToBeClickable(cp.radioButton));
+		if (!cp.radioButton.isSelected()) {
+			ba.click(cp.radioButton);
+		}
 	}
-	
-	public void clickApplyShippingButton()
-	{
-		cp.applyShippingButton.click();
+
+	public void clickApplyShippingButton() {
+		ba.click(cp.applyShippingButton);
 	}
-	
-	public String getSuccessETMsg()
-	{
+
+	public String getSuccessETMsg() {
 		return wait.until(ExpectedConditions.visibilityOf(cp.successMsgET)).getText();
 	}
-	
+
 }

@@ -210,6 +210,8 @@ public class WishList {
 
     @When("the user removes the product {string} from the wishlist")
     public void the_user_removes_the_product_from_the_wishlist(String productName) {
+        System.out.println(wla.isProductPresentInWishlist(productName));
+
         wla.removeProductFromWishlist(productName);
         logger.info("Clicked remove for product: " + productName);
     }

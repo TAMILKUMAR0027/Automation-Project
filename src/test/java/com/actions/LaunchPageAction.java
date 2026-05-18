@@ -11,16 +11,20 @@ import com.pages.LaunchPages;
 
 public class LaunchPageAction  {
 
+	BaseAction baseAction = new BaseAction();
     WebDriver driver = DriverClass.getDriver();
     LaunchPages lp = new LaunchPages(driver);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
 	public void clickCategories() {
-		lp.shopByCategories.click();
+
+		baseAction.click(lp.shopByCategories);
+//		lp.shopByCategories.click();
 		wait.until(ExpectedConditions.elementToBeClickable(lp.Desktop));
 		
 	}
 	public void clickMonitor() {
+
 		lp.Desktop.click();
 	}
 	public void clickCanonES5Product() {
