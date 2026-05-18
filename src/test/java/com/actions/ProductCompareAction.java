@@ -27,6 +27,7 @@ public class ProductCompareAction {
     	 wait.until(ExpectedConditions.elementToBeClickable(pcp.removeCompare)).click();
     }
     public String getConfirmationRemoved() {
+    	pcp.removeConfirmation.isDisplayed();
     	return wait.until(ExpectedConditions.visibilityOf(pcp.removeConfirmation)).getText().replace("×", "").trim();
     }
 }

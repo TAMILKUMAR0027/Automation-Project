@@ -48,7 +48,9 @@ public class FilterPageAction {
     }
     public void clickOutofStockOption() {
     	wait.until(ExpectedConditions.elementToBeClickable(fp.OutOfStockAvailabilityOption));
+    	
     	fp.OutOfStockAvailabilityOption.click();
+    	System.out.println(fp.OutOfStockAvailabilityOption.isSelected());
     }
     public void clickHTCTouchHD() {
 wait.until(ExpectedConditions.elementToBeClickable(fp.HTCTouchHDProduct)).click();
