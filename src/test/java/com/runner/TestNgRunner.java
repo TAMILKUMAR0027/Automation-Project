@@ -11,6 +11,7 @@ import org.testng.annotations.DataProvider;
                 "pretty",
                 "html:target/cucumber-report.html",
                 "json:target/cucumber-report.json",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
         },
         tags="@CartFeature or @RegisterFeature or @LoginFeature",
