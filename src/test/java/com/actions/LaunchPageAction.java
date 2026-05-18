@@ -15,12 +15,12 @@ public class LaunchPageAction  {
     LaunchPages lp = new LaunchPages(driver);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-    public void clickCategories() {
-        lp.shopByCategories.click();
-        wait.until(ExpectedConditions.elementToBeClickable(lp.Desktop));
-    }
-
-    public void clickMonitor() {
-        lp.Desktop.click();
-    }
+	public void clickCategories() {
+		lp.shopByCategories.click();
+		wait.until(ExpectedConditions.elementToBeClickable(lp.Desktop));
+		
+	}
+	public void clickMonitor() {
+		lp.Desktop.click();
+	}
 }

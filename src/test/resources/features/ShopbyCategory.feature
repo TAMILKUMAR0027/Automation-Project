@@ -9,7 +9,7 @@ Feature: Shop By Category Navigation
     Given the user launches the ecommerce application
 
   @ValidCategoryNavigation
-  Scenario Outline: Verify user can navigate using valid Shop By Category options
+  Scenario Outline: Verify user can navigate using Shop By Category options
 
     When the user clicks on the Shop by Category menu
     And the user selects the "<Category>" category

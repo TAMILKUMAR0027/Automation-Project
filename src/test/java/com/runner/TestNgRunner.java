@@ -5,24 +5,21 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-		features = "src/test/resources/features/",
+		features = "src/test/resources/features/ShopbyCategory.feature",
 		glue = {"com.stepDefinitions", "com.hooks"},
-	  
+		
 		plugin = {
 				"pretty",
 				"html:target/cucumber-report.html",
 				"json:target/cucumber-report.json",
-
-				// Extent Report Adapter
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				// Allure Report Adapter
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-		},tags = "@Checkout", 
 
-		
+		},tags = " @ShopBycategory", 
+
+
 		monochrome = true
 )
-
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 
 	@Override

@@ -14,7 +14,7 @@ public class ForgetpasswordPageAction {
 	WebDriver driver = DriverClass.getDriver();
 	LoginPage lp = new LoginPage(driver);
 	ForgetPasswordPage fp=new ForgetPasswordPage(driver);
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
 	public void ForgetPasswordPageAction(WebDriver driver) {
 		this.driver=driver;
 	}

@@ -4,12 +4,15 @@ import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.utils.ConfigReader;
+
 import com.driver.DriverClass;
 import com.pages.ShopByCategoryPage;
+import com.utils.ConfigReader;
 
 public class ShopByCategoryAction {
 
@@ -21,13 +24,17 @@ public class ShopByCategoryAction {
 
     ShopByCategoryPage sbcp = new ShopByCategoryPage(driver);
 
+
+
     public void launchWebUrl() {
 
         try {
 
-        	driver.get(ConfigReader.getProperties().getProperty("url"));;
+            driver.get(ConfigReader.getProperties().getProperty("url"));
 
             driver.manage().window().maximize();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
             log.info("Application launched successfully");
 
@@ -37,9 +44,13 @@ public class ShopByCategoryAction {
         }
     }
 
+
+
     public void clickShopByCategory() {
 
         try {
+
+            wait.until(ExpectedConditions.visibilityOf(sbcp.shopByCategoryMenu));
 
             wait.until(ExpectedConditions.elementToBeClickable(sbcp.shopByCategoryMenu));
 
@@ -50,6 +61,8 @@ public class ShopByCategoryAction {
         } catch (Exception e) {
 
             log.error("Unable to click Shop By Category Menu : " + e.getMessage());
+
+            throw e;
         }
     }
 
@@ -59,12 +72,13 @@ public class ShopByCategoryAction {
 
             if (category.equalsIgnoreCase("Desktops & Monitors")) {
 
+                wait.until(ExpectedConditions.visibilityOf(sbcp.desktopsCategory));
+
                 wait.until(ExpectedConditions.elementToBeClickable(sbcp.desktopsCategory));
 
                 sbcp.desktopsCategory.click();
 
                 log.info("Selected Desktops & Monitors");
-
             }
 
             else if (category.equalsIgnoreCase("Web Cameras")) {
@@ -74,7 +88,6 @@ public class ShopByCategoryAction {
                 sbcp.cameras.click();
 
                 log.info("Selected Web Cameras");
-
             }
 
             else if (category.equalsIgnoreCase("Phone, Tablets & Ipod")) {
@@ -84,7 +97,6 @@ public class ShopByCategoryAction {
                 sbcp.tablets.click();
 
                 log.info("Selected Phone, Tablets & Ipod");
-
             }
 
             else if (category.equalsIgnoreCase("Laptops & Notebooks")) {
@@ -94,19 +106,16 @@ public class ShopByCategoryAction {
                 sbcp.laptops.click();
 
                 log.info("Selected Laptops & Notebooks");
-
-            }
-
-            else {
-
-                log.error("Invalid Category Name : " + category);
             }
 
         } catch (Exception e) {
 
             log.error("Failed to select category : " + e.getMessage());
+
+            throw e;
         }
     }
+
 
     public String getPageTitle() {
 
