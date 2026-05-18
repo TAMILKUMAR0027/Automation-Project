@@ -18,7 +18,6 @@ public class WishListActions {
     WishListPage wp = new WishListPage(driver);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-    // ========================= PRIVATE HELPERS =========================
 
     private void pause(long ms) {
         try { Thread.sleep(ms); } catch (InterruptedException ignored) {}
@@ -63,6 +62,8 @@ public class WishListActions {
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", productCard);
         pause(500);
 
+
+
         // 2. Hover to trigger CSS :hover
         actions.moveToElement(productCard).perform();
         pause(700);
@@ -85,6 +86,7 @@ public class WishListActions {
                 pause(300);
             }
         } catch (Exception e) {
+            System.out.println("The wishlist button is display " + wishlistBtn.isDisplayed());
             System.out.println("[" + productLabel + "] Could not check wished state: " + e.getMessage());
         }
 
@@ -116,7 +118,6 @@ public class WishListActions {
         }
     }
 
-    // ========================= TOP PRODUCTS =========================
 
     public void scrollToTopProducts() {
         clickHomeLogo();
@@ -128,10 +129,12 @@ public class WishListActions {
 
     public void addIMacToWishlist() {
         WebElement card = wait.until(ExpectedConditions.visibilityOf(wp.imacListingBox));
+
+        // Enabled is used....
+        System.out.println("element wishlist hover is enabled" + wp.imacWishlistBtn.isEnabled());
         hoverAndClickWishlist(card, wp.imacWishlistBtn, "iMac");
     }
 
-    // ========================= TOP COLLECTION =========================
 
     public void scrollToTopCollection() {
         clickHomeLogo();
@@ -151,7 +154,6 @@ public class WishListActions {
         hoverAndClickWishlist(card, wp.ipodNanoWishlistBtn, "iPod Nano");
     }
 
-    // ========================= TOAST — ADD =========================
 
     public String getWishlistSuccessMessage(String productNameFragment) {
 
@@ -180,17 +182,7 @@ public class WishListActions {
         System.out.println("Clicked wishlist link from popup");
     }
 
-    // ========================= ALERT — REMOVE =========================
 
-    /**
-     * Reads the removal success alert:
-     * "Success: You have modified your wish list!"
-     *
-     * The alert uses:  //div[contains(@class,'alert-success')]
-     * NOT the toast — this is a page-level Bootstrap alert, not a toast popup.
-     * getText() on the div returns everything including the × button text,
-     * so we strip the icon text by getting just the meaningful text node.
-     */
     public String getRemovalSuccessMessage() {
 
         By alertDiv = By.xpath(
@@ -208,7 +200,7 @@ public class WishListActions {
                     "var el = arguments[0];" +
                             "var text = '';" +
                             "for (var i = 0; i < el.childNodes.length; i++) {" +
-                            "  if (el.childNodes[i].nodeType === 3) {" +   // Node.TEXT_NODE = 3
+                            "  if (el.childNodes[i].nodeType === 3) {" +
                             "    text += el.childNodes[i].textContent;" +
                             "  }" +
                             "}" +
@@ -234,7 +226,6 @@ public class WishListActions {
         }
     }
 
-    // ========================= WISHLIST PAGE =========================
 
     public void waitForWishlistPage() {
         String alertText = dismissAlertIfPresent();
@@ -248,10 +239,7 @@ public class WishListActions {
         return driver.getTitle();
     }
 
-    /**
-     * Returns ALL product names in the wishlist table (every row).
-     * Logs each name for debugging.
-     */
+
     public List<String> getAllWishlistProductNames() {
         wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
         wait.until(ExpectedConditions.visibilityOfAllElements(wp.wishListProductNames));
@@ -268,9 +256,6 @@ public class WishListActions {
         return names;
     }
 
-    /**
-     * Returns ALL prices in the wishlist table (every row).
-     */
     public List<String> getAllWishlistProductPrices() {
         wait.until(ExpectedConditions.visibilityOfAllElements(wp.wishListProductPrices));
 
@@ -289,7 +274,6 @@ public class WishListActions {
         return !driver.findElements(locator).isEmpty();
     }
 
-    // ========================= NAVIGATE VIA ACCOUNT =========================
 
     public void navigateToWishlistViaAccount() {
         wait.until(ExpectedConditions.elementToBeClickable(wp.wishListbtn)).click();
@@ -297,13 +281,12 @@ public class WishListActions {
         System.out.println("Navigated to wishlist page via account menu");
     }
 
-    // ========================= REMOVE PRODUCT =========================
 
     public void removeProductFromWishlist(String productName) {
 
         wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
 
-        // Locate the remove button in the row that contains the product name
+
         By removeBtn = By.xpath(
                 "//table[contains(@class,'table')]//tbody//tr" +
                         "[.//td[2]//a[contains(normalize-space(),'" + productName + "')]]" +
