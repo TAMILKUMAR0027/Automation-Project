@@ -8,12 +8,11 @@ public class LoginPage extends BasePage {
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@FindBy(xpath = "//a[@role='button']//span[@class='title'][normalize-space()='My account']")
-
-	public WebElement myAccLink;
+    public WebElement myAccLink;
 
 	@FindBy(xpath = "//input[@id='input-email']")
 	public WebElement LoginEmail;
