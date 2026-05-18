@@ -38,5 +38,11 @@ public class RegisterPage extends BasePage {
 	@FindBy(xpath="//h1[normalize-space()='Your Account Has Been Created!']")
 	public WebElement rSuccess;
 	
+	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
+	public WebElement errMsgPP;
+	
+	@FindBy(css=".text-danger")
+	public WebElement emptyFieldMsg;
+	
 
 }

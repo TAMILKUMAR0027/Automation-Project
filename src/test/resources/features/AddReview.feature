@@ -6,17 +6,7 @@ Background:
 Given the user is on product details page
 
 @Validreview
-Scenario Outline:
-
-
-
-
-
-
-
-
-
-Scenario :Successful review with ratings,name and feedback
+Scenario: Successful review with ratings,name and feedback
 
 When the user chooses star rating and writes feedback on the product with his/her name
 
@@ -26,7 +16,7 @@ Then the user is able to submit the review successfully and receives confirmatio
 
 
 
-Scenario : Add review with Star ratings only
+Scenario: Add review with Star ratings only
 
 When the user selects star rating 
 
@@ -34,7 +24,7 @@ And clicks on Write Review
 
 Then the user should receive a warning message to wite review with characters more than 25 and less than 1000.
 
-Scenario : Add review without name
+Scenario: Add review without name
 
 When the user adds review without the name 
 
@@ -42,7 +32,7 @@ And clicks on the Write Review
 
 Then the user should receive a warning message stating name must contain characters between 3 and 25
 
-Scenario :Add review without feedback
+Scenario: Add review without feedback
 
 When the user writes review with star rating and name 
 
