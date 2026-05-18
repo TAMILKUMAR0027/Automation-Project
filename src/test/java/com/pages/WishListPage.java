@@ -18,8 +18,6 @@ public class WishListPage extends BasePage {
     @FindBy(xpath = "//a[contains(@class,'navbar-brand')]")
     public WebElement homeLogoAlt;
 
-
-
     @FindBy(xpath = "//h3[contains(text(),'Top Products')]")
     public WebElement topProductsHeading;
 
@@ -28,7 +26,6 @@ public class WishListPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iMac']]//button[contains(@class,'wishlist')]")
     public WebElement imacWishlistBtn;
-
 
     @FindBy(xpath = "//h3[contains(text(),'Top Collection')]")
     public WebElement topCollectionHeading;
@@ -46,42 +43,52 @@ public class WishListPage extends BasePage {
     public WebElement ipodNanoWishlistBtn;
 
 
-    // Toast body paragraph — for add-to-wishlist success
+    // ========================= TOAST NOTIFICATION =========================
+
     @FindBy(xpath = "//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p")
     public WebElement successNotification;
 
-    // Fallback — any p tag inside notification box
     @FindBy(xpath = "//div[@id='notification-box-top']//p")
     public WebElement successNotificationFallback;
 
-    // Wishlist link inside add-toast popup
     @FindBy(xpath = "//div[@id='notification-box-top']//a[contains(text(),'wish list')]")
     public WebElement wishlistPopupLink;
 
 
+    // ========================= REMOVE SUCCESS ALERT =========================
 
-    // "Success: You have modified your wish list!"
     @FindBy(xpath = "//div[contains(@class,'alert-success') and contains(@class,'alert-dismissible')]")
     public WebElement removalSuccessAlert;
+
 
     // ========================= WISHLIST PAGE =========================
 
     @FindBy(xpath = "//h1[contains(text(),'My Wish List')]")
     public WebElement myWishListTitle;
 
-    // ALL product name links in wishlist table — every row
     @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr//td[2]//a")
     public List<WebElement> wishListProductNames;
 
-    // ALL price cells in wishlist table — every row
     @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr//td[5]")
     public List<WebElement> wishListProductPrices;
 
-    // ALL rows in wishlist table
     @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr")
     public List<WebElement> wishListRows;
 
-    // Wishlist nav button via account sidebar
-    @FindBy(xpath = "//aside[@id='column-right']/child::div//a[4]/following-sibling::a[1]")
+
+    // ✅ FIXED: Stable wishlist sidebar button
+    @FindBy(xpath = "//aside[@id='column-right']//a[contains(@href,'account/wishlist')]")
     public WebElement wishListbtn;
+
+
+    // ========================= SEARCH =========================
+
+    @FindBy(xpath = "//div[@id='entry_217822']//input[@placeholder='Search For Products']")
+    public WebElement SearchBar;
+
+    @FindBy(xpath = "//a[@id='mz-product-grid-image-34-212469']//div[@class='carousel-item active']//img[@title='iPod Shuffle']")
+    public WebElement ipodShuffleProduct;
+
+    @FindBy(xpath = "//div[@id='image-gallery-216811']//button[@title='Add to Wish List']")
+    public WebElement ipodShuffleWishlistBtn;
 }
