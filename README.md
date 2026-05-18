@@ -378,10 +378,13 @@ pipeline {
 
 ## Contributors
 
-| Name                | Role                        |
-|---------------------|-----------------------------|
-| Prasanna Venkatesh K | Automation Engineer        |
-| Tamilkumar          | Automation Engineer         |
+| Name                 | Role                         |
+|----------------------|------------------------------|
+| Tamilkumar           | Automation Engineer          |
+| Rishwanth            | Automation Engineer          |
+| Prasanna Venkatesh K | Automation Engineer          |
+| Samiha               | Automation Engineer          |
+| Jothika              | Automation Engineer          |
 
 **Team:** Defect Defenders LambdaTesters
 
