@@ -17,6 +17,7 @@ import io.cucumber.datatable.DataTable;
 
 public class CartPageActions {
 	WebDriver driver = DriverClass.getDriver();
+	BaseAction ba = new BaseAction();
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	CartPage cp = new CartPage(driver);
 
@@ -25,11 +26,13 @@ public class CartPageActions {
 	}
 
 	public void sendQuantity(String q) {
-		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount)).sendKeys(q);
+		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount));
+		ba.sendKeys(cp.quantityCount, q);
+		
 	}
 
 	public void clickQUpdateButton() {
-		cp.updateButton.click();
+		ba.click(cp.updateButton);
 	}
 
 	public String getQuantitySuccessMsg() {
@@ -47,7 +50,8 @@ public class CartPageActions {
 	}
 
 	public void clickRemoveButton() {
-		wait.until(ExpectedConditions.elementToBeClickable(cp.CartRemoveButton)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(cp.CartRemoveButton));
+		ba.click(cp.CartRemoveButton);
 	}
 
 	public String getCartEmptyMsg() {
@@ -55,7 +59,8 @@ public class CartPageActions {
 	}
 
 	public void clickESTLink() {
-		wait.until(ExpectedConditions.elementToBeClickable(cp.taxEstimateButton)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(cp.taxEstimateButton));
+		ba.click(cp.taxEstimateButton);
 	}
 
 	public void selectCountryAndState(DataTable datatable) {
@@ -70,18 +75,18 @@ public class CartPageActions {
 	}
 
 	public void clickgetQuotesButton() {
-		cp.getQuotesBUtton.click();
+		ba.click(cp.getQuotesBUtton);
 	}
 
 	public void checkRadioButton() {
 		wait.until(ExpectedConditions.elementToBeClickable(cp.radioButton));
 		if (!cp.radioButton.isSelected()) {
-			cp.radioButton.click();
+			ba.click(cp.radioButton);
 		}
 	}
 
 	public void clickApplyShippingButton() {
-		cp.applyShippingButton.click();
+		ba.click(cp.applyShippingButton);
 	}
 
 	public String getSuccessETMsg() {

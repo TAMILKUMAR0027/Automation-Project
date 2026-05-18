@@ -10,8 +10,10 @@ import com.driver.DriverClass;
 import com.pages.LoginPage;
 
 public class LoginPageAction {
+	
 	WebDriver driver=DriverClass.getDriver();
 	LoginPage lp = new LoginPage(driver);
+	BaseAction ba = new BaseAction();
 	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
 
 	public void launchWebUrl() {
@@ -23,30 +25,33 @@ public class LoginPageAction {
 		try
 		{
 			lp.myAccLink.isDisplayed();
-			lp.myAccLink.click();
+			ba.click(lp.myAccLink);
 		}
 		catch(Exception e)
 		{
-			wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
+			wait.until(ExpectedConditions.visibilityOf(lp.myAccLink));
+			ba.click(lp.myAccLink);
 
 		}
 	}
 	
 	public void enterEmailAndPass(String username,String password)
 	{	
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail)).sendKeys(username);
-		lp.LoginPassword.sendKeys(password);
+		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail));
+		ba.sendKeys(lp.LoginEmail, username);
+		ba.sendKeys(lp.LoginPassword, password);
 	}
 	
 	public void enterPass(String password)
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginPassword)).sendKeys(password);
+		wait.until(ExpectedConditions.visibilityOf(lp.LoginPassword));
+		ba.sendKeys(lp.LoginPassword, password);
 	}
 	
 	
 	public void clickLoginButton()
 	{
-		lp.LoginButton.click();
+		ba.click(lp.LoginButton);
 	}
 	
 	public String LoginSuccessMsg()
