@@ -71,4 +71,7 @@ public class FilterPageAction extends BaseAction {
 		wait.until(ExpectedConditions.visibilityOf(fp.input));
 		return fp.input.getAttribute("value");
 	}
+	public void clickHp() {
+		wait.until(ExpectedConditions.elementToBeClickable(fp.hpProduct)).click();
+	}
 }

@@ -50,4 +50,6 @@ public class FilterPage extends BasePage {
 	public WebElement slider;
 	@FindBy(xpath = "//div[@id='mz-filter-panel-0-0']//input[@placeholder='Maximum Price']")
 	public WebElement input;
+	@FindBy(xpath = "//a[@id='mz-product-grid-image-47-212469']//div[@class='carousel-item active']//img[@title='HP LP3065']")
+	public WebElement hpProduct;
 }

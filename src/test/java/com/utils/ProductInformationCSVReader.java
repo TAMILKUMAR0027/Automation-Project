@@ -9,18 +9,11 @@ import java.util.*;
 
 public class ProductInformationCSVReader {
 
-    /**
-     * Reads CSV rows matching the given scenarioKey from the "scenario" column.
-     * Pass null for scenarioKey to return all rows.
-     *
-     * @param filePath    path relative to project root e.g. "src/test/resources/wishlist_data.csv"
-     * @param scenarioKey value in "scenario" column to filter by, or null for all rows
-     */
+   
     public static List<Map<String, String>> getData(String filePath, String scenarioKey) {
 
         List<Map<String, String>> result = new ArrayList<>();
 
-        // Resolve path relative to project root — works regardless of working directory
         File csvFile = new File(System.getProperty("user.dir"), filePath);
 
         if (!csvFile.exists()) {
