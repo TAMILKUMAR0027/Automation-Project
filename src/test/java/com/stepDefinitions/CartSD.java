@@ -1,5 +1,9 @@
 package com.stepDefinitions;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -18,6 +22,8 @@ public class CartSD {
 	LaunchPageAction lp = new LaunchPageAction();
 	productPageAction ppa = new productPageAction();
 	CartPageActions cpa = new CartPageActions();
+	List<String> allproduct;
+	
 	private static final Logger log = LogManager.getLogger(CartSD.class);
 
 	@Given("The user is in Home Page of Ecommerce lambda test application")
@@ -53,9 +59,9 @@ public class CartSD {
 		}
 	}
 
-	@When("The user enter the quantity as {string} based on needs in quantity input box")
-	public void the_user_enter_the_quantity_as_based_on_needs_in_quantity_input_box(String string) {
-		cpa.sendQuantity(string);
+	@When("The user enter the quantity based on needs in quantity input box")
+	public void the_user_enter_the_quantity_based_on_needs_in_quantity_input_box(io.cucumber.datatable.DataTable dataTable) {
+	    
 	}
 
 	@When("The user clicks quantity update button")
@@ -133,7 +139,34 @@ public class CartSD {
 		}
 	    
 	}
+	
+	@When("The user clicks on AddtoCart Button on Varios Product")
+	public void the_user_clicks_on_addto_cart_button_on_varios_product() {
+	   lp.addMultipleProduct();
+	}
+	
+	@Then("All products Added in cart should be displayed in cart")
+	public void all_products_added_in_cart_should_be_displayed_in_cart() {
+		allproduct = cpa.storeAllProduct();
+	    System.out.println(allproduct);
+	    List<String> expectedProduct = new ArrayList<>();
+	    expectedProduct.add("HTC Touch HD");
+	    expectedProduct.add("iPod Nano");
+	    expectedProduct.add("HP LP3065");
+	    Collections.sort(allproduct);
+	    Collections.sort(expectedProduct);
+	    try {
+	        Assert.assertEquals(allproduct, expectedProduct);
+	        log.info("All products are added to cart");
+	    } catch(AssertionError e) {
+	        log.error("Not all products are added, Error: " + e.getMessage());
+	        throw e;
+		
+		
+		
+	}
 
 
 
+	}
 }

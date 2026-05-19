@@ -31,9 +31,7 @@ public class LaunchPages {
 
 	public boolean getlogo() {
 
-		return driver.findElement(
-				By.xpath("//img[@alt='Poco Electro']"))
-				.isDisplayed();
+		return driver.findElement(By.xpath("//img[@alt='Poco Electro']")).isDisplayed();
 	}
 
 	@FindBy(xpath = "//div/a[normalize-space()='Shop by Category']")
@@ -43,14 +41,22 @@ public class LaunchPages {
 	public WebElement Desktop;
 	@FindBy(xpath = "//a[@id='mz-product-listing-image-39218404-0-0']//div[@class='carousel-item active']//img[@title='Canon EOS 5D']")
 	public WebElement canonES5Product;
-	
-	@FindBy(xpath="//a[@id='mz-product-listing-image-39218404-0-3']//div[@class='carousel-item active']//img[@title='HP LP3065']")
+
+	@FindBy(xpath = "//a[@id='mz-product-listing-image-39218404-0-3']//div[@class='carousel-item active']//img[@title='HP LP3065']")
 	public WebElement topCollectionProduct;
+
 	@FindBy(xpath = "(//a[contains(@href,'product/compare')])[2]")
 	public WebElement productCompareLink;
 	@FindBy(xpath = "//a[@id='mz-product-listing-image-37218399-0-0']//div[@class='carousel-item active']//img[@title='iMac']")
 	public WebElement iMac;
 	@FindBy(xpath = "//a[@id='mz-product-listing-image-39218404-0-3']//div[@class='carousel-item active']//img[@title='HP LP3065']")
 	public WebElement HPLP3065Product;
-	
+	@FindBy(xpath = "(//button[@title='Add to Cart'])[12]")
+	public WebElement cartOne;
+
+	@FindBy(xpath = "(//button[@title='Add to Cart'])[15]")
+	public WebElement cartTwo;
+
+	@FindBy(xpath = "(//button[@title='Add to Cart'])[14]")
+	public WebElement cartThree;
 }

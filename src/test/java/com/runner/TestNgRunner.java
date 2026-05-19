@@ -15,11 +15,9 @@ import org.testng.annotations.DataProvider;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failedrerun.txt",
         },
-        tags = "@Checkout",
         monochrome = true)
-
 public class TestNgRunner extends AbstractTestNGCucumberTests {
-
+	
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
