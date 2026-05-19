@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        
+
                 features = "src/test/resources/features/",
                 glue = {"com.stepDefinitions", "com.hooks"},
                 plugin = {
@@ -18,6 +18,7 @@ import org.testng.annotations.DataProvider;
                 },
                 monochrome = true
         )
+
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 	
