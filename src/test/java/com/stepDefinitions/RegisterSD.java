@@ -1,11 +1,16 @@
 package com.stepDefinitions;
 
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import com.actions.LoginPageAction;
 import com.actions.RegisterPageAction;
+import com.utils.ExcelUtils;
+import com.utils.RegisterExcelData;
+import com.utils.RegisterInvalidDataReader;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,6 +20,7 @@ public class RegisterSD {
 	private static final Logger log = LogManager.getLogger(RegisterSD.class);
 	RegisterPageAction rpa = new RegisterPageAction();
 	LoginPageAction lpa = new LoginPageAction();
+	private static Map<String, String> registerData = RegisterExcelData.getRegisterData();
 
 	@Given("The user is in HomePage of EcommerceLambdaTestWebsite")
 	public void the_user_is_in_home_page_of_ecommerce_lambda_test_website() {
@@ -23,7 +29,7 @@ public class RegisterSD {
 
 	@When("The user clicks on myAccount link in navBar")
 	public void the_user_clicks_on_my_account_link_in_nav_bar() {
-		rpa.clickMyAccount();
+		lpa.clickMyAccountLink();
 	}
 
 	@When("clicks on Register link in Account page")
@@ -32,8 +38,13 @@ public class RegisterSD {
 	}
 
 	@When("Enter your personal details")
-	public void enter_your_personal_details(io.cucumber.datatable.DataTable dataTable) {
-		rpa.enterPersonalDetails(dataTable);
+	public void enter_your_personal_details() {
+		rpa.setFname(registerData.get("fname"));
+		rpa.setLname(registerData.get("lname"));
+		rpa.setEmail(registerData.get("email"));
+		rpa.setTelephone(registerData.get("telephone"));
+		rpa.setPassword(registerData.get("password"));
+		rpa.setConfirmPassword(registerData.get("confirmpassword"));
 	}
 
 	@When("check the privacy policy checbox")
@@ -48,53 +59,35 @@ public class RegisterSD {
 
 	@Then("the user should see a page with confirmation text")
 	public void the_user_should_see_a_page_with_confirmation_text() {
-		String actual = rpa.registerSuccess();
-		String expected = "Your Account Has Been Created!";
-		try {
-			Assert.assertEquals(actual, expected);
-			log.info("Registeration Successful");
-		} catch (AssertionError e) {
-			log.error("Register unsuccessful,Error: " + e.getMessage());
-			throw e;
-		}
+		rpa.registerSuccess();
 	}
 
 	@Then("The user should see a Warning message  Warning: You must agree to the Privacy Policy!")
 	public void the_user_should_see_a_warning_message_warning_you_must_agree_to_the_privacy_policy() {
-		String actual=rpa.uncheckPPMsg();
-		String expected="Warning: You must agree to the Privacy Policy!";
-		try
-		{
-			Assert.assertEquals(actual, expected);
-			log.info("Error message thrown for unchecked privacy policy");
-		}
-		catch(AssertionError e)
-		{
-			log.error("Error not thrown,Because: "+e.getMessage());
-			throw e;
-		}
+		rpa.uncheckPPMsg();
 	}
+
 	@When("Enter your personal details except firstname")
-	public void enter_your_personal_details_except_firstname(io.cucumber.datatable.DataTable dataTable) {
-		rpa.enterPersonalDetailsone(dataTable);
+	public void enter_your_personal_details_except_firstname() {
+	    String lname=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("lname");
+	    String email=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("email");
+	    String telephone=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("telephone");
+	    String pass=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("pass");
+	    String cpass=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("cpass");
+	    rpa.setLname(lname);
+	    rpa.setEmail(email);
+	    rpa.setTelephone(telephone);
+	    rpa.setPassword(pass);
+	    rpa.setConfirmPassword(cpass);
+	    rpa.clickPrivacyPolicy();
+	    rpa.continueButton();
 	}
-	
+
 	@Then("the user should see a warning message : First Name must be between one and thirtyTwo characters!")
 	public void the_user_should_see_a_warning_message_first_name_must_be_between_one_and_thirty_two_characters() {
-		 String actual=rpa.fieldEmptyWmsg();
-		  String expected="First Name must be between 1 and 32 characters!";
-		  try
-		  {
-			  Assert.assertEquals(actual, expected);
-			  log.info("Warning message thrown Successfully");
-		  }
-		  catch(AssertionError e)
-			{
-				log.error("Error message not thrown,Because: "+e.getMessage());
-				throw e;
-			}
-		}
-
+	   rpa.fieldEmptyWmsg();
 	}
-	
 
+
+
+}

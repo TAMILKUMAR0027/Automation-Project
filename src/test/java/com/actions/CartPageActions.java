@@ -27,7 +27,7 @@ public class CartPageActions {
 
 	public void sendQuantity(String q) {
 		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount));
-		ba.sendKeys(cp.quantityCount, q);
+		ba.sendKeys(cp.quantityCount,q);
 		
 	}
 
@@ -92,5 +92,18 @@ public class CartPageActions {
 	public String getSuccessETMsg() {
 		return wait.until(ExpectedConditions.visibilityOf(cp.successMsgET)).getText();
 	}
+	
+	 public List<String> storeAllProduct() {
+		    try {
+		        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		        System.out.println("Alert Found: " + alert.getText());
+		        alert.accept();
+		    }catch (Exception e) {
+
+		        System.out.println("No Alert Present");
+		    }
+		    wait.until(ExpectedConditions.visibilityOfAllElements(cp.allProductName));
+		    return cp.getProductName();
+	    }
 
 }

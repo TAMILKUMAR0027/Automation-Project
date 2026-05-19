@@ -38,21 +38,25 @@ public class RegisterPageAction {
 		ba.click(ap.registerLink);
 	}
 
-	public void enterPersonalDetails(DataTable dataTable) {
+	public void setFname(String fname) {
 		wait.until(ExpectedConditions.visibilityOf(rp.fname));
-		List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
-		ba.sendKeys(rp.fname, data.get(0).get("fname"));
-		//rp.fname.sendKeys(data.get(0).get("fname"));
-		ba.sendKeys(rp.lname, data.get(0).get("lname"));
-		//rp.lname.sendKeys(data.get(0).get("lname"));
-		ba.sendKeys(rp.email, data.get(0).get("email"));
-		//rp.email.sendKeys(data.get(0).get("email"));
-		ba.sendKeys(rp.telephone, data.get(0).get("telephone"));
-		//rp.telephone.sendKeys(data.get(0).get("telephone"));
-		ba.sendKeys(rp.pass, data.get(0).get("password"));
-        //rp.pass.sendKeys(data.get(0).get("password"));
-		ba.sendKeys(rp.cpass, data.get(0).get("confirmpassword"));
-		//rp.cpass.sendKeys(data.get(0).get("confirmpassword"));
+		rp.fname.sendKeys(fname);
+	}
+	public void setLname(String lname) {
+		wait.until(ExpectedConditions.visibilityOf(rp.lname));
+		rp.lname.sendKeys(lname);
+	}
+	public void setEmail(String email) {
+		rp.email.sendKeys(email);
+	}
+	public void setTelephone(String telephone) {
+		rp.telephone.sendKeys(telephone);
+	}
+	public void setPassword(String pass) {
+		rp.pass.sendKeys(pass);
+	}
+	public void setConfirmPassword(String cpass) {
+		rp.cpass.sendKeys(cpass);
 	}
 
 	public void clickPrivacyPolicy() {
@@ -74,17 +78,21 @@ public class RegisterPageAction {
 	}
 
 	public String fieldEmptyWmsg() {
+		try {
+
+			wait.until(ExpectedConditions.alertIsPresent());
+
+			driver.switchTo().alert().accept();
+
+		} catch (Exception e) {
+
+			System.out.println("No alert present");
+
+		}
+
 		return wait.until(ExpectedConditions.visibilityOf(rp.emptyFieldMsg)).getText();
 	}
 
-	public void enterPersonalDetailsone(DataTable dataTable) {
-		wait.until(ExpectedConditions.visibilityOf(rp.fname));
-		List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
-		ba.sendKeys(rp.lname, data.get(0).get("lname"));
-		ba.sendKeys(rp.email, data.get(0).get("email"));
-		ba.sendKeys(rp.telephone, data.get(0).get("telephone"));
-		ba.sendKeys(rp.pass, data.get(0).get("password"));
-		ba.sendKeys(rp.cpass, data.get(0).get("confirmpassword"));
-	}
+	
 
 }
