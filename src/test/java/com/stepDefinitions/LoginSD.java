@@ -25,9 +25,9 @@ public class LoginSD {
 	    lpa.clickMyAccountLink();
 	}
 
-	@When("The user Enters valid email as {string} and valid password as {string}")
-	public void the_user_enters_valid_email_as_and_valid_password_as(String e, String p) {
-		lpa.enterEmailAndPass(e, p);
+	@When("The user Enters valid email  and valid password")
+	public void the_user_enters_valid_email_and_valid_password(io.cucumber.datatable.DataTable dataTable) {
+	   lpa.loginValid(dataTable);
 	}
 
 	@When("Clicks on Login Button")

@@ -16,7 +16,6 @@ import org.testng.annotations.DataProvider;
                 "rerun:target/failedrerun.txt",
         },
         monochrome = true)
-
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 	
     @Override

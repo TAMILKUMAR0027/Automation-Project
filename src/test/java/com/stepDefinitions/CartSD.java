@@ -59,9 +59,9 @@ public class CartSD {
 		}
 	}
 
-	@When("The user enter the quantity as {string} based on needs in quantity input box")
-	public void the_user_enter_the_quantity_as_based_on_needs_in_quantity_input_box(String string) {
-		cpa.sendQuantity(string);
+	@When("The user enter the quantity based on needs in quantity input box")
+	public void the_user_enter_the_quantity_based_on_needs_in_quantity_input_box(io.cucumber.datatable.DataTable dataTable) {
+	    
 	}
 
 	@When("The user clicks quantity update button")
