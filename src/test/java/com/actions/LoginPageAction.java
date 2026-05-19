@@ -1,6 +1,8 @@
 package com.actions;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.driver.DriverClass;
 import com.pages.LoginPage;
+
+import io.cucumber.datatable.DataTable;
 
 public class LoginPageAction {
 	
@@ -67,6 +71,14 @@ public class LoginPageAction {
 	public String LoginFailedMsgone()
 	{
 		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessageone)).getText();
+	}
+	
+	public void loginValid(DataTable db)
+	{
+		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail));
+		List<Map<String, String>> data = db.asMaps(String.class, String.class);
+		ba.sendKeys(lp.LoginEmail, data.get(0).get("email"));
+		ba.sendKeys(lp.LoginPassword, data.get(0).get("password"));
 	}
 	
 
