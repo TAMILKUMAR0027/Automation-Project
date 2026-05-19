@@ -46,6 +46,15 @@ public class FilterPage extends BasePage {
 	}
 	@FindBy(xpath = "//h1[@class='h4']")
 	public WebElement softwaretTitle;
-	@FindBy(xpath="//div[@id='mz-filter-panel-1-0']//input[@placeholder='Minimum Price']")
+	@FindBy(xpath="//*[@id='mz-filter-panel-0-0']/div/div[1]/span[2]")
 	public WebElement slider;
+	@FindBy(xpath = "//div[@id='mz-filter-panel-0-0']//input[@placeholder='Maximum Price']")
+	public WebElement input;
+	@FindBy(xpath = "//a[@id='mz-product-grid-image-47-212469']//div[@class='carousel-item active']//img[@title='HP LP3065']")
+	public WebElement hpProduct;
+
+
+	@FindBy(xpath = "//div[@id='entry_216826']//span[text()='In Stock']")
+	public WebElement inStockFilter;
+
 }
