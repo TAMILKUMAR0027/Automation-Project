@@ -70,7 +70,7 @@ public class filterDefinition {
 	public void product_brand_name_in_description_should_match_the_selected_filter() {
 
 		String actual = ppa.getBrandName();
-		String expected = "Apple";
+		String expected = "Ale";
 		try {
 			Assert.assertEquals(actual, expected);
 			log.info("Brand name matched successfully");

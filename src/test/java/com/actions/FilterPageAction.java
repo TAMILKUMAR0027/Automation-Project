@@ -78,4 +78,7 @@ public class FilterPageAction extends BaseAction {
 		wait.until(ExpectedConditions.elementToBeClickable(fp.inStockFilter));
 		click(fp.inStockFilter);
 	}
+	public void clickHp() {
+		wait.until(ExpectedConditions.elementToBeClickable(fp.hpProduct)).click();
+	}
 }
