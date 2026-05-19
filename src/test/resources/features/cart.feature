@@ -46,3 +46,9 @@ description:To verify the add to cart functionality in Ecommerce Lambda Test Web
     And check the radio button in Flash Shipping popup
     And clicks on Apply Shipping Button
     Then The user should see a Success Message
+
+  @AddMultipleProductsInCart
+  Scenario: To check whether Multiple products can be added to cart
+    When The user clicks on AddtoCart Button on Varios Product
+    And The user clicks view-cart button in popup displayed
+    Then All products Added in cart should be displayed in cart
