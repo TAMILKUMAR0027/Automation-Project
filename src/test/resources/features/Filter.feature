@@ -1,5 +1,5 @@
 @smoke
-Feature: Product Filter Functionality
+Feature: TamilKumar_13_05_2026_Product Filter Functionality
 
   Background:
     Given User is on Home page
@@ -8,7 +8,6 @@ Feature: Product Filter Functionality
 
   @verifyByManufacture
   Scenario: Validate filter by manufacturer
-
     When User clicks any manufacturer filter option
     And Products should display based on selected manufacturer
     And User clicks any one product
@@ -16,14 +15,12 @@ Feature: Product Filter Functionality
 
   @showByTotalProduct
   Scenario: Validate total displayed products based on selected count
-
     When User selects an option from the show products dropdown
-    And User stores the displayed products in a list
+    And User  displayed products
     Then Displayed product count should match the selected dropdown value
 
   @filterByAvailability
   Scenario: Validate product availability
-
     When User clicks the in-stock filter option
     And Products should display based on availability
     And User clicks any one product based on instock
@@ -31,9 +28,9 @@ Feature: Product Filter Functionality
 
   @filterByAvailabilityOptions
   Scenario: Validate product availability based on different options
-
     When User clicks the in-stock filter option and click one product
     Then In-stock products should display availability status in product description
-
     When User clicks the out-of-stock filter option and click one product
     Then Out-of-stock products should display availability status in product description
+
+

@@ -4,14 +4,16 @@ import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.driver.DriverClass;
 import com.pages.LaunchPages;
 import com.pages.ShopByCategoryPage;
+import com.utils.ConfigReader;
 
 public class ShopByCategoryAction {
 
@@ -23,15 +25,17 @@ public class ShopByCategoryAction {
     LaunchPages lp=new LaunchPages(driver);
     ShopByCategoryPage sbcp = new ShopByCategoryPage(driver);
 
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+
 
     public void launchWebUrl() {
 
         try {
 
-            driver.get("https://ecommerce-playground.lambdatest.io/#mz-component-1626147655");
+            driver.get(ConfigReader.getProperties().getProperty("url"));
 
             driver.manage().window().maximize();
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
             log.info("Application launched successfully");
 
@@ -41,6 +45,8 @@ public class ShopByCategoryAction {
         }
     }
 
+
+
     public void clickShopByCategory() {
 
         try {
@@ -49,15 +55,15 @@ public class ShopByCategoryAction {
 
             wait.until(ExpectedConditions.elementToBeClickable(sbcp.shopByCategoryMenu));
 
-            js.executeScript("arguments[0].scrollIntoView(true);", sbcp.shopByCategoryMenu);
-
-            js.executeScript("arguments[0].click();", sbcp.shopByCategoryMenu);
+            sbcp.shopByCategoryMenu.click();
 
             log.info("Clicked Shop By Category Menu");
 
         } catch (Exception e) {
 
             log.error("Unable to click Shop By Category Menu : " + e.getMessage());
+
+            throw e;
         }
     }
 
@@ -65,55 +71,52 @@ public class ShopByCategoryAction {
 
         try {
 
-            // -----------------------------------------------------------------
-            // FIX 2: The original condition checked for "Desktops & Monitors"
-            // (with ampersand) but the feature file passes "Desktops and
-            // Monitors" (with "and"). The condition now matches the exact
-            // string the Scenario Outline sends in at runtime.
-            // -----------------------------------------------------------------
-
-            if (category.equalsIgnoreCase("Desktops and Monitors")) {
+            if (category.equalsIgnoreCase("Desktops & Monitors")) {
 
                 
 
-                wait.until(ExpectedConditions.elementToBeClickable(lp.Desktop)).click();
+                wait.until(ExpectedConditions.elementToBeClickable(sbcp.desktopsCategory));
+
+                sbcp.desktopsCategory.click();
 
                 log.info("Selected Desktops & Monitors");
+            }
 
-            } else if (category.equalsIgnoreCase("Web Cameras")) {
+            else if (category.equalsIgnoreCase("Web Cameras")) {
 
-                wait.until(ExpectedConditions.visibilityOf(sbcp.cameras));
+                wait.until(ExpectedConditions.elementToBeClickable(sbcp.cameras));
 
-                js.executeScript("arguments[0].click();", sbcp.cameras);
+                sbcp.cameras.click();
 
                 log.info("Selected Web Cameras");
+            }
 
-            } else if (category.equalsIgnoreCase("Phone, Tablets & Ipod")) {
+            else if (category.equalsIgnoreCase("Phone, Tablets & Ipod")) {
 
-                wait.until(ExpectedConditions.visibilityOf(sbcp.tablets));
+                wait.until(ExpectedConditions.elementToBeClickable(sbcp.tablets));
 
-                js.executeScript("arguments[0].click();", sbcp.tablets);
+                sbcp.tablets.click();
 
                 log.info("Selected Phone, Tablets & Ipod");
+            }
 
-            } else if (category.equalsIgnoreCase("Laptops & Notebooks")) {
+            else if (category.equalsIgnoreCase("Laptops & Notebooks")) {
 
-                wait.until(ExpectedConditions.visibilityOf(sbcp.laptops));
+                wait.until(ExpectedConditions.elementToBeClickable(sbcp.laptops));
 
-                js.executeScript("arguments[0].click();", sbcp.laptops);
+                sbcp.laptops.click();
 
                 log.info("Selected Laptops & Notebooks");
-
-            } else {
-
-                log.error("Invalid Category Name: " + category);
             }
 
         } catch (Exception e) {
 
             log.error("Failed to select category : " + e.getMessage());
+
+            throw e;
         }
     }
+
 
     public String getPageTitle() {
 

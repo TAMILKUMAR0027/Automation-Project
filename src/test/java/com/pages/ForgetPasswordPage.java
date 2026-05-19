@@ -21,6 +21,6 @@ public class ForgetPasswordPage extends BasePage {
 	@FindBy(xpath="//div[contains(@class,'alert-success')]")
 	public WebElement message;
 
-	  @FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
+	@FindBy(xpath="//*[contains(text(),'E-Mail Address was not found')]")
 	public WebElement warningmsg;
 }

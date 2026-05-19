@@ -13,6 +13,7 @@ import com.driver.DriverClass;
 import com.pages.LaunchPages;
 import com.utils.ConfigReader;
 import com.utils.ExcelUtils;
+import com.utils.ProductInformationCSVReader;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -25,6 +26,9 @@ public class productPageDefinition {
 	LaunchPageAction launchAction = new LaunchPageAction();
 	productPageAction productAction = new productPageAction();
 	FilterPageAction filterAction = new FilterPageAction();
+	Map<String, String> data =
+	        ProductInformationCSVReader.getFirstRow(
+					"src/test/resources/ProductInformationAssertion.csv", null);
 	private static Map<String, String> enquiryData = ExcelUtils.getQuestionData();
 
 	@Given("User launches the ecommerce application")
@@ -53,7 +57,7 @@ public class productPageDefinition {
 	public void product_title_should_be_displayed() {
 
 		String actualTitle = productAction.getProductTitle();
-		String expectedTitle = "Canon EOS 5D";
+		String expectedTitle = data.get("title");
 		try {
 			Assert.assertEquals(actualTitle, expectedTitle);
 			log.info("Product title verified successfully");
@@ -67,7 +71,7 @@ public class productPageDefinition {
 	public void product_price_should_be_displayed() {
 
 		String actualPrice = productAction.getPrice();
-		String expectedPrice = "$134.00";
+		String expectedPrice = data.get("price");
 		try {
 			Assert.assertEquals(actualPrice, expectedPrice);
 			log.info("Product price verified successfully");
@@ -81,7 +85,7 @@ public class productPageDefinition {
 	public void product_availability_status_should_be_displayed() {
 
 		String actualStatus = productAction.getInstockAvailability();
-		String expectedStatus = "In Stock";
+		String expectedStatus = data.get("availability");
 		try {
 			Assert.assertEquals(actualStatus, expectedStatus);
 			log.info("Availability status verified successfully");

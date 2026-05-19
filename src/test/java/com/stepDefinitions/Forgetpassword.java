@@ -40,12 +40,13 @@ public class Forgetpassword {
 		fpa.clickContinueButton();
 	}
 
-	@Then("the user should be able to receive a {string} stating reset link sent to email.")
-	public void  the_user_should_be_able_to_receive_a_stating_reset_link_sent_to_email(String message) {
+	@Then("the user should be able to receive a message stating reset link sent to email.")
+	public void the_user_should_be_able_to_receive_a_message_stating_reset_link_sent_to_email() {
 		String actual=fpa.Successmsg();
+		String expected=fpa.expectedSuccessmsg();
 	   try{
 		   
-		 Assert.assertEquals(actual,message);
+		 Assert.assertEquals(actual,expected);
 		 log.info("Reset link sent to email");
 	    }
 	   catch(AssertionError e){
@@ -62,12 +63,13 @@ public class Forgetpassword {
 		fpa.clickContinueButton();
 	}
 
-	@Then("the user should receive an {string}")
-	public void the_user_should_receive_an(String error_message) {
+	@Then("the user should receive an error message")
+	public void the_user_should_receive_an_error_message() {
 		String actual=fpa.Warningmsg();
+		String expected=fpa.expectedErrormsg();
 		   try{
 			   
-			 Assert.assertEquals(actual,error_message);
+			 Assert.assertEquals(actual,expected);
 			 log.info("Failed to send reset link to invalid email");
 		    }
 		   catch(AssertionError e ){

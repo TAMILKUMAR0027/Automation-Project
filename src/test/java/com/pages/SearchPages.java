@@ -15,10 +15,13 @@ public class SearchPages extends BasePage  {
     @FindBy(xpath = "//div[@id='entry_217822']//input[@placeholder='Search For Products']")
     public WebElement SearchBar;
 
-    @FindBy(xpath = "//div[@id='entry_212469']//div[contains(@class,'product-thumb')]")
+    @FindBy(xpath = "//div[@id='entry_212469']//div[contains(@class,'product-thumb')]//h4/a")
     public List<WebElement> result;
 
     @FindBy(xpath = "//div[@id = 'entry_212469']//p")
     public WebElement resulterr;
+
+    @FindBy(xpath = "//div[@class='mz-filter-value both ']//label")
+    public WebElement manufacturer;
 
 }
