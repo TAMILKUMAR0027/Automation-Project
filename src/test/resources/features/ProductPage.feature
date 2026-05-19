@@ -1,5 +1,5 @@
 @productDetails
-Feature: Product Details Page Functionality
+Feature: TamilKumar_15_05_2026_Product Details Page Functionality
 
   Background:
     Given User launches the ecommerce application

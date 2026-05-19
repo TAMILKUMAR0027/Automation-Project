@@ -1,5 +1,5 @@
 @ProductCompare
-Feature: Product_compare_functionality
+Feature: TamilKumar_17_05_2026_Product_compare_functionality
 
   Background:
     Given the user is on the homepage

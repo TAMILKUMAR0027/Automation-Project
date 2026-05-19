@@ -18,7 +18,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class filterDefinition {
-	private static Logger log=LogManager.getLogger(filterDefinition.class);
+	private static Logger log = LogManager.getLogger(filterDefinition.class);
 	LaunchPages lp = new LaunchPages(DriverClass.getDriver());
 
 	FilterPageAction fpa = new FilterPageAction();
@@ -84,15 +84,14 @@ public class filterDefinition {
 	public void user_selects_an_option_from_the_show_products_dropdown() {
 
 		fpa.clickManufacture();
-		fpa.selectDropdownByVisibleText(
-				ConfigReader.getProperties().getProperty("index"));
+		fpa.selectDropdownByVisibleText(ConfigReader.getProperties().getProperty("index"));
 	}
 
-	@When("User stores the displayed products in a list")
+	@When("User  displayed products")
 	public void user_stores_the_displayed_products_in_a_list() {
 
 		products = fpa.storeAllProducts();
-		System.out.println(products);
+		System.out.println(fpa.getItems());
 	}
 
 	@Then("Displayed product count should match the selected dropdown value")
@@ -185,4 +184,7 @@ public class filterDefinition {
 			throw e;
 		}
 	}
+
+	
+
 }
