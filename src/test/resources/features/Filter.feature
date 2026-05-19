@@ -33,4 +33,7 @@ Feature: TamilKumar_13_05_2026_Product Filter Functionality
     When User clicks the out-of-stock filter option and click one product
     Then Out-of-stock products should display availability status in product description
 
-
+  @priceFilter
+  Scenario: Validate the price based on Slider
+    When move the slider
+    Then the price should be updated in filter page

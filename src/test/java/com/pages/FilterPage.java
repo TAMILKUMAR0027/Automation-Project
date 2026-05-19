@@ -46,7 +46,7 @@ public class FilterPage extends BasePage {
 	}
 	@FindBy(xpath = "//h1[@class='h4']")
 	public WebElement softwaretTitle;
-	@FindBy(xpath="//div[@id='mz-filter-panel-1-0']//input[@placeholder='Minimum Price']")
+	@FindBy(xpath="//*[@id='mz-filter-panel-0-0']/div/div[1]/span[2]")
 	public WebElement slider;
 
 
