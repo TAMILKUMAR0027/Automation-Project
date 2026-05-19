@@ -185,6 +185,15 @@ public class filterDefinition {
 		}
 	}
 
-	
+	@When("move the slider")
+	public void move_the_slider() {
+		fpa.moveSlider();
+	}
+
+	@Then("the price should be updated in filter page")
+	public void the_price_should_be_updated_in_filter_page() {
+		// Write code here that turns the phrase above into concrete actions
+		Assert.assertEquals(fpa.getValue(), "1544");
+	}
 
 }

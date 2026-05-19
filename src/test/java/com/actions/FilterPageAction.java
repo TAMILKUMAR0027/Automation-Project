@@ -3,7 +3,9 @@ package com.actions;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -58,5 +60,15 @@ public class FilterPageAction extends BaseAction {
 	public List<String> getItems() {
 		return fp.getProductNames();
 	}
-
+	public void moveSlider() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		wait.until(ExpectedConditions.visibilityOf(fp.slider));
+		js.executeScript("arguments[0].scrollIntoView(true);", fp.slider);
+		Actions actions = new Actions(driver);
+		actions.dragAndDropBy(fp.slider, -50, 0).perform();
+	}
+	public String getValue() {
+		wait.until(ExpectedConditions.visibilityOf(fp.input));
+		return fp.input.getAttribute("value");
+	}
 }
