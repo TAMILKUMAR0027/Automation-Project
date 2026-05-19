@@ -48,4 +48,9 @@ public class FilterPage extends BasePage {
 	public WebElement softwaretTitle;
 	@FindBy(xpath="//div[@id='mz-filter-panel-1-0']//input[@placeholder='Minimum Price']")
 	public WebElement slider;
+
+
+	@FindBy(xpath = "//div[@id='entry_216826']//span[text()='In Stock']")
+	public WebElement inStockFilter;
+
 }
