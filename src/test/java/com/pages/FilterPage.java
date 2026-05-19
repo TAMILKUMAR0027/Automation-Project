@@ -52,4 +52,9 @@ public class FilterPage extends BasePage {
 	public WebElement input;
 	@FindBy(xpath = "//a[@id='mz-product-grid-image-47-212469']//div[@class='carousel-item active']//img[@title='HP LP3065']")
 	public WebElement hpProduct;
+
+
+	@FindBy(xpath = "//div[@id='entry_216826']//span[text()='In Stock']")
+	public WebElement inStockFilter;
+
 }

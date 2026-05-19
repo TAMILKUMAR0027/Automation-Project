@@ -16,10 +16,9 @@ import org.testng.annotations.DataProvider;
                         "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                         "rerun:target/failedrerun.txt"
-                },tags="@verifyByManufacture",
+                },
                 monochrome = true
         )
-
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 	

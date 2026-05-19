@@ -12,7 +12,6 @@ public class CsvDataProvider {
 
 		List<Map<String, String>> result = new ArrayList<>();
 
-		// Resolve path relative to project root — works regardless of working directory
 		File csvFile = new File(System.getProperty("user.dir"), filePath);
 
 		if (!csvFile.exists()) {

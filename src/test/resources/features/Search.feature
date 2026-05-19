@@ -1,5 +1,5 @@
 @Search
-Feature: Search Feature - Prasanna Venkatesh K - 18-05-2026
+Feature: Search Feature - Prasanna Venkatesh K - 18-05-2026 Update - 18-05-2026
   Description: Validate that the search filter lists products based on the entered keyword.
 
   Background:
