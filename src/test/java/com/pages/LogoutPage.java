@@ -13,13 +13,13 @@ public class LogoutPage extends BasePage{
 	@FindBy(xpath = "//a[@role='button']//span[@class='title'][normalize-space()='My account']")
     public WebElement account;
 
-	@FindBy(xpath="//li[@class='nav-item dropdown dropdown-hoverable show']//li[1]//a[1]")
-    public	WebElement logoutBtn;
+	@FindBy(linkText="Logout")
+	public WebElement logoutBtn;
 	
 	@FindBy(xpath="//h1[@class='page-title my-3']")
 	public WebElement Logoutmsg;
 	
-	@FindBy(xpath="//a[text()='Login']")
-     public WebElement login;
+	@FindBy(linkText="Login")
+	public WebElement login;
 
 }

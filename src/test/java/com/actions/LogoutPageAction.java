@@ -3,6 +3,7 @@ package com.actions;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,6 +16,7 @@ public class LogoutPageAction {
 	LogoutPage lout=new LogoutPage(driver);
     LoginPage lp = new LoginPage(driver);
 	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+	Actions act = new Actions(driver);
 
 	public void launchWebUrl() {
 		driver.get("https://ecommerce-playground.lambdatest.io/");
@@ -48,7 +50,11 @@ public class LogoutPageAction {
 	}
 	
 	public void Clickaccount() {
-		lout.account.click();
+		
+
+         act.moveToElement(lp.myAccLink).perform();
+
+
 	}
 	public void clickLogout() {
 		wait.until(ExpectedConditions.visibilityOf(lout.logoutBtn)).click();
