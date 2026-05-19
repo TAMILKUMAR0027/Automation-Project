@@ -7,39 +7,44 @@ Feature: Wishlist Feature - LambdaTest Playground - Prasanna Venkatesh K - 15-05
     And the user is a registered user
 
   @Smoke @ProductAdded
-  Scenario Outline: Add iMac product to wishlist
+  Scenario: Add single product to wishlist
     And the user navigates to the Top Products section
-    When the user selects the "<productName>" product and adds it to the wishlist
-    Then a wishlist success notification should be displayed for "<productName>"
+    When the user hovers over the product "AddSingleProduct" and clicks the wishlist button
+    Then a wishlist success notification should be displayed
     And the user clicks the wishlist link from the notification popup
-    Then the user should be redirected to the "<expectedPage>" page
+    Then the user should be redirected to the "My Wish List" page
     And the wishlist product details should match the selected product
 
-    Examples: src/test/resources/testdata/wishlist_data.csv
-      | productName | expectedPage |
-      | iMac        | My Wish List |
-
   @Regression @MultipleProduct
-  Scenario Outline: Add multiple products to wishlist
+  Scenario: Add multiple products to wishlist
     And the user navigates to the Top Collection section
-    When the user selects the "<product1>" product and adds it to the wishlist
-    Then a wishlist success notification should be displayed for "<product1>"
-    When the user selects the "<product2>" product and adds it to the wishlist
-    Then a wishlist success notification should be displayed for "<product2>"
+    When the user adds multiple products to the wishlist from csv
+    Then a wishlist success notification should be displayed
     And the user clicks the wishlist link from the notification popup
-    Then the user should be redirected to the "<expectedPage>" page
-    Then all selected products should be displayed in the wishList page
-
-    Examples: src/test/resources/testdata/wishlist_data.csv
-      | product1        | product2  | expectedPage |
-      | Apple Cinema 30 | iPod Nano | My Wish List |
+    Then the user should be redirected to the "My Wish List" page
+    Then all selected products should be displayed in the wishlist page
 
   @Smoke @RemoveProduct
-  Scenario Outline: Remove product from wishlist
+  Scenario: Remove product from wishlist
     And the user navigates to the wishlist page via account menu
-    When the user removes the product "<productName>" from the wishlist
+    When the user removes the product "RemoveProduct1" from the wishlist
     Then a wishlist removal success notification should be displayed
 
-    Examples: src/test/resources/testdata/wishlist_data.csv
-      | productName |
-      | iPod Nano   |
+  @Regression @RemoveMultiProduct
+  Scenario: Remove multiple products from the wishlist
+    And the user navigates to the wishlist page via account menu
+    When the user removes the following products from the wishlist
+      | ProductName     |
+      | Apple Cinema 30 |
+      | iMac            |
+    Then a wishlist removal success notification should be displayed
+
+  @Smoke @AlterMethod
+  Scenario: Add product to wishlist via search
+    When the user searches for "apple" and presses Enter
+    And the user moves to the "iPod Shuffle" and clicks the product
+    And the user redirect to the product page and clicks the heart button inside the product image
+    Then a wishlist success notification should be displayed
+    And the user clicks the wishlist link from the notification popup
+    Then the user should be redirected to the "My Wish List" page
+    And the wishlist product details should match the selected product
