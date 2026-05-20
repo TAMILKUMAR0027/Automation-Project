@@ -16,10 +16,9 @@ import com.pages.CartPage;
 import io.cucumber.datatable.DataTable;
 
 public class CartPageActions {
-	WebDriver driver = DriverClass.getDriver();
 	BaseAction ba = new BaseAction();
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-	CartPage cp = new CartPage(driver);
+	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
+	CartPage cp = new CartPage(DriverClass.getDriver());
 
 	public String getProductName() {
 		return wait.until(ExpectedConditions.visibilityOf(cp.productName)).getText();

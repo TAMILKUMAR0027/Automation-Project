@@ -16,11 +16,10 @@ import com.pages.RegisterPage;
 import io.cucumber.datatable.DataTable;
 
 public class RegisterPageAction {
-	WebDriver driver = DriverClass.getDriver();
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	AccountPage ap = new AccountPage(driver);
-	LoginPage lp = new LoginPage(driver);
-	RegisterPage rp = new RegisterPage(driver);
+	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(20));
+	AccountPage ap = new AccountPage(DriverClass.getDriver());
+	LoginPage lp = new LoginPage(DriverClass.getDriver());
+	RegisterPage rp = new RegisterPage(DriverClass.getDriver());
 	BaseAction ba = new BaseAction();
 	public void clickMyAccount() {
 		try {
@@ -82,7 +81,7 @@ public class RegisterPageAction {
 
 			wait.until(ExpectedConditions.alertIsPresent());
 
-			driver.switchTo().alert().accept();
+			DriverClass.getDriver().switchTo().alert().accept();
 
 		} catch (Exception e) {
 

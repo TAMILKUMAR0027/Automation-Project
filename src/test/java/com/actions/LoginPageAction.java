@@ -15,13 +15,12 @@ import io.cucumber.datatable.DataTable;
 
 public class LoginPageAction {
 	
-	WebDriver driver=DriverClass.getDriver();
-	LoginPage lp = new LoginPage(driver);
+	LoginPage lp = new LoginPage(DriverClass.getDriver());
 	BaseAction ba = new BaseAction();
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+	WebDriverWait wait=new WebDriverWait(DriverClass.getDriver(),Duration.ofSeconds(15));
 
 	public void launchWebUrl() {
-		driver.get("https://ecommerce-playground.lambdatest.io/");
+		DriverClass.getDriver().get("https://ecommerce-playground.lambdatest.io/");
 	}
 
 	public void clickMyAccountLink()
