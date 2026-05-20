@@ -1,5 +1,5 @@
-@productDetails
-Feature: TamilKumar_15_05_2026_Product Details Page Functionality
+@Tamil @productDetails
+Feature: TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026
 
   Background:
     Given User launches the ecommerce application

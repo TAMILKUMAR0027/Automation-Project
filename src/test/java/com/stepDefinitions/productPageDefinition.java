@@ -26,9 +26,8 @@ public class productPageDefinition {
 	LaunchPageAction launchAction = new LaunchPageAction();
 	productPageAction productAction = new productPageAction();
 	FilterPageAction filterAction = new FilterPageAction();
-	Map<String, String> data =
-	        ProductInformationCSVReader.getFirstRow(
-					"src/test/resources/ProductInformationAssertion.csv", null);
+	Map<String, String> data = ProductInformationCSVReader
+			.getFirstRow("src/test/resources/ProductInformationAssertion.csv", null);
 	private static Map<String, String> enquiryData = ExcelUtils.getQuestionData();
 
 	@Given("User launches the ecommerce application")

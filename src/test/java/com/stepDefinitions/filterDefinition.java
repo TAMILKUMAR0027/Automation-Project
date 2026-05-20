@@ -18,7 +18,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class filterDefinition {
+
 	private static Logger log = LogManager.getLogger(filterDefinition.class);
+
 	LaunchPages lp = new LaunchPages(DriverClass.getDriver());
 
 	FilterPageAction fpa = new FilterPageAction();
@@ -70,11 +72,15 @@ public class filterDefinition {
 	public void product_brand_name_in_description_should_match_the_selected_filter() {
 
 		String actual = ppa.getBrandName();
-		String expected = "Ale";
+		String expected = "Apple";
+
 		try {
+
 			Assert.assertEquals(actual, expected);
 			log.info("Brand name matched successfully");
+
 		} catch (AssertionError e) {
+
 			log.error("Brand name mismatch, Error: " + e.getMessage());
 			throw e;
 		}
@@ -88,7 +94,7 @@ public class filterDefinition {
 	}
 
 	@When("User  displayed products")
-	public void user_stores_the_displayed_products_in_a_list() {
+	public void user_displayed_products() {
 
 		products = fpa.storeAllProducts();
 		System.out.println(fpa.getItems());
@@ -99,10 +105,14 @@ public class filterDefinition {
 
 		int actual = fpa.getDisplayedProductCount();
 		int expected = 25;
+
 		try {
+
 			Assert.assertEquals(actual, expected);
 			log.info("Displayed product count matched successfully");
+
 		} catch (AssertionError e) {
+
 			log.error("Displayed product count mismatch, Error: " + e.getMessage());
 			throw e;
 		}
@@ -114,16 +124,16 @@ public class filterDefinition {
 		fpa.clickAvailability();
 	}
 
-	@When("User clicks any one product based on instock")
-	public void user_clicks_any_one_product_based_on_instock() {
-
-		fpa.clickCanonProduct();
-	}
-
 	@When("Products should display based on availability")
 	public void products_should_display_based_on_availability() {
 
 		System.out.println("Availability products displayed");
+	}
+
+	@When("User clicks any one product based on instock")
+	public void user_clicks_any_one_product_based_on_instock() {
+
+		fpa.clickCanonProduct();
 	}
 
 	@Then("Product availability status should be displayed in product description")
@@ -131,10 +141,14 @@ public class filterDefinition {
 
 		String actual = ppa.getInstockAvailability();
 		String expected = "In Stock";
+
 		try {
+
 			Assert.assertEquals(actual, expected);
 			log.info("Product availability status matched successfully");
+
 		} catch (AssertionError e) {
+
 			log.error("Availability status mismatch, Error: " + e.getMessage());
 			throw e;
 		}
@@ -152,10 +166,14 @@ public class filterDefinition {
 
 		String actual = ppa.getInstockAvailability();
 		String expected = "In Stock";
+
 		try {
+
 			Assert.assertEquals(actual, expected);
 			log.info("In-stock product availability verified successfully");
+
 		} catch (AssertionError e) {
+
 			log.error("In-stock availability verification failed, Error: " + e.getMessage());
 			throw e;
 		}
@@ -167,6 +185,7 @@ public class filterDefinition {
 	public void user_clicks_the_out_of_stock_filter_option_and_click_one_product() {
 
 		DriverClass.getDriver().navigate().refresh();
+
 		fpa.clickOutofStockOption();
 		fpa.clickHTCTouchHD();
 	}
@@ -176,10 +195,14 @@ public class filterDefinition {
 
 		String actual = ppa.getOutStockAvailability();
 		String expected = "Out Of Stock";
+
 		try {
+
 			Assert.assertEquals(actual, expected);
 			log.info("Out-of-stock product availability verified successfully");
+
 		} catch (AssertionError e) {
+
 			log.error("Out-of-stock availability verification failed, Error: " + e.getMessage());
 			throw e;
 		}
@@ -187,13 +210,17 @@ public class filterDefinition {
 
 	@When("move the slider")
 	public void move_the_slider() {
-	//	fpa.moveSlider();
+
+	    fpa.moveSlider();
 	}
 
 	@Then("the price should be updated in filter page")
 	public void the_price_should_be_updated_in_filter_page() {
-		// Write code here that turns the phrase above into concrete actions
-		// Assert.assertEquals(fpa.getValue(), "1544");
-	}
 
+	    int price = Integer.parseInt(fpa.getValue());
+
+	    System.out.println("Slider Price : " + price);
+
+	    Assert.assertTrue(price < 2000, "Price is greater than 2000. Actual price: " + price);
+	}
 }
