@@ -22,7 +22,7 @@ public class AddReviewPage extends BasePage {
 	@FindBy(css = "input#input-name")
 	public WebElement reviewname;
 
-	@FindBy(xpath = "//textarea[@name='text']")
+	@FindBy(xpath="//textarea[contains(@placeholder,'review') ]")
 	public WebElement reviewtext;
 
 	@FindBy(xpath = "//button[text()='Write Review']")

@@ -16,20 +16,20 @@ import com.utils.AddReviewExcelReader;
 
 public class AddReviewPageAction {
 
-	WebDriver driver = DriverClass.getDriver();
+	//WebDriver driver = DriverClass.getDriver();
 
-	AddReviewPage arp = new AddReviewPage(driver);
+	AddReviewPage arp = new AddReviewPage(DriverClass.getDriver());
 
-	JavascriptExecutor js = (JavascriptExecutor) driver;
+	JavascriptExecutor js = (JavascriptExecutor)DriverClass.getDriver();
 
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(20));
 
-	Actions mouseAction = new Actions(driver);
+	Actions mouseAction = new Actions(DriverClass.getDriver());
 
 	// Launch Product Page
 	public void launchProductPage() {
 
-		driver.get("https://ecommerce-playground.lambdatest.io/");
+		DriverClass.getDriver().get("https://ecommerce-playground.lambdatest.io/");
 
 		wait.until(ExpectedConditions.elementToBeClickable(arp.product));
 
@@ -50,13 +50,9 @@ public class AddReviewPageAction {
 		    try {
 
 		        wait.until(
-		            ExpectedConditions.presenceOfElementLocated(
-		                By.cssSelector(
-		"input[name='rating'][value='5']")));
+		            ExpectedConditions.presenceOfElementLocated( By.cssSelector("input[name='rating'][value='5']")));
 
-		        js.executeScript(
-		            "arguments[0].click();",
-		            arp.rating);
+		        js.executeScript( "arguments[0].click();", arp.rating);
 
 		    } catch (Exception e) {
 
