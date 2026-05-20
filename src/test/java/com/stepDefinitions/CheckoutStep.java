@@ -41,10 +41,7 @@ public class CheckoutStep {
 
     @Then("the application should be redirect to the current product page")
     public void the_application_should_be_redirect_to_the_current_product_page() {
-        Assert.assertTrue(
-                productPageAction.getProductTitle().length() > 0,
-                "Product title is not displayed, likely not on product page"
-        );
+        Assert.assertTrue( productPageAction.getProductTitle().length() > 0,"Product title is not displayed, likely not on product page");
     }
 
     @Then("the product Availability should be {string}")
@@ -64,7 +61,6 @@ public class CheckoutStep {
 
     @And("the user clicks the checkout button from the cart page")
     public void the_user_clicks_the_checkout_button_from_the_cart_page() throws InterruptedException {
-        Thread.sleep(5000);
         checkoutAction.clickCheckoutFromCartPage();
     }
 
@@ -80,10 +76,7 @@ public class CheckoutStep {
 
     @Then("the application redirect to the chechkout")
     public void the_application_redirect_to_the_chechkout() {
-        Assert.assertTrue(
-                checkoutAction.isCheckoutOrLoginPageDisplayed(),
-                "User is not redirected to the checkout or login page"
-        );
+        Assert.assertTrue( checkoutAction.isCheckoutOrLoginPageDisplayed(),"User is not redirected to the checkout or login page" );
     }
 
     @And("the user clicks the {string}")
@@ -95,9 +88,7 @@ public class CheckoutStep {
 
     @And("the user enters the firstname, lastname, company, address1, city, postcode, country, Regionstate")
     public void the_user_enters_the_firstname_lastname_company_address1_city_postcode_country_regionstate() {
-        checkoutAction.enterBillingDetails(
-                "Test", "User", "Company", "Address", "City", "123456", "India", "Tamil Nadu"
-        );
+        checkoutAction.enterBillingDetails("Test", "User", "Company", "Address", "City", "123456", "India", "Tamil Nadu");
     }
 
     @And("the user clicks same billing address and cash on delivery and flat rate button")
@@ -115,9 +106,8 @@ public class CheckoutStep {
 
     @Then("the order should be successfully placed and application redirect to the order confirmation page")
     public void the_order_should_be_successfully_placed_and_application_redirect_to_the_order_confirmation_page() {
-        Assert.assertTrue(
-                checkoutAction.isOrderPlacedSuccessfully(),
-                "Order was not successfully placed"
+        Assert.assertTrue(checkoutAction.isOrderPlacedSuccessfully(),
+          "Order was not successfully placed"
         );
     }
 
@@ -164,9 +154,6 @@ public class CheckoutStep {
 
     @Then("the application shows the shopping Cart is empty!")
     public void the_application_shows_the_shopping_cart_is_empty() {
-        Assert.assertTrue(
-                checkoutAction.isEmptyCartMessageDisplayed(),
-                "Empty cart message is not displayed"
-        );
+        Assert.assertTrue(checkoutAction.isEmptyCartMessageDisplayed(),"Empty cart message is not displayed" );
     }
 }
