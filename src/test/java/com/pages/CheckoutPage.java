@@ -7,19 +7,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckoutPage extends BasePage {
-
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
 
-    // Add inside CheckoutPage class
     @FindBy(id = "input-payment-address-new")
     public WebElement newAddressRadio;
 
     @FindBy(id = "input-account-register")
     public WebElement registerAccountRadio;
 
-    // EmptyCartCheckout: navbar cart — target the parent div, not SVG
+    // EmptyCartCheckout
     @FindBy(xpath = "//div[@id='entry_217825']//div[@class='icon svg-icon']")
     public WebElement svgNavbarCart;
 
@@ -39,10 +37,8 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//div[@class='buttons d-flex']//a[text()='Checkout']")
     public WebElement cartPageCheckoutBtn;
 
-    // ═══════════════════════════════════════════════
     //   LOGIN CHECKOUT billing address fields
-    // ═══════════════════════════════════════════════
-
+   
     @FindBy(xpath = "//input[@id='input-payment-firstname']")
     public WebElement firstNameInput;
 
@@ -80,10 +76,8 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//h1[normalize-space()='Your order has been placed!']")
     public WebElement orderConfirmationMessage;
 
-    // ═══════════════════════════════════════════════
     //   REGISTER CHECKOUT registration form fields
-    // ═══════════════════════════════════════════════
-
+    
     @FindBy(xpath = "//input[@id='input-payment-firstname']")
     public WebElement regFirstNameInput;
 

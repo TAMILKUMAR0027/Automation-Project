@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>16/2/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed May 20 21:26:13 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>81 seconds (81476 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate filter by manufacturer", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
+	at com.driver.DriverClass.initDriver(DriverClass.java:34)
+	at com.hooks.Hooks.setUp(Hooks.java:25)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1611785835", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1611785835'><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
+	at com.driver.DriverClass.initDriver(DriverClass.java:34)
+	at com.hooks.Hooks.setUp(Hooks.java:25)
+</pre></div></td>
+<td>1</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate the price based on Slider", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
+	at com.driver.DriverClass.initDriver(DriverClass.java:34)
+	at com.hooks.Hooks.setUp(Hooks.java:25)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1486236573", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1486236573'><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
+	at com.driver.DriverClass.initDriver(DriverClass.java:34)
+	at com.hooks.Hooks.setUp(Hooks.java:25)
+</pre></div></td>
+<td>1</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Send product enquiry in the product page", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>33</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>48</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product details information", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>49</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Perform multiple operations on product page", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>27</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Compare a product from home page", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
+<td></td>
+<td>33</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product availability based on different options", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td></td>
+<td>56</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product availability", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td></td>
+<td>44</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>58</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>54</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate enquiry form without mandatory fields", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>34</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To perform compare without adding products to list", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
+<td></td>
+<td>25</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate total displayed products based on selected count", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td></td>
+<td>43</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Compare multiple products from home page", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
+<td></td>
+<td>47</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set Invalid product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>29</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User need to remove the product from Compare", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
+<td></td>
+<td>38</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product navigation using breadcrumb", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>34</td>
+<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+</table><p>
+</body>
+</html>

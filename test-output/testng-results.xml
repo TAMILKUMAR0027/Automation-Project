@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="18" passed="16" failed="2" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-05-20T21:26:13 IST" name="Default suite" finished-at="2026-05-20T21:27:35 IST" duration-ms="81476">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-05-20T21:26:13 IST" name="Default test" finished-at="2026-05-20T21:27:35 IST" duration-ms="81476">
+      <class name="com.runner.TestNgRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:13 IST" name="setUpClass" finished-at="2026-05-20T21:26:15 IST" duration-ms="1689" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@3e67f5f2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:05 IST" duration-ms="49534" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate product details information"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:26:48 IST" duration-ms="33262" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Compare a product from home page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:11 IST" duration-ms="56190" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate product availability based on different options"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:00 IST" duration-ms="44632" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate product availability"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:26:41 IST" duration-ms="25798" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To perform compare without adding products to list"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:26:59 IST" duration-ms="43833" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate total displayed products based on selected count"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:03 IST" duration-ms="47980" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Compare multiple products from home page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:26:54 IST" duration-ms="38782" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User need to remove the product from Compare"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:26:17 IST" duration-ms="1708" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate the price based on Slider"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "String.equalsIgnoreCase(String)" because "browser" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "String.equalsIgnoreCase(String)" because "browser" is null
+at com.driver.DriverClass.initDriver(DriverClass.java:34)
+at com.hooks.Hooks.setUp(Hooks.java:25)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:15 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:26:17 IST" duration-ms="1707" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate filter by manufacturer"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "String.equalsIgnoreCase(String)" because "browser" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "String.equalsIgnoreCase(String)" because "browser" is null
+at com.driver.DriverClass.initDriver(DriverClass.java:34)
+at com.hooks.Hooks.setUp(Hooks.java:25)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:17 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:15 IST" duration-ms="58427" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Set product quantity"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:17 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:12 IST" duration-ms="54932" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Set product quantity"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:29 IST" duration-ms="48587" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Set product quantity"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:48 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:22 IST" duration-ms="33601" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Send product enquiry in the product page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:54 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:21 IST" duration-ms="27602" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Perform multiple operations on product page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:26:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:34 IST" duration-ms="34864" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate product navigation using breadcrumb"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:27:00 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:34 IST" duration-ms="34320" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate enquiry form without mandatory fields"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:27:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-20T21:27:33 IST" duration-ms="29618" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Set Invalid product quantity"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.TestNgRunner@6dd7b5a3]" started-at="2026-05-20T21:27:34 IST" name="tearDownClass" finished-at="2026-05-20T21:27:35 IST" duration-ms="735" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.runner.TestNgRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

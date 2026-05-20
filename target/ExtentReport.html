@@ -1,0 +1,2380 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Automation Report</title>
+<link rel="apple-touch-icon" href="spark/logo.png">
+<link rel="shortcut icon" href="spark/logo.png">
+<link rel="stylesheet" href="spark/spark-style.css">
+<link rel="stylesheet" href="spark/font-awesome.min.css">
+<script src="spark/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report standard">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('spark/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">LambdaTest Playground Execution Report</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">May 20, 2026 09:26:14 pm</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@CompareWithoutProducts</a><a class="dropdown-item" href="#">@priceFilter</a><a class="dropdown-item" href="#">@ModifyInTheCompare</a><a class="dropdown-item" href="#">@navigation</a><a class="dropdown-item" href="#">@smoke</a><a class="dropdown-item" href="#">@productInformation</a><a class="dropdown-item" href="#">@enquiry</a><a class="dropdown-item" href="#">@Tamil</a><a class="dropdown-item" href="#">@filterByAvailabilityOptions</a><a class="dropdown-item" href="#">@compareWithProduct</a><a class="dropdown-item" href="#">@negative_enquiry</a><a class="dropdown-item" href="#">@ProductCompare</a><a class="dropdown-item" href="#">@compareWithMultipleProduct</a><a class="dropdown-item" href="#">@productDetails</a><a class="dropdown-item" href="#">@quantity</a><a class="dropdown-item" href="#">@multipleActions</a><a class="dropdown-item" href="#">@InvalidQuantity</a><a class="dropdown-item" href="#">@verifyByManufacture</a><a class="dropdown-item" href="#">@filterByAvailability</a><a class="dropdown-item" href="#">@showByTotalProduct</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="pass" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026</p>
+            <p class="text-sm">
+              <span>9:26:16 pm</span> / <span>00:00:47:260</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026</h5>
+<span class='badge badge-success'>05.20.2026 9:26:16 pm</span>
+<span class='badge badge-danger'>05.20.2026 9:27:03 pm</span>
+<span class='badge badge-default'>00:00:47:260</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To perform compare without adding products to list</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_is_on_the_homepage()">
+                <span>Given the user is on the homepage</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_clicks_product_compare()">
+                <span>When the user clicks product compare without adding product</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_should_see_no_products_to_compare_error(java.lang.String)">
+                <span>Then the user should see no products to compare error "You have not chosen any products to compare."</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="10"><span class="badge log pass-bg mr-2">Pass</span>Compare a product from home page</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_is_on_the_homepage()">
+                <span>Given the user is on the homepage</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_selects_any_product_from_the_home_page()">
+                <span>When the user selects any product from the home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.clicks_on_compare_this_product_on_the_product_details_page()">
+                <span>And clicks on Compare this Product on the product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_compare_confirmation_message_should_be_displayed()">
+                <span>Then the compare confirmation message should be displayed</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="13"><span class="badge log pass-bg mr-2">Pass</span>User need to remove the product from Compare</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_is_on_the_homepage()">
+                <span>Given the user is on the homepage</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_selects_any_product_from_the_home_page()">
+                <span>When the user selects any product from the home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.clicks_on_compare_this_product_on_the_product_details_page()">
+                <span>And clicks on Compare this Product on the product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.click_compare_button()">
+                <span>And click compare Button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.remove_the_product_from_compare()">
+                <span>And remove the product from compare</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_get_an_message(java.lang.String)">
+                <span>Then the user get an message "Success: You have modified your product comparison!"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="21"><span class="badge log pass-bg mr-2">Pass</span>Compare multiple products from home page</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_is_on_the_homepage()">
+                <span>Given the user is on the homepage</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_selects_two_products_from_the_home_page()">
+                <span>When the user selects first product from the home page and click compare button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.clicks_compare_this_product_on_both_product_detail_pages()">
+                <span>And the user selects second product from the home page and click compare button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.ProductCompareDefition.the_user_should_see_both_products_in_the_comparison_page()">
+                <span>Then the user should see both products in the comparison page</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026</p>
+            <p class="text-sm">
+              <span>9:26:16 pm</span> / <span>00:00:55:451</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026</h5>
+<span class='badge badge-success'>05.20.2026 9:26:16 pm</span>
+<span class='badge badge-danger'>05.20.2026 9:27:11 pm</span>
+<span class='badge badge-default'>00:00:55:451</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="4"><span class="badge log fail-bg mr-2">Fail</span>Validate filter by manufacturer</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step fail-bg" title="BEFORE">
+                <span>com.hooks.Hooks.setUp()</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.NullPointerException: Cannot invoke "String.equalsIgnoreCase(String)" because "browser" is null
+	at com.driver.DriverClass.initDriver(DriverClass.java:34)
+	at com.hooks.Hooks.setUp(Hooks.java:25)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_is_on_home_page()">
+                <span>Given User is on Home page</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_clicks_on_shop_by_categories()">
+                <span>And User clicks on Shop By Categories</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_selects_any_one_category()">
+                <span>And User selects any one category</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_clicks_any_manufacturer_filter_option()">
+                <span>When User clicks any manufacturer filter option</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.products_should_display_based_on_selected_manufacturer()">
+                <span>And Products should display based on selected manufacturer</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_clicks_any_one_product()">
+                <span>And User clicks any one product</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.product_brand_name_in_description_should_match_the_selected_filter()">
+                <span>Then Product brand name in description should match the selected filter</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step fail-bg" title="AFTER">
+                <span>com.hooks.Hooks.tearDown(io.cucumber.java.Scenario)</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because the return value of "com.driver.DriverClass.getDriver()" is null
+	at com.hooks.Hooks.tearDown(Hooks.java:36)
+</textarea>
+      
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="5"><span class="badge log pass-bg mr-2">Pass</span>Validate total displayed products based on selected count</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_is_on_home_page()">
+                <span>Given User is on Home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_on_shop_by_categories()">
+                <span>And User clicks on Shop By Categories</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_selects_any_one_category()">
+                <span>And User selects any one category</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_selects_an_option_from_the_show_products_dropdown()">
+                <span>When User selects an option from the show products dropdown</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_displayed_products()">
+                <span>And User  displayed products</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.displayed_product_count_should_match_the_selected_dropdown_value()">
+                <span>Then Displayed product count should match the selected dropdown value</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="7"><span class="badge log fail-bg mr-2">Fail</span>Validate the price based on Slider</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step fail-bg" title="BEFORE">
+                <span>com.hooks.Hooks.setUp()</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.NullPointerException: Cannot invoke "String.equalsIgnoreCase(String)" because "browser" is null
+	at com.driver.DriverClass.initDriver(DriverClass.java:34)
+	at com.hooks.Hooks.setUp(Hooks.java:25)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_is_on_home_page()">
+                <span>Given User is on Home page</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_clicks_on_shop_by_categories()">
+                <span>And User clicks on Shop By Categories</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.user_selects_any_one_category()">
+                <span>And User selects any one category</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.move_the_slider()">
+                <span>When move the slider</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="com.stepDefinitions.filterDefinition.the_price_should_be_updated_in_filter_page()">
+                <span>Then the price should be updated in filter page</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step fail-bg" title="AFTER">
+                <span>com.hooks.Hooks.tearDown(io.cucumber.java.Scenario)</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because the return value of "com.driver.DriverClass.getDriver()" is null
+	at com.hooks.Hooks.tearDown(Hooks.java:36)
+</textarea>
+      
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="9"><span class="badge log pass-bg mr-2">Pass</span>Validate product availability based on different options</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_is_on_home_page()">
+                <span>Given User is on Home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_on_shop_by_categories()">
+                <span>And User clicks on Shop By Categories</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_selects_any_one_category()">
+                <span>And User selects any one category</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_the_in_stock_filter_option_and_click_one_product()">
+                <span>When User clicks the in-stock filter option and click one product</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.in_stock_products_should_display_availability_status_in_product_description()">
+                <span>Then In-stock products should display availability status in product description</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_the_out_of_stock_filter_option_and_click_one_product()">
+                <span>When User clicks the out-of-stock filter option and click one product</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.out_of_stock_products_should_display_availability_status_in_product_description()">
+                <span>Then Out-of-stock products should display availability status in product description</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="12"><span class="badge log pass-bg mr-2">Pass</span>Validate product availability</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_is_on_home_page()">
+                <span>Given User is on Home page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_on_shop_by_categories()">
+                <span>And User clicks on Shop By Categories</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_selects_any_one_category()">
+                <span>And User selects any one category</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_the_in_stock_filter_option()">
+                <span>When User clicks the in-stock filter option</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.products_should_display_based_on_availability()">
+                <span>And Products should display based on availability</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.user_clicks_any_one_product_based_on_instock()">
+                <span>And User clicks any one product based on instock</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.filterDefinition.product_availability_status_should_be_displayed_in_product_description()">
+                <span>Then Product availability status should be displayed in product description</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="14"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026</p>
+            <p class="text-sm">
+              <span>9:26:16 pm</span> / <span>00:01:18:165</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026</h5>
+<span class='badge badge-success'>05.20.2026 9:26:16 pm</span>
+<span class='badge badge-danger'>05.20.2026 9:27:34 pm</span>
+<span class='badge badge-default'>00:01:18:165</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=14</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="15"><span class="badge log pass-bg mr-2">Pass</span>Validate product details information</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_launches_the_ecommerce_application()">
+                <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_opens_canon_product_details_page()">
+                <span>And user opens Canon product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.product_title_should_be_displayed()">
+                <span>Then Product title should be displayed</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.product_price_should_be_displayed()">
+                <span>And Product price should be displayed</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.product_availability_status_should_be_displayed()">
+                <span>And Product availability status should be displayed</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="38"><span class="badge log pass-bg mr-2">Pass</span>Set product quantity</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="39"><span class="badge log pass-bg mr-2">Pass</span>Set product quantity</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And user opens HP product details page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user updates product quantity to "3"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click the cart</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then product quantity should be updated successfully in the cart "3"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="41"><span class="badge log pass-bg mr-2">Pass</span>Set product quantity</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And user opens HP product details page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user updates product quantity to "1"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click the cart</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then product quantity should be updated successfully in the cart "1"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="68"><span class="badge log pass-bg mr-2">Pass</span>Set product quantity</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And user opens HP product details page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user updates product quantity to "5"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And click the cart</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then product quantity should be updated successfully in the cart "5"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="83"><span class="badge log pass-bg mr-2">Pass</span>Send product enquiry in the product page</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_launches_the_ecommerce_application()">
+                <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_opens_canon_product_details_page()">
+                <span>And user opens Canon product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_clicks_on_ask_question_option()">
+                <span>When user clicks on Ask Question option</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_fills_enquiry_form()">
+                <span>And user fills enquiry form</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.enquiry_should_be_sent_successfully()">
+                <span>Then enquiry should be sent successfully</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="90"><span class="badge log pass-bg mr-2">Pass</span>Perform multiple operations on product page</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_launches_the_ecommerce_application()">
+                <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_opens_canon_product_details_page()">
+                <span>And user opens Canon product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_clicks_add_to_cart_button()">
+                <span>When user clicks Add to Cart button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_clicks_wishlist_button()">
+                <span>And user clicks Wishlist button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.both_actions_should_be_triggered_successfully()">
+                <span>Then both actions should be triggered successfully</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="99"><span class="badge log pass-bg mr-2">Pass</span>Validate product navigation using breadcrumb</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_launches_the_ecommerce_application()">
+                <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_opens_canon_product_details_page()">
+                <span>And user opens Canon product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_clicks_on_breadcrumb_category_link_software()">
+                <span>When user clicks on breadcrumb category link Software</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_should_be_navigated_to_product_category_page_successfully()">
+                <span>Then user should be navigated to product category page successfully</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="103"><span class="badge log pass-bg mr-2">Pass</span>Validate enquiry form without mandatory fields</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_launches_the_ecommerce_application()">
+                <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_opens_canon_product_details_page()">
+                <span>And user opens Canon product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_clicks_on_ask_question_option()">
+                <span>When user clicks on Ask Question option</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_submits_empty_enquiry_form()">
+                <span>And user submits empty enquiry form</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.validation_message_should_be_displayed_for_enquiry_form()">
+                <span>Then validation message should be displayed for enquiry form</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="112"><span class="badge log pass-bg mr-2">Pass</span>Set Invalid product quantity</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_launches_the_ecommerce_application()">
+                <span>Given User launches the ecommerce application</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_opens_canon_product_details_page()">
+                <span>And user opens Canon product details page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.user_clicks_minus_button_times(java.lang.Integer)">
+                <span>When user clicks minus button 2 times</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.stepDefinitions.productPageDefinition.product_quantity_should_not_be_less_than(java.lang.Integer)">
+                <span>Then product quantity should not be less than 1</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>4</span>
+</span>
+<p class="name">java.lang.NullPointerException</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.NullPointerException</h4>
+<span status="fail" class='badge log badge-danger'>4 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='20'>com.hooks.Hooks.setUp()</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate filter by manufacturer.com.hooks.Hooks.setUp()</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='8'>com.hooks.Hooks.setUp()</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate the price based on Slider.com.hooks.Hooks.setUp()</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='37'>com.hooks.Hooks.tearDown(io.cucumber.java.Scenario)</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate the price based on Slider.com.hooks.Hooks.tearDown(io.cucumber.java.Scenario)</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='36'>com.hooks.Hooks.tearDown(io.cucumber.java.Scenario)</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate filter by manufacturer.com.hooks.Hooks.tearDown(io.cucumber.java.Scenario)</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">20</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@CompareWithoutProducts</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@CompareWithoutProducts</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>To perform compare without adding products to list</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.To perform compare without adding products to list</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@priceFilter</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@priceFilter</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='7'>Validate the price based on Slider</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate the price based on Slider</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@ModifyInTheCompare</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@ModifyInTheCompare</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='13'>User need to remove the product from Compare</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.User need to remove the product from Compare</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@navigation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@navigation</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:59 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='99'>Validate product navigation using breadcrumb</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate product navigation using breadcrumb</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>4</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@smoke</p>
+<p class="duration text-sm">6 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@smoke</h4>
+<span status="pass" class='badge log pass-bg'>4 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='4'>Validate filter by manufacturer</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate filter by manufacturer</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='5'>Validate total displayed products based on selected count</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate total displayed products based on selected count</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='7'>Validate the price based on Slider</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate the price based on Slider</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='9'>Validate product availability based on different options</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate product availability based on different options</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='12'>Validate product availability</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate product availability</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='41'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@productInformation</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@productInformation</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='15'>Validate product details information</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate product details information</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@enquiry</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@enquiry</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:48 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='83'>Send product enquiry in the product page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Send product enquiry in the product page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>16</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@Tamil</p>
+<p class="duration text-sm">18 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Tamil</h4>
+<span status="pass" class='badge log pass-bg'>16 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>To perform compare without adding products to list</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.To perform compare without adding products to list</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='4'>Validate filter by manufacturer</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate filter by manufacturer</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='5'>Validate total displayed products based on selected count</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate total displayed products based on selected count</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='7'>Validate the price based on Slider</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate the price based on Slider</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='9'>Validate product availability based on different options</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate product availability based on different options</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='10'>Compare a product from home page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.Compare a product from home page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='12'>Validate product availability</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate product availability</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='13'>User need to remove the product from Compare</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.User need to remove the product from Compare</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='15'>Validate product details information</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate product details information</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='21'>Compare multiple products from home page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.Compare multiple products from home page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='39'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='41'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:41 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='68'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:48 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='83'>Send product enquiry in the product page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Send product enquiry in the product page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:54 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='90'>Perform multiple operations on product page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Perform multiple operations on product page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:59 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='99'>Validate product navigation using breadcrumb</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate product navigation using breadcrumb</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:27:00 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='103'>Validate enquiry form without mandatory fields</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate enquiry form without mandatory fields</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:27:03 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='112'>Set Invalid product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set Invalid product quantity</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@filterByAvailabilityOptions</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@filterByAvailabilityOptions</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='9'>Validate product availability based on different options</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate product availability based on different options</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@compareWithProduct</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@compareWithProduct</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='10'>Compare a product from home page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.Compare a product from home page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@negative_enquiry</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@negative_enquiry</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:27:00 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='103'>Validate enquiry form without mandatory fields</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate enquiry form without mandatory fields</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>5</span>
+</span>
+<p class="name">@ProductCompare</p>
+<p class="duration text-sm">5 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@ProductCompare</h4>
+<span status="pass" class='badge log pass-bg'>5 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>To perform compare without adding products to list</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.To perform compare without adding products to list</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='10'>Compare a product from home page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.Compare a product from home page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='13'>User need to remove the product from Compare</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.User need to remove the product from Compare</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='21'>Compare multiple products from home page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.Compare multiple products from home page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:41 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='68'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@compareWithMultipleProduct</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@compareWithMultipleProduct</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='21'>Compare multiple products from home page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026.Compare multiple products from home page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>9</span>
+</span>
+<p class="name">@productDetails</p>
+<p class="duration text-sm">9 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@productDetails</h4>
+<span status="pass" class='badge log pass-bg'>9 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='15'>Validate product details information</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate product details information</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='39'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='41'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:41 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='68'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:48 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='83'>Send product enquiry in the product page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Send product enquiry in the product page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:54 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='90'>Perform multiple operations on product page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Perform multiple operations on product page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:59 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='99'>Validate product navigation using breadcrumb</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate product navigation using breadcrumb</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:27:00 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='103'>Validate enquiry form without mandatory fields</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Validate enquiry form without mandatory fields</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:27:03 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='112'>Set Invalid product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set Invalid product quantity</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+</span>
+<p class="name">@quantity</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@quantity</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='39'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:17 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='41'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:41 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='68'>Set product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set product quantity</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@multipleActions</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@multipleActions</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:54 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='90'>Perform multiple operations on product page</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Perform multiple operations on product page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@InvalidQuantity</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@InvalidQuantity</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:27:03 pm</td>
+<td>
+<a href="#" class="linked" test-id='14' id='112'>Set Invalid product quantity</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026.Set Invalid product quantity</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@verifyByManufacture</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@verifyByManufacture</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='4'>Validate filter by manufacturer</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate filter by manufacturer</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@filterByAvailability</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@filterByAvailability</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='12'>Validate product availability</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate product availability</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@showByTotalProduct</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@showByTotalProduct</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>21:26:16 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='5'>Validate total displayed products based on selected count</a>
+<div class="">
+<span class="badge badge-default">TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026.Validate total displayed products based on selected count</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>May 20, 2026 09:26:14 pm</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>May 20, 2026 09:27:34 pm</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>2</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>1</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='66%'>
+<b>2</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='33%'><b>1</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='88%'><b>16</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='11%'><b>2</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='83%'><b>80</b> steps passed</small></div>
+<div>
+<small data-tooltip='4%'><b>4</b> steps failed,
+<b>12</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026":47.26,"TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026":55.451,"TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026":78.165
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@CompareWithoutProducts</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@priceFilter</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@ModifyInTheCompare</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@navigation</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@smoke</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>66.667%</td>
+</tr>
+<tr>
+<td>@productInformation</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@enquiry</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@Tamil</td>
+<td>16</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>88.889%</td>
+</tr>
+<tr>
+<td>@filterByAvailabilityOptions</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@compareWithProduct</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@negative_enquiry</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@ProductCompare</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@compareWithMultipleProduct</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@productDetails</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@quantity</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@multipleActions</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@InvalidQuantity</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@verifyByManufacture</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@filterByAvailability</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@showByTotalProduct</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 2,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 16,
+failChild: 2,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 80,
+failGrandChild: 4,
+warningGrandChild: 0,
+skipGrandChild: 12,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="spark/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
