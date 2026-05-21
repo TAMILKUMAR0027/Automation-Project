@@ -103,11 +103,7 @@ public class BaseAction {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void highlightElement(WebElement element) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].style.border='3px solid red'", element);
-    }
+   
 
     public void waitForVisibility(WebElement element) {
 
@@ -119,10 +115,7 @@ public class BaseAction {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitForInvisibility(WebElement element) {
-
-        wait.until(ExpectedConditions.invisibilityOf(element));
-    }
+    
 
     public String getTitle() {
 
@@ -134,8 +127,5 @@ public class BaseAction {
         return driver.getCurrentUrl();
     }
 
-    public void refreshPage() {
-
-        driver.navigate().refresh();
-    }
+   
 }

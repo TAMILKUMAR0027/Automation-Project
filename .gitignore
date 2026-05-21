@@ -11,3 +11,4 @@ logs/
 .factorypath
 src/test/java/com/runner/TestNgRunner.java
 .~lock.SearchProduct.xlsx#
+/target/
