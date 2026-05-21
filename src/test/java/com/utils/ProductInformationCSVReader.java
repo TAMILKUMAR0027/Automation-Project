@@ -57,9 +57,6 @@ public class ProductInformationCSVReader {
         return result;
     }
 
-    /**
-     * Returns the first matching row for a scenario key.
-     */
     public static Map<String, String> getFirstRow(String filePath, String scenarioKey) {
         List<Map<String, String>> data = getData(filePath, scenarioKey);
         if (data.isEmpty()) {

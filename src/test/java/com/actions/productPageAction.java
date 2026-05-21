@@ -16,277 +16,567 @@ import com.pages.ProductPage;
 public class productPageAction extends BaseAction {
 
     WebDriver driver = DriverClass.getDriver();
+
     ProductPage pp = new ProductPage(driver);
+
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     private static Logger log = LogManager.getLogger(productPageAction.class);
 
     public String getBrandName() {
+
         try {
+
             log.info("Getting brand name");
-            return pp.BrandName.getText();
+
+            waitForVisibility(pp.BrandName);
+
+            String brand = getText(pp.BrandName);
+
+            log.info("Brand name fetched successfully");
+
+            return brand;
+
         } catch (Exception e) {
+
             log.error("Failed to get brand name", e);
-            throw e;
+            throw new RuntimeException("Failed to get brand name", e);
         }
     }
 
     public String getInstockAvailability() {
+
         try {
-            log.info("Getting in-stock availability");
-            return pp.availability.getText();
+
+            log.info("Getting in stock availability");
+
+            waitForVisibility(pp.availability);
+
+            String availability = getText(pp.availability);
+
+            log.info("In stock availability fetched successfully");
+
+            return availability;
+
         } catch (Exception e) {
-            log.error("Failed to get in-stock availability", e);
-            throw e;
+
+            log.error("Failed to get in stock availability", e);
+            throw new RuntimeException("Failed to get in stock availability", e);
         }
     }
 
     public String getOutStockAvailability() {
+
         try {
-            log.info("Getting out-of-stock availability");
-            return pp.availabilityOutOfStock.getText();
+
+            log.info("Getting out of stock availability");
+
+            waitForVisibility(pp.availabilityOutOfStock);
+
+            String availability = getText(pp.availabilityOutOfStock);
+
+            log.info("Out of stock availability fetched successfully");
+
+            return availability;
+
         } catch (Exception e) {
-            log.error("Failed to get out-of-stock availability", e);
-            throw e;
+
+            log.error("Failed to get out of stock availability", e);
+            throw new RuntimeException("Failed to get out of stock availability", e);
         }
     }
 
     public String getPrice() {
+
         try {
-            return pp.productPrice.getText();
+
+            log.info("Getting product price");
+
+            waitForVisibility(pp.productPrice);
+
+            String price = getText(pp.productPrice);
+
+            log.info("Product price fetched successfully");
+
+            return price;
+
         } catch (Exception e) {
-            log.error("Failed to get price", e);
-            throw e;
+
+            log.error("Failed to get product price", e);
+            throw new RuntimeException("Failed to get product price", e);
         }
     }
 
     public String getProductTitle() {
+
         try {
-            return pp.productTitle.getText();
+
+            log.info("Getting product title");
+
+            waitForVisibility(pp.productTitle);
+
+            String title = getText(pp.productTitle);
+
+            log.info("Product title fetched successfully");
+
+            return title;
+
         } catch (Exception e) {
-            log.error("Failed to get title", e);
-            throw e;
+
+            log.error("Failed to get product title", e);
+            throw new RuntimeException("Failed to get product title", e);
         }
     }
 
     public void setQuantity(String quantity) {
+
         try {
+
+            log.info("Setting quantity : " + quantity);
+
+            waitForVisibility(pp.quantityBox);
+
             sendKeys(pp.quantityBox, quantity);
+
+            log.info("Quantity entered successfully");
+
         } catch (Exception e) {
+
             log.error("Failed to set quantity", e);
-            throw e;
+            throw new RuntimeException("Failed to set quantity", e);
         }
     }
 
     public String getQuantity() {
+
         try {
-            return pp.quantityBox.getAttribute("value");
+
+            log.info("Getting quantity");
+
+            waitForVisibility(pp.quantityBox);
+
+            String quantity = getAttribute(pp.quantityBox, "value");
+
+            log.info("Quantity fetched successfully");
+
+            return quantity;
+
         } catch (Exception e) {
+
             log.error("Failed to get quantity", e);
-            throw e;
+            throw new RuntimeException("Failed to get quantity", e);
         }
     }
 
     public void clickAskQuestion() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.questionForm));
+
+            log.info("Clicking ask question button");
+
+            waitForClickable(pp.questionForm);
+
             click(pp.questionForm);
+
+            log.info("Ask question button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Failed Ask Question", e);
-            throw e;
+
+            log.error("Failed to click ask question button", e);
+            throw new RuntimeException("Failed to click ask question button", e);
         }
     }
 
-    public void setName(String name) {
+    public void setName(String yourName) {
+
         try {
-            wait.until(ExpectedConditions.visibilityOf(pp.name));
-            sendKeys(pp.name, name);
+
+            log.info("Entering name");
+
+            waitForVisibility(pp.name);
+
+            sendKeys(pp.name, yourName);
+
+            log.info("Name entered successfully");
+
         } catch (Exception e) {
-            log.error("Failed to set name", e);
-            throw e;
+
+            log.error("Failed to enter name", e);
+            throw new RuntimeException("Failed to enter name", e);
         }
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String yourEmail) {
+
         try {
-            sendKeys(pp.email, email);
+
+            log.info("Entering email");
+
+            waitForVisibility(pp.email);
+
+            sendKeys(pp.email, yourEmail);
+
+            log.info("Email entered successfully");
+
         } catch (Exception e) {
-            log.error("Failed to set email", e);
-            throw e;
+
+            log.error("Failed to enter email", e);
+            throw new RuntimeException("Failed to enter email", e);
         }
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(String yourSubject) {
+
         try {
-            sendKeys(pp.subject, subject);
+
+            log.info("Entering subject");
+
+            waitForVisibility(pp.subject);
+
+            sendKeys(pp.subject, yourSubject);
+
+            log.info("Subject entered successfully");
+
         } catch (Exception e) {
-            log.error("Failed to set subject", e);
-            throw e;
+
+            log.error("Failed to enter subject", e);
+            throw new RuntimeException("Failed to enter subject", e);
         }
     }
 
-    public void setMessage(String message) {
+    public void setMessage(String yourMessage) {
+
         try {
-            sendKeys(pp.Message, message);
+
+            log.info("Entering message");
+
+            waitForVisibility(pp.Message);
+
+            sendKeys(pp.Message, yourMessage);
+
+            log.info("Message entered successfully");
+
         } catch (Exception e) {
-            log.error("Failed to set message", e);
-            throw e;
+
+            log.error("Failed to enter message", e);
+            throw new RuntimeException("Failed to enter message", e);
         }
     }
 
     public void clickSendMessage() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.sendMessage));
+
+            log.info("Clicking send message button");
+
+            waitForClickable(pp.sendMessage);
+
             click(pp.sendMessage);
+
+            log.info("Send message button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Failed send message", e);
-            throw e;
+
+            log.error("Failed to click send message button", e);
+            throw new RuntimeException("Failed to click send message button", e);
         }
     }
 
     public String getAlertMessage() {
+
         try {
+
+            log.info("Getting alert message");
+
             WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("//div[@class='alert alert-success alert-notification w-50 alert-dismissible']")));
 
-            return alert.getText().replace("×", "").trim();
+            String message = alert.getText().replace("×", "").trim();
+
+            log.info("Alert message fetched successfully");
+
+            return message;
 
         } catch (Exception e) {
-            log.error("Failed alert message", e);
-            throw e;
+
+            log.error("Failed to get alert message", e);
+            throw new RuntimeException("Failed to get alert message", e);
         }
     }
 
     public void clickAddToCart() {
+
         try {
+
+            log.info("Clicking add to cart button");
+
+            waitForClickable(pp.addToCartBtn);
+
             click(pp.addToCartBtn);
+
+            log.info("Add to cart button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Failed Add to Cart", e);
-            throw e;
+
+            log.error("Failed to click add to cart button", e);
+            throw new RuntimeException("Failed to click add to cart button", e);
         }
     }
 
     public void clickWishListBtn() {
+
         try {
+
+            log.info("Clicking wishlist button");
+
+            waitForClickable(pp.wishListBtn);
+
             click(pp.wishListBtn);
+
+            log.info("Wishlist button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Failed Wishlist", e);
-            throw e;
+
+            log.error("Failed to click wishlist button", e);
+            throw new RuntimeException("Failed to click wishlist button", e);
         }
     }
 
     public String getAddTocartConfirmation() {
+
         try {
-            return wait.until(ExpectedConditions.visibilityOf(pp.sizeRequired)).getText();
+
+            log.info("Getting add to cart confirmation");
+
+            waitForVisibility(pp.sizeRequired);
+
+            String message = getText(pp.sizeRequired);
+
+            log.info("Add to cart confirmation fetched successfully");
+
+            return message;
+
         } catch (Exception e) {
-            log.error("Cart confirmation failed", e);
-            throw e;
+
+            log.error("Failed to get add to cart confirmation", e);
+            throw new RuntimeException("Failed to get add to cart confirmation", e);
         }
     }
 
     public String getWishListConfirmation() {
+
         try {
-            return wait.until(ExpectedConditions.visibilityOf(pp.wishList)).getText();
+
+            log.info("Getting wishlist confirmation");
+
+            waitForVisibility(pp.wishList);
+
+            String message = getText(pp.wishList);
+
+            log.info("Wishlist confirmation fetched successfully");
+
+            return message;
+
         } catch (Exception e) {
-            log.error("Wishlist confirmation failed", e);
-            throw e;
+
+            log.error("Failed to get wishlist confirmation", e);
+            throw new RuntimeException("Failed to get wishlist confirmation", e);
         }
     }
 
     public void clickSoftwareBreadcrumb() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.softwareBreadCrumb));
+
+            log.info("Clicking software breadcrumb");
+
+            waitForClickable(pp.softwareBreadCrumb);
+
             click(pp.softwareBreadCrumb);
+
+            log.info("Software breadcrumb clicked successfully");
+
         } catch (Exception e) {
-            log.error("Breadcrumb failed", e);
-            throw e;
+
+            log.error("Failed to click software breadcrumb", e);
+            throw new RuntimeException("Failed to click software breadcrumb", e);
         }
     }
 
     public String getMadatoryFieldsMessage() {
+
         try {
-            return wait.until(ExpectedConditions.visibilityOf(pp.mandatoryFields)).getText();
+
+            log.info("Getting mandatory fields message");
+
+            waitForVisibility(pp.mandatoryFields);
+
+            String message = getText(pp.mandatoryFields);
+
+            log.info("Mandatory fields message fetched successfully");
+
+            return message;
+
         } catch (Exception e) {
-            log.error("Mandatory message failed", e);
-            throw e;
+
+            log.error("Failed to get mandatory fields message", e);
+            throw new RuntimeException("Failed to get mandatory fields message", e);
         }
     }
 
     public void clickMinus() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.minusBtn));
+
+            log.info("Clicking minus button");
+
+            waitForClickable(pp.minusBtn);
+
             click(pp.minusBtn);
+
+            log.info("Minus button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Minus click failed", e);
-            throw e;
+
+            log.error("Failed to click minus button", e);
+            throw new RuntimeException("Failed to click minus button", e);
         }
     }
 
     public void clickAddToCartbutton() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.addToCartButton));
+
+            log.info("Clicking add to cart popup button");
+
+            waitForClickable(pp.addToCartButton);
+
             click(pp.addToCartButton);
+
+            log.info("Add to cart popup button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Add to cart failed", e);
-            throw e;
+
+            log.error("Failed to click add to cart popup button", e);
+            throw new RuntimeException("Failed to click add to cart popup button", e);
         }
     }
 
     public void viewCartPP() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.viewCartPopUpButton));
+
+            log.info("Clicking view cart popup button");
+
+            waitForClickable(pp.viewCartPopUpButton);
+
             click(pp.viewCartPopUpButton);
+
+            log.info("View cart popup button clicked successfully");
+
         } catch (Exception e) {
-            log.error("View cart failed", e);
-            throw e;
+
+            log.error("Failed to click view cart popup button", e);
+            throw new RuntimeException("Failed to click view cart popup button", e);
         }
     }
 
     public void clickCompareBtn() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.compareBtn));
+
+            log.info("Clicking compare button");
+
+            waitForClickable(pp.compareBtn);
+
             click(pp.compareBtn);
+
+            log.info("Compare button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Compare failed", e);
-            throw e;
+
+            log.error("Failed to click compare button", e);
+            throw new RuntimeException("Failed to click compare button", e);
         }
     }
 
     public String getConfirmationMessage() {
+
         try {
-            return wait.until(ExpectedConditions.visibilityOf(pp.productComparisonMessage)).getText();
+
+            log.info("Getting comparison confirmation message");
+
+            waitForVisibility(pp.productComparisonMessage);
+
+            String message = getText(pp.productComparisonMessage);
+
+            log.info("Comparison confirmation fetched successfully");
+
+            return message;
+
         } catch (Exception e) {
-            log.error("Compare message failed", e);
-            throw e;
+
+            log.error("Failed to get comparison confirmation message", e);
+            throw new RuntimeException("Failed to get comparison confirmation message", e);
         }
     }
 
     public void clickCart() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.cartButton));
+
+            log.info("Clicking cart button");
+
+            waitForClickable(pp.cartButton);
+
             click(pp.cartButton);
+
+            log.info("Cart button clicked successfully");
+
         } catch (Exception e) {
-            log.error("Cart click failed", e);
-            throw e;
+
+            log.error("Failed to click cart button", e);
+            throw new RuntimeException("Failed to click cart button", e);
         }
     }
 
     public String getQuantityInCart() {
+
         try {
-            return wait.until(ExpectedConditions.visibilityOf(pp.quantityField)).getAttribute("value");
+
+            log.info("Getting quantity in cart");
+
+            waitForVisibility(pp.quantityField);
+
+            String quantity = getAttribute(pp.quantityField, "value");
+
+            log.info("Quantity in cart fetched successfully");
+
+            return quantity;
+
         } catch (Exception e) {
-            log.error("Cart quantity failed", e);
-            throw e;
+
+            log.error("Failed to get quantity in cart", e);
+            throw new RuntimeException("Failed to get quantity in cart", e);
         }
     }
 
     public void clickViewCompare() {
+
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(pp.viewCompare));
+
+            log.info("Clicking view compare button");
+
+            waitForClickable(pp.viewCompare);
+
             click(pp.viewCompare);
+
+            log.info("View compare button clicked successfully");
+
         } catch (Exception e) {
-            log.error("View compare failed", e);
-            throw e;
+
+            log.error("Failed to click view compare button", e);
+            throw new RuntimeException("Failed to click view compare button", e);
         }
     }
 }

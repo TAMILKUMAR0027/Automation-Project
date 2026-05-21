@@ -105,7 +105,7 @@ public class productPageDefinition {
 	public void click_the_cart() {
 
 		productAction.clickAddToCart();
-		productAction.clickCart();
+		productAction.clickAddToCartbutton();
 		log.info("Cart opened successfully");
 	}
 
