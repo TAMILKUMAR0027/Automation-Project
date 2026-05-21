@@ -34,7 +34,7 @@ public class LaunchPages {
 		return driver.findElement(By.xpath("//img[@alt='Poco Electro']")).isDisplayed();
 	}
 
-	@FindBy(xpath = "//div/a[normalize-space()='Shop by Category']")
+	@FindBy(xpath = "//a[normalize-space()='Shop by Category']")
 	public WebElement shopByCategories;
 
 	@FindBy(xpath = "//div/span[contains(text(),'Desk')]")
