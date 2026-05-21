@@ -26,7 +26,7 @@ public class ProductPage extends BasePage {
 	@FindBy(xpath = "//h1[@class='h3']")
 	public WebElement productTitle;
 
-	@FindBy(xpath = "//div[@id='entry_216841']//input[@name='quantity']")
+	@FindBy(xpath = "(//div/input[@class='form-control text-center border-light remove-spin-button'])[2]")
 	public WebElement quantityBox;
 
 	@FindBy(xpath = "//a[@aria-label='Ask Question']")
