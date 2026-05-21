@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>16/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>17/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed May 20 21:26:13 IST 2026</td>
+<td>Started on:</td><td>Thu May 21 16:37:42 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>81 seconds (81476 ms)</td>
+<tr><td>Total time:</td><td>333 seconds (333787 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,28 +77,34 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate filter by manufacturer", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
-	at com.driver.DriverClass.initDriver(DriverClass.java:34)
-	at com.hooks.Hooks.setUp(Hooks.java:25)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1611785835", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1611785835'><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
-	at com.driver.DriverClass.initDriver(DriverClass.java:34)
-	at com.hooks.Hooks.setUp(Hooks.java:25)
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable, but the element was not visible.
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.178, chrome: {chromedriverVersion: 148.0.7778.178 (d096af1c9e9..., userDataDir: C:\Users\tamil\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55400}, goog:processID: 4412, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55400/devtoo..., se:cdpVersion: 148.0.7778.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3f1694b25ab79709de8ce89b1eb652a2
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.LaunchPageAction.clickMonitor(LaunchPageAction.java:23)
+	at com.stepDefinitions.filterDefinition.user_selects_any_one_category(filterDefinition.java:50)
+	at ✽.User selects any one category(file:///E:/Automation-Project-main/E-Commerce%20Lambdatest/src/test/resources/features/Filter.feature:7)
+</pre></div><a href='#' onClick='toggleBox("stack-trace822063782", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace822063782'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable, but the element was not visible.
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 148.0.7778.178, chrome: {chromedriverVersion: 148.0.7778.178 (d096af1c9e9..., userDataDir: C:\Users\tamil\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55400}, goog:processID: 4412, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55400/devtoo..., se:cdpVersion: 148.0.7778.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3f1694b25ab79709de8ce89b1eb652a2
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at com.actions.LaunchPageAction.clickMonitor(LaunchPageAction.java:23)
+	at com.stepDefinitions.filterDefinition.user_selects_any_one_category(filterDefinition.java:50)
+	at ✽.User selects any one category(file:///E:/Automation-Project-main/E-Commerce%20Lambdatest/src/test/resources/features/Filter.feature:7)
 </pre></div></td>
-<td>1</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate the price based on Slider", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
-	at com.driver.DriverClass.initDriver(DriverClass.java:34)
-	at com.hooks.Hooks.setUp(Hooks.java:25)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1486236573", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1486236573'><pre>java.lang.NullPointerException: Cannot invoke &quot;String.equalsIgnoreCase(String)&quot; because &quot;browser&quot; is null
-	at com.driver.DriverClass.initDriver(DriverClass.java:34)
-	at com.hooks.Hooks.setUp(Hooks.java:25)
-</pre></div></td>
-<td>1</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>63</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -109,85 +115,90 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Send product enquiry in the product page", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate the price based on Slider", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
 <td></td>
-<td>33</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
-<td></td>
-<td>48</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product details information", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
-<td></td>
-<td>49</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Perform multiple operations on product page", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
-<td></td>
-<td>27</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Compare a product from home page", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
-<td></td>
-<td>33</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product availability based on different options", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
-<td></td>
-<td>56</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product availability", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
-<td></td>
-<td>44</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
-<td></td>
-<td>58</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
-<td></td>
-<td>54</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>11</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate enquiry form without mandatory fields", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
 <td></td>
-<td>34</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>11</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Perform multiple operations on product page", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>9</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Send product enquiry in the product page", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>10</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To perform compare without adding products to list", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
 <td></td>
-<td>25</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate total displayed products based on selected count", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
-<td></td>
-<td>43</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
-<tr>
-<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Compare multiple products from home page", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
-<td></td>
-<td>47</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>7</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set Invalid product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
 <td></td>
-<td>29</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>9</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate total displayed products based on selected count", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td></td>
+<td>46</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User need to remove the product from Compare", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
 <td></td>
-<td>38</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>12</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Compare a product from home page", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
+<td></td>
+<td>9</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 <tr>
 <td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product navigation using breadcrumb", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
 <td></td>
-<td>34</td>
-<td>com.runner.TestNgRunner@6dd7b5a3</td></tr>
+<td>12</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Compare multiple products from home page", "TamilKumar_17_05_2026_Product_compare_functionality Updated_18_05_2026"</td>
+<td></td>
+<td>14</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>11</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product availability based on different options", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td></td>
+<td>49</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product details information", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>8</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate product availability", "TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026"</td>
+<td></td>
+<td>21</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>11</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
+<tr>
+<td title='com.runner.TestNgRunner.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestNgRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Set product quantity", "TamilKumar_15_05_2026_Product Details Page Functionality Updated_16_05_2026"</td>
+<td></td>
+<td>12</td>
+<td>com.runner.TestNgRunner@2663e964</td></tr>
 </table><p>
 </body>
 </html>
