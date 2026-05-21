@@ -81,4 +81,19 @@ public class FilterPageAction extends BaseAction {
 	public void clickHp() {
 		wait.until(ExpectedConditions.elementToBeClickable(fp.hpProduct)).click();
 	}
+	public void moveSlider() {
+
+		wait.until(ExpectedConditions.visibilityOf(fp.slider));
+
+		
+
+		Actions act = new Actions(driver);
+
+		act.dragAndDropBy(fp.slider, -10, 0).perform();
+	}
+
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return wait.until(ExpectedConditions.visibilityOf(fp.input)).getAttribute("value");
+	}
 }
