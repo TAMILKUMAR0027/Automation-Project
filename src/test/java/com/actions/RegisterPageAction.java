@@ -3,7 +3,9 @@ package com.actions;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.LogManager;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,6 +14,7 @@ import com.driver.DriverClass;
 import com.pages.AccountPage;
 import com.pages.LoginPage;
 import com.pages.RegisterPage;
+import com.stepDefinitions.CartSD;
 
 import io.cucumber.datatable.DataTable;
 
@@ -23,26 +26,26 @@ public class RegisterPageAction {
 	BaseAction ba = new BaseAction();
 	public void clickMyAccount() {
 		try {
-			lp.myAccLink.isDisplayed();
+			ba.isDisplayed(lp.myAccLink);
 			ba.click(lp.myAccLink);
 		} catch (Exception e) {
-			wait.until(ExpectedConditions.visibilityOf(lp.myAccLink));
+			ba.waitForVisibility(lp.myAccLink);
 			ba.click(lp.myAccLink);
 
 		}
 	}
 
 	public void registerLinkClick() {
-		wait.until(ExpectedConditions.visibilityOf(ap.registerLink));
+		ba.waitForVisibility(ap.registerLink);
 		ba.click(ap.registerLink);
 	}
 
 	public void setFname(String fname) {
-		wait.until(ExpectedConditions.visibilityOf(rp.fname));
+		ba.waitForVisibility(rp.fname);
 		rp.fname.sendKeys(fname);
 	}
 	public void setLname(String lname) {
-		wait.until(ExpectedConditions.visibilityOf(rp.lname));
+		ba.waitForVisibility(rp.lname);
 		rp.lname.sendKeys(lname);
 	}
 	public void setEmail(String email) {
@@ -69,27 +72,28 @@ public class RegisterPageAction {
 	}
 
 	public String registerSuccess() {
-		return wait.until(ExpectedConditions.visibilityOf(rp.rSuccess)).getText();
+		ba.waitForVisibility(rp.rSuccess);
+		return ba.getText(rp.rSuccess);
+		 
 	}
 
 	public String uncheckPPMsg() {
-		return wait.until(ExpectedConditions.visibilityOf(rp.errMsgPP)).getText();
+		ba.waitForVisibility(rp.errMsgPP);
+		return ba.getText(rp.errMsgPP);
 	}
 
 	public String fieldEmptyWmsg() {
 		try {
-
 			wait.until(ExpectedConditions.alertIsPresent());
 
 			DriverClass.getDriver().switchTo().alert().accept();
 
 		} catch (Exception e) {
 
-			System.out.println("No alert present");
-
+			System.out.println(e.getMessage());
 		}
-
-		return wait.until(ExpectedConditions.visibilityOf(rp.emptyFieldMsg)).getText();
+		ba.waitForVisibility(rp.emptyFieldMsg);
+		return ba.getText(rp.emptyFieldMsg);
 	}
 
 	

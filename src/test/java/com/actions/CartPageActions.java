@@ -21,11 +21,12 @@ public class CartPageActions {
 	CartPage cp = new CartPage(DriverClass.getDriver());
 
 	public String getProductName() {
-		return wait.until(ExpectedConditions.visibilityOf(cp.productName)).getText();
+		ba.waitForVisibility(cp.productName);
+		return ba.getText(cp.productName);
 	}
 
 	public void sendQuantity(String q) {
-		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount));
+		ba.waitForVisibility(cp.quantityCount);
 		ba.sendKeys(cp.quantityCount,q);
 		
 	}
@@ -41,29 +42,30 @@ public class CartPageActions {
 			alert.accept();
 		} catch (Exception e) {
 
-			System.out.println("No Alert Present");
+			System.out.println(e.getMessage());
 
 		}
-
-		return wait.until(ExpectedConditions.visibilityOf(cp.quantityUpdatedMsg)).getText();
+		ba.waitForVisibility(cp.quantityUpdatedMsg);
+		return ba.getText(cp.quantityUpdatedMsg);
 	}
 
 	public void clickRemoveButton() {
-		wait.until(ExpectedConditions.elementToBeClickable(cp.CartRemoveButton));
+		ba.waitForClickable(cp.CartRemoveButton);
 		ba.click(cp.CartRemoveButton);
 	}
 
 	public String getCartEmptyMsg() {
-		return wait.until(ExpectedConditions.visibilityOf(cp.noCartProductMsg)).getText();
+		ba.waitForVisibility(cp.noCartProductMsg);
+		return ba.getText(cp.noCartProductMsg);
 	}
 
 	public void clickESTLink() {
-		wait.until(ExpectedConditions.elementToBeClickable(cp.taxEstimateButton));
+		ba.waitForClickable(cp.taxEstimateButton);
 		ba.click(cp.taxEstimateButton);
 	}
 
 	public void selectCountryAndState(DataTable datatable) {
-		wait.until(ExpectedConditions.visibilityOf(cp.dropDownopt1));
+		ba.waitForVisibility(cp.dropDownopt1);
 		List<Map<String, String>> data = datatable.asMaps(String.class, String.class);
 		int countryIndex = Integer.parseInt(data.get(0).get("country"));
 		int stateIndex = Integer.parseInt(data.get(0).get("state"));
@@ -78,7 +80,7 @@ public class CartPageActions {
 	}
 
 	public void checkRadioButton() {
-		wait.until(ExpectedConditions.elementToBeClickable(cp.radioButton));
+		ba.waitForClickable(cp.radioButton);
 		if (!cp.radioButton.isSelected()) {
 			ba.click(cp.radioButton);
 		}
@@ -89,7 +91,8 @@ public class CartPageActions {
 	}
 
 	public String getSuccessETMsg() {
-		return wait.until(ExpectedConditions.visibilityOf(cp.successMsgET)).getText();
+		ba.waitForVisibility(cp.successMsgET);
+		return ba.getText(cp.successMsgET);
 	}
 	
 	 public List<String> storeAllProduct() {
