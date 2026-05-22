@@ -4,9 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 public class CheckoutPage extends BasePage {
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
@@ -17,11 +16,11 @@ public class CheckoutPage extends BasePage {
     @FindBy(id = "input-account-register")
     public WebElement registerAccountRadio;
 
-    // EmptyCartCheckout
+    // Empty Cart Checkout
     @FindBy(xpath = "//div[@id='entry_217825']//div[@class='icon svg-icon']")
     public WebElement svgNavbarCart;
 
-    // EmptyCartCheckout: sidebar checkout button
+    // Sidebar checkout button
     @FindBy(xpath = "//a[normalize-space()='Checkout']")
     public WebElement sidebarCheckoutBtn;
 
@@ -73,15 +72,14 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//button[@id='button-save']")
     public WebElement continueCheckoutBtn;
 
-
     @FindBy(xpath = "//button[@id='button-confirm']")
     public WebElement confirm;
 
     @FindBy(xpath = "//h1[normalize-space()='Your order has been placed!']")
     public WebElement orderConfirmationMessage;
 
-    //   REGISTER CHECKOUT registration form fields
-    
+    // ================= REGISTER CHECKOUT FIELDS =================
+
     @FindBy(xpath = "//input[@id='input-payment-firstname']")
     public WebElement regFirstNameInput;
 

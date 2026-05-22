@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,9 +17,14 @@ import com.pages.ProductPage;
 public class productPageAction extends BaseAction {
 
 	WebDriver driver = DriverClass.getDriver();
+
 	ProductPage pp = new ProductPage(driver);
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	private static Logger log = LogManager.getLogger(productPageAction.class);
+
+	WebDriverWait wait =
+			new WebDriverWait(driver, Duration.ofSeconds(20));
+
+	private static Logger log =
+			LogManager.getLogger(productPageAction.class);
 
 	public String getBrandName() {
 
@@ -37,7 +43,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to get brand name", e);
-			throw new RuntimeException("Failed to get brand name", e);
+
+			throw new RuntimeException(
+					"Failed to get brand name",
+					e);
 		}
 	}
 
@@ -49,20 +58,26 @@ public class productPageAction extends BaseAction {
 
 			waitForVisibility(pp.availability);
 
-			String availability = getText(pp.availability);
+			String availability =
+					getText(pp.availability);
 
-			log.info("In stock availability fetched successfully");
+			log.info(
+					"In stock availability fetched successfully");
 
 			return availability;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get in stock availability", e);
-			throw new RuntimeException("Failed to get in stock availability", e);
+			log.error(
+					"Failed to get in stock availability",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get in stock availability",
+					e);
 		}
 	}
 
-	
 	public String getOutStockAvailability() {
 
 		try {
@@ -71,16 +86,23 @@ public class productPageAction extends BaseAction {
 
 			waitForVisibility(pp.availabilityOutOfStock);
 
-			String availability = getText(pp.availabilityOutOfStock);
+			String availability =
+					getText(pp.availabilityOutOfStock);
 
-			log.info("Out of stock availability fetched successfully");
+			log.info(
+					"Out of stock availability fetched successfully");
 
 			return availability;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get out of stock availability", e);
-			throw new RuntimeException("Failed to get out of stock availability", e);
+			log.error(
+					"Failed to get out of stock availability",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get out of stock availability",
+					e);
 		}
 	}
 
@@ -101,7 +123,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to get product price", e);
-			throw new RuntimeException("Failed to get product price", e);
+
+			throw new RuntimeException(
+					"Failed to get product price",
+					e);
 		}
 	}
 
@@ -122,7 +147,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to get product title", e);
-			throw new RuntimeException("Failed to get product title", e);
+
+			throw new RuntimeException(
+					"Failed to get product title",
+					e);
 		}
 	}
 
@@ -141,7 +169,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to set quantity", e);
-			throw new RuntimeException("Failed to set quantity", e);
+
+			throw new RuntimeException(
+					"Failed to set quantity",
+					e);
 		}
 	}
 
@@ -153,7 +184,8 @@ public class productPageAction extends BaseAction {
 
 			waitForVisibility(pp.quantityBox);
 
-			String quantity = getAttribute(pp.quantityBox, "value");
+			String quantity =
+					getAttribute(pp.quantityBox, "value");
 
 			log.info("Quantity fetched successfully");
 
@@ -162,7 +194,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to get quantity", e);
-			throw new RuntimeException("Failed to get quantity", e);
+
+			throw new RuntimeException(
+					"Failed to get quantity",
+					e);
 		}
 	}
 
@@ -176,12 +211,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.questionForm);
 
-			log.info("Ask question button clicked successfully");
+			log.info(
+					"Ask question button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click ask question button", e);
-			throw new RuntimeException("Failed to click ask question button", e);
+			log.error(
+					"Failed to click ask question button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click ask question button",
+					e);
 		}
 	}
 
@@ -200,7 +241,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to enter name", e);
-			throw new RuntimeException("Failed to enter name", e);
+
+			throw new RuntimeException(
+					"Failed to enter name",
+					e);
 		}
 	}
 
@@ -219,7 +263,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to enter email", e);
-			throw new RuntimeException("Failed to enter email", e);
+
+			throw new RuntimeException(
+					"Failed to enter email",
+					e);
 		}
 	}
 
@@ -238,7 +285,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to enter subject", e);
-			throw new RuntimeException("Failed to enter subject", e);
+
+			throw new RuntimeException(
+					"Failed to enter subject",
+					e);
 		}
 	}
 
@@ -257,7 +307,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to enter message", e);
-			throw new RuntimeException("Failed to enter message", e);
+
+			throw new RuntimeException(
+					"Failed to enter message",
+					e);
 		}
 	}
 
@@ -271,12 +324,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.sendMessage);
 
-			log.info("Send message button clicked successfully");
+			log.info(
+					"Send message button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click send message button", e);
-			throw new RuntimeException("Failed to click send message button", e);
+			log.error(
+					"Failed to click send message button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click send message button",
+					e);
 		}
 	}
 
@@ -286,10 +345,17 @@ public class productPageAction extends BaseAction {
 
 			log.info("Getting alert message");
 
-			WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(
-					By.xpath("//div[@class='alert alert-success alert-notification w-50 alert-dismissible']")));
+			WebElement alert =
+					wait.until(
+							ExpectedConditions
+									.visibilityOfElementLocated(
+											By.xpath(
+													"//div[@class='alert alert-success alert-notification w-50 alert-dismissible']")));
 
-			String message = alert.getText().replace("×", "").trim();
+			String message =
+					alert.getText()
+							.replace("×", "")
+							.trim();
 
 			log.info("Alert message fetched successfully");
 
@@ -298,7 +364,10 @@ public class productPageAction extends BaseAction {
 		} catch (Exception e) {
 
 			log.error("Failed to get alert message", e);
-			throw new RuntimeException("Failed to get alert message", e);
+
+			throw new RuntimeException(
+					"Failed to get alert message",
+					e);
 		}
 	}
 
@@ -312,12 +381,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.addToCartBtn);
 
-			log.info("Add to cart button clicked successfully");
+			log.info(
+					"Add to cart button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click add to cart button", e);
-			throw new RuntimeException("Failed to click add to cart button", e);
+			log.error(
+					"Failed to click add to cart button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click add to cart button",
+					e);
 		}
 	}
 
@@ -331,12 +406,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.wishListBtn);
 
-			log.info("Wishlist button clicked successfully");
+			log.info(
+					"Wishlist button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click wishlist button", e);
-			throw new RuntimeException("Failed to click wishlist button", e);
+			log.error(
+					"Failed to click wishlist button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click wishlist button",
+					e);
 		}
 	}
 
@@ -348,16 +429,23 @@ public class productPageAction extends BaseAction {
 
 			waitForVisibility(pp.sizeRequired);
 
-			String message = getText(pp.sizeRequired);
+			String message =
+					getText(pp.sizeRequired);
 
-			log.info("Add to cart confirmation fetched successfully");
+			log.info(
+					"Add to cart confirmation fetched successfully");
 
 			return message;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get add to cart confirmation", e);
-			throw new RuntimeException("Failed to get add to cart confirmation", e);
+			log.error(
+					"Failed to get add to cart confirmation",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get add to cart confirmation",
+					e);
 		}
 	}
 
@@ -371,14 +459,20 @@ public class productPageAction extends BaseAction {
 
 			String message = getText(pp.wishList);
 
-			log.info("Wishlist confirmation fetched successfully");
+			log.info(
+					"Wishlist confirmation fetched successfully");
 
 			return message;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get wishlist confirmation", e);
-			throw new RuntimeException("Failed to get wishlist confirmation", e);
+			log.error(
+					"Failed to get wishlist confirmation",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get wishlist confirmation",
+					e);
 		}
 	}
 
@@ -392,12 +486,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.softwareBreadCrumb);
 
-			log.info("Software breadcrumb clicked successfully");
+			log.info(
+					"Software breadcrumb clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click software breadcrumb", e);
-			throw new RuntimeException("Failed to click software breadcrumb", e);
+			log.error(
+					"Failed to click software breadcrumb",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click software breadcrumb",
+					e);
 		}
 	}
 
@@ -409,16 +509,23 @@ public class productPageAction extends BaseAction {
 
 			waitForVisibility(pp.mandatoryFields);
 
-			String message = getText(pp.mandatoryFields);
+			String message =
+					getText(pp.mandatoryFields);
 
-			log.info("Mandatory fields message fetched successfully");
+			log.info(
+					"Mandatory fields message fetched successfully");
 
 			return message;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get mandatory fields message", e);
-			throw new RuntimeException("Failed to get mandatory fields message", e);
+			log.error(
+					"Failed to get mandatory fields message",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get mandatory fields message",
+					e);
 		}
 	}
 
@@ -432,12 +539,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.minusBtn);
 
-			log.info("Minus button clicked successfully");
+			log.info(
+					"Minus button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click minus button", e);
-			throw new RuntimeException("Failed to click minus button", e);
+			log.error(
+					"Failed to click minus button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click minus button",
+					e);
 		}
 	}
 
@@ -445,18 +558,40 @@ public class productPageAction extends BaseAction {
 
 		try {
 
-			log.info("Clicking add to cart popup button");
+			log.info(
+					"Clicking add to cart popup button");
 
-			waitForClickable(pp.addToCartButton);
+			wait.until(
+					ExpectedConditions.visibilityOf(
+							pp.addToCartBtn));
 
-			click(pp.addToCartButton);
+			JavascriptExecutor js =
+					(JavascriptExecutor) driver;
 
-			log.info("Add to cart popup button clicked successfully");
+			js.executeScript(
+					"arguments[0].scrollIntoView({block:'center'});",
+					pp.addToCartBtn);
+
+			wait.until(
+					ExpectedConditions.elementToBeClickable(
+							pp.addToCartBtn));
+
+			js.executeScript(
+					"arguments[0].click();",
+					pp.addToCartBtn);
+
+			log.info(
+					"Add to cart popup button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click add to cart popup button", e);
-			throw new RuntimeException("Failed to click add to cart popup button", e);
+			log.error(
+					"Failed to click add to cart popup button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click add to cart popup button",
+					e);
 		}
 	}
 
@@ -464,18 +599,25 @@ public class productPageAction extends BaseAction {
 
 		try {
 
-			log.info("Clicking view cart popup button");
+			log.info(
+					"Clicking view cart popup button");
 
 			waitForClickable(pp.viewCartPopUpButton);
 
 			click(pp.viewCartPopUpButton);
 
-			log.info("View cart popup button clicked successfully");
+			log.info(
+					"View cart popup button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click view cart popup button", e);
-			throw new RuntimeException("Failed to click view cart popup button", e);
+			log.error(
+					"Failed to click view cart popup button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click view cart popup button",
+					e);
 		}
 	}
 
@@ -489,12 +631,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.compareBtn);
 
-			log.info("Compare button clicked successfully");
+			log.info(
+					"Compare button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click compare button", e);
-			throw new RuntimeException("Failed to click compare button", e);
+			log.error(
+					"Failed to click compare button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click compare button",
+					e);
 		}
 	}
 
@@ -502,20 +650,29 @@ public class productPageAction extends BaseAction {
 
 		try {
 
-			log.info("Getting comparison confirmation message");
+			log.info(
+					"Getting comparison confirmation message");
 
-			waitForVisibility(pp.productComparisonMessage);
+			waitForVisibility(
+					pp.productComparisonMessage);
 
-			String message = getText(pp.productComparisonMessage);
+			String message =
+					getText(pp.productComparisonMessage);
 
-			log.info("Comparison confirmation fetched successfully");
+			log.info(
+					"Comparison confirmation fetched successfully");
 
 			return message;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get comparison confirmation message", e);
-			throw new RuntimeException("Failed to get comparison confirmation message", e);
+			log.error(
+					"Failed to get comparison confirmation message",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get comparison confirmation message",
+					e);
 		}
 	}
 
@@ -529,12 +686,18 @@ public class productPageAction extends BaseAction {
 
 			click(pp.cartButton);
 
-			log.info("Cart button clicked successfully");
+			log.info(
+					"Cart button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click cart button", e);
-			throw new RuntimeException("Failed to click cart button", e);
+			log.error(
+					"Failed to click cart button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click cart button",
+					e);
 		}
 	}
 
@@ -546,16 +709,25 @@ public class productPageAction extends BaseAction {
 
 			waitForVisibility(pp.quantityField);
 
-			String quantity = getAttribute(pp.quantityField, "value");
+			String quantity =
+					getAttribute(
+							pp.quantityField,
+							"value");
 
-			log.info("Quantity in cart fetched successfully");
+			log.info(
+					"Quantity in cart fetched successfully");
 
 			return quantity;
 
 		} catch (Exception e) {
 
-			log.error("Failed to get quantity in cart", e);
-			throw new RuntimeException("Failed to get quantity in cart", e);
+			log.error(
+					"Failed to get quantity in cart",
+					e);
+
+			throw new RuntimeException(
+					"Failed to get quantity in cart",
+					e);
 		}
 	}
 
@@ -563,18 +735,25 @@ public class productPageAction extends BaseAction {
 
 		try {
 
-			log.info("Clicking view compare button");
+			log.info(
+					"Clicking view compare button");
 
 			waitForClickable(pp.viewCompare);
 
 			click(pp.viewCompare);
 
-			log.info("View compare button clicked successfully");
+			log.info(
+					"View compare button clicked successfully");
 
 		} catch (Exception e) {
 
-			log.error("Failed to click view compare button", e);
-			throw new RuntimeException("Failed to click view compare button", e);
+			log.error(
+					"Failed to click view compare button",
+					e);
+
+			throw new RuntimeException(
+					"Failed to click view compare button",
+					e);
 		}
 	}
 }

@@ -18,7 +18,8 @@ import io.cucumber.java.Scenario;
 
 public class Hooks {
 
-    private static final Logger log = LogManager.getLogger(Hooks.class);
+    private static final Logger log =
+            LogManager.getLogger(Hooks.class);
 
     @Before
     public void setUp() {
@@ -28,6 +29,19 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario) {
+
+
+        try {
+
+            // CHECK DRIVER NULL
+            if (scenario.isFailed()
+                    && DriverClass.getDriver() != null) {
+
+                // CREATE SCREENSHOTS FOLDER
+                File screenshotFolder =
+                        new File("screenshots");
+
+                if (!screenshotFolder.exists()) {
 
         if (DriverClass.getDriver() == null) {
             log.error("Driver is NULL. Skipping screenshot and quit.");
@@ -47,14 +61,17 @@ public class Hooks {
 
                 destinationFile.getParentFile().mkdirs();
 
-                FileUtils.copyFile(screenshot, destinationFile);
+
+                    screenshotFolder.mkdirs();
+                }
 
                 byte[] screenshotBytes = ((TakesScreenshot) DriverClass.getDriver())
                         .getScreenshotAs(OutputType.BYTES);
 
                 scenario.attach(screenshotBytes, "image/png", "Failure Screenshot");
 
-                log.error("Scenario Failed : " + scenario.getName());
+                log.error("Scenario Failed : "
+                        + scenario.getName());
 
             } catch (IOException e) {
                 log.error("Screenshot capture failed : " + e.getMessage());

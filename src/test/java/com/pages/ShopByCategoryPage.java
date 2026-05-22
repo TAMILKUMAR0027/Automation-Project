@@ -5,13 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ShopByCategoryPage extends BasePage {
+
     public ShopByCategoryPage(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(xpath = "//a[contains(.,'Shop by Category')]")
     public WebElement shopByCategoryMenu;
-    
+
     @FindBy(xpath = "//span[@class='title' and normalize-space()='Desktops and Monitors']")
     public WebElement desktopsCategory;
 
@@ -20,7 +21,7 @@ public class ShopByCategoryPage extends BasePage {
 
     @FindBy(linkText = "Phone, Tablets & Ipod")
     public WebElement tablets;
-    
+
     @FindBy(linkText = "Laptops & Notebooks")
     public WebElement laptops;
 }

@@ -1,6 +1,7 @@
 package com.driver;
 
 import com.utils.ConfigReader;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +19,8 @@ import java.time.Duration;
 
 public class DriverClass {
 
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver =
+            new ThreadLocal<>();
 
     private static final Logger logger =
             LogManager.getLogger(DriverClass.class);
@@ -29,85 +31,124 @@ public class DriverClass {
 
     public static void initDriver() {
 
-        String browser =
-                ConfigReader.getProperties().getProperty("browser");
+        try {
 
-        String headlessValue =
-                ConfigReader.getProperties().getProperty("headless");
+            String browser =
+                    ConfigReader.getProperties()
+                            .getProperty("browser");
 
-        boolean headless =
-                headlessValue != null &&
-                headlessValue.equalsIgnoreCase("true");
+            String headlessValue =
+                    ConfigReader.getProperties()
+                            .getProperty("headless");
 
-        logger.info("Initializing Browser : " + browser);
-        logger.info("Headless Mode : " + headless);
+            boolean headless =
+                    headlessValue != null
+                    && headlessValue.equalsIgnoreCase("true");
 
-        if (browser.equalsIgnoreCase("chrome")) {
+            logger.info("Initializing Browser : " + browser);
 
-            WebDriverManager.chromedriver().setup();
+            logger.info("Headless Mode : " + headless);
 
-            ChromeOptions options = new ChromeOptions();
+            // CHROME
+            if (browser.equalsIgnoreCase("chrome")) {
 
-            if (headless) {
+                WebDriverManager.chromedriver().setup();
 
-                options.addArguments("--headless=new");
-                options.addArguments("--window-size=1920,1080");
-                options.addArguments("--disable-notifications");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-dev-shm-usage");
-            } else {
+                ChromeOptions options =
+                        new ChromeOptions();
 
-                options.addArguments("--start-maximized");
+                if (headless) {
+
+                    options.addArguments("--headless=new");
+                    options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--disable-notifications");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+
+                } else {
+
+                    options.addArguments("--start-maximized");
+                }
+
+                driver.set(new ChromeDriver(options));
+
+                logger.info("Chrome Browser Launched Successfully");
             }
+
+
+            // FIREFOX
+            else if (browser.equalsIgnoreCase("firefox")) {
 
             options.addArguments("--start-maximized");
             driver.set(new ChromeDriver(options));
 
-            logger.info("Chrome Browser Launched Successfully");
 
-        } else if (browser.equalsIgnoreCase("firefox")) {
+                WebDriverManager.firefoxdriver().setup();
 
-            WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions options =
+                        new FirefoxOptions();
 
-            FirefoxOptions options = new FirefoxOptions();
+                if (headless) {
 
-            if (headless) {
+                    options.addArguments("--headless");
+                    options.addArguments("--width=1920");
+                    options.addArguments("--height=1080");
+                }
 
-                options.addArguments("--headless");
-                options.addArguments("--width=1920");
-                options.addArguments("--height=1080");
+                driver.set(new FirefoxDriver(options));
+
+                logger.info("Firefox Browser Launched Successfully");
             }
 
-            driver.set(new FirefoxDriver(options));
+            // INVALID BROWSER
+            else {
 
-            logger.info("Firefox Browser Launched Successfully");
+                logger.error("Invalid Browser Name : "
+                        + browser);
 
-        } else {
+                throw new RuntimeException(
+                        "Invalid Browser Name : "
+                        + browser);
+            }
 
-            logger.error("Invalid Browser Name : " + browser);
+            getDriver().manage().timeouts()
+                    .implicitlyWait(Duration.ofSeconds(10));
 
-            throw new RuntimeException(
-                    "Invalid Browser Name : " + browser);
-        }
+            if (!headless) {
 
-        getDriver().manage().timeouts()
-                .implicitlyWait(Duration.ofSeconds(10));
+                getDriver().manage().window().maximize();
+            }
 
-        if (!headless) {
+            logger.info("Browser launched successfully");
 
-            getDriver().manage().window().maximize();
+        } catch (Exception e) {
+
+            logger.error("Driver Initialization Failed");
+
+            e.printStackTrace();
+
+            throw e;
         }
     }
 
     public static void quitDriver() {
 
-        if (getDriver() != null) {
+        try {
 
-            logger.info("Closing Browser Session");
+            if (getDriver() != null) {
 
-            getDriver().quit();
+                logger.info("Closing Browser Session");
 
-            driver.remove();
+                getDriver().quit();
+
+                driver.remove();
+            }
+
+        } catch (Exception e) {
+
+            logger.error("Error while closing browser");
+
+            e.printStackTrace();
         }
     }
 }

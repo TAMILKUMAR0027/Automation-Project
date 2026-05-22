@@ -16,295 +16,360 @@ import com.pages.FilterPage;
 
 public class FilterPageAction extends BaseAction {
 
-    WebDriver driver = DriverClass.getDriver();
-    FilterPage fp = new FilterPage(driver);
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	WebDriver driver = DriverClass.getDriver();
 
-    private static Logger log = LogManager.getLogger(FilterPageAction.class);
+	FilterPage fp = new FilterPage(driver);
 
-    public void clickManufacture() {
+	WebDriverWait wait = new WebDriverWait(
+			driver,
+			Duration.ofSeconds(15));
 
-        try {
+	private static Logger log =
+			LogManager.getLogger(FilterPageAction.class);
 
-            log.info("Clicking manufacturer filter");
+	public void clickManufacture() {
 
-            waitForClickable(fp.appleBtn);
-            click(fp.appleBtn);
+		try {
 
-            log.info("Manufacturer filter clicked successfully");
+			log.info("Clicking manufacturer filter");
 
-        } catch (Exception e) {
+			waitForClickable(fp.appleBtn);
 
-            log.error("Failed to click manufacturer", e);
-            throw new RuntimeException("Failed to click manufacturer", e);
-        }
-    }
+			click(fp.appleBtn);
 
-    public void clickProduct() {
+			log.info("Manufacturer filter clicked successfully");
 
-        try {
+		} catch (Exception e) {
 
-            log.info("Clicking iPod Touch product");
+			log.error("Failed to click manufacturer", e);
 
-            waitForClickable(fp.iPodTouchProduct);
-            click(fp.iPodTouchProduct);
+			throw new RuntimeException(
+					"Failed to click manufacturer",
+					e);
+		}
+	}
 
-            log.info("Product clicked successfully");
+	public void clickProduct() {
 
-        } catch (Exception e) {
+		try {
 
-            log.error("Failed to click product", e);
-            throw new RuntimeException("Failed to click product", e);
-        }
-    }
+			log.info("Clicking iPod Touch product");
 
-    public void selectDropdownByVisibleText(String value) {
+			waitForClickable(fp.iPodTouchProduct);
 
-        try {
+			click(fp.iPodTouchProduct);
 
-            log.info("Selecting dropdown value : " + value);
+			log.info("Product clicked successfully");
 
-            waitForClickable(fp.dropdownBtn);
+		} catch (Exception e) {
 
-            Select select = new Select(fp.dropdownBtn);
-            select.selectByVisibleText(value);
+			log.error("Failed to click product", e);
 
-            log.info("Dropdown value selected successfully");
+			throw new RuntimeException(
+					"Failed to click product",
+					e);
+		}
+	}
 
-        } catch (Exception e) {
+	public void selectDropdownByVisibleText(String value) {
 
-            log.error("Dropdown selection failed", e);
-            throw new RuntimeException("Dropdown selection failed", e);
-        }
-    }
+		try {
 
-    public List<String> storeAllProducts() {
+			log.info("Selecting dropdown value : " + value);
 
-        try {
+			waitForClickable(fp.dropdownBtn);
 
-            log.info("Fetching all product names");
+			Select select = new Select(fp.dropdownBtn);
 
-            wait.until(ExpectedConditions.visibilityOfAllElements(fp.allProducts));
+			select.selectByVisibleText(value);
 
-            List<String> products = fp.getProductNames();
+			log.info("Dropdown value selected successfully");
 
-            log.info("Products fetched successfully");
+		} catch (Exception e) {
 
-            return products;
+			log.error("Dropdown selection failed", e);
 
-        } catch (Exception e) {
+			throw new RuntimeException(
+					"Dropdown selection failed",
+					e);
+		}
+	}
 
-            log.error("Failed to fetch product names", e);
-            throw new RuntimeException("Failed to fetch product names", e);
-        }
-    }
+	public List<String> storeAllProducts() {
 
-    public int getDisplayedProductCount() {
+		try {
 
-        try {
+			log.info("Fetching all product names");
 
-            log.info("Getting displayed product count");
+			wait.until(
+					ExpectedConditions.visibilityOfAllElements(
+							fp.allProducts));
 
-            wait.until(ExpectedConditions.visibilityOfAllElements(fp.allProducts));
+			List<String> products = fp.getProductNames();
 
-            int count = fp.allProducts.size();
+			log.info("Products fetched successfully");
 
-            log.info("Displayed product count : " + count);
+			return products;
 
-            return count;
+		} catch (Exception e) {
 
-        } catch (Exception e) {
+			log.error("Failed to fetch product names", e);
 
-            log.error("Failed to get product count", e);
-            throw new RuntimeException("Failed to get product count", e);
-        }
-    }
+			throw new RuntimeException(
+					"Failed to fetch product names",
+					e);
+		}
+	}
 
-    public void clickAvailability() {
+	public int getDisplayedProductCount() {
 
-        try {
+		try {
 
-            log.info("Clicking availability filter");
+			log.info("Getting displayed product count");
 
-            waitForClickable(fp.inStockAvailabilityOption);
-            click(fp.inStockAvailabilityOption);
+			wait.until(
+					ExpectedConditions.visibilityOfAllElements(
+							fp.allProducts));
 
-            log.info("Availability filter clicked successfully");
+			int count = fp.allProducts.size();
 
-        } catch (Exception e) {
+			log.info("Displayed product count : " + count);
 
-            log.error("Failed to click availability filter", e);
-            throw new RuntimeException("Failed to click availability filter", e);
-        }
-    }
+			return count;
 
-    public void clickCanonProduct() {
+		} catch (Exception e) {
 
-        try {
+			log.error("Failed to get product count", e);
 
-            log.info("Clicking Canon product");
+			throw new RuntimeException(
+					"Failed to get product count",
+					e);
+		}
+	}
 
-            waitForClickable(fp.canonProduct);
-            click(fp.canonProduct);
+	public void clickAvailability() {
 
-            log.info("Canon product clicked successfully");
+		try {
 
-        } catch (Exception e) {
+			log.info("Clicking availability filter");
 
-            log.error("Failed to click Canon product", e);
-            throw new RuntimeException("Failed to click Canon product", e);
-        }
-    }
+			waitForClickable(fp.inStockAvailabilityOption);
 
-    public void clickOutofStockOption() {
+			click(fp.inStockAvailabilityOption);
 
-        try {
+			log.info("Availability filter clicked successfully");
 
-            log.info("Clicking Out Of Stock filter");
+		} catch (Exception e) {
 
-            waitForClickable(fp.OutOfStockAvailabilityOption);
-            click(fp.OutOfStockAvailabilityOption);
+			log.error("Failed to click availability filter", e);
 
-            log.info("Out Of Stock filter clicked successfully");
+			throw new RuntimeException(
+					"Failed to click availability filter",
+					e);
+		}
+	}
 
-        } catch (Exception e) {
+	public void clickCanonProduct() {
 
-            log.error("Failed to click Out Of Stock filter", e);
-            throw new RuntimeException("Failed to click Out Of Stock filter", e);
-        }
-    }
+		try {
 
-    public void clickHTCTouchHD() {
+			log.info("Clicking Canon product");
 
-        try {
+			waitForClickable(fp.canonProduct);
 
-            log.info("Clicking HTC Touch HD product");
+			click(fp.canonProduct);
 
-            waitForClickable(fp.HTCTouchHDProduct);
-            click(fp.HTCTouchHDProduct);
+			log.info("Canon product clicked successfully");
 
-            log.info("HTC Touch HD clicked successfully");
+		} catch (Exception e) {
 
-        } catch (Exception e) {
+			log.error("Failed to click Canon product", e);
 
-            log.error("Failed to click HTC Touch HD", e);
-            throw new RuntimeException("Failed to click HTC Touch HD", e);
-        }
-    }
+			throw new RuntimeException(
+					"Failed to click Canon product",
+					e);
+		}
+	}
 
-    public void clickAvailabilitys() {
+	public void clickOutofStockOption() {
 
-        try {
+		try {
 
-            log.info("Clicking in stock filter");
+			log.info("Clicking Out Of Stock filter");
 
-            waitForClickable(fp.inStockFilter);
-            click(fp.inStockFilter);
+			waitForClickable(fp.OutOfStockAvailabilityOption);
 
-            log.info("In stock filter clicked successfully");
+			click(fp.OutOfStockAvailabilityOption);
 
-        } catch (Exception e) {
+			log.info("Out Of Stock filter clicked successfully");
 
-            log.error("Failed to click in stock filter", e);
-            throw new RuntimeException("Failed to click in stock filter", e);
-        }
-    }
+		} catch (Exception e) {
 
-    public void clickHp() {
+			log.error("Failed to click Out Of Stock filter", e);
 
-        try {
+			throw new RuntimeException(
+					"Failed to click Out Of Stock filter",
+					e);
+		}
+	}
 
-            log.info("Clicking HP product");
+	public void clickHTCTouchHD() {
 
-            waitForClickable(fp.hpProduct);
-            click(fp.hpProduct);
+		try {
 
-            log.info("HP product clicked successfully");
+			log.info("Clicking HTC Touch HD product");
 
-        } catch (Exception e) {
+			waitForClickable(fp.HTCTouchHDProduct);
 
-            log.error("Failed to click HP product", e);
-            throw new RuntimeException("Failed to click HP product", e);
-        }
-    }
+			click(fp.HTCTouchHDProduct);
 
-    public void moveSlider() {
+			log.info("HTC Touch HD clicked successfully");
 
-        try {
+		} catch (Exception e) {
 
-            log.info("Moving slider");
+			log.error("Failed to click HTC Touch HD", e);
 
-            waitForVisibility(fp.slider);
+			throw new RuntimeException(
+					"Failed to click HTC Touch HD",
+					e);
+		}
+	}
 
-            Actions act = new Actions(driver);
-            act.dragAndDropBy(fp.slider, -10, 0).perform();
+	public void clickAvailabilitys() {
 
-            log.info("Slider moved successfully");
+		try {
 
-        } catch (Exception e) {
+			log.info("Clicking In Stock filter");
 
-            log.error("Failed to move slider", e);
-            throw new RuntimeException("Failed to move slider", e);
-        }
-    }
+			waitForClickable(fp.inStockFilter);
 
-    public String getValue() {
+			click(fp.inStockFilter);
 
-        try {
+			log.info("In Stock filter clicked successfully");
 
-            log.info("Getting slider value");
+		} catch (Exception e) {
 
-            String value = wait.until(ExpectedConditions.visibilityOf(fp.input))
-                    .getAttribute("value");
+			log.error("Failed to click In Stock filter", e);
 
-            log.info("Slider value : " + value);
+			throw new RuntimeException(
+					"Failed to click In Stock filter",
+					e);
+		}
+	}
 
-            return value;
+	public void clickHp() {
 
-        } catch (Exception e) {
+		try {
 
-            log.error("Failed to get slider value", e);
-            throw new RuntimeException("Failed to get slider value", e);
-        }
-    }
+			log.info("Clicking HP product");
 
-    public List<String> getItems() {
+			waitForClickable(fp.hpProduct);
 
-        try {
+			click(fp.hpProduct);
 
-            log.info("Fetching items list");
+			log.info("HP product clicked successfully");
 
-            List<String> items = fp.getProductNames();
+		} catch (Exception e) {
 
-            log.info("Items fetched successfully");
+			log.error("Failed to click HP product", e);
 
-            return items;
+			throw new RuntimeException(
+					"Failed to click HP product",
+					e);
+		}
+	}
 
-        } catch (Exception e) {
+	public void moveSlider() {
 
-            log.error("Failed to fetch items", e);
-            throw new RuntimeException("Failed to fetch items", e);
-        }
-    }
+		try {
 
-    public String getSoftwareTitle() {
+			log.info("Moving slider");
 
-        try {
+			waitForVisibility(fp.slider);
 
-            log.info("Getting software title");
+			Actions act = new Actions(driver);
 
-            waitForVisibility(fp.softwaretTitle);
+			act.dragAndDropBy(fp.slider, -10, 0).perform();
 
-            String title = getText(fp.softwaretTitle);
+			log.info("Slider moved successfully");
 
-            log.info("Software title fetched successfully");
+		} catch (Exception e) {
 
-            return title;
+			log.error("Failed to move slider", e);
 
-        } catch (Exception e) {
+			throw new RuntimeException(
+					"Failed to move slider",
+					e);
+		}
+	}
 
-            log.error("Failed to get software title", e);
-            throw new RuntimeException("Failed to get software title", e);
-        }
-    }
+	public String getValue() {
+
+		try {
+
+			log.info("Getting slider value");
+
+			String value = wait.until(
+					ExpectedConditions.visibilityOf(fp.input))
+					.getAttribute("value");
+
+			log.info("Slider value : " + value);
+
+			return value;
+
+		} catch (Exception e) {
+
+			log.error("Failed to get slider value", e);
+
+			throw new RuntimeException(
+					"Failed to get slider value",
+					e);
+		}
+	}
+
+	public List<String> getItems() {
+
+		try {
+
+			log.info("Fetching items list");
+
+			List<String> items = fp.getProductNames();
+
+			log.info("Items fetched successfully");
+
+			return items;
+
+		} catch (Exception e) {
+
+			log.error("Failed to fetch items", e);
+
+			throw new RuntimeException(
+					"Failed to fetch items",
+					e);
+		}
+	}
+
+	public String getSoftwareTitle() {
+
+		try {
+
+			log.info("Getting software title");
+
+			waitForVisibility(fp.softwaretTitle);
+
+			String title = getText(fp.softwaretTitle);
+
+			log.info("Software title fetched successfully");
+
+			return title;
+
+		} catch (Exception e) {
+
+			log.error("Failed to get software title", e);
+
+			throw new RuntimeException(
+					"Failed to get software title",
+					e);
+		}
+	}
 }

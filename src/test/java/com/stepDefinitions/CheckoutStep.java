@@ -4,13 +4,11 @@ import com.actions.CheckoutAction;
 import com.actions.FilterPageAction;
 import com.actions.SearchAction;
 import com.actions.productPageAction;
-
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import org.testng.Assert;
 
 import java.util.List;
