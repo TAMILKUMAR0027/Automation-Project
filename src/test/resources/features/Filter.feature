@@ -1,5 +1,5 @@
-@smoke
-Feature: TamilKumar_13_05_2026_Product Filter Functionality
+@Tamil @smoke
+Feature: TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026
 
   Background:
     Given User is on Home page

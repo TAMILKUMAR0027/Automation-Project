@@ -6,14 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class ShopByCategoryPage extends BasePage {
 
- public ShopByCategoryPage(WebDriver driver) {
-
+    public ShopByCategoryPage(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(xpath = "//a[contains(.,'Shop by Category')]")
     public WebElement shopByCategoryMenu;
-     
+
     @FindBy(xpath = "//span[@class='title' and normalize-space()='Desktops and Monitors']")
     public WebElement desktopsCategory;
 

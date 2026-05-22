@@ -1,6 +1,7 @@
 package com.hooks;
 
 import java.io.File;
+
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
@@ -22,9 +23,7 @@ public class Hooks {
 
     @Before
     public void setUp() {
-
-        DriverClass.initDriver();
-
+    	DriverClass.initDriver();
         log.info("Browser launched successfully");
     }
 
