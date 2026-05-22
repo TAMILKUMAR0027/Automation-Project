@@ -36,12 +36,12 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//div[@class='buttons d-flex']//a[text()='Checkout']")
     public WebElement cartPageCheckoutBtn;
 
-    // Product page checkout button
     @FindBy(xpath = "//div[@class='entry-content content-button d-md-none d-lg-block order-1 order-md-0 order-lg-1']/child::button")
     public WebElement productPageCheckoutBtn1;
 
-    // ================= LOGIN CHECKOUT BILLING ADDRESS =================
-
+    // ═══════════════════════════════════════════════
+    //   LOGIN CHECKOUT billing address fields
+   
     @FindBy(xpath = "//input[@id='input-payment-firstname']")
     public WebElement firstNameInput;
 

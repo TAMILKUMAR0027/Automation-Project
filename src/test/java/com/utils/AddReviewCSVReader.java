@@ -7,7 +7,7 @@ import com.opencsv.CSVReader;
 public class AddReviewCSVReader {
 		
 
-public static String getData(  int row, int column) {
+public static String getData1(  int row, int column) {
 
  try {
 

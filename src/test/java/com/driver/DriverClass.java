@@ -26,7 +26,6 @@ public class DriverClass {
             LogManager.getLogger(DriverClass.class);
 
     public static WebDriver getDriver() {
-
         return driver.get();
     }
 
@@ -76,8 +75,13 @@ public class DriverClass {
                 logger.info("Chrome Browser Launched Successfully");
             }
 
+
             // FIREFOX
             else if (browser.equalsIgnoreCase("firefox")) {
+
+            options.addArguments("--start-maximized");
+            driver.set(new ChromeDriver(options));
+
 
                 WebDriverManager.firefoxdriver().setup();
 

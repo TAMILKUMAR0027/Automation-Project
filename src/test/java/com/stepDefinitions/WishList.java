@@ -24,7 +24,6 @@ public class WishList {
     LaunchPages     lp  = new LaunchPages(DriverClass.getDriver());
     WishListActions wla = new WishListActions();
 
-    // ─── Background ───────────────────────────────────────────────────────────
 
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
@@ -59,7 +58,7 @@ public class WishList {
         logger.info("Login successful");
     }
 
-    // ─── Navigation ───────────────────────────────────────────────────────────
+
 
     @And("the user navigates to the Top Products section")
     public void the_user_navigates_to_the_top_products_section() {
@@ -79,13 +78,8 @@ public class WishList {
         logger.info("Navigated to wishlist page via account menu");
     }
 
-    // ─── Scenario: Add single product (hover + wishlist icon) ─────────────────
 
-    /**
-     * CSV key (e.g. "AddSingleProduct") is passed in.
-     * Real product name is resolved from the CSV before acting.
-     */
-    @When("the user hovers over the product {string} and clicks the wishlist button")
+    @And("the user hovers over the product {string} and clicks the wishlist button")
     public void the_user_hovers_over_the_product_and_clicks_the_wishlist_button(String csvScenario) {
         Map<String, String> data = CsvDataProvider.getFirstRow(CSV_PATH, csvScenario);
         String productName = data.get("productName");
@@ -94,17 +88,7 @@ public class WishList {
         logger.info("Hovered and clicked wishlist button for: " + productName);
     }
 
-    // ─── Scenario: Add multiple products — fully CSV-driven ───────────────────
-
-    /**
-     * Reads ALL rows whose scenario column matches "AddMultipleProduct1"
-     * and "AddMultipleProduct2" from the CSV — no DataTable in the feature file.
-     *
-     * CSV rows used:
-     *   AddMultipleProduct1 → Apple Cinema 30
-     *   AddMultipleProduct2 → iPod Nano
-     */
-    @When("the user adds multiple products to the wishlist from csv")
+    @And("the user adds multiple products to the wishlist from csv")
     public void the_user_adds_multiple_products_to_the_wishlist_from_csv() {
         List<Map<String, String>> rows = CsvDataProvider.getData(CSV_PATH, "AddMultipleProduct1");
         rows.addAll(CsvDataProvider.getData(CSV_PATH, "AddMultipleProduct2"));
@@ -116,9 +100,7 @@ public class WishList {
         }
     }
 
-    // ─── Scenario: Add product via search ─────────────────────────────────────
-
-    @When("the user searches for {string} and presses Enter")
+    @And("the user searches for {string} and presses Enter")
     public void the_user_searches_for_and_presses_enter(String searchTerm) {
         wla.searchForProduct(searchTerm);
         logger.info("Searched for: " + searchTerm);
@@ -136,11 +118,7 @@ public class WishList {
         logger.info("Clicked heart/wishlist button on product detail page");
     }
 
-    // ─── Success notifications ─────────────────────────────────────────────────
 
-    /**
-     * No-param version — used by: Add single, Add multiple, Add via search.
-     */
     @Then("a wishlist success notification should be displayed")
     public void a_wishlist_success_notification_should_be_displayed() {
         String msg = wla.getWishlistSuccessMessageGeneric();
@@ -158,7 +136,7 @@ public class WishList {
         logger.info("Clicked wishlist link from popup");
     }
 
-    // ─── Redirect assertion ───────────────────────────────────────────────────
+
 
     @Then("the user should be redirected to the {string} page")
     public void the_user_should_be_redirected_to_the_page(String pageName) {
@@ -173,14 +151,7 @@ public class WishList {
         );
     }
 
-    // ─── Wishlist content assertions ──────────────────────────────────────────
 
-    /**
-     * Used by: Add single product & Add via search.
-     * Resolves expected product from CSV using the scenario's tag context.
-     * Both "AddSingleProduct" and "AddSearchProduct" rows share this step,
-     * so we check that ANY CSV-known product is present in the wishlist.
-     */
     @And("the wishlist product details should match the selected product")
     public void the_wishlist_product_details_should_match_the_selected_product() {
         List<String> allProducts = wla.getAllWishlistProductNames();
@@ -204,7 +175,7 @@ public class WishList {
                         "All products: " + allProducts
         );
 
-        // Every row must have a non-empty price
+
         for (int i = 0; i < allPrices.size(); i++) {
             String price       = allPrices.get(i);
             String productName = i < allProducts.size() ? allProducts.get(i) : "row " + (i + 1);
@@ -217,11 +188,7 @@ public class WishList {
         logger.info("Product detail validation passed. Found in: " + allProducts);
     }
 
-    /**
-     * Used by: Add multiple products scenario.
-     * Reads expected products from CSV (AddMultipleProduct1 + AddMultipleProduct2)
-     * and asserts each is present in the wishlist table.
-     */
+
     @Then("all selected products should be displayed in the wishlist page")
     public void all_selected_products_should_be_displayed_in_the_wishlist_page() {
         List<String> allProducts = wla.getAllWishlistProductNames();
@@ -260,12 +227,8 @@ public class WishList {
         logger.info("Multi-product validation passed. All products and prices verified.");
     }
 
-    // ─── Remove steps ─────────────────────────────────────────────────────────
 
-    /**
-     * Single remove — CSV-driven: "RemoveProduct1" key → resolves "iPod Nano".
-     */
-    @When("the user removes the product {string} from the wishlist")
+    @And("the user removes the product {string} from the wishlist")
     public void the_user_removes_the_product_from_the_wishlist(String csvScenario) {
         Map<String, String> data = CsvDataProvider.getFirstRow(CSV_PATH, csvScenario);
         String productName = data.get("productName");
@@ -282,14 +245,8 @@ public class WishList {
         logger.info("Removed product: " + productName);
     }
 
-    /**
-     * Multiple remove — DataTable-driven (no CSV).
-     * Feature table format:
-     *   | ProductName     |
-     *   | Apple Cinema 30 |
-     *   | iMac            |
-     */
-    @When("the user removes the following products from the wishlist")
+
+    @And("the user removes the following products from the wishlist")
     public void the_user_removes_the_following_products_from_the_wishlist(DataTable dataTable) {
         // asMaps skips the header row automatically
         List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
