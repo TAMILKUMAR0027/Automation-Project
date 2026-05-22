@@ -21,11 +21,11 @@ public class FilterPage extends BasePage {
     public WebElement inStockAvailabilityOption;
     @FindBy(xpath = "//label[@for='mz-fss-0-5']")
     public WebElement OutOfStockAvailabilityOption;
-    @FindBy(xpath = "//div[@id='entry_216826']//span[text()='In Stock']")
+    @FindBy(xpath = "//span[text()='In Stock']")
     public WebElement inStockFilter;
-    @FindBy(xpath = "//div[@class='product-thumb']//h4")
+    @FindBy(xpath = "//div[@class='product-thumb']/descendant::h4")
     public List<WebElement> allProducts;
-    @FindBy(xpath = "//div[@class='carousel-item active']//img[@title='iPod Touch']")
+    @FindBy(xpath = "//div[@class='carousel-item active']/child::img[@title='iPod Touch']")
     public WebElement iPodTouchProduct;
     @FindBy(xpath = "//a[@id='mz-product-grid-image-51-212408']//div[@class='carousel-item active']//img[@title='Canon EOS 5D']")
     public WebElement canonProduct;

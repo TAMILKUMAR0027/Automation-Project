@@ -26,7 +26,7 @@ public class ProductPage extends BasePage {
 	@FindBy(xpath = "//h1[@class='h3']")
 	public WebElement productTitle;
 
-	@FindBy(xpath = "//input[@name='quantity']")
+	@FindBy(xpath = "(//div/input[@class='form-control text-center border-light remove-spin-button'])[2]")
 	public WebElement quantityBox;
 
 	@FindBy(xpath = "//a[@aria-label='Ask Question']")
@@ -50,15 +50,17 @@ public class ProductPage extends BasePage {
 	public By submissionConfirmation = By.xpath("//div[contains(@class,'alert') and contains(.,'successfully sent')]");
 
 
-	@FindBy(xpath = "//button[contains(.,'Add to Cart')]")
+	@FindBy(xpath = "//div[@id='entry_216842']//button[@title='Add to Cart'][normalize-space()='Add to Cart']")
 	public WebElement addToCartBtn;
-
 	@FindBy(xpath = "//div[@class='entry-content content-button d-md-none d-lg-block order-1 order-md-0 order-lg-1']/child::button")
 	public WebElement addToCartButton;
 
+	//@FindBy(xpath = "//a[@class='btn btn-primary btn-block']")
 
 
-	@FindBy(xpath = "//i[contains(@class,'fa-heart')]")
+
+
+	@FindBy(xpath = "(//i[contains(@class,'fa-heart')])[3]")
 	public WebElement wishListBtn;
 
 	@FindBy(xpath = "//a[contains(text(),'wish list')]")
@@ -68,10 +70,10 @@ public class ProductPage extends BasePage {
 	@FindBy(xpath = "//div[contains(@class,'text-danger') and contains(text(),'Size required')]")
 	public WebElement sizeRequired;
 
-	@FindBy(xpath = "//i[contains(@class,'fa-minus-circle')]")
+	@FindBy(xpath = "(//i[contains(@class,'fa-minus-circle')])[2]")
 	public WebElement minusBtn;
 
-	@FindBy(xpath = "//input[contains(@name,'quantity')]")
+	@FindBy(xpath = "(//div/child::input[@class='form-control'])[1]")
 	public WebElement quantityField;
 
 
@@ -94,7 +96,7 @@ public class ProductPage extends BasePage {
 	@FindBy(xpath = "//p[contains(text(),'Success: You have added')]")
 	public WebElement productComparisonMessage;
 
-	@FindBy(xpath = "//a[contains(@class,'btn-secondary') and contains(text(),'Product Comparison')]")
+	@FindBy(xpath = "//a[@class='btn btn-secondary btn-block']")
 	public WebElement viewCompare;
 
 }
