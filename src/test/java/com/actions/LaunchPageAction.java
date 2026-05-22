@@ -13,6 +13,7 @@ import com.driver.DriverClass;
 import com.pages.LaunchPages;
 
 public class LaunchPageAction extends BaseAction {
+	BaseAction ba = new BaseAction();
 	WebDriver driver = DriverClass.getDriver();
 	LaunchPages lp = new LaunchPages(driver);
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -29,7 +30,7 @@ public class LaunchPageAction extends BaseAction {
 		click(lp.canonES5Product);
 	}
 	public void clickProductInTopCollection() {
-		wait.until(ExpectedConditions.visibilityOf(lp.topCollectionProduct));
+		wait.until(ExpectedConditions.elementToBeClickable(lp.topCollectionProduct));
 		click(lp.topCollectionProduct);
 	}
 	public void clickiMac() {
@@ -45,18 +46,16 @@ public class LaunchPageAction extends BaseAction {
 	
 	public void addMultipleProduct()
 	{
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
-
-		    wait.until(ExpectedConditions.visibilityOf(lp.cartOne));
-		    js.executeScript("arguments[0].scrollIntoView(true);", lp.cartOne);
-		    js.executeScript("arguments[0].click();", lp.cartOne);
-
-		    wait.until(ExpectedConditions.visibilityOf(lp.cartTwo));
-		    js.executeScript("arguments[0].scrollIntoView(true);", lp.cartTwo);
-		    js.executeScript("arguments[0].click();", lp.cartTwo);
-
-		    wait.until(ExpectedConditions.visibilityOf(lp.cartThree));
-		    js.executeScript("arguments[0].scrollIntoView(true);", lp.cartThree);
-		    js.executeScript("arguments[0].click();", lp.cartThree);
+		    ba.waitForVisibility(lp.cartOne);
+		    ba.scrollIntoView(lp.cartOne);
+		    ba.jsClick(lp.cartOne);
+		  
+		    ba.waitForVisibility(lp.cartTwo);
+		    ba.scrollIntoView(lp.cartTwo);
+		    ba.jsClick(lp.cartTwo);
+		
+		    ba.waitForVisibility(lp.cartThree);
+		    ba.scrollIntoView(lp.cartThree);
+		    ba.jsClick(lp.cartThree);
      }
 }

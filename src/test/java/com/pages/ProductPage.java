@@ -52,9 +52,11 @@ public class ProductPage extends BasePage {
 
 	@FindBy(xpath = "//div[@id='entry_216842']//button[@title='Add to Cart'][normalize-space()='Add to Cart']")
 	public WebElement addToCartBtn;
-
-	@FindBy(xpath = "//a[@class='btn btn-primary btn-block']")
+	@FindBy(xpath = "//div[@class='entry-content content-button d-md-none d-lg-block order-1 order-md-0 order-lg-1']/child::button")
 	public WebElement addToCartButton;
+
+	//@FindBy(xpath = "//a[@class='btn btn-primary btn-block']")
+
 
 
 
