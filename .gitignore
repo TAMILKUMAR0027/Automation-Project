@@ -10,5 +10,6 @@ bin/
 logs/
 .factorypath
 src/test/java/com/runner/TestNgRunner.java
+target/
+test-output/
 .~lock.SearchProduct.xlsx#
-/target/

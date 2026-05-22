@@ -15,6 +15,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.time.Duration;
+
 public class DriverClass {
 
     private static final ThreadLocal<WebDriver> driver =
@@ -44,11 +46,9 @@ public class DriverClass {
                     headlessValue != null
                     && headlessValue.equalsIgnoreCase("true");
 
-            logger.info("Initializing Browser: "
-                    + browser);
+            logger.info("Initializing Browser : " + browser);
 
-            logger.info("Headless Mode: "
-                    + headless);
+            logger.info("Headless Mode : " + headless);
 
             // CHROME
             if (browser.equalsIgnoreCase("chrome")) {
@@ -61,12 +61,19 @@ public class DriverClass {
                 if (headless) {
 
                     options.addArguments("--headless=new");
-                }
+                    options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--disable-notifications");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
 
-                options.addArguments("--start-maximized");
+                } else {
+
+                    options.addArguments("--start-maximized");
+                }
 
                 driver.set(new ChromeDriver(options));
 
+                logger.info("Chrome Browser Launched Successfully");
             }
 
             // FIREFOX
@@ -77,27 +84,36 @@ public class DriverClass {
                 FirefoxOptions options =
                         new FirefoxOptions();
 
-                // IMPORTANT FIX
                 if (headless) {
 
-                    options.addArguments("-headless");
+                    options.addArguments("--headless");
+                    options.addArguments("--width=1920");
+                    options.addArguments("--height=1080");
                 }
 
                 driver.set(new FirefoxDriver(options));
+
+                logger.info("Firefox Browser Launched Successfully");
             }
 
             // INVALID BROWSER
             else {
 
-                logger.error("Invalid Browser Name: "
+                logger.error("Invalid Browser Name : "
                         + browser);
 
                 throw new RuntimeException(
-                        "Invalid Browser Name: "
+                        "Invalid Browser Name : "
                         + browser);
             }
 
-            getDriver().manage().window().maximize();
+            getDriver().manage().timeouts()
+                    .implicitlyWait(Duration.ofSeconds(10));
+
+            if (!headless) {
+
+                getDriver().manage().window().maximize();
+            }
 
             logger.info("Browser launched successfully");
 
@@ -117,7 +133,7 @@ public class DriverClass {
 
             if (getDriver() != null) {
 
-                logger.info("Closing browser session");
+                logger.info("Closing Browser Session");
 
                 getDriver().quit();
 
