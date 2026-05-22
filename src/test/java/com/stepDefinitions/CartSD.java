@@ -23,7 +23,7 @@ public class CartSD {
 	productPageAction ppa = new productPageAction();
 	CartPageActions cpa = new CartPageActions();
 	List<String> allproduct;
-	
+
 	private static final Logger log = LogManager.getLogger(CartSD.class);
 
 	@Given("The user is in Home Page of Ecommerce lambda test application")
@@ -60,8 +60,9 @@ public class CartSD {
 	}
 
 	@When("The user enter the quantity based on needs in quantity input box")
-	public void the_user_enter_the_quantity_based_on_needs_in_quantity_input_box(io.cucumber.datatable.DataTable dataTable) {
-	    
+	public void the_user_enter_the_quantity_based_on_needs_in_quantity_input_box(
+			io.cucumber.datatable.DataTable dataTable) {
+		cpa.quantitySend(dataTable);
 	}
 
 	@When("The user clicks quantity update button")
@@ -81,92 +82,89 @@ public class CartSD {
 			throw e;
 		}
 	}
-	
+
 	@When("The user clicks product Remove button")
 	public void the_user_clicks_product_remove_button() {
 		cpa.clickRemoveButton();
-	  
+
 	}
 
 	@Then("The product should be removed from the cart and display no products in cart")
 	public void the_product_should_be_removed_from_the_cart_and_display_no_products_in_cart() {
-	   String actual=cpa.getCartEmptyMsg();
-	   String expected="Your shopping cart is empty!";
-	   try {
+		String actual = cpa.getCartEmptyMsg();
+		String expected = "Your shopping cart is empty!";
+		try {
 			Assert.assertTrue(actual.contains(expected));
 			log.info("The product is removed from cart Successfully");
 		} catch (AssertionError e) {
 			log.error("product doesn't removed!, Error: " + e.getMessage());
 			throw e;
 		}
-	   
+
 	}
-	
+
 	@When("The user clicks on Estimate Shipping and Tax Link")
 	public void the_user_clicks_on_estimate_shipping_and_tax_link() {
-	   cpa.clickESTLink();
+		cpa.clickESTLink();
 	}
 
 	@When("select options from country and state dropdown")
 	public void select_options_from_country_and_state_dropdown(io.cucumber.datatable.DataTable dataTable) {
-	   cpa.selectCountryAndState(dataTable);
+		cpa.selectCountryAndState(dataTable);
 	}
+
 	@When("The user clicks Quotes Button")
 	public void the_user_clicks_quotes_button() {
-	  cpa.clickgetQuotesButton();
+		cpa.clickgetQuotesButton();
 	}
 
 	@When("check the radio button in Flash Shipping popup")
 	public void check_the_radio_button_in_flash_shipping_popup() {
-	    cpa.checkRadioButton();
+		cpa.checkRadioButton();
 	}
 
 	@When("clicks on Apply Shipping Button")
 	public void clicks_on_apply_shipping_button() {
-	    cpa.clickApplyShippingButton();
+		cpa.clickApplyShippingButton();
 	}
 
 	@Then("The user should see a Success Message")
 	public void the_user_should_see_a_success_message() {
-	    String actual=cpa.getSuccessETMsg();
-	    String expected="Success: Your shipping estimate has been applied!";
-	    try {
+		String actual = cpa.getSuccessETMsg();
+		String expected = "Success: Your shipping estimate has been applied!";
+		try {
 			Assert.assertTrue(actual.contains(expected));
 			log.info("Shipping estimation applied successfully");
 		} catch (AssertionError e) {
 			log.error("Shipping estimation doesn't applied, Error: " + e.getMessage());
 			throw e;
 		}
-	    
+
 	}
-	
+
 	@When("The user clicks on AddtoCart Button on Varios Product")
 	public void the_user_clicks_on_addto_cart_button_on_varios_product() {
-	   lp.addMultipleProduct();
+		lp.addMultipleProduct();
 	}
-	
+
 	@Then("All products Added in cart should be displayed in cart")
 	public void all_products_added_in_cart_should_be_displayed_in_cart() {
 		allproduct = cpa.storeAllProduct();
-	    System.out.println(allproduct);
-	    List<String> expectedProduct = new ArrayList<>();
-	    expectedProduct.add("HTC Touch HD");
-	    expectedProduct.add("iPod Nano");
-	    expectedProduct.add("HP LP3065");
-	    Collections.sort(allproduct);
-	    Collections.sort(expectedProduct);
-	    try {
-	        Assert.assertEquals(allproduct, expectedProduct);
-	        log.info("All products are added to cart");
-	    } catch(AssertionError e) {
-	        log.error("Not all products are added, Error: " + e.getMessage());
-	        throw e;
-		
-		
-		
-	}
+		System.out.println(allproduct);
+		List<String> expectedProduct = new ArrayList<>();
+		expectedProduct.add("HTC Touch HD");
+		expectedProduct.add("iPod Nano");
+		expectedProduct.add("HP LP3065");
+		Collections.sort(allproduct);
+		Collections.sort(expectedProduct);
+		try {
+			Assert.assertEquals(allproduct, expectedProduct);
+			log.info("All products are added to cart");
+		} catch (AssertionError e) {
+			log.error("Not all products are added, Error: " + e.getMessage());
+			throw e;
 
-
+		}
 
 	}
 }

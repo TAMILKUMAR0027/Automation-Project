@@ -11,8 +11,13 @@ logs/
 .factorypath
 src/test/java/com/runner/TestNgRunner.java
 <<<<<<< HEAD
+<<<<<<< HEAD
 target/
 
 =======
 >>>>>>> 8b83e058e6f92073414d395bd0f06641e04fdd49
+=======
+target/
+test-output/
+>>>>>>> dc3a25591a5d6556787c0735be080802b4922963
 .~lock.SearchProduct.xlsx#

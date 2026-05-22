@@ -54,16 +54,42 @@ public class BaseAction {
 
     public void sendKeys(WebElement element, String msg) {
 
-        wait.until(ExpectedConditions.visibilityOf(element));
-        element.clear();
-        element.sendKeys(msg);
+        try {
+
+            wait.until(ExpectedConditions.visibilityOf(element));
+            element.clear();
+            element.sendKeys(msg);
+
+        } catch (Exception e) {
+
+            ((JavascriptExecutor) driver)
+                    .executeScript(
+                            "arguments[0].scrollIntoView({block:'center'});",
+                            element);
+
+            element.clear();
+            element.sendKeys(msg);
+        }
     }
 
     public void sendKeysWithEnter(WebElement element, String msg) {
 
-        wait.until(ExpectedConditions.visibilityOf(element));
-        element.clear();
-        element.sendKeys(msg, Keys.ENTER);
+        try {
+
+            wait.until(ExpectedConditions.visibilityOf(element));
+            element.clear();
+            element.sendKeys(msg, Keys.ENTER);
+
+        } catch (Exception e) {
+
+            ((JavascriptExecutor) driver)
+                    .executeScript(
+                            "arguments[0].scrollIntoView({block:'center'});",
+                            element);
+
+            element.clear();
+            element.sendKeys(msg, Keys.ENTER);
+        }
     }
 
     public String getText(WebElement element) {
@@ -103,12 +129,6 @@ public class BaseAction {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void highlightElement(WebElement element) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].style.border='3px solid red'", element);
-    }
-
     public void waitForVisibility(WebElement element) {
 
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -119,11 +139,6 @@ public class BaseAction {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitForInvisibility(WebElement element) {
-
-        wait.until(ExpectedConditions.invisibilityOf(element));
-    }
-
     public String getTitle() {
 
         return driver.getTitle();
@@ -132,10 +147,5 @@ public class BaseAction {
     public String getCurrentUrl() {
 
         return driver.getCurrentUrl();
-    }
-
-    public void refreshPage() {
-
-        driver.navigate().refresh();
     }
 }

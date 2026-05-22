@@ -15,25 +15,24 @@ import io.cucumber.datatable.DataTable;
 
 public class LoginPageAction {
 	
-	WebDriver driver=DriverClass.getDriver();
-	LoginPage lp = new LoginPage(driver);
+	LoginPage lp = new LoginPage(DriverClass.getDriver());
 	BaseAction ba = new BaseAction();
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+	WebDriverWait wait=new WebDriverWait(DriverClass.getDriver(),Duration.ofSeconds(15));
 
 	public void launchWebUrl() {
-		driver.get("https://ecommerce-playground.lambdatest.io/");
+		DriverClass.getDriver().get("https://ecommerce-playground.lambdatest.io/");
 	}
 
 	public void clickMyAccountLink()
 	{
 		try
 		{
-			lp.myAccLink.isDisplayed();
+			ba.isDisplayed(lp.myAccLink);
 			ba.click(lp.myAccLink);
 		}
 		catch(Exception e)
 		{
-			wait.until(ExpectedConditions.visibilityOf(lp.myAccLink));
+			ba.waitForVisibility(lp.myAccLink);
 			ba.click(lp.myAccLink);
 
 		}
@@ -41,14 +40,14 @@ public class LoginPageAction {
 	
 	public void enterEmailAndPass(String username,String password)
 	{	
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail));
+		ba.waitForVisibility(lp.LoginEmail);
 		ba.sendKeys(lp.LoginEmail, username);
 		ba.sendKeys(lp.LoginPassword, password);
 	}
 	
 	public void enterPass(String password)
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginPassword));
+		ba.waitForVisibility(lp.LoginPassword);
 		ba.sendKeys(lp.LoginPassword, password);
 	}
 	
@@ -60,22 +59,25 @@ public class LoginPageAction {
 	
 	public String LoginSuccessMsg()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginSuccessMessage)).getText();
+		ba.waitForVisibility(lp.LoginSuccessMessage);
+		return ba.getText(lp.LoginSuccessMessage);
 	}
 	
 	public String LoginFailedMsg()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessage)).getText();
+		ba.waitForVisibility(lp.LoginFailedMessage);
+		return ba.getText(lp.LoginFailedMessage);
 	}
 	
 	public String LoginFailedMsgone()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessageone)).getText();
+		ba.waitForVisibility(lp.LoginFailedMessageone);
+		return ba.getText(lp.LoginFailedMessageone);
 	}
 	
 	public void loginValid(DataTable db)
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail));
+		ba.waitForVisibility(lp.LoginEmail);
 		List<Map<String, String>> data = db.asMaps(String.class, String.class);
 		ba.sendKeys(lp.LoginEmail, data.get(0).get("email"));
 		ba.sendKeys(lp.LoginPassword, data.get(0).get("password"));

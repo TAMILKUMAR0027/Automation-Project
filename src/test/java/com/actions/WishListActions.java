@@ -14,9 +14,9 @@ import java.util.List;
 
 public class WishListActions {
 
-    WebDriver driver = DriverClass.getDriver();
-    WishListPage wp = new WishListPage(driver);
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+    WishListPage wp = new WishListPage(DriverClass.getDriver());
+    WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
 
     private void pause(long ms) {
         try {
@@ -27,7 +27,7 @@ public class WishListActions {
 
     private String dismissAlertIfPresent() {
         try {
-            WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            WebDriverWait alertWait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(3));
             Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
             String text = alert.getText();
             alert.dismiss();
@@ -40,7 +40,7 @@ public class WishListActions {
 
     private void forceRevealElement(WebElement element, String productLabel) {
         try {
-            ((JavascriptExecutor) driver).executeScript(
+            ((JavascriptExecutor) DriverClass.getDriver()).executeScript(
                     "var b = arguments[0];" +
                             "b.style.setProperty('display',    'block',   'important');" +
                             "b.style.setProperty('opacity',    '1',       'important');" +
@@ -57,8 +57,8 @@ public class WishListActions {
                                        WebElement wishlistBtn,
                                        String productLabel) {
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        Actions actions = new Actions(driver);
+        JavascriptExecutor js = (JavascriptExecutor) DriverClass.getDriver();
+        Actions actions = new Actions(DriverClass.getDriver());
 
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", productCard);
         pause(500);
@@ -110,12 +110,11 @@ public class WishListActions {
         }
     }
 
-    // ========================= NAVIGATION =========================
 
     public void scrollToTopProducts() {
         clickHomeLogo();
         wait.until(ExpectedConditions.visibilityOf(wp.topProductsHeading));
-        ((JavascriptExecutor) driver)
+        ((JavascriptExecutor) DriverClass.getDriver())
                 .executeScript("arguments[0].scrollIntoView({block:'center'});", wp.topProductsHeading);
         System.out.println("Scrolled to Top Products section");
     }
@@ -123,7 +122,7 @@ public class WishListActions {
     public void scrollToTopCollection() {
         clickHomeLogo();
         wait.until(ExpectedConditions.visibilityOf(wp.topCollectionHeading));
-        ((JavascriptExecutor) driver)
+        ((JavascriptExecutor) DriverClass.getDriver())
                 .executeScript("arguments[0].scrollIntoView({block:'center'});", wp.topCollectionHeading);
         System.out.println("Scrolled to Top Collection section");
     }
@@ -134,17 +133,17 @@ public class WishListActions {
 
         try {
             WebElement link = wait.until(ExpectedConditions.visibilityOfElementLocated(wishlistHeaderLink));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", link);
+            ((JavascriptExecutor) DriverClass.getDriver()).executeScript("arguments[0].click();", link);
             wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
             System.out.println("Navigated to wishlist page via JS click");
         } catch (Exception e) {
             System.out.println("Timeout waiting for wishlist sidebar button. Navigating via URL fallback...");
-            driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/wishlist");
+            DriverClass.getDriver().get("https://ecommerce-playground.lambdatest.io/index.php?route=account/wishlist");
             wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
             System.out.println("Navigated to wishlist page via URL");
         }
     }
-    // ========================= ADD TO WISHLIST =========================
+
 
     public void addIMacToWishlist() {
         WebElement card = wait.until(ExpectedConditions.visibilityOf(wp.imacListingBox));
@@ -195,7 +194,7 @@ public class WishListActions {
         }
     }
 
-    // ========================= SEARCH =========================
+
 
     public void searchForProduct(String searchTerm) {
         try {
@@ -215,11 +214,11 @@ public class WishListActions {
             case "ipod shuffle":
                 try {
                     wait.until(ExpectedConditions.elementToBeClickable(wp.ipodShuffleProduct));
-                    ((JavascriptExecutor) driver)
+                    ((JavascriptExecutor) DriverClass.getDriver())
                             .executeScript("arguments[0].scrollIntoView({block:'center'});",
                                     wp.ipodShuffleProduct);
                     pause(400);
-                    ((JavascriptExecutor) driver)
+                    ((JavascriptExecutor) DriverClass.getDriver())
                             .executeScript("arguments[0].click();", wp.ipodShuffleProduct);
                     System.out.println("Clicked product from search results: " + productName);
                 } catch (TimeoutException e) {
@@ -236,7 +235,7 @@ public class WishListActions {
     public void clickHeartButtonOnProductPage() {
         try {
             wait.until(ExpectedConditions.visibilityOf(wp.ipodShuffleWishlistBtn));
-            ((JavascriptExecutor) driver)
+            ((JavascriptExecutor) DriverClass.getDriver())
                     .executeScript("arguments[0].scrollIntoView({block:'center'});",
                             wp.ipodShuffleWishlistBtn);
             pause(400);
@@ -247,7 +246,7 @@ public class WishListActions {
                 String btnClass = wp.ipodShuffleWishlistBtn.getAttribute("class");
                 if (btnClass != null && btnClass.contains("wished")) {
                     System.out.println("[iPod Shuffle] Already wishlisted — removing first...");
-                    ((JavascriptExecutor) driver)
+                    ((JavascriptExecutor) DriverClass.getDriver())
                             .executeScript("arguments[0].click();", wp.ipodShuffleWishlistBtn);
                     pause(1200);
                     dismissAlertIfPresent();
@@ -260,7 +259,7 @@ public class WishListActions {
             }
 
             wait.until(ExpectedConditions.elementToBeClickable(wp.ipodShuffleWishlistBtn));
-            ((JavascriptExecutor) driver)
+            ((JavascriptExecutor) DriverClass.getDriver())
                     .executeScript("arguments[0].click();", wp.ipodShuffleWishlistBtn);
             System.out.println("Clicked heart button on product detail page for iPod Shuffle");
 
@@ -275,16 +274,16 @@ public class WishListActions {
         }
     }
 
-    // ========================= SUCCESS TOAST =========================
 
-    // ✅ FIXED: Use fresh By locator instead of PageFactory element
+
+
     public String getWishlistSuccessMessageGeneric() {
 
         By toastMsg = By.xpath("//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p");
         By toastFallback = By.xpath("//div[@id='notification-box-top']//p");
 
         try {
-            WebElement toast = new WebDriverWait(driver, Duration.ofSeconds(25))
+            WebElement toast = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(25))
                     .until(ExpectedConditions.visibilityOfElementLocated(toastMsg));
 
             return toast.getText().trim();
@@ -292,7 +291,7 @@ public class WishListActions {
         } catch (TimeoutException e) {
 
             try {
-                WebElement toast2 = new WebDriverWait(driver, Duration.ofSeconds(10))
+                WebElement toast2 = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(10))
                         .until(ExpectedConditions.visibilityOfElementLocated(toastFallback));
 
                 return toast2.getText().trim();
@@ -312,7 +311,7 @@ public class WishListActions {
         );
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(freshToast));
-            return driver.findElement(freshToast).getText().trim();
+            return DriverClass.getDriver().findElement(freshToast).getText().trim();
         } catch (TimeoutException e) {
             try {
                 return wp.successNotificationFallback.getText().trim();
@@ -329,7 +328,6 @@ public class WishListActions {
         System.out.println("Clicked wishlist link from popup");
     }
 
-    // ========================= WISHLIST ASSERTIONS =========================
 
     public void waitForWishlistPage() {
         String alertText = dismissAlertIfPresent();
@@ -340,7 +338,7 @@ public class WishListActions {
     }
 
     public String getCurrentPageTitle() {
-        return driver.getTitle();
+        return DriverClass.getDriver().getTitle();
     }
 
     public List<String> getAllWishlistProductNames() {
@@ -374,10 +372,9 @@ public class WishListActions {
                 "//table[contains(@class,'table')]//tbody//tr//td[2]//a" +
                         "[contains(normalize-space(),'" + productName + "')]"
         );
-        return !driver.findElements(locator).isEmpty();
+        return !DriverClass.getDriver().findElements(locator).isEmpty();
     }
 
-    // ========================= REMOVE PRODUCT =========================
 
     public void removeProductFromWishlist(String productName) {
         wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
@@ -390,13 +387,13 @@ public class WishListActions {
 
         try {
             WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(removeBtn));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btn);
+            ((JavascriptExecutor) DriverClass.getDriver()).executeScript("arguments[0].scrollIntoView(true);", btn);
             pause(300);
 
             // Grab the row element to check for staleness (page reload)
-            WebElement row = driver.findElement(By.xpath("//table[contains(@class,'table')]//tbody//tr[.//td[2]//a[contains(normalize-space(),'" + productName + "')]]"));
+            WebElement row = DriverClass.getDriver().findElement(By.xpath("//table[contains(@class,'table')]//tbody//tr[.//td[2]//a[contains(normalize-space(),'" + productName + "')]]"));
 
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+            ((JavascriptExecutor) DriverClass.getDriver()).executeScript("arguments[0].click();", btn);
             System.out.println("Clicked remove for: " + productName);
 
             // Wait for the page to reload by waiting for the row to become stale
@@ -419,9 +416,9 @@ public class WishListActions {
 
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(alertDiv));
-            WebElement alert = driver.findElement(alertDiv);
+            WebElement alert = DriverClass.getDriver().findElement(alertDiv);
 
-            String fullText = (String) ((JavascriptExecutor) driver).executeScript(
+            String fullText = (String) ((JavascriptExecutor) DriverClass.getDriver()).executeScript(
                     "var el = arguments[0];" +
                             "var text = '';" +
                             "for (var i = 0; i < el.childNodes.length; i++) {" +

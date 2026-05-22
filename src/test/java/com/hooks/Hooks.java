@@ -1,6 +1,7 @@
 package com.hooks;
 
 import java.io.File;
+
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
@@ -17,56 +18,70 @@ import io.cucumber.java.Scenario;
 
 public class Hooks {
 
-    private static final Logger log = LogManager.getLogger(Hooks.class);
+    private static final Logger log =
+            LogManager.getLogger(Hooks.class);
 
     @Before
     public void setUp() {
-
-        DriverClass.initDriver();
-
+    	DriverClass.initDriver();
         log.info("Browser launched successfully");
     }
 
     @After
     public void tearDown(Scenario scenario) {
 
+
+        try {
+
+            // CHECK DRIVER NULL
+            if (scenario.isFailed()
+                    && DriverClass.getDriver() != null) {
+
+                // CREATE SCREENSHOTS FOLDER
+                File screenshotFolder =
+                        new File("screenshots");
+
+                if (!screenshotFolder.exists()) {
+
+        if (DriverClass.getDriver() == null) {
+            log.error("Driver is NULL. Skipping screenshot and quit.");
+            return;
+        }
+
         if (scenario.isFailed()) {
 
-            File screenshot = ((TakesScreenshot) DriverClass.getDriver())
-                    .getScreenshotAs(OutputType.FILE);
-
             try {
+                File screenshot = ((TakesScreenshot) DriverClass.getDriver())
+                        .getScreenshotAs(OutputType.FILE);
 
                 File destinationFile = new File(
                         "screenshots/" +
-                        scenario.getName().replaceAll(" ", "_")
-                        + ".png");
+                                scenario.getName().replaceAll(" ", "_")
+                                + ".png");
 
-                FileUtils.copyFile(screenshot, destinationFile);
+                destinationFile.getParentFile().mkdirs();
 
-                byte[] screenshotBytes =
-                        ((TakesScreenshot) DriverClass.getDriver())
-                                .getScreenshotAs(OutputType.BYTES);
 
-                scenario.attach(
-                        screenshotBytes,
-                        "image/png",
-                        "Failure Screenshot");
+                    screenshotFolder.mkdirs();
+                }
 
-                log.error("Scenario Failed : " + scenario.getName());
+                byte[] screenshotBytes = ((TakesScreenshot) DriverClass.getDriver())
+                        .getScreenshotAs(OutputType.BYTES);
+
+                scenario.attach(screenshotBytes, "image/png", "Failure Screenshot");
+
+                log.error("Scenario Failed : "
+                        + scenario.getName());
 
             } catch (IOException e) {
-
                 log.error("Screenshot capture failed : " + e.getMessage());
             }
 
         } else {
-
             log.info("Scenario Passed : " + scenario.getName());
         }
 
         DriverClass.quitDriver();
-
         log.info("Browser closed successfully");
     }
 }
