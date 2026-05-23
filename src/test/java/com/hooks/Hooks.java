@@ -1,7 +1,6 @@
 package com.hooks;
 
 import java.io.File;
-
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
@@ -23,19 +22,27 @@ public class Hooks {
 
     @Before
     public void setUp() {
-    	DriverClass.initDriver();
+
+        DriverClass.initDriver();
+
         log.info("Browser launched successfully");
     }
 
     @After
     public void tearDown(Scenario scenario) {
 
-
         try {
 
             // CHECK DRIVER NULL
-            if (scenario.isFailed()
-                    && DriverClass.getDriver() != null) {
+            if (DriverClass.getDriver() == null) {
+
+                log.error("Driver is NULL. Skipping screenshot and quit.");
+
+                return;
+            }
+
+            // IF SCENARIO FAILED
+            if (scenario.isFailed()) {
 
                 // CREATE SCREENSHOTS FOLDER
                 File screenshotFolder =
@@ -43,45 +50,52 @@ public class Hooks {
 
                 if (!screenshotFolder.exists()) {
 
-        if (DriverClass.getDriver() == null) {
-            log.error("Driver is NULL. Skipping screenshot and quit.");
-            return;
-        }
-
-        if (scenario.isFailed()) {
-
-            try {
-                File screenshot = ((TakesScreenshot) DriverClass.getDriver())
-                        .getScreenshotAs(OutputType.FILE);
-
-                File destinationFile = new File(
-                        "screenshots/" +
-                                scenario.getName().replaceAll(" ", "_")
-                                + ".png");
-
-                destinationFile.getParentFile().mkdirs();
-
-
                     screenshotFolder.mkdirs();
                 }
 
-                byte[] screenshotBytes = ((TakesScreenshot) DriverClass.getDriver())
-                        .getScreenshotAs(OutputType.BYTES);
+                // TAKE SCREENSHOT FILE
+                File screenshot =
+                        ((TakesScreenshot) DriverClass.getDriver())
+                                .getScreenshotAs(OutputType.FILE);
 
-                scenario.attach(screenshotBytes, "image/png", "Failure Screenshot");
+                // DESTINATION PATH
+                File destinationFile =
+                        new File("screenshots/"
+                                + scenario.getName()
+                                .replaceAll(" ", "_")
+                                + ".png");
+
+                // COPY FILE
+                FileUtils.copyFile(screenshot, destinationFile);
+
+                // ATTACH SCREENSHOT TO REPORT
+                byte[] screenshotBytes =
+                        ((TakesScreenshot) DriverClass.getDriver())
+                                .getScreenshotAs(OutputType.BYTES);
+
+                scenario.attach(
+                        screenshotBytes,
+                        "image/png",
+                        "Failure Screenshot");
 
                 log.error("Scenario Failed : "
                         + scenario.getName());
 
-            } catch (IOException e) {
-                log.error("Screenshot capture failed : " + e.getMessage());
+            } else {
+
+                log.info("Scenario Passed : "
+                        + scenario.getName());
             }
 
-        } else {
-            log.info("Scenario Passed : " + scenario.getName());
+        } catch (IOException e) {
+
+            log.error("Screenshot capture failed : "
+                    + e.getMessage());
         }
 
+        // CLOSE DRIVER
         DriverClass.quitDriver();
+
         log.info("Browser closed successfully");
     }
 }

@@ -1,4 +1,5 @@
-"Rating,Name,Feedback,ExpectedMessage",,,,,,"		
+Rating,Name,Feedback,ExpectedMessage,,,"		
 "
-"4, ,Really had a good experience using this product and very useful product.,Warning: Review Name must be between 3 and 25 characters!",,,,,,
-"4,Joshi, ,Warning: Review Text must be between 25 and 1000 characters!",,,,,,
+4,,Really had a good experience using this product and very useful product.,Warning: Review Name must be between 3 and 25 characters!,,,
+4,Joshi,,Warning: Review Text must be between 25 and 1000 characters!,,,
+ ,Joshi,Really had a good experience using this product and very useful product.,"Warning: Please select a review rating!""",,,

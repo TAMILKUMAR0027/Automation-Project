@@ -65,9 +65,9 @@ public class AddReview {
 		arpa.selectRating(2);
 	}
 
-	@Then("the user should receive a warning message to wite review with characters more than {int} and less than {int}.")
-	public void the_user_should_receive_a_warning_message_to_wite_review_with_characters_more_than_and_less_than(
-			Integer int1, Integer int2) {
+	@Then("the user should receive a warning message to write review with characters more than {int} and less than {int}.")
+	public void the_user_should_receive_a_warning_message_to_write_review_with_characters_more_than_and_less_than(Integer int1, Integer int2) {
+		{
 
 		String actual = arpa.getWarningMessage();
 
@@ -82,6 +82,7 @@ public class AddReview {
 		} catch (AssertionError e) {
 
 			log.error("Invalid review with rating failed " + e.getMessage());
+		}
 		}
 	}
 
@@ -150,4 +151,38 @@ public class AddReview {
 			log.error("Invalid review without feedback failed " + e.getMessage());
 		}
 	}
-}
+	
+
+	@When("the user adds the review without the star rating")
+	public void the_user_adds_the_review_without_the_star_rating() {
+		arpa.enterNameFromCSV(3);
+		arpa.enterReviewFromCSV(3);
+	
+
+	}
+
+	@When("clicks on Write Review to add the review")
+	public void clicks_on_write_review_to_add_the_review() {
+		arpa.clickWriteReview();
+	}
+
+	@Then("the user should receive a warning message intimating the selection of star rating")
+	public void the_user_should_receive_a_warning_message_intimating_the_selection_of_star_rating() {
+		String actual = arpa.getWarningMessage();
+		String expected = arpa.expectedCSVMessage(3);
+
+		try {
+
+			sa.assertEquals(actual, expected);
+
+			log.info("Invalid review without rating verified");
+
+		} catch (AssertionError e) {
+
+			log.error("Invalid review without rating failed " + e.getMessage());
+		}
+	}
+	
+	}
+
+

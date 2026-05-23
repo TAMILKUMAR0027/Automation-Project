@@ -10,7 +10,7 @@ public class LogoutPage extends BasePage{
 		super(driver);
 	}
 	
-	@FindBy(xpath = "//span[text()='My account']")
+	@FindBy(xpath = "//span[text()='My Account']")
     public WebElement account;
 
 	@FindBy(linkText="Logout")

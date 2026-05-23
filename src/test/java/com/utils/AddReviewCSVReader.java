@@ -7,11 +7,11 @@ import com.opencsv.CSVReader;
 
 public class AddReviewCSVReader {
 
-<<<<<<< HEAD
-    public static String getData(int row, int column) {
-=======
+
+    
+
 public static String getData1(  int row, int column) {
->>>>>>> dc3a25591a5d6556787c0735be080802b4922963
+
 
         try {
 

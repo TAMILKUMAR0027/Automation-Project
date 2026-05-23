@@ -24,6 +24,7 @@ public class LogoutPageAction extends BaseAction{
 
 	public void clickMyAccountLink()
 	{
+		waitForVisibility(lp.myAccLink);
 		click(lp.myAccLink);
 	}
 	
@@ -45,11 +46,13 @@ public class LogoutPageAction extends BaseAction{
 	
 	public void Clickaccount() {
 		
-        click(lp.myAccLink);
+		act.moveToElement(lp.myAccLink).perform();
 
 	}
 	public void clickLogout() {
-		click(lout.logoutBtn);
+
+	    waitForVisibility(lout.logoutBtn);
+	    click(lout.logoutBtn);
 	}
 	public String Message() {
 		return getText(lout.Logoutmsg);
