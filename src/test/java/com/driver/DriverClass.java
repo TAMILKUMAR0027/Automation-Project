@@ -77,16 +77,14 @@ public class DriverClass {
 
 
             // FIREFOX
+            
             else if (browser.equalsIgnoreCase("firefox")) {
-
-            options.addArguments("--start-maximized");
-            driver.set(new ChromeDriver(options));
-
-
-                WebDriverManager.firefoxdriver().setup();
+            	
+             WebDriverManager.firefoxdriver().setup();
 
                 FirefoxOptions options =
                         new FirefoxOptions();
+                
 
                 if (headless) {
 

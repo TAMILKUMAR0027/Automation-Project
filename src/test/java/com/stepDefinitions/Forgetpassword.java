@@ -35,8 +35,8 @@ public class Forgetpassword {
 	}
 
 	@When("the user enters the valid {string}")
-	public void the_user_enters_the_valid(String email) {
-		fpa.enterEmail(email);
+	public void the_user_enters_the_valid(String validEmail) {
+		fpa.enterEmail(validEmail);
 		fpa.clickContinueButton();
 	}
 
@@ -58,8 +58,8 @@ public class Forgetpassword {
 	}
 
 	@When("the user enters the invalid {string}")
-	public void the_user_enters_the_invalid(String invalidemail){
-		fpa.enterEmail(invalidemail);
+	public void the_user_enters_the_invalid(String invalidEmail){
+		fpa.enterEmail(invalidEmail);
 		fpa.clickContinueButton();
 	}
 

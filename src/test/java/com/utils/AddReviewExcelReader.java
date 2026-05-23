@@ -2,33 +2,41 @@ package com.utils;
 
 import java.io.FileInputStream;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class AddReviewExcelReader {
 
-	public static String getData(int row, int cell) {
+    public static String getData(int row, int cell) {
 
-		String data = null;
+        String data = "";
 
-		try {
+        try {
 
-			FileInputStream fis = new FileInputStream("src/test/resources/testdata/AddReviewData.xlsx");
+            FileInputStream fis =
+                    new FileInputStream("src/test/resources/AddReviewdata.xlsx");
 
-			XSSFWorkbook workbook = new XSSFWorkbook(fis);
+            XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
-			XSSFSheet sheet = workbook.getSheet("Sheet1");
+            XSSFSheet sheet = workbook.getSheetAt(0);
 
-			data = sheet.getRow(row).getCell(cell).getStringCellValue();
+            DataFormatter formatter = new DataFormatter();
 
-			workbook.close();
-			fis.close();
+            if (sheet.getRow(row) != null &&
+                sheet.getRow(row).getCell(cell) != null) {
 
-		} catch (Exception e) {
+                data = formatter.formatCellValue(
+                        sheet.getRow(row).getCell(cell));
+            }
 
-			e.printStackTrace();
-		}
+            workbook.close();
 
-		return data;
-	}
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return data;
+    }
 }

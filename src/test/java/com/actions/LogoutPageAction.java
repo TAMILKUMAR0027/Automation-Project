@@ -11,7 +11,7 @@ import com.driver.DriverClass;
 import com.pages.LoginPage;
 import com.pages.LogoutPage;
 
-public class LogoutPageAction {
+public class LogoutPageAction extends BaseAction{
 	WebDriver driver=DriverClass.getDriver();
 	LogoutPage lout=new LogoutPage(driver);
     LoginPage lp = new LoginPage(driver);
@@ -24,52 +24,40 @@ public class LogoutPageAction {
 
 	public void clickMyAccountLink()
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
+		waitForVisibility(lp.myAccLink);
+		click(lp.myAccLink);
 	}
 	
 	public void enterEmailAndPass(String username,String password)
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail)).sendKeys(username);
-		lp.LoginPassword.sendKeys(password);
+		sendKeys(lp.LoginEmail,username);
+		sendKeys(lp.LoginPassword,password);
 	}
-	
-	public void enterPass(String password)
-	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginPassword)).sendKeys(password);
-	}
-	
 	
 	public void clickLoginButton()
 	{
-		lp.LoginButton.click();
+		click(lp.LoginButton);
 	}
 	
 	public String LoginSuccessMsg()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginSuccessMessage)).getText();
+		return getText(lp.LoginSuccessMessage);
 	}
 	
 	public void Clickaccount() {
 		
-
-         act.moveToElement(lp.myAccLink).perform();
-
+		act.moveToElement(lp.myAccLink).perform();
 
 	}
 	public void clickLogout() {
-		wait.until(ExpectedConditions.visibilityOf(lout.logoutBtn)).click();
+
+	    waitForVisibility(lout.logoutBtn);
+	    click(lout.logoutBtn);
 	}
 	public String Message() {
-		return lout.Logoutmsg.getText();
+		return getText(lout.Logoutmsg);
 	}
 	
-	public String LoginFailedMsg()
-	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessage)).getText();
-	}
-	public boolean LoginDisplayed() {
-	    return lout.login.isDisplayed();
-	}
 	
-
+	
 }
