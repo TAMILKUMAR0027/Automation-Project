@@ -1,4 +1,4 @@
-@Checkout
+@Samiha @Checkout
 Feature: Checkout Functionality
 
   Background:
@@ -20,7 +20,7 @@ Feature: Checkout Functionality
     And the user enters the firstname, lastname, company, address1, city, postcode, country, Regionstate
     And the user clicks same billing address and cash on delivery and flat rate button
     And the user clicks the terms & conditions button and continue the checkout
-    Then the order should be successfully placed and application redirect to the order confirmation page
+    Then the order should be successfully placed and application redirect to the order confirmation
 
 
   @RegisterCheckout
@@ -36,10 +36,10 @@ Feature: Checkout Functionality
     And the user selects "Register Account" option
     And the user enters registration details
       | firstName | lastName     | email               | telephone  | password | confirmPassword | company     | address1       | address2       | city    | postCode | country | region     |
-      | Samiha    | Muhabathulla | samiha123@gmail.com | 9876543210 | Test@123 | Test@123        | ABC Company | 12 Main Street | Near Bus Stand | Chennai | 600001   | India   | Tamil Nadu |
+      | Samiha    | Muhabathulla | samiha10109@gmail.com | 9876543210 | Test@123 | Test@123        | ABC Company | 12 Main Street | Near Bus Stand | Chennai | 600001   | India   | Tamil Nadu |
     And the user agrees to the privacy policy
     And the user clicks on Continue button
-    Then the order should be successfully placed and application redirect to the order confirmation page
+    Then the order should be successfully placed and application redirect to the order confirmation
 
 
   @EmptyCartCheckout

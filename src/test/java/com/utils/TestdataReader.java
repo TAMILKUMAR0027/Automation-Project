@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 
 	        if (prop == null) {
 	            try {
-	                FileInputStream fis = new FileInputStream("src/test/resources/Testdata.properties");
+	                FileInputStream fis = new FileInputStream("src/test/resources/ForgetPassworddata.properties");
 	                prop = new Properties();
 	                prop.load(fis);
 	            } catch (Exception e) {

@@ -1,27 +1,46 @@
 package com.utils;
+
 import java.io.FileReader;
 import java.util.List;
 
 import com.opencsv.CSVReader;
 
 public class AddReviewCSVReader {
-		
+
+
+    
 
 public static String getData1(  int row, int column) {
 
- try {
 
-		     CSVReader reader = new CSVReader(  new FileReader("src/test/resources/testdata/AddReview.csv"));
+        try {
 
-		            List<String[]> data =reader.readAll();
+            CSVReader reader =
+                    new CSVReader(
+                            new FileReader("src/test/resources/AddReviewData.csv"));
 
-		            return data.get(row)[column];
+            List<String[]> data = reader.readAll();
 
-		        } catch (Exception e) {
+            // Check row exists
+            if (row >= data.size()) {
+                return "";
+            }
 
-		            e.printStackTrace();
-		        }
+            String[] rowData = data.get(row);
 
-		        return null;
-		    }
-		}
+            // Check column exists
+            if (column >= rowData.length) {
+                return "";
+            }
+
+            // Return value safely
+            return rowData[column].trim();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+}

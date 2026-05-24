@@ -1,4 +1,4 @@
-@Smoke
+@Prasanna @Smoke
 Feature: Launch the Ecommerce Application - Prasanna Venkatesh 12/05/2026
   Description: Launch the application in browser based on runtime input and validate basic homepage elements
 

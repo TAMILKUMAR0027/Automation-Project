@@ -1,4 +1,4 @@
-@CartFeature
+@Rishwanth @CartFeature
 Feature: Rishwanth_Cart_Feature_17_05_2026
 description:To verify the add to cart functionality in Ecommerce Lambda Test Website.
 

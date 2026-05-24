@@ -12,7 +12,7 @@ import com.pages.ForgetPasswordPage;
 import com.pages.LoginPage;
 import com.utils.TestdataReader;
 
-public class ForgetpasswordPageAction {
+public class ForgetpasswordPageAction extends BaseAction{
 	WebDriver driver = DriverClass.getDriver();
 	LoginPage lp = new LoginPage(driver);
 	ForgetPasswordPage fp=new ForgetPasswordPage(driver);
@@ -31,7 +31,7 @@ public class ForgetpasswordPageAction {
 		wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
 	}
 	 public void clickForgotPassword() {
-          fp.forgetpassword.click();
+         click(fp.forgetpassword);
 	}
 
 	 // Reusable method for valid/invalid emails
@@ -43,13 +43,13 @@ public class ForgetpasswordPageAction {
 	    }
 	   
 	    public void clickContinueButton() {
-            fp.button.click();
+            click(fp.button);
 	    }
 	    public String Successmsg() {
-	    	 return wait.until(ExpectedConditions.visibilityOf(fp.message)).getText();
+	    	 return getText(fp.message);
 	    }
 	    public String Warningmsg() {
-	    	return wait.until(ExpectedConditions.visibilityOf(fp.warningmsg)).getText();
+	    	return getText(fp.warningmsg);
 	    }
 	    public String expectedSuccessmsg() {
 

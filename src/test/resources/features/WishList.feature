@@ -1,4 +1,4 @@
-@WishlistFeature
+@Prasanna @WishlistFeature
 Feature: Wishlist Feature - LambdaTest Playground - Prasanna Venkatesh K - 15-05-2026 Update - 18-05-2026
   Description: Validate Wishlist functionality end-to-end — data driven from wishlist_data.csv
 

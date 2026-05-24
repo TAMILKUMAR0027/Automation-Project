@@ -74,7 +74,7 @@ public class CsvDataProvider {
 		try {
 
 			File csvFile = new File(System.getProperty("user.dir"),
-					"src/test/resources/testdata/AddReview.csv");
+					"src/test/resources/AddReviewData.csv");
 
 			if (!csvFile.exists()) {
 				throw new RuntimeException("CSV file not found: " + csvFile.getAbsolutePath());

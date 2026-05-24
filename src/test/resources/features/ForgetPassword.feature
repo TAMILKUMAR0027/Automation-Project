@@ -1,4 +1,4 @@
-@Rest
+@Jothika @Rest
 Feature: Reset password through forget password -Jothika 13/05/2026
 Description:This feature manages forget password functionality
 
@@ -9,14 +9,14 @@ Description:This feature manages forget password functionality
 
   @validemail
   Scenario: Reset password using valid registered email
-    When the user enters the valid "email"
+    When the user enters the valid "validEmail"
     Then the user should be able to receive a message stating reset link sent to email.
 
     
 
   @invalidemail
   Scenario: Reset password using invalid email
-    When the user enters the invalid "Email"
+    When the user enters the invalid "InvalidEmail"
     Then the user should receive an error message
 
    

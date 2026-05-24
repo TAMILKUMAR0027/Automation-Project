@@ -4,13 +4,11 @@ import com.actions.CheckoutAction;
 import com.actions.FilterPageAction;
 import com.actions.SearchAction;
 import com.actions.productPageAction;
-
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import org.testng.Assert;
 
 import java.util.List;
@@ -151,6 +149,12 @@ public class CheckoutStep {
     public void the_user_clicks_on_continue_button() {
         checkoutAction.continueCheckout();
     }
+    @Then("the order should be successfully placed and application redirect to the order confirmation")
+    public void the_order_should_be_successfully_placed_and_application_redirect_to_the_order_confirmation() {
+        // Write code here that turns the phrase above into concrete actions
+        checkoutAction.getConfirmOrder();
+    }
+
 
     @Then("the application shows the shopping Cart is empty!")
     public void the_application_shows_the_shopping_cart_is_empty() {
