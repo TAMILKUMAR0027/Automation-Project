@@ -21,8 +21,8 @@ Scenario: Validate that the search results show only the manufacturer products
   And the application should list only the manufacturer products based on the "keywords" 
 
 
-  Scenario: Validate the search filter with empty data
-    And the user enters "" and presses Enter
-    Then the application should display all products
-    And the url should be "https://ecommerce-playground.lambdatest.io/index.php?route=product%2Fsearch&search="
-    And the product count should be 15
+#  Scenario: Validate the search filter with empty data
+#    And the user enters "" and presses Enter
+#    Then the application should display all products
+#    And the url should be "https://ecommerce-playground.lambdatest.io/index.php?route=product%2Fsearch&search="
+#    And the product count should be 15

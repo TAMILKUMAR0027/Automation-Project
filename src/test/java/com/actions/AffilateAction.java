@@ -2,15 +2,14 @@ package com.actions;
 
 import java.util.Properties;
 
+import com.utils.ConfigReader;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.driver.DriverClass;
 import com.pages.*;
-import com.utils.AffilateDataReader;
 
 public class AffilateAction extends BaseAction {
 
-    Properties prop = AffilateDataReader.getProperties();
+    Properties prop = ConfigReader.getProperties();
 
     AccountPage ap = new AccountPage(getDriver());
     AffilateAccountPage aap = new AffilateAccountPage(getDriver());

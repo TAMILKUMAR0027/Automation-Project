@@ -13,6 +13,7 @@ public class SearchDif {
 
     @When("the user clicks on the search bar on the home page")
     public void theUserClicksOnTheSearchBarOnTheHomePage() {
+
         searchAction.clickSearchBar();
     }
 
