@@ -6,17 +6,25 @@ import org.testng.asserts.SoftAssert;
 
 import com.actions.AddReviewPageAction;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AddReview {
 
-	AddReviewPageAction arpa = new AddReviewPageAction();
+	AddReviewPageAction arpa;
 
 	SoftAssert sa = new SoftAssert();
 
-	private static final Logger log = LogManager.getLogger(AddReview.class);
+	private static final Logger log =
+			LogManager.getLogger(AddReview.class);
+
+	@Before
+	public void setup() {
+
+		arpa = new AddReviewPageAction();
+	}
 
 	@Given("the user is on product details page")
 	public void the_user_is_on_product_details_page() {
@@ -66,8 +74,9 @@ public class AddReview {
 	}
 
 	@Then("the user should receive a warning message to write review with characters more than {int} and less than {int}.")
-	public void the_user_should_receive_a_warning_message_to_write_review_with_characters_more_than_and_less_than(Integer int1, Integer int2) {
-		{
+	public void the_user_should_receive_a_warning_message_to_write_review_with_characters_more_than_and_less_than(
+			Integer int1,
+			Integer int2) {
 
 		String actual = arpa.getWarningMessage();
 
@@ -81,8 +90,9 @@ public class AddReview {
 
 		} catch (AssertionError e) {
 
-			log.error("Invalid review with rating failed " + e.getMessage());
-		}
+			log.error(
+					"Invalid review with rating failed "
+							+ e.getMessage());
 		}
 	}
 
@@ -101,7 +111,8 @@ public class AddReview {
 	}
 
 	@Then("the user should receive a warning message stating name must contain characters between {int} and {int}")
-	public void the_user_should_receive_a_warning_message_stating_name_must_contain_characters_between_and(Integer int1,
+	public void the_user_should_receive_a_warning_message_stating_name_must_contain_characters_between_and(
+			Integer int1,
 			Integer int2) {
 
 		String actual = arpa.getWarningMessage();
@@ -116,7 +127,9 @@ public class AddReview {
 
 		} catch (AssertionError e) {
 
-			log.error("Invalid review without name failed " + e.getMessage());
+			log.error(
+					"Invalid review without name failed "
+							+ e.getMessage());
 		}
 	}
 
@@ -133,7 +146,8 @@ public class AddReview {
 	}
 
 	@Then("the user should receive a warning message Stating that characters must be between {int} and {int}")
-	public void the_user_should_receive_a_warning_message_stating_that_characters_must_be_between_and(Integer int1,
+	public void the_user_should_receive_a_warning_message_stating_that_characters_must_be_between_and(
+			Integer int1,
 			Integer int2) {
 
 		String actual = arpa.getWarningMessage();
@@ -148,27 +162,31 @@ public class AddReview {
 
 		} catch (AssertionError e) {
 
-			log.error("Invalid review without feedback failed " + e.getMessage());
+			log.error(
+					"Invalid review without feedback failed "
+							+ e.getMessage());
 		}
 	}
-	
 
 	@When("the user adds the review without the star rating")
 	public void the_user_adds_the_review_without_the_star_rating() {
-		arpa.enterNameFromCSV(3);
-		arpa.enterReviewFromCSV(3);
-	
 
+		arpa.enterNameFromCSV(3);
+
+		arpa.enterReviewFromCSV(3);
 	}
 
 	@When("clicks on Write Review to add the review")
 	public void clicks_on_write_review_to_add_the_review() {
+
 		arpa.clickWriteReview();
 	}
 
 	@Then("the user should receive a warning message intimating the selection of star rating")
 	public void the_user_should_receive_a_warning_message_intimating_the_selection_of_star_rating() {
+
 		String actual = arpa.getWarningMessage();
+
 		String expected = arpa.expectedCSVMessage(3);
 
 		try {
@@ -179,10 +197,9 @@ public class AddReview {
 
 		} catch (AssertionError e) {
 
-			log.error("Invalid review without rating failed " + e.getMessage());
+			log.error(
+					"Invalid review without rating failed "
+							+ e.getMessage());
 		}
 	}
-	
-	}
-
-
+}
