@@ -7,15 +7,13 @@ To validate the login Functionality of ecommerce lambdaTest Application with bot
     Given The user is in HomePage of Ecommerce LambadaTest Application
 
   @validCredentials
-  Scenario Outline: To check the login Functionality with valid credentialss
+  Scenario: To check the login Functionality with valid credentialss
     When The user clicks on My account link
-    And The user Enters valid email as "<email>" and valid password as "<password>"
-    And Clicks on Login Button
-    Then The user should be successfully Logged in.
-
-    Examples:
+    And The user Enters valid email  and valid password
       | email               | password  |
       | testlogin@gmail.com | testlogin |
+    And Clicks on Login Button
+    Then The user should be successfully Logged in.
 
   @invalidCredentials
   Scenario Outline: To check the login Functionality with invalid credentialss
@@ -27,14 +25,5 @@ To validate the login Functionality of ecommerce lambdaTest Application with bot
     Examples:
       | email               | password   |
       | testlogin@gmail.com | testTetsng |
-
-  @invalidEmptyCredentials
-  Scenario Outline: To check the login functionality by leaving empty on fields
-    When The user clicks on My account link
-    And The user leaves email input field Empty and enter invalid password as "<password>"
-    And Clicks on Login Button
-    Then The user should see an Error message Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour".
-
-    Examples:
-      | password   |
-      | testTetsng |
+      |                     | testTetsng |
+      | bat@gmail.com       |            |

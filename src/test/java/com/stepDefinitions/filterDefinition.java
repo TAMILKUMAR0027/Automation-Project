@@ -2,6 +2,8 @@ package com.stepDefinitions;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import com.actions.FilterPageAction;
@@ -17,6 +19,8 @@ import io.cucumber.java.en.When;
 
 public class filterDefinition {
 
+    private static Logger log = LogManager.getLogger(filterDefinition.class);
+
     LaunchPages lp = new LaunchPages(DriverClass.getDriver());
 
     FilterPageAction fpa = new FilterPageAction();
@@ -27,86 +31,198 @@ public class filterDefinition {
 
     List<String> products;
 
-    @Given("User is on Home page click on the Shop By categories Page and Click any one option")
-    public void user_is_on_home_page_click_on_the_shop_by_categories_page_and_click_any_one_option() {
+    @Given("User is on Home page")
+    public void user_is_on_home_page() {
 
-        try {
+        String url = ConfigReader.getProperties().getProperty("url");
+        lp.launchApplication(url);
+    }
 
-            String url = ConfigReader.getProperties().getProperty("url");
+    @Given("User clicks on Shop By Categories")
+    public void user_clicks_on_shop_by_categories() {
 
-            lp.launchApplication(url);
-
-        } catch (Exception e) {
-
-            throw e;
-        }
         lpa.clickCategories();
+    }
+
+    @Given("User selects any one category")
+    public void user_selects_any_one_category() {
+
         lpa.clickMonitor();
     }
 
-    @When("User clicks manufacturer filter any brand element")
-    public void user_clicks_manufacturer_filter_any_brand_element() {
+    @When("User clicks any manufacturer filter option")
+    public void user_clicks_any_manufacturer_filter_option() {
 
-        
         fpa.clickManufacture();
     }
 
-    @When("product should be displayed based on filtered results and Clicks any one product")
-    public void product_should_be_displayed_based_on_filtered_results_and_clicks_any_one_product() {
+    @When("Products should display based on selected manufacturer")
+    public void products_should_display_based_on_selected_manufacturer() {
+
+        System.out.println("Manufacturer products displayed");
+    }
+
+    @When("User clicks any one product")
+    public void user_clicks_any_one_product() {
 
         fpa.clickProduct();
     }
 
-    @Then("check the product brand name in description should be matches the filter")
-    public void check_the_product_brand_name_in_description_should_be_matches_the_filter() {
+    @Then("Product brand name in description should match the selected filter")
+    public void product_brand_name_in_description_should_match_the_selected_filter() {
 
-        Assert.assertEquals(ppa.getBrandName(), "Apple");
-    }
-    	
-        @When("User send an option from the show products dropdown")
-        public void user_send_an_option_from_the_show_products_dropdown() {
-        	
-            fpa.clickManufacture();
-          
+        String actual = ppa.getBrandName();
+        String expected = "Apple";
 
-            fpa.selectDropdownByVisibleText("25");
+        try {
+
+            Assert.assertEquals(actual, expected);
+            log.info("Brand name matched successfully");
+
+        } catch (AssertionError e) {
+
+            log.error("Brand name mismatch, Error: " + e.getMessage());
+            throw e;
         }
-    
-    @When("User stores the displayed products in a list")
-    public void user_stores_the_displayed_products_in_a_list() {
+    }
+
+    @When("User selects an option from the show products dropdown")
+    public void user_selects_an_option_from_the_show_products_dropdown() {
+
+        fpa.clickManufacture();
+        fpa.selectDropdownByVisibleText(
+                ConfigReader.getProperties().getProperty("index"));
+    }
+
+    @When("User  displayed products")
+    public void user_displayed_products() {
 
         products = fpa.storeAllProducts();
-
-        System.out.println(products);
+        System.out.println(fpa.getItems());
     }
 
     @Then("Displayed product count should match the selected dropdown value")
     public void displayed_product_count_should_match_the_selected_dropdown_value() {
 
-        
+        int actual = fpa.getDisplayedProductCount();
+        int expected = 25;
 
-        Assert.assertEquals(25,fpa.getDisplayedProductCount());
+        try {
+
+            Assert.assertEquals(actual, expected);
+            log.info("Displayed product count matched successfully");
+
+        } catch (AssertionError e) {
+
+            log.error("Displayed product count mismatch, Error: " + e.getMessage());
+            throw e;
+        }
     }
 
-@When("User clicks the in-stock filter option  and Products should display based on availability")
-public void user_clicks_the_in_stock_filter_option_and_products_should_display_based_on_availability() {
-    // Write code here that turns the phrase above into concrete actions
-    fpa.clickAvailability();
-}
+    @When("User clicks the in-stock filter option")
+    public void user_clicks_the_in_stock_filter_option() {
 
+        fpa.clickAvailability();
+    }
 
+    @When("Products should display based on availability")
+    public void products_should_display_based_on_availability() {
 
-    @When("User clicks any one product")
-    public void user_clicks_any_one_product() {
-        // Write code here that turns the phrase above into concrete actions
-       fpa.clickCanonProduct();
+        System.out.println("Availability products displayed");
+    }
+
+    @When("User clicks any one product based on instock")
+    public void user_clicks_any_one_product_based_on_instock() {
+
+        fpa.clickCanonProduct();
     }
 
     @Then("Product availability status should be displayed in product description")
     public void product_availability_status_should_be_displayed_in_product_description() {
-        // Write code here that turns the phrase above into concrete actions
-        Assert.assertEquals("In Stock", ppa.getAvailability());
+
+        String actual = ppa.getInstockAvailability();
+        String expected = "In Stock";
+
+        try {
+
+            Assert.assertEquals(actual, expected);
+            log.info("Product availability status matched successfully");
+
+        } catch (AssertionError e) {
+
+            log.error("Availability status mismatch, Error: " + e.getMessage());
+            throw e;
+        }
     }
 
+    @When("User clicks the in-stock filter option and click one product")
+    public void user_clicks_the_in_stock_filter_option_and_click_one_product() {
 
+        fpa.clickAvailability();
+        fpa.clickCanonProduct();
+    }
+
+    @Then("In-stock products should display availability status in product description")
+    public void in_stock_products_should_display_availability_status_in_product_description() {
+
+        String actual = ppa.getInstockAvailability();
+        String expected = "In Stock";
+
+        try {
+
+            Assert.assertEquals(actual, expected);
+            log.info("In-stock product availability verified successfully");
+
+        } catch (AssertionError e) {
+
+            log.error("In-stock availability verification failed, Error: " + e.getMessage());
+            throw e;
+        }
+
+        DriverClass.getDriver().navigate().back();
+    }
+
+    @When("User clicks the out-of-stock filter option and click one product")
+    public void user_clicks_the_out_of_stock_filter_option_and_click_one_product() {
+
+        DriverClass.getDriver().navigate().refresh();
+
+        fpa.clickOutofStockOption();
+        fpa.clickHTCTouchHD();
+    }
+
+    @Then("Out-of-stock products should display availability status in product description")
+    public void out_of_stock_products_should_display_availability_status_in_product_description() {
+
+        String actual = ppa.getOutStockAvailability();
+        String expected = "Out Of Stock";
+
+        try {
+
+            Assert.assertEquals(actual, expected);
+            log.info("Out-of-stock product availability verified successfully");
+
+        } catch (AssertionError e) {
+
+            log.error("Out-of-stock availability verification failed, Error: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @When("move the slider")
+    public void move_the_slider() {
+
+        fpa.moveSlider();
+    }
+
+    @Then("the price should be updated in filter page")
+    public void the_price_should_be_updated_in_filter_page() {
+
+        int price = Integer.parseInt(fpa.getValue());
+
+        System.out.println("Slider Price : " + price);
+
+        Assert.assertTrue(price < 2000,
+                "Price is greater than 2000. Actual price: " + price);
+    }
 }

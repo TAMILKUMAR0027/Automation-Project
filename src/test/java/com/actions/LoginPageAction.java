@@ -1,6 +1,8 @@
 package com.actions;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,50 +11,76 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.driver.DriverClass;
 import com.pages.LoginPage;
 
+import io.cucumber.datatable.DataTable;
+
 public class LoginPageAction {
-	WebDriver driver = DriverClass.getDriver();
-	LoginPage lp = new LoginPage(driver);
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+	
+	LoginPage lp = new LoginPage(DriverClass.getDriver());
+	BaseAction ba = new BaseAction();
+	WebDriverWait wait=new WebDriverWait(DriverClass.getDriver(),Duration.ofSeconds(15));
 
 	public void launchWebUrl() {
-		driver.get("https://ecommerce-playground.lambdatest.io/");
+		DriverClass.getDriver().get("https://ecommerce-playground.lambdatest.io/");
 	}
 
 	public void clickMyAccountLink()
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
+		try
+		{
+			ba.isDisplayed(lp.myAccLink);
+			ba.click(lp.myAccLink);
+		}
+		catch(Exception e)
+		{
+			ba.waitForVisibility(lp.myAccLink);
+			ba.click(lp.myAccLink);
+
+		}
 	}
 	
 	public void enterEmailAndPass(String username,String password)
-	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginEmail)).sendKeys(username);
-		lp.LoginPassword.sendKeys(password);
+	{	
+		ba.waitForVisibility(lp.LoginEmail);
+		ba.sendKeys(lp.LoginEmail, username);
+		ba.sendKeys(lp.LoginPassword, password);
 	}
 	
 	public void enterPass(String password)
 	{
-		wait.until(ExpectedConditions.visibilityOf(lp.LoginPassword)).sendKeys(password);
+		ba.waitForVisibility(lp.LoginPassword);
+		ba.sendKeys(lp.LoginPassword, password);
 	}
 	
 	
 	public void clickLoginButton()
 	{
-		lp.LoginButton.click();
+		ba.click(lp.LoginButton);
 	}
 	
 	public String LoginSuccessMsg()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginSuccessMessage)).getText();
+		ba.waitForVisibility(lp.LoginSuccessMessage);
+		return ba.getText(lp.LoginSuccessMessage);
 	}
 	
 	public String LoginFailedMsg()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessage)).getText();
+		ba.waitForVisibility(lp.LoginFailedMessage);
+		return ba.getText(lp.LoginFailedMessage);
 	}
 	
 	public String LoginFailedMsgone()
 	{
-		return wait.until(ExpectedConditions.visibilityOf(lp.LoginFailedMessageone)).getText();
+		ba.waitForVisibility(lp.LoginFailedMessageone);
+		return ba.getText(lp.LoginFailedMessageone);
+	}
+	
+	public void loginValid(DataTable db)
+	{
+		ba.waitForVisibility(lp.LoginEmail);
+		List<Map<String, String>> data = db.asMaps(String.class, String.class);
+		ba.sendKeys(lp.LoginEmail, data.get(0).get("email"));
+		ba.sendKeys(lp.LoginPassword, data.get(0).get("password"));
 	}
 	
 
