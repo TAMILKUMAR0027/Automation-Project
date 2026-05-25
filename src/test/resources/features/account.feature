@@ -1,4 +1,4 @@
-@AccountFeature
+@AccountFeature @Rishwanth
 Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature
 description:To verify the fuctionality of edit account information
 

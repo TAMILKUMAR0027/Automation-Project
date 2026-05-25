@@ -1,178 +1,195 @@
 package com.actions;
 
-	import org.openqa.selenium.By;
-	import org.openqa.selenium.WebDriver;
-	import org.openqa.selenium.WebElement;
+import com.pages.AddReviewPage;
+import com.utils.CsvDataProvider;
+import com.utils.ExcelUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-	import com.driver.DriverClass;
-	import com.pages.AddReviewPage;
-	import com.utils.AddReviewExcelReader;
-	import com.utils.CsvDataProvider;
+public class AddReviewPageAction extends BaseAction {
 
-	public class AddReviewPageAction extends BaseAction {
+    private AddReviewPage arp;
 
-	    WebDriver driver = DriverClass.getDriver();
-	    AddReviewPage arp = new AddReviewPage(driver);
+    // =========================
+    // PAGE INITIALIZATION
+    // =========================
+    private AddReviewPage getPage() {
 
-	    // Launch Product Page
-	    public void launchProductPage() {
+        if (arp == null) {
+            arp = new AddReviewPage(getDriver());
+        }
 
-	        driver.get("https://ecommerce-playground.lambdatest.io/");
+        return arp;
+    }
 
-	        click(arp.product);
+    // =========================
+    // LAUNCH PRODUCT PAGE
+    // =========================
+    public void launchProductPage() {
 
-	        waitForVisibility(arp.reviewtab);
+        getDriver().get("https://ecommerce-playground.lambdatest.io/");
 
-	        scrollIntoView(arp.reviewtab);
+        waitForPageLoad();
 
-	        click(arp.reviewtab);
-	    }
+        click(getPage().product);
 
-	    // ================== EXCEL METHODS ==================
+        waitForVisibility(getPage().reviewtab);
 
-	    // Select Rating from Excel
-	    public void selectRating(int row) {
+        scrollIntoView(getPage().reviewtab);
 
-	        try {
+        jsClick(getPage().reviewtab);
+    }
 
-	            String ratingValue = AddReviewExcelReader.getData(row, 1);
+    // =========================
+    // EXCEL METHODS
+    // =========================
+    public void selectRating(int row) {
 
-	            if (ratingValue == null || ratingValue.trim().isEmpty()) {
+        try {
 
-	                ratingValue = "5";
-	            }
+            String ratingValue =
+                    ExcelUtils.getAddReviewData(row, 1);
 
-	            By ratingLocator =
-	                    By.cssSelector("input[name='rating'][value='" + ratingValue + "']");
+            if (ratingValue == null || ratingValue.trim().isEmpty()) {
+                ratingValue = "5";
+            }
 
-	            WebElement ratingElement = driver.findElement(ratingLocator);
+            By ratingLocator = By.cssSelector(
+                    "input[name='rating'][value='" + ratingValue + "']"
+            );
 
-	            scrollIntoView(ratingElement);
+            WebElement ratingElement =
+                    getDriver().findElement(ratingLocator);
 
-	            jsClick(ratingElement);
+            scrollIntoView(ratingElement);
 
-	        } catch (Exception e) {
+            jsClick(ratingElement);
 
-	            System.out.println("Rating selection failed: " + e.getMessage());
-	        }
-	    }
+        } catch (Exception e) {
 
-	    // Enter Name from Excel
-	    public void enterName(int row) {
+            System.out.println(
+                    "Rating selection failed: " + e.getMessage());
+        }
+    }
 
-	        scrollIntoView(arp.reviewname);
+    public void enterName(int row) {
 
-	        waitForClickable(arp.reviewname);
+        scrollIntoView(getPage().reviewname);
 
-	        clear(arp.reviewname);
+        waitForClickable(getPage().reviewname);
 
-	        sendKeys(arp.reviewname,
-	                CsvDataProvider.getData1(row, 1));
-	    }
+        clear(getPage().reviewname);
 
-	    // Enter Review from Excel
-	    public void enterReview(int row) {
+        sendKeys(
+                getPage().reviewname,
+                ExcelUtils.getAddReviewData(row, 1)
+        );
+    }
 
-	        scrollIntoView(arp.reviewtext);
+    public void enterReview(int row) {
 
-	        waitForClickable(arp.reviewtext);
+        scrollIntoView(getPage().reviewtext);
 
-	        clear(arp.reviewtext);
+        waitForClickable(getPage().reviewtext);
 
-	        sendKeys(arp.reviewtext,
-	                CsvDataProvider.getData1(row, 2));
-	    }
+        clear(getPage().reviewtext);
 
-	    // Click Write Review
-	    public void clickWriteReview() {
+        sendKeys(
+                getPage().reviewtext,
+                ExcelUtils.getAddReviewData(row, 2)
+        );
+    }
 
-	        scrollIntoView(arp.writeReview);
+    public void clickWriteReview() {
 
-	        waitForClickable(arp.writeReview);
+        scrollIntoView(getPage().writeReview);
 
-	        jsClick(arp.writeReview);
-	    }
+        waitForClickable(getPage().writeReview);
 
-	    // Success Message
-	    public String getSuccessMessage() {
+        jsClick(getPage().writeReview);
+    }
 
-	        waitForVisibility(arp.successMessage);
+    public String getSuccessMessage() {
 
-	        return getText(arp.successMessage);
-	    }
+        waitForVisibility(getPage().successMessage);
 
-	    // Warning Message
-	    public String getWarningMessage() {
+        return getText(getPage().successMessage);
+    }
 
-	        waitForVisibility(arp.warningMessage);
+    public String getWarningMessage() {
 
-	        return getText(arp.warningMessage);
-	    }
+        waitForVisibility(getPage().warningMessage);
 
-	    // Expected Message from Excel
-	    public String expectedMessage(int row) {
+        return getText(getPage().warningMessage);
+    }
 
-	        return AddReviewExcelReader.getData(row, 3);
-	    }
+    public String expectedMessage(int row) {
 
-	    // ================== CSV METHODS ==================
+        return ExcelUtils.getAddReviewData(row, 3);
+    }
 
-	    // Select Rating from CSV
-	    public void selectRatingFromCSV(int row) {
+    // =========================
+    // CSV METHODS
+    // =========================
+    public void selectRatingFromCSV(int row) {
 
-	        try {
+        try {
 
-	            String ratingValue = CsvDataProvider.getData1(row, 1);
+            String ratingValue =
+                    CsvDataProvider.getData1(row, 1);
 
-	            if (ratingValue == null || ratingValue.trim().isEmpty()) {
+            if (ratingValue == null || ratingValue.trim().isEmpty()) {
+                ratingValue = "4";
+            }
 
-	                ratingValue = "4";
-	            }
+            By ratingLocator = By.cssSelector(
+                    "input[name='rating'][value='" + ratingValue + "']"
+            );
 
-	            By ratingLocator =
-	                    By.cssSelector("input[name='rating'][value='" + ratingValue + "']");
+            WebElement ratingElement =
+                    getDriver().findElement(ratingLocator);
 
-	            WebElement ratingElement = driver.findElement(ratingLocator);
+            scrollIntoView(ratingElement);
 
-	            scrollIntoView(ratingElement);
+            jsClick(ratingElement);
 
-	            jsClick(ratingElement);
+        } catch (Exception e) {
 
-	        } catch (Exception e) {
+            System.out.println(
+                    "CSV Rating selection failed: " + e.getMessage());
+        }
+    }
 
-	            System.out.println("CSV Rating selection failed: " + e.getMessage());
-	        }
-	    }
+    public void enterNameFromCSV(int row) {
 
-	    // Enter Name from CSV
-	    public void enterNameFromCSV(int row) {
+        scrollIntoView(getPage().reviewname);
 
-	        scrollIntoView(arp.reviewname);
+        waitForClickable(getPage().reviewname);
 
-	        waitForClickable(arp.reviewname);
+        clear(getPage().reviewname);
 
-	        clear(arp.reviewname);
+        sendKeys(
+                getPage().reviewname,
+                CsvDataProvider.getData1(row, 1)
+        );
+    }
 
-	        sendKeys(arp.reviewname,
-	                CsvDataProvider.getData1(row, 1));
-	    }
+    public void enterReviewFromCSV(int row) {
 
-	    // Enter Review from CSV
-	    public void enterReviewFromCSV(int row) {
+        scrollIntoView(getPage().reviewtext);
 
-	        scrollIntoView(arp.reviewtext);
+        waitForClickable(getPage().reviewtext);
 
-	        waitForClickable(arp.reviewtext);
+        clear(getPage().reviewtext);
 
-	        clear(arp.reviewtext);
+        sendKeys(
+                getPage().reviewtext,
+                CsvDataProvider.getData1(row, 2)
+        );
+    }
 
-	        sendKeys(arp.reviewtext,
-	                CsvDataProvider.getData1(row, 2));
-	    }
+    public String expectedCSVMessage(int row) {
 
-	    // Expected Message from CSV
-	    public String expectedCSVMessage(int row) {
-
-	        return CsvDataProvider.getData1(row, 3);
-	    }
-	}
+        return CsvDataProvider.getData1(row, 3);
+    }
+}

@@ -7,7 +7,8 @@ import org.testng.Assert;
 import com.actions.AccountPageAction;
 import com.actions.LaunchPageAction;
 import com.actions.LoginPageAction;
-import com.utils.RegisterInvalidDataReader;
+import com.utils.ConfigReader;
+
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,8 +21,8 @@ public class AccountSD {
 
 	@When("The user Enters valid email and valid password")
 	public void the_user_enters_valid_email_and_valid_password() {
-	    String email=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("vemail");
-	    String pass=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("vpass");
+	    String email=ConfigReader.getRegisterDataProperties().getProperty("vemail");
+	    String pass=ConfigReader.getRegisterDataProperties().getProperty("vpass");
 	    apa.setVemail(email);
 	    apa.setVpass(pass);
 

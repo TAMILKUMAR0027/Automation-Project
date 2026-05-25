@@ -12,7 +12,7 @@ public class AccountPage extends BasePage {
 	}
 	@FindBy(linkText="Register")
 	public WebElement registerLink;
-	
+
 	@FindBy(xpath="//a[normalize-space()='Edit your account information']")
 	public WebElement editAccInfo;
 	
@@ -25,5 +25,9 @@ public class AccountPage extends BasePage {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	public WebElement editSuccess;
 	
+	@FindBy(xpath = "//i[@class='fas fa-2x mb-1 fa-bullhorn']")
+	public WebElement affilateAccountLink;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	public WebElement accountCreatedMessage;
 
 }

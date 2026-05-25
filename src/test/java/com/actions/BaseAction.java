@@ -2,150 +2,82 @@ package com.actions;
 
 import java.time.Duration;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.*;
 
 import com.driver.DriverClass;
 
 public class BaseAction {
 
-    WebDriver driver = DriverClass.getDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	protected WebDriver getDriver() {
+		return DriverClass.getDriver();
+	}
 
-    public void click(WebElement element) {
+	protected WebDriverWait getWait() {
+		return new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+	}
 
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-    }
+	// =========================
+	// CLICK ACTIONS
+	// =========================
+	public void click(WebElement element) {
+		getWait().until(ExpectedConditions.elementToBeClickable(element));
+		element.click();
+	}
 
-    public void jsClick(WebElement element) {
+	public void jsClick(WebElement element) {
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
+	}
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", element);
-    }
+	// =========================
+	// INPUT ACTIONS
+	// =========================
+	public void sendKeys(WebElement element, String value) {
+		getWait().until(ExpectedConditions.visibilityOf(element));
+		element.clear();
+		element.sendKeys(value);
+	}
 
-    public void clickRadioButton(WebElement element) {
+	// NEW: CLEAR METHOD
+	public void clear(WebElement element) {
+		getWait().until(ExpectedConditions.visibilityOf(element));
+		element.clear();
+	}
 
-        if (!element.isSelected()) {
+	// =========================
+	// WAIT ACTIONS
+	// =========================
+	public void waitForVisibility(WebElement element) {
+		getWait().until(ExpectedConditions.visibilityOf(element));
+	}
 
-            element.click();
-        }
-    }
+	public void waitForClickable(WebElement element) {
+		getWait().until(ExpectedConditions.elementToBeClickable(element));
+	}
 
-    public void selectCheckBox(WebElement element) {
+	public void waitForPageLoad() {
+		WebDriver driver = getDriver();
 
-        if (!element.isSelected()) {
+		getWait().until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+	}
 
-            element.click();
-        }
-    }
+	// =========================
+	// UTILITIES
+	// =========================
+	public String getText(WebElement element) {
+		return element.getText();
+	}
 
-    public void unSelectCheckBox(WebElement element) {
+	// NEW: IS DISPLAYED METHOD (SAFE)
+	public boolean isDisplayed(WebElement element) {
+		try {
+			return element.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
-        if (element.isSelected()) {
-
-            element.click();
-        }
-    }
-
-    public void sendKeys(WebElement element, String msg) {
-
-        try {
-
-            wait.until(ExpectedConditions.visibilityOf(element));
-            element.clear();
-            element.sendKeys(msg);
-
-        } catch (Exception e) {
-
-            ((JavascriptExecutor) driver)
-                    .executeScript(
-                            "arguments[0].scrollIntoView({block:'center'});",
-                            element);
-
-            element.clear();
-            element.sendKeys(msg);
-        }
-    }
-
-    public void sendKeysWithEnter(WebElement element, String msg) {
-
-        try {
-
-            wait.until(ExpectedConditions.visibilityOf(element));
-            element.clear();
-            element.sendKeys(msg, Keys.ENTER);
-
-        } catch (Exception e) {
-
-            ((JavascriptExecutor) driver)
-                    .executeScript(
-                            "arguments[0].scrollIntoView({block:'center'});",
-                            element);
-
-            element.clear();
-            element.sendKeys(msg, Keys.ENTER);
-        }
-    }
-
-    public String getText(WebElement element) {
-
-        wait.until(ExpectedConditions.visibilityOf(element));
-        return element.getText();
-    }
-
-    public boolean isDisplayed(WebElement element) {
-
-        return element.isDisplayed();
-    }
-
-    public boolean isEnabled(WebElement element) {
-
-        return element.isEnabled();
-    }
-
-    public boolean isSelected(WebElement element) {
-
-        return element.isSelected();
-    }
-
-    public String getAttribute(WebElement element, String attributeName) {
-
-        return element.getAttribute(attributeName);
-    }
-
-    public void clear(WebElement element) {
-
-        element.clear();
-    }
-
-    public void scrollIntoView(WebElement element) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
-    }
-
-    public void waitForVisibility(WebElement element) {
-
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public void waitForClickable(WebElement element) {
-
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-
-    public String getTitle() {
-
-        return driver.getTitle();
-    }
-
-    public String getCurrentUrl() {
-
-        return driver.getCurrentUrl();
-    }
+	public void scrollIntoView(WebElement element) {
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+	}
 }
