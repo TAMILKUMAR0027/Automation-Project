@@ -10,9 +10,21 @@ public class AccountPage extends BasePage {
 		super(driver);
 		
 	}
-	
 	@FindBy(linkText="Register")
 	public WebElement registerLink;
+
+	@FindBy(xpath="//a[normalize-space()='Edit your account information']")
+	public WebElement editAccInfo;
+	
+	@FindBy(xpath="//input[@id='input-telephone']")
+	public WebElement telephoneEdit;
+	
+	@FindBy(xpath="//input[@value='Continue']")
+	public WebElement eContinueButton;
+	
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	public WebElement editSuccess;
+	
 	@FindBy(xpath = "//i[@class='fas fa-2x mb-1 fa-bullhorn']")
 	public WebElement affilateAccountLink;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")

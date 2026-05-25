@@ -27,6 +27,7 @@ public class LoginPageAction {
 	{
 		try
 		{
+			ba.waitForVisibility(lp.myAccLink);
 			ba.isDisplayed(lp.myAccLink);
 			ba.click(lp.myAccLink);
 		}

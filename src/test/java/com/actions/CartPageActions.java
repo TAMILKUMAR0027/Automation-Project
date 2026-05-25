@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -82,13 +83,14 @@ public class CartPageActions {
 	}
 
 	public void checkRadioButton() {
-		ba.waitForClickable(cp.radioButton);
+		ba.waitForVisibility(cp.radioButton);
 		if (!cp.radioButton.isSelected()) {
 			ba.click(cp.radioButton);
 		}
 	}
 
 	public void clickApplyShippingButton() {
+		ba.waitForVisibility(cp.applyShippingButton);
 		ba.click(cp.applyShippingButton);
 	}
 
@@ -96,19 +98,39 @@ public class CartPageActions {
 		ba.waitForVisibility(cp.successMsgET);
 		return ba.getText(cp.successMsgET);
 	}
-
+	
 	public List<String> storeAllProduct() {
-		try {
-			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-			System.out.println("Alert Found: " + alert.getText());
-			alert.accept();
-		} catch (Exception e) {
 
-			System.out.println("No Alert Present");
-		}
-		wait.until(ExpectedConditions.visibilityOfAllElements(cp.allProductName));
-		return cp.getProductName();
+	    try {
+
+	        while (true) {
+
+	            Alert alert = wait.until(
+	                    ExpectedConditions.alertIsPresent());
+
+	            System.out.println("Alert Found : "
+	                    + alert.getText());
+
+	            alert.accept();
+
+	            // Wait until alert disappears
+	            wait.until(ExpectedConditions.not(
+	                    ExpectedConditions.alertIsPresent()));
+
+	        }
+
+	    } catch (Exception e) {
+
+	        System.out.println("No more alerts");
+	    }
+
+	    wait.until(
+	            ExpectedConditions.visibilityOfAllElements(
+	                    cp.allProductName));
+
+	    return cp.getProductName();
 	}
+	 
 
 	public void quantitySend(DataTable db) {
 		wait.until(ExpectedConditions.visibilityOf(cp.quantityCount));
