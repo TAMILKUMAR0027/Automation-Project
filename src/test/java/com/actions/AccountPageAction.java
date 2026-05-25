@@ -54,5 +54,6 @@ public class AccountPageAction {
 		 ba.waitForVisibility(ap.editSuccess);
 		 return ba.getText(ap.editSuccess);
 	}
+	
 
 }

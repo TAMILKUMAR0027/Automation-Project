@@ -94,11 +94,9 @@ public class ConfigReader {
                         );
 
                 forgetPasswordProp = new Properties();
-
                 forgetPasswordProp.load(fis);
 
             } catch (Exception e) {
-
                 e.printStackTrace();
             }
         }
