@@ -2,6 +2,7 @@ package com.stepDefinitions;
 
 import java.util.Map;
 
+import com.utils.CsvDataProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -13,7 +14,6 @@ import com.driver.DriverClass;
 import com.pages.LaunchPages;
 import com.utils.ConfigReader;
 import com.utils.ExcelUtils;
-import com.utils.ProductInformationCSVReader;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -26,7 +26,7 @@ public class productPageDefinition {
 	LaunchPageAction launchAction = new LaunchPageAction();
 	productPageAction productAction = new productPageAction();
 	FilterPageAction filterAction = new FilterPageAction();
-	Map<String, String> data = ProductInformationCSVReader
+	Map<String, String> data = CsvDataProvider
 			.getFirstRow("src/test/resources/ProductInformationAssertion.csv", null);
 	private static Map<String, String> enquiryData = ExcelUtils.getQuestionData();
 
