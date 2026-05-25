@@ -68,37 +68,34 @@ public class RegisterSD {
 
 	@When("Enter your personal details except firstname")
 	public void enter_your_personal_details_except_firstname() {
-	    String lname= ConfigReader.getRegisterDataProperties().getProperty("lname");
-	    String email=ConfigReader.getRegisterDataProperties().getProperty("email");
-	    String telephone=ConfigReader.getRegisterDataProperties().getProperty("telephone");
-	    String pass=ConfigReader.getRegisterDataProperties().getProperty("pass");
-	    String cpass=ConfigReader.getRegisterDataProperties().getProperty("cpass");
-	    rpa.setLname(lname);
-	    rpa.setEmail(email);
-	    rpa.setTelephone(telephone);
-	    rpa.setPassword(pass);
-	    rpa.setConfirmPassword(cpass);
-	    rpa.clickPrivacyPolicy();
-	    rpa.continueButton();
+		String lname = ConfigReader.getRegisterDataProperties().getProperty("lname");
+		String email = ConfigReader.getRegisterDataProperties().getProperty("email");
+		String telephone = ConfigReader.getRegisterDataProperties().getProperty("telephone");
+		String pass = ConfigReader.getRegisterDataProperties().getProperty("pass");
+		String cpass = ConfigReader.getRegisterDataProperties().getProperty("cpass");
+		rpa.setLname(lname);
+		rpa.setEmail(email);
+		rpa.setTelephone(telephone);
+		rpa.setPassword(pass);
+		rpa.setConfirmPassword(cpass);
+		rpa.clickPrivacyPolicy();
+		rpa.continueButton();
+
 	}
 
 	@Then("the user should see a warning message : First Name must be between one and thirtyTwo characters!")
 	public void the_user_should_see_a_warning_message_first_name_must_be_between_one_and_thirty_two_characters() {
-	   String actual=rpa.fieldEmptyWmsg();
-	   String exp="First Name must be between 1 and 32 characters!";
-	   
-	   try {
-		   Assert.assertTrue(actual.contains(exp));
-		   log.info("Error message Thrown Successfully");
-	   }catch(AssertionError e)
-	   {
-		   log.error("Error: "+e.getMessage());
-		   throw e;
-	   }
-		
-		
+		String actual = rpa.fieldEmptyWmsg();
+		String exp = "First Name must be between 1 and 32 characters!";
+
+		try {
+			Assert.assertTrue(actual.contains(exp));
+			log.info("Error message Thrown Successfully");
+		} catch (AssertionError e) {
+			log.error("Error: " + e.getMessage());
+			throw e;
+		}
+
 	}
-
-
 
 }
