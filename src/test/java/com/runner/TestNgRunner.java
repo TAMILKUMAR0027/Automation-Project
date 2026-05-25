@@ -8,7 +8,6 @@ import org.testng.annotations.DataProvider;
 
         features = "src/test/resources/features/",
         glue = {"com.stepDefinitions", "com.hooks"},
-	    tags ="@BlogFeature",
         plugin = {
                 "pretty",
                 "html:target/cucumber-report.html",
@@ -16,14 +15,15 @@ import org.testng.annotations.DataProvider;
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failedrerun.txt"
+                
         },
-
+        tags="@BlogFeature",
         monochrome = true
 ) 
 
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
-	
+
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
