@@ -5,8 +5,6 @@ import java.time.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,191 +15,167 @@ import com.utils.ConfigReader;
 
 public class ShopByCategoryAction {
 
-    private static final Logger log =
-            LogManager.getLogger(ShopByCategoryAction.class);
+	private static final Logger log =
+			LogManager.getLogger(ShopByCategoryAction.class);
 
-    WebDriverWait wait =
-            new WebDriverWait(
-                    DriverClass.getDriver(),
-                    Duration.ofSeconds(20));
+	WebDriverWait wait =
+			new WebDriverWait(
+					DriverClass.getDriver(),
+					Duration.ofSeconds(20));
 
-    LaunchPages lp =
-            new LaunchPages(DriverClass.getDriver());
+	LaunchPages lp =
+			new LaunchPages(DriverClass.getDriver());
 
-    ShopByCategoryPage sbcp =
-            new ShopByCategoryPage(
-                    DriverClass.getDriver());
+	ShopByCategoryPage sbcp =
+			new ShopByCategoryPage(
+					DriverClass.getDriver());
 
-    public void launchWebUrl() {
+	public void launchWebUrl() {
 
-        try {
+		try {
 
-            DriverClass.getDriver().get(
-                    ConfigReader.getProperties()
-                            .getProperty("url"));
+			DriverClass.getDriver().get(
+					ConfigReader.getProperties()
+							.getProperty("url"));
 
-            DriverClass.getDriver()
-                    .manage()
-                    .window()
-                    .maximize();
+			DriverClass.getDriver()
+					.manage()
+					.window()
+					.maximize();
 
-            DriverClass.getDriver()
-                    .manage()
-                    .timeouts()
-                    .implicitlyWait(
-                            Duration.ofSeconds(10));
+			DriverClass.getDriver()
+					.manage()
+					.timeouts()
+					.implicitlyWait(
+							Duration.ofSeconds(10));
 
-            log.info(
-                    "Application launched successfully");
+			log.info(
+					"Application launched successfully");
 
-        } catch (Exception e) {
+		} catch (Exception e) {
 
-            log.error(
-                    "Failed to launch application : "
-                            + e.getMessage());
+			log.error(
+					"Failed to launch application : "
+							+ e.getMessage());
+		}
+	}
 
-            throw e;
-        }
-    }
+	public void clickShopByCategory() {
 
-    public void clickShopByCategory() {
+		try {
 
-        try {
+			wait.until(
+					ExpectedConditions.visibilityOf(
+							sbcp.shopByCategoryMenu));
 
-            wait.until(
-                    ExpectedConditions.visibilityOf(
-                            sbcp.shopByCategoryMenu));
+			wait.until(
+					ExpectedConditions
+							.elementToBeClickable(
+									sbcp.shopByCategoryMenu));
 
-            wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            sbcp.shopByCategoryMenu));
+			sbcp.shopByCategoryMenu.click();
 
-            clickElement(sbcp.shopByCategoryMenu);
+			log.info(
+					"Clicked Shop By Category Menu");
 
-            log.info(
-                    "Clicked Shop By Category Menu");
+		} catch (Exception e) {
 
-        } catch (Exception e) {
+			log.error(
+					"Unable to click Shop By Category Menu : "
+							+ e.getMessage());
 
-            log.error(
-                    "Unable to click Shop By Category Menu : "
-                            + e.getMessage());
+			throw e;
+		}
+	}
 
-            throw e;
-        }
-    }
+	public void selectCategory(String category) {
 
-    public void selectCategory(String category) {
+		try {
 
-        try {
+			if (category.equalsIgnoreCase(
+					"Desktops & Monitors")) {
 
-            if (category.equalsIgnoreCase(
-                    "Desktops & Monitors")) {
+				wait.until(
+						ExpectedConditions
+								.elementToBeClickable(
+										sbcp.desktopsCategory));
 
-                clickElement(sbcp.desktopsCategory);
+				sbcp.desktopsCategory.click();
 
-                log.info(
-                        "Selected Desktops & Monitors");
-            }
+				log.info(
+						"Selected Desktops & Monitors");
+			}
 
-            else if (category.equalsIgnoreCase(
-                    "Web Cameras")) {
+			else if (category.equalsIgnoreCase(
+					"Web Cameras")) {
 
-                clickElement(sbcp.cameras);
+				wait.until(
+						ExpectedConditions
+								.elementToBeClickable(
+										sbcp.cameras));
 
-                log.info(
-                        "Selected Web Cameras");
-            }
+				sbcp.cameras.click();
 
-            else if (category.equalsIgnoreCase(
-                    "Phone, Tablets & Ipod")) {
+				log.info("Selected Web Cameras");
+			}
 
-                clickElement(sbcp.tablets);
+			else if (category.equalsIgnoreCase(
+					"Phone, Tablets & Ipod")) {
 
-                log.info(
-                        "Selected Phone, Tablets & Ipod");
-            }
+				wait.until(
+						ExpectedConditions
+								.elementToBeClickable(
+										sbcp.tablets));
 
-            else if (category.equalsIgnoreCase(
-                    "Laptops & Notebooks")) {
+				sbcp.tablets.click();
 
-                clickElement(sbcp.laptops);
+				log.info(
+						"Selected Phone, Tablets & Ipod");
+			}
 
-                log.info(
-                        "Selected Laptops & Notebooks");
-            }
+			else if (category.equalsIgnoreCase(
+					"Laptops & Notebooks")) {
 
-        } catch (Exception e) {
+				wait.until(
+						ExpectedConditions
+								.elementToBeClickable(
+										sbcp.laptops));
 
-            log.error(
-                    "Failed to select category : "
-                            + e.getMessage());
+				sbcp.laptops.click();
 
-            throw e;
-        }
-    }
+				log.info(
+						"Selected Laptops & Notebooks");
+			}
 
-    public void clickElement(WebElement element) {
+		} catch (Exception e) {
 
-        try {
+			log.error(
+					"Failed to select category : "
+							+ e.getMessage());
 
-            wait.until(
-                    ExpectedConditions.visibilityOf(
-                            element));
+			throw e;
+		}
+	}
 
-            wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            element));
+	public String getPageTitle() {
 
-            JavascriptExecutor js =
-                    (JavascriptExecutor) DriverClass.getDriver();
+		String title = "";
 
-            js.executeScript(
-                    "arguments[0].scrollIntoView({block:'center'});",
-                    element);
+		try {
 
-            Thread.sleep(1000);
+			title =
+					DriverClass.getDriver().getTitle();
 
-            try {
+			log.info(
+					"Page title fetched successfully");
 
-                element.click();
+		} catch (Exception e) {
 
-            } catch (Exception e) {
+			log.error(
+					"Unable to fetch page title : "
+							+ e.getMessage());
+		}
 
-                js.executeScript(
-                        "arguments[0].click();",
-                        element);
-            }
-
-        } catch (Exception e) {
-
-            log.error(
-                    "Unable to click element : "
-                            + e.getMessage());
-
-            throw new RuntimeException(e);
-        }
-    }
-
-    public String getPageTitle() {
-
-        String title = "";
-
-        try {
-
-            title =
-                    DriverClass.getDriver().getTitle();
-
-            log.info(
-                    "Page title fetched successfully");
-
-        } catch (Exception e) {
-
-            log.error(
-                    "Unable to fetch page title : "
-                            + e.getMessage());
-        }
-
-        return title;
-    }
+		return title;
+	}
 }
