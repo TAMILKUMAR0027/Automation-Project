@@ -2,15 +2,14 @@ package com.stepDefinitions;
 
 import java.util.Map;
 
+import com.utils.ConfigReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.Assert;
+
 
 import com.actions.LoginPageAction;
 import com.actions.RegisterPageAction;
 import com.utils.ExcelUtils;
-import com.utils.RegisterExcelData;
-import com.utils.RegisterInvalidDataReader;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,7 +19,7 @@ public class RegisterSD {
 	private static final Logger log = LogManager.getLogger(RegisterSD.class);
 	RegisterPageAction rpa = new RegisterPageAction();
 	LoginPageAction lpa = new LoginPageAction();
-	private static Map<String, String> registerData = RegisterExcelData.getRegisterData();
+	private static Map<String, String> registerData = ExcelUtils.getRegisterData();
 
 	@Given("The user is in HomePage of EcommerceLambdaTestWebsite")
 	public void the_user_is_in_home_page_of_ecommerce_lambda_test_website() {
@@ -69,11 +68,11 @@ public class RegisterSD {
 
 	@When("Enter your personal details except firstname")
 	public void enter_your_personal_details_except_firstname() {
-	    String lname=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("lname");
-	    String email=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("email");
-	    String telephone=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("telephone");
-	    String pass=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("pass");
-	    String cpass=RegisterInvalidDataReader.getRegisterDataProperties().getProperty("cpass");
+	    String lname= ConfigReader.getRegisterDataProperties().getProperty("lname");
+	    String email=ConfigReader.getRegisterDataProperties().getProperty("email");
+	    String telephone=ConfigReader.getRegisterDataProperties().getProperty("telephone");
+	    String pass=ConfigReader.getRegisterDataProperties().getProperty("pass");
+	    String cpass=ConfigReader.getRegisterDataProperties().getProperty("cpass");
 	    rpa.setLname(lname);
 	    rpa.setEmail(email);
 	    rpa.setTelephone(telephone);

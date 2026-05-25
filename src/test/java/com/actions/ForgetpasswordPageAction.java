@@ -3,6 +3,7 @@ package com.actions;
 import java.time.Duration;
 import java.util.Properties;
 
+import com.utils.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,14 +11,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.driver.DriverClass;
 import com.pages.ForgetPasswordPage;
 import com.pages.LoginPage;
-import com.utils.TestdataReader;
 
 public class ForgetpasswordPageAction extends BaseAction{
 	WebDriver driver = DriverClass.getDriver();
 	LoginPage lp = new LoginPage(driver);
 	ForgetPasswordPage fp=new ForgetPasswordPage(driver);
 	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
-	Properties prop = TestdataReader.getProperties();
+	Properties prop = ConfigReader.getProperties();
 
 	public void ForgetPasswordPageAction(WebDriver driver) {
 		this.driver=driver;

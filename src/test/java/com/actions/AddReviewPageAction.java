@@ -1,12 +1,10 @@
 package com.actions;
 
+import com.pages.AddReviewPage;
+import com.utils.CsvDataProvider;
+import com.utils.ExcelUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import com.driver.DriverClass;
-import com.pages.AddReviewPage;
-import com.utils.AddReviewExcelReader;
-import com.utils.CsvDataProvider;
 
 public class AddReviewPageAction extends BaseAction {
 
@@ -49,7 +47,8 @@ public class AddReviewPageAction extends BaseAction {
 
         try {
 
-            String ratingValue = AddReviewExcelReader.getData(row, 1);
+            String ratingValue =
+                    ExcelUtils.getAddReviewData(row, 1);
 
             if (ratingValue == null || ratingValue.trim().isEmpty()) {
                 ratingValue = "5";
@@ -59,14 +58,17 @@ public class AddReviewPageAction extends BaseAction {
                     "input[name='rating'][value='" + ratingValue + "']"
             );
 
-            WebElement ratingElement = getDriver().findElement(ratingLocator);
+            WebElement ratingElement =
+                    getDriver().findElement(ratingLocator);
 
             scrollIntoView(ratingElement);
 
             jsClick(ratingElement);
 
         } catch (Exception e) {
-            System.out.println("Rating selection failed: " + e.getMessage());
+
+            System.out.println(
+                    "Rating selection failed: " + e.getMessage());
         }
     }
 
@@ -80,7 +82,7 @@ public class AddReviewPageAction extends BaseAction {
 
         sendKeys(
                 getPage().reviewname,
-                CsvDataProvider.getData1(row, 1)
+                ExcelUtils.getAddReviewData(row, 1)
         );
     }
 
@@ -94,7 +96,7 @@ public class AddReviewPageAction extends BaseAction {
 
         sendKeys(
                 getPage().reviewtext,
-                CsvDataProvider.getData1(row, 2)
+                ExcelUtils.getAddReviewData(row, 2)
         );
     }
 
@@ -123,7 +125,7 @@ public class AddReviewPageAction extends BaseAction {
 
     public String expectedMessage(int row) {
 
-        return AddReviewExcelReader.getData(row, 3);
+        return ExcelUtils.getAddReviewData(row, 3);
     }
 
     // =========================
@@ -133,7 +135,8 @@ public class AddReviewPageAction extends BaseAction {
 
         try {
 
-            String ratingValue = CsvDataProvider.getData1(row, 1);
+            String ratingValue =
+                    CsvDataProvider.getData1(row, 1);
 
             if (ratingValue == null || ratingValue.trim().isEmpty()) {
                 ratingValue = "4";
@@ -143,14 +146,17 @@ public class AddReviewPageAction extends BaseAction {
                     "input[name='rating'][value='" + ratingValue + "']"
             );
 
-            WebElement ratingElement = getDriver().findElement(ratingLocator);
+            WebElement ratingElement =
+                    getDriver().findElement(ratingLocator);
 
             scrollIntoView(ratingElement);
 
             jsClick(ratingElement);
 
         } catch (Exception e) {
-            System.out.println("CSV Rating selection failed: " + e.getMessage());
+
+            System.out.println(
+                    "CSV Rating selection failed: " + e.getMessage());
         }
     }
 
