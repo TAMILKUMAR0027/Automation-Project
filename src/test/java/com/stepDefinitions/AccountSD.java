@@ -9,54 +9,84 @@ import com.actions.LaunchPageAction;
 import com.actions.LoginPageAction;
 import com.utils.ConfigReader;
 
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AccountSD {
-	AccountPageAction apa = new AccountPageAction();
-	LoginPageAction lpa = new LoginPageAction();
-	LaunchPageAction lp = new LaunchPageAction();
-	private static final Logger log = LogManager.getLogger(CartSD.class);
 
-	@When("The user Enters valid email and valid password")
-	public void the_user_enters_valid_email_and_valid_password() {
-	    String email=ConfigReader.getRegisterDataProperties().getProperty("vemail");
-	    String pass=ConfigReader.getRegisterDataProperties().getProperty("vpass");
-	    apa.setVemail(email);
-	    apa.setVpass(pass);
+    AccountPageAction apa = new AccountPageAction();
+    LoginPageAction lpa = new LoginPageAction();
+    LaunchPageAction lp = new LaunchPageAction();
 
-	}
+    private static final Logger log =
+            LogManager.getLogger(AccountSD.class);
 
-	@When("The User clicks on edit account information link on Account page")
-	public void the_user_clicks_on_edit_account_information_link_on_account_page() {
-		apa.clickEditAccInfo();
-	}
+    // =========================
+    // LOGIN STEP
+    // =========================
+    @When("The user Enters valid email and valid passwords")
+    public void the_user_enters_valid_email_and_valid_password() {
 
-	@When("The user clear and enter new telephone number as {string} in input field")
-	public void the_user_clear_and_enter_new_telephone_number_as_in_input_field(String string,
-			io.cucumber.datatable.DataTable dataTable) {
-		apa.updateDetails(dataTable);
-	}
+        String email =
+                ConfigReader.getRegisterDataProperties()
+                .getProperty("vemail");
 
-	@When("The user clicks on continue Button in Edit Information Page")
-	public void the_user_clicks_on_continue_button_in_edit_information_page() {
-		apa.clickEContinueBtn();
-	}
+        String pass =
+                ConfigReader.getRegisterDataProperties()
+                .getProperty("vpass");
 
-	@Then("The user should see a sucess Message Your account has updated successfully")
-	public void the_user_should_see_a_sucess_message_your_account_has_updated_successfully() {
-		String actual = apa.successMsgE();
-		String exp = "Success: Your account has been successfully updated.";
+        apa.setVemail(email);
+        apa.setVpass(pass);
+    }
 
-		try {
-			Assert.assertTrue(actual.contains(exp));
-			log.info("Error message Thrown Successfully");
-		} catch (AssertionError e) {
-			log.error("Error: " + e.getMessage());
-			throw e;
-		}
-	}
+    // =========================
+    // NAVIGATION STEP
+    // =========================
+    @When("The User clicks on edit account information link on Account page")
+    public void the_user_clicks_on_edit_account_information_link_on_account_page() {
 
+        apa.clickEditAccInfo();
+    }
 
+    // =========================
+    // UPDATE TELEPHONE (DATATABLE)
+    // =========================
+    @When("The user clear and enter new telephone number in input field")
+    public void the_user_clear_and_enter_new_telephone_number_in_input_field(DataTable dataTable) {
 
+        apa.updateDetails(dataTable);
+    }
+
+    // =========================
+    // CONTINUE BUTTON
+    // =========================
+    @When("The user clicks on continue Button in Edit Information Page")
+    public void the_user_clicks_on_continue_button_in_edit_information_page() {
+
+        apa.clickEContinueBtn();
+    }
+
+    // =========================
+    // ASSERTION STEP
+    // =========================
+    @Then("The user should see a sucess Message Your account has updated successfully")
+    public void the_user_should_see_a_success_message_your_account_has_updated_successfully() {
+
+        String actual = apa.successMsgE();
+        String expected =
+                "Success: Your account has been successfully updated.";
+
+        try {
+
+            Assert.assertTrue(actual.contains(expected));
+            log.info("Account updated success message verified");
+
+        } catch (AssertionError e) {
+
+            log.error("Assertion failed: " + e.getMessage());
+            throw e;
+        }
+    }
 }

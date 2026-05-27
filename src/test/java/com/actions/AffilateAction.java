@@ -9,7 +9,7 @@ import com.pages.*;
 
 public class AffilateAction extends BaseAction {
 
-    Properties prop = ConfigReader.getProperties();
+    Properties prop = ConfigReader.getAffiliateProperties();
 
     AccountPage ap = new AccountPage(getDriver());
     AffilateAccountPage aap = new AffilateAccountPage(getDriver());
@@ -50,7 +50,7 @@ public class AffilateAction extends BaseAction {
 
     public void enterAffilateDetails() {
 
-        sendKeys(aap.company, prop.getProperty("company"));
+    	sendKeys(aap.company, prop.getProperty("company"));
         sendKeys(aap.website, prop.getProperty("website"));
         sendKeys(aap.taxID, prop.getProperty("taxID"));
         sendKeys(aap.chequeName, prop.getProperty("chequeName"));
