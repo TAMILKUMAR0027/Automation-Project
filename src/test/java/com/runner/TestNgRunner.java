@@ -16,18 +16,7 @@ import org.testng.annotations.DataProvider;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failedrerun.txt"},
 
-
-
-          
-
-
-        
-
-        
-
-
-
-          tags="@AddReview and @Rest and @Logout",
+       tags="@AddReview and @Rest and @Logout",
 
         monochrome = true
 ) 
