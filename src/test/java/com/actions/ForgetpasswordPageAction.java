@@ -3,64 +3,62 @@ package com.actions;
 import java.time.Duration;
 import java.util.Properties;
 
+import com.driver.DriverClass;
+import com.pages.ForgetPasswordPage;
+import com.pages.LoginPage;
 import com.utils.ConfigReader;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.driver.DriverClass;
-import com.pages.ForgetPasswordPage;
-import com.pages.LoginPage;
+public class ForgetpasswordPageAction extends BaseAction {
 
-public class ForgetpasswordPageAction extends BaseAction{
-	WebDriver driver = DriverClass.getDriver();
-	LoginPage lp = new LoginPage(driver);
-	ForgetPasswordPage fp=new ForgetPasswordPage(driver);
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
-	Properties prop = ConfigReader.getProperties();
+    WebDriver driver = DriverClass.getDriver();
 
-	public void ForgetPasswordPageAction(WebDriver driver) {
-		this.driver=driver;
-	}
-	public void launchWebUrl() {
-		driver.get("https://ecommerce-playground.lambdatest.io/");
-	}
+    LoginPage lp = new LoginPage(driver);
+    ForgetPasswordPage fp = new ForgetPasswordPage(driver);
 
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-	public void clickMyAccountLink(){
-		wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
-	}
-	 public void clickForgotPassword() {
-         click(fp.forgetpassword);
-	}
+    // ✅ FIX: correct properties file
+    Properties prop = ConfigReader.getForgetPasswordProperties();
 
-	 // Reusable method for valid/invalid emails
-	    public void enterEmail(String emailKey) {
+    public void launchWebUrl() {
+        driver.get("https://ecommerce-playground.lambdatest.io/");
+    }
 
-	        wait.until(ExpectedConditions.visibilityOf(fp.email)).clear();
+    public void clickMyAccountLink() {
+        wait.until(ExpectedConditions.visibilityOf(lp.myAccLink)).click();
+    }
 
-	        fp.email.sendKeys(prop.getProperty(emailKey));
-	    }
-	   
-	    public void clickContinueButton() {
-            click(fp.button);
-	    }
-	    public String Successmsg() {
-	    	 return getText(fp.message);
-	    }
-	    public String Warningmsg() {
-	    	return getText(fp.warningmsg);
-	    }
-	    public String expectedSuccessmsg() {
+    public void clickForgotPassword() {
+        click(fp.forgetpassword);
+    }
 
-	        return prop.getProperty("message");
-	    }
+    // ✅ FIX: proper key usage (validEmail / InvalidEmail)
+    public void enterEmail(String emailKey) {
+        wait.until(ExpectedConditions.visibilityOf(fp.email)).clear();
+        fp.email.sendKeys(prop.getProperty(emailKey));
+    }
 
-	    public String expectedErrormsg() {
+    public void clickContinueButton() {
+        click(fp.button);
+    }
 
-	        return prop.getProperty("error_message");
-	    }
-	}
-		
-	
+    public String getSuccessMessage() {
+        return getText(fp.message);
+    }
 
+    public String getWarningMessage() {
+        return getText(fp.warningmsg);
+    }
+
+    public String expectedSuccessMessage() {
+        return prop.getProperty("message");
+    }
+
+    public String expectedErrorMessage() {
+        return prop.getProperty("error_message");
+    }
+}

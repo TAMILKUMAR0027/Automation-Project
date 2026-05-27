@@ -33,7 +33,7 @@ Feature: Checkout Functionality
     Then the application redirect to the chechkout
     And the user selects "Register Account" option
     And the user enters registration details
-      | firstName | lastName     | email                 | telephone  | password | confirmPassword | company     | address1       | address2       | city    | postCode | country | region     |
+      | firstName | lastName     | email                  | telephone  | password | confirmPassword | company     | address1       | address2       | city    | postCode | country | region     |
       | Samiha    | Muhabathulla | samiha144109@gmail.com | 9876543210 | Test@123 | Test@123        | ABC Company | 12 Main Street | Near Bus Stand | Chennai | 600001   | India   | Tamil Nadu |
     And the user agrees to the privacy policy
     And the user clicks on Continue button

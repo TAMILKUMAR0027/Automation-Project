@@ -2,10 +2,11 @@ package com.actions;
 
 import java.util.Properties;
 
-import com.utils.ConfigReader;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.pages.*;
+import com.pages.AccountPage;
+import com.pages.AffilateAccountPage;
+import com.utils.ConfigReader;
 
 public class AffilateAction extends BaseAction {
 
@@ -15,6 +16,7 @@ public class AffilateAction extends BaseAction {
     AffilateAccountPage aap = new AffilateAccountPage(getDriver());
 
     public void clickAffilateAccountRegister() {
+
         getWait().until(ExpectedConditions.elementToBeClickable(ap.affilateAccountLink));
         click(ap.affilateAccountLink);
     }
@@ -27,12 +29,12 @@ public class AffilateAction extends BaseAction {
         sendKeys(aap.website, website);
     }
 
-    public void enterTaxID(String tax) {
-        sendKeys(aap.taxID, tax);
+    public void enterTaxID(String taxID) {
+        sendKeys(aap.taxID, taxID);
     }
 
-    public void enterChequeName(String name) {
-        sendKeys(aap.chequeName, name);
+    public void enterChequeName(String chequeName) {
+        sendKeys(aap.chequeName, chequeName);
     }
 
     public void clickCheckBox() {
@@ -44,15 +46,22 @@ public class AffilateAction extends BaseAction {
     }
 
     public String getAccountCreationMessage() {
+
         getWait().until(ExpectedConditions.visibilityOf(ap.accountCreatedMessage));
         return getText(ap.accountCreatedMessage);
     }
 
+    // =====================================================
+    // MAIN METHOD (FIXED)
+    // =====================================================
     public void enterAffilateDetails() {
 
-    	sendKeys(aap.company, prop.getProperty("company"));
-        sendKeys(aap.website, prop.getProperty("website"));
-        sendKeys(aap.taxID, prop.getProperty("taxID"));
-        sendKeys(aap.chequeName, prop.getProperty("chequeName"));
+
+        String company = prop.getProperty("company");
+        String website = prop.getProperty("website");
+        String taxID = prop.getProperty("taxID");
+        String chequeName = prop.getProperty("chequeName");
+
+      
     }
 }
