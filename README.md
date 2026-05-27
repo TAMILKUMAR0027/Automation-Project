@@ -244,6 +244,16 @@ mvn test -Dtest=Failed_TestNgRunner
 mvn clean test -Dsurefire.suiteXmlFiles=testng.xml,testng-failed.xml
 ```
 
+**Step 4 - Check the Dependency-Update
+```bash
+mvn versions:display-dependency-updates
+```
+
+**Step 5 - Check Update only property versions
+```bash
+mvn versions:update-properties
+```
+
 `testng-failed.xml` configuration:
 
 ```xml

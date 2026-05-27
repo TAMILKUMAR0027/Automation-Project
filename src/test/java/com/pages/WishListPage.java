@@ -43,7 +43,6 @@ public class WishListPage extends BasePage {
     public WebElement ipodNanoWishlistBtn;
 
 
-    // ========================= TOAST NOTIFICATION =========================
 
     @FindBy(xpath = "//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p")
     public WebElement successNotification;
@@ -55,33 +54,28 @@ public class WishListPage extends BasePage {
     public WebElement wishlistPopupLink;
 
 
-    // ========================= REMOVE SUCCESS ALERT =========================
 
     @FindBy(xpath = "//div[contains(@class,'alert-success') and contains(@class,'alert-dismissible')]")
     public WebElement removalSuccessAlert;
 
 
-    // ========================= WISHLIST PAGE =========================
 
     @FindBy(xpath = "//h1[contains(text(),'My Wish List')]")
     public WebElement myWishListTitle;
 
-    @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr//td[2]//a")
+    @FindBy(xpath = "//table[@class = 'table table-hover border']//child::td[2]")
     public List<WebElement> wishListProductNames;
 
-    @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr//td[5]")
+    @FindBy(xpath = "//table[@class = 'table table-hover border']//child::td[5]")
     public List<WebElement> wishListProductPrices;
 
-    @FindBy(xpath = "//table[contains(@class,'table')]//tbody//tr")
+    @FindBy(xpath = "//table[@class = 'table table-hover border']//tbody//tr")
     public List<WebElement> wishListRows;
 
 
-    // ✅ FIXED: Stable wishlist sidebar button
     @FindBy(xpath = "//aside[@id='column-right']//a[contains(@href,'account/wishlist')]")
     public WebElement wishListbtn;
 
-
-    // ========================= SEARCH =========================
 
     @FindBy(xpath = "//div[@id='entry_217822']//input[@placeholder='Search For Products']")
     public WebElement SearchBar;
@@ -89,6 +83,6 @@ public class WishListPage extends BasePage {
     @FindBy(xpath = "//a[@id='mz-product-grid-image-34-212469']//div[@class='carousel-item active']//img[@title='iPod Shuffle']")
     public WebElement ipodShuffleProduct;
 
-    @FindBy(xpath = "//div[@id='image-gallery-216811']//button[@title='Add to Wish List']")
+    @FindBy(xpath = "//div[@id = 'image-gallery-216811']//child::button")
     public WebElement ipodShuffleWishlistBtn;
 }

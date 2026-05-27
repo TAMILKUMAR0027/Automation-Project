@@ -21,171 +21,194 @@ import java.util.Map;
 
 public class DriverClass {
 
-	private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-	private static final Logger logger = LogManager.getLogger(DriverClass.class);
+    private static final Logger logger =
+            LogManager.getLogger(DriverClass.class);
 
-	public static WebDriver getDriver() {
+    public static WebDriver getDriver() {
 
-		return driver.get();
-	}
+        return driver.get();
+    }
 
-	public static void initDriver() {
+    public static void initDriver() {
 
-		try {
+        try {
 
-			String browser = ConfigReader.getProperties().getProperty("browser");
+            String browser =
+                    ConfigReader.getProperties()
+                            .getProperty("browser");
 
-			String headlessValue = ConfigReader.getProperties().getProperty("headless");
+            String headlessValue =
+                    ConfigReader.getProperties()
+                            .getProperty("headless");
 
-			boolean headless = headlessValue != null && headlessValue.equalsIgnoreCase("true");
+            boolean headless =
+                    headlessValue != null
+                            && headlessValue.equalsIgnoreCase("true");
 
-			logger.info("Initializing Browser : " + browser);
+            logger.info("Initializing Browser : " + browser);
 
-			logger.info("Headless Mode : " + headless);
+            logger.info("Headless Mode : " + headless);
 
-			// ==========================================
-			// CHROME DRIVER
-			// ==========================================
+            // ==========================================
+            // CHROME DRIVER
+            // ==========================================
 
-			if (browser.equalsIgnoreCase("chrome")) {
+            if (browser.equalsIgnoreCase("chrome")) {
 
-				WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().setup();
 
-				ChromeOptions options = new ChromeOptions();
+                ChromeOptions options = new ChromeOptions();
 
-				// Browser Stability
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-dev-shm-usage");
-				options.addArguments("--disable-gpu");
-				options.addArguments("--remote-allow-origins=*");
+                // Browser Stability
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--remote-allow-origins=*");
 
-				// Disable Chrome Popups
-				options.addArguments("--disable-notifications");
-				options.addArguments("--disable-popup-blocking");
-				options.addArguments("--disable-save-password-bubble");
-				options.addArguments("--disable-password-generation");
+                // Disable Chrome Popups
+                options.addArguments("--disable-notifications");
+                options.addArguments("--disable-popup-blocking");
+                options.addArguments("--disable-save-password-bubble");
+                options.addArguments("--disable-password-generation");
 
-				// Disable Password Leak Detection Popup
-				options.addArguments("--disable-features=PasswordLeakDetection");
+                // Disable Password Leak Detection Popup
+                options.addArguments(
+                        "--disable-features=PasswordLeakDetection");
 
-				// Disable Automation Banner
-				options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+                // Disable Automation Banner
+                options.setExperimentalOption(
+                        "excludeSwitches",
+                        new String[] { "enable-automation" });
 
-				options.setExperimentalOption("useAutomationExtension", false);
+                options.setExperimentalOption(
+                        "useAutomationExtension",
+                        false);
 
-				// ==========================================
-				// CHROME PREFERENCES
-				// ==========================================
+                // ==========================================
+                // CHROME PREFERENCES
+                // ==========================================
 
-				Map<String, Object> prefs = new HashMap<>();
+                Map<String, Object> prefs = new HashMap<>();
 
-				// Disable Save Password Popup
-				prefs.put("credentials_enable_service", false);
+                // Disable Save Password Popup
+                prefs.put("credentials_enable_service", false);
 
-				prefs.put("profile.password_manager_enabled", false);
+                prefs.put(
+                        "profile.password_manager_enabled",
+                        false);
 
-				// Disable Password Leak Detection
-				prefs.put("profile.password_manager_leak_detection", false);
+                // Disable Password Leak Detection
+                prefs.put(
+                        "profile.password_manager_leak_detection",
+                        false);
 
-				// Disable Notifications
-				prefs.put("profile.default_content_setting_values.notifications", 2);
+                // Disable Notifications
+                prefs.put(
+                        "profile.default_content_setting_values.notifications",
+                        2);
 
-				options.setExperimentalOption("prefs", prefs);
+                options.setExperimentalOption("prefs", prefs);
 
-				// ==========================================
-				// HEADLESS MODE
-				// ==========================================
+                // ==========================================
+                // HEADLESS MODE
+                // ==========================================
 
-				if (headless) {
+                if (headless) {
 
-					options.addArguments("--headless=new");
-					options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--headless=new");
+                    options.addArguments("--window-size=1920,1080");
 
-				} else {
+                } else {
 
-					options.addArguments("--start-maximized");
-				}
+                    options.addArguments("--start-maximized");
+                }
 
-				driver.set(new ChromeDriver(options));
+                driver.set(new ChromeDriver(options));
 
-				logger.info("Chrome Browser Launched Successfully");
-			}
+                logger.info(
+                        "Chrome Browser Launched Successfully");
+            }
 
-			// ==========================================
-			// FIREFOX DRIVER
-			// ==========================================
+            // ==========================================
+            // FIREFOX DRIVER
+            // ==========================================
 
-			else if (browser.equalsIgnoreCase("firefox")) {
+            else if (browser.equalsIgnoreCase("firefox")) {
 
-				WebDriverManager.firefoxdriver().setup();
+                WebDriverManager.firefoxdriver().setup();
 
-				FirefoxOptions options = new FirefoxOptions();
+                FirefoxOptions options = new FirefoxOptions();
 
-				if (headless) {
+                if (headless) {
 
-					options.addArguments("--headless");
-					options.addArguments("--width=1920");
-					options.addArguments("--height=1080");
-				}
+                    options.addArguments("--headless");
+                    options.addArguments("--width=1920");
+                    options.addArguments("--height=1080");
+                }
 
-				driver.set(new FirefoxDriver(options));
+                driver.set(new FirefoxDriver(options));
 
-				logger.info("Firefox Browser Launched Successfully");
-			}
+                logger.info(
+                        "Firefox Browser Launched Successfully");
+            }
 
-			// ==========================================
-			// INVALID BROWSER
-			// ==========================================
+            // ==========================================
+            // INVALID BROWSER
+            // ==========================================
 
-			else {
+            else {
 
-				logger.error("Invalid Browser Name : " + browser);
+                logger.error(
+                        "Invalid Browser Name : " + browser);
 
-				throw new RuntimeException("Invalid Browser Name : " + browser);
-			}
+                throw new RuntimeException(
+                        "Invalid Browser Name : " + browser);
+            }
 
-			// ==========================================
-			// COMMON SETTINGS
-			// ==========================================
+            // ==========================================
+            // COMMON SETTINGS
+            // ==========================================
 
-			getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            getDriver().manage().timeouts()
+                    .implicitlyWait(Duration.ofSeconds(10));
 
-			if (!headless) {
+            if (!headless) {
 
-				getDriver().manage().window().maximize();
-			}
+                getDriver().manage().window().maximize();
+            }
 
-			logger.info("Browser launched successfully");
+            logger.info("Browser launched successfully");
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			logger.error("Driver Initialization Failed");
+            logger.error("Driver Initialization Failed");
 
-			e.printStackTrace();
+            e.printStackTrace();
 
-			throw e;
-		}
-	}
+            throw e;
+        }
+    }
 
-	public static void quitDriver() {
+    public static void quitDriver() {
 
-		try {
+        try {
 
-			if (getDriver() != null) {
+            if (getDriver() != null) {
 
-				logger.info("Closing Browser Session");
+                logger.info("Closing Browser Session");
 
-				getDriver().quit();
+                getDriver().quit();
 
-				driver.remove();
-			}
+                driver.remove();
+            }
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			logger.error("Error while closing browser");
+            logger.error("Error while closing browser");
 
-			e.printStackTrace();
-		}
-	}
+            e.printStackTrace();
+        }
+    }
 }
