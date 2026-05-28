@@ -10,6 +10,7 @@ import com.actions.LoginPageAction;
 import com.utils.ConfigReader;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -19,9 +20,13 @@ public class AccountSD {
     LoginPageAction lpa = new LoginPageAction();
     LaunchPageAction lp = new LaunchPageAction();
 
-    private static final Logger log =
-            LogManager.getLogger(AccountSD.class);
-
+    private static final Logger log = LogManager.getLogger(AccountSD.class);
+    
+    @Given("The user is in HomePage of Ecommerce Lambda TestWebsite")
+    public void the_user_is_in_home_page_of_ecommerce_lambda_test_website() {
+    	lpa.launchWebUrl();
+    }
+   
     // =========================
     // LOGIN STEP
     // =========================
