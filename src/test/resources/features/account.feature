@@ -3,7 +3,7 @@ Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature
 description:To verify the fuctionality of edit account information
 
   Background:
-    Given The user is in HomePage of EcommerceLambdaTestWebsite
+    Given The user is in HomePage of Ecommerce Lambda TestWebsite
 
   @EditAccInfo
   Scenario: As a registered user i need to update my account information
