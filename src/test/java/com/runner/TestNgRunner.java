@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
 
+<<<<<<< HEAD
 		features = "src/test/resources/features/", 
 		glue = { "com.stepDefinitions", "com.hooks" }, 
 		plugin = { "pretty",
@@ -14,7 +15,11 @@ import org.testng.annotations.DataProvider;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:target/failedrerun.txt" },
 
-		monochrome = true)
+        
+
+        monochrome = true
+)
+
 
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
@@ -23,4 +28,5 @@ public class TestNgRunner extends AbstractTestNGCucumberTests {
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
+
 }
