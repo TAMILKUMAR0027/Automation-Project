@@ -10,9 +10,9 @@ public class AddReviewPageAction extends BaseAction {
 
     private AddReviewPage arp;
 
-    // =========================
+  
     // PAGE INITIALIZATION
-    // =========================
+  
     private AddReviewPage getPage() {
 
         if (arp == null) {
@@ -22,9 +22,9 @@ public class AddReviewPageAction extends BaseAction {
         return arp;
     }
 
-    // =========================
+   
     // LAUNCH PRODUCT PAGE
-    // =========================
+   
     public void launchProductPage() {
 
         getDriver().get("https://ecommerce-playground.lambdatest.io/");
@@ -40,9 +40,9 @@ public class AddReviewPageAction extends BaseAction {
         jsClick(getPage().reviewtab);
     }
 
-    // =========================
+   
     // EXCEL METHODS
-    // =========================
+   
     public void selectRating(int row) {
 
         try {
@@ -128,9 +128,9 @@ public class AddReviewPageAction extends BaseAction {
         return ExcelUtils.getAddReviewData(row, 3);
     }
 
-    // =========================
+    
     // CSV METHODS
-    // =========================
+    
     public void selectRatingFromCSV(int row) {
 
         try {
