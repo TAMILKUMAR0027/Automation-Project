@@ -29,5 +29,20 @@ public class AccountPage extends BasePage {
 	public WebElement affilateAccountLink;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	public WebElement accountCreatedMessage;
+	
+	@FindBy (xpath="//div[@class='form-group row required']/child::label/following-sibling::div/child::input[@id='input-email']")
+	public WebElement fnameEI;
+	
+	@FindBy (xpath="//div[@class='form-group row required']/child::label/following-sibling::div/child::input[@id='input-lastname']")
+	public WebElement lnameEI;
+	
+	@FindBy(xpath="//div[@class='form-group row required']/child::label/following-sibling::div/child::input[@id='input-email']")
+	public WebElement emailEI;
+	
+	@FindBy (xpath="//div[@class='col-sm-10']/child::input/following-sibling::div")
+	public WebElement errorMsgEI;
+	
+	
+	
 
 }

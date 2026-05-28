@@ -90,9 +90,7 @@ public class AddReview {
 
 		} catch (AssertionError e) {
 
-			log.error(
-					"Invalid review with rating failed "
-							+ e.getMessage());
+			log.error("Invalid review with rating failed "+ e.getMessage());
 		}
 	}
 
@@ -111,9 +109,7 @@ public class AddReview {
 	}
 
 	@Then("the user should receive a warning message stating name must contain characters between {int} and {int}")
-	public void the_user_should_receive_a_warning_message_stating_name_must_contain_characters_between_and(
-			Integer int1,
-			Integer int2) {
+	public void the_user_should_receive_a_warning_message_stating_name_must_contain_characters_between_and(Integer int1,Integer int2) {
 
 		String actual = arpa.getWarningMessage();
 
@@ -128,8 +124,7 @@ public class AddReview {
 		} catch (AssertionError e) {
 
 			log.error(
-					"Invalid review without name failed "
-							+ e.getMessage());
+					"Invalid review without name failed "+ e.getMessage());
 		}
 	}
 

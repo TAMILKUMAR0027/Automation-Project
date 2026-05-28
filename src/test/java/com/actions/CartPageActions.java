@@ -185,5 +185,7 @@ public class CartPageActions {
 		List<Map<String, String>> data = db.asMaps(String.class, String.class);
 		ba.sendKeys(cp.quantityCount, data.get(0).get("quantity"));
 	}
+	
+	
 
 }

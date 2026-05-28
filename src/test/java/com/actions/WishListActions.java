@@ -1,23 +1,39 @@
 package com.actions;
 
 import com.driver.DriverClass;
+import com.exceptions.ExceptionHandling;
 import com.pages.WishListPage;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WishListActions {
+public class WishListActions extends BaseAction {
+
+    // ── Page Object & Wait Setup ──────────────────────────────────────────────
+    WishListPage wp;
+    WebDriverWait wait;
+
+    public WishListActions() {
+        wp   = new WishListPage(getDriver());                                // BaseAction: getDriver()
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+    }
 
 
-    WishListPage wp = new WishListPage(DriverClass.getDriver());
-    WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
+    // =========================================================================
+    // PRIVATE UTILITY METHODS
+    // =========================================================================
 
+    /**
+     * Pauses execution for the given milliseconds.
+     * Used to let animations, hover transitions, and AJAX responses settle.
+     */
     private void pause(long ms) {
         try {
             Thread.sleep(ms);
@@ -25,54 +41,90 @@ public class WishListActions {
         }
     }
 
+    /**
+     * Checks for any browser JS alert and dismisses it if present.
+     * Uses a short 3-second wait so normal flows are not slowed down.
+     * Returns the alert text so callers can decide whether it was an error.
+     */
     private String dismissAlertIfPresent() {
         try {
-            WebDriverWait alertWait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(3));
+            WebDriverWait alertWait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
             Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
             String text = alert.getText();
             alert.dismiss();
             System.out.println("Dismissed JS alert: " + text);
             return text;
         } catch (TimeoutException e) {
+            // No alert present — normal path
             return null;
         }
     }
 
+    /**
+     * Force-reveals a hidden wishlist button via JavaScript style overrides.
+     * Needed because hover-triggered buttons are invisible until the card is hovered.
+     * Throws ExceptionHandling.ElementNotInteractableException on any failure.
+     */
     private void forceRevealElement(WebElement element, String productLabel) {
         try {
-            ((JavascriptExecutor) DriverClass.getDriver()).executeScript(
+            ((JavascriptExecutor) getDriver()).executeScript(               // BaseAction: getDriver()
                     "var b = arguments[0];" +
                             "b.style.setProperty('display',    'block',   'important');" +
                             "b.style.setProperty('opacity',    '1',       'important');" +
                             "b.style.setProperty('visibility', 'visible', 'important');",
                     element
             );
+        } catch (JavascriptException e) {
+            // Custom handler: JS could not reveal element — likely detached from DOM
+            ExceptionHandling.handleJavascriptException(
+                    "forceRevealElement - " + productLabel, e);
         } catch (Exception e) {
-            Assert.fail("[" + productLabel + "] Wishlist button not found in DOM. " +
-                    "Check XPath in WishListPage.java. Cause: " + e.getMessage());
+            // Custom exception: element unreachable after reveal attempt
+            throw new ExceptionHandling.ElementNotInteractableException(
+                    "Wishlist button for [" + productLabel + "]",
+                    "forceRevealElement — Check XPath in WishListPage.java. Cause: " + e.getMessage()
+            );
         }
     }
 
+    /**
+     * Core wishlist hover-and-click flow:
+     *   1. Scroll the product card into view              (BaseAction.scrollIntoView)
+     *   2. Hover over the card to trigger CSS hover state (Actions.moveToElement)
+     *   3. Force-reveal the wishlist button via JS        (forceRevealElement)
+     *   4. If already wishlisted ('wished' class), toggle off first
+     *   5. JS-click the wishlist button                   (BaseAction.jsClick)
+     *   6. Fail if an unexpected AJAX alert fires         (ExceptionHandling)
+     */
     private void hoverAndClickWishlist(WebElement productCard,
                                        WebElement wishlistBtn,
                                        String productLabel) {
 
-        JavascriptExecutor js = (JavascriptExecutor) DriverClass.getDriver();
-        Actions actions = new Actions(DriverClass.getDriver());
+        Actions actions = new Actions(getDriver());                         // BaseAction: getDriver()
 
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", productCard);
+        // ── Step 1: Scroll card into viewport ────────────────────────────────
+        scrollIntoView(productCard);                                        // BaseAction: scrollIntoView
         pause(500);
 
-        actions.moveToElement(productCard).perform();
+        // ── Step 2: Hover to trigger CSS hover state ──────────────────────────
+        try {
+            actions.moveToElement(productCard).perform();
+        } catch (MoveTargetOutOfBoundsException e) {
+            // Custom handler: card outside scrollable viewport
+            ExceptionHandling.handleMoveTargetOutOfBounds(
+                    productLabel + " product card", e);
+        }
         pause(700);
 
+        // ── Step 3: Force-reveal the wishlist button ──────────────────────────
         forceRevealElement(wishlistBtn, productLabel);
 
+        // ── Step 4: Toggle off 'wished' state if already added ────────────────
         try {
             String btnClass = wishlistBtn.getAttribute("class");
             if (btnClass != null && btnClass.contains("wished")) {
                 System.out.println("[" + productLabel + "] Already wishlisted — removing first...");
-                js.executeScript("arguments[0].click();", wishlistBtn);
+                jsClick(wishlistBtn);                                       // BaseAction: jsClick
                 pause(1200);
                 dismissAlertIfPresent();
                 pause(500);
@@ -81,85 +133,154 @@ public class WishListActions {
                 forceRevealElement(wishlistBtn, productLabel);
                 pause(300);
             }
+        } catch (StaleElementReferenceException e) {
+            // Custom handler: DOM rebuilt after de-wish click — safe to continue
+            ExceptionHandling.handleStaleElement(
+                    productLabel + " wishlist button (wished-state check)", e);
         } catch (Exception e) {
+            // Non-fatal: log and proceed; main click below will still run
             System.out.println("[" + productLabel + "] Could not check wished state: " + e.getMessage());
         }
 
+        // ── Step 5: Click the wishlist button ────────────────────────────────
         try {
-            js.executeScript("arguments[0].click();", wishlistBtn);
+            jsClick(wishlistBtn);                                           // BaseAction: jsClick
             System.out.println("[" + productLabel + "] Wishlist button clicked successfully");
-        } catch (Exception e) {
-            Assert.fail("[" + productLabel + "] Click failed. Cause: " + e.getMessage());
+        } catch (JavascriptException e) {
+            // Custom handler: JS click failed — button may have disappeared
+            ExceptionHandling.handleJavascriptException(
+                    "Wishlist button click - " + productLabel, e);
         }
 
+        // ── Step 6: Guard against AJAX error alerts ───────────────────────────
         String alertText = dismissAlertIfPresent();
         if (alertText != null) {
-            Assert.fail("[" + productLabel + "] AJAX error after click: " + alertText);
+            // Custom exception: unexpected JS alert after AJAX call
+            throw new ExceptionHandling.UnexpectedJsAlertException(
+                    productLabel + " wishlist click", alertText);
         }
     }
 
+    /**
+     * Navigates back to the homepage by clicking the site logo.
+     * Falls back to an alternate logo locator if the primary is not clickable.
+     * Non-fatal — logs a warning and continues if neither logo is reachable.
+     */
     private void clickHomeLogo() {
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(wp.homeLogo)).click();
-        } catch (Exception e) {
+            waitForClickable(wp.homeLogo);                                  // BaseAction: waitForClickable
+            click(wp.homeLogo);                                             // BaseAction: click
+        } catch (TimeoutException e) {
+            // Primary logo not clickable — try alternate locator
             try {
-                wait.until(ExpectedConditions.elementToBeClickable(wp.homeLogoAlt)).click();
-            } catch (Exception ex) {
+                waitForClickable(wp.homeLogoAlt);                           // BaseAction: waitForClickable
+                click(wp.homeLogoAlt);                                      // BaseAction: click
+            } catch (TimeoutException ex) {
+                // Neither logo reachable — non-fatal, log and continue
                 System.out.println("Home logo not clickable, continuing...");
             }
         }
     }
 
 
+    // =========================================================================
+    // SCROLL / NAVIGATION ACTIONS
+    // =========================================================================
+
+    /**
+     * Navigates home and scrolls to the "Top Products" section.
+     * Waits for page load and heading visibility before scrolling.
+     */
     public void scrollToTopProducts() {
         clickHomeLogo();
-        wait.until(ExpectedConditions.visibilityOf(wp.topProductsHeading));
-        ((JavascriptExecutor) DriverClass.getDriver())
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", wp.topProductsHeading);
+        waitForPageLoad();                                                   // BaseAction: JS readyState
+        waitForVisibility(wp.topProductsHeading);                           // BaseAction: visibility wait
+        scrollIntoView(wp.topProductsHeading);                             // BaseAction: scrollIntoView
         System.out.println("Scrolled to Top Products section");
     }
 
+    /**
+     * Navigates home and scrolls to the "Top Collection" section.
+     * Waits for page load and heading visibility before scrolling.
+     */
     public void scrollToTopCollection() {
         clickHomeLogo();
-        wait.until(ExpectedConditions.visibilityOf(wp.topCollectionHeading));
-        ((JavascriptExecutor) DriverClass.getDriver())
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", wp.topCollectionHeading);
+        waitForPageLoad();                                                   // BaseAction: JS readyState
+        waitForVisibility(wp.topCollectionHeading);                         // BaseAction: visibility wait
+        scrollIntoView(wp.topCollectionHeading);                           // BaseAction: scrollIntoView
         System.out.println("Scrolled to Top Collection section");
     }
 
+    /**
+     * Navigates to the wishlist page via the account header link.
+     * Falls back to a direct URL if the link cannot be reached in time.
+     * Throws ExceptionHandling.PageNavigationException if the page never loads.
+     */
     public void navigateToWishlistViaAccount() {
-
         By wishlistHeaderLink = By.xpath("//a[contains(@href,'account/wishlist')]");
+        String fallbackUrl    = "https://ecommerce-playground.lambdatest.io/index.php?route=account/wishlist";
 
         try {
-            WebElement link = wait.until(ExpectedConditions.visibilityOfElementLocated(wishlistHeaderLink));
-            ((JavascriptExecutor) DriverClass.getDriver()).executeScript("arguments[0].click();", link);
-            wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+            // Primary: wait for the account menu wishlist link and JS-click it
+            WebElement link = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(wishlistHeaderLink));
+            jsClick(link);                                                  // BaseAction: jsClick
+            waitForVisibility(wp.myWishListTitle);                         // BaseAction: visibility wait
             System.out.println("Navigated to wishlist page via JS click");
-        } catch (Exception e) {
-            System.out.println("Timeout waiting for wishlist sidebar button. Navigating via URL fallback...");
-            DriverClass.getDriver().get("https://ecommerce-playground.lambdatest.io/index.php?route=account/wishlist");
-            wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
-            System.out.println("Navigated to wishlist page via URL");
+
+        } catch (TimeoutException e) {
+            // Fallback: navigate directly via URL
+            System.out.println("Timeout on header link — falling back to URL...");
+            getDriver().get(fallbackUrl);                                   // BaseAction: getDriver()
+
+            try {
+                waitForVisibility(wp.myWishListTitle);                     // BaseAction: visibility wait
+                System.out.println("Navigated to wishlist page via URL fallback");
+            } catch (TimeoutException te) {
+                // Custom exception: page never loaded even after URL fallback
+                throw new ExceptionHandling.PageNavigationException(
+                        "My Wish List", fallbackUrl, getDriver().getCurrentUrl());
+            }
         }
     }
 
 
+    // =========================================================================
+    // ADD-TO-WISHLIST ACTIONS — Individual Products
+    // =========================================================================
+
+    /**
+     * Waits for the iMac card, then hovers and clicks the wishlist button.
+     * Uses BaseAction.waitForVisibility() before delegating to hoverAndClickWishlist().
+     */
     public void addIMacToWishlist() {
-        WebElement card = wait.until(ExpectedConditions.visibilityOf(wp.imacListingBox));
-        hoverAndClickWishlist(card, wp.imacWishlistBtn, "iMac");
+        waitForPageLoad();                                                   // BaseAction: page load
+        waitForVisibility(wp.imacListingBox);                              // BaseAction: visibility wait
+        hoverAndClickWishlist(wp.imacListingBox, wp.imacWishlistBtn, "iMac");
     }
 
+    /**
+     * Waits for the Apple Cinema 30 card, then hovers and clicks the wishlist button.
+     */
     public void addAppleCinemaToWishlist() {
-        WebElement card = wait.until(ExpectedConditions.visibilityOf(wp.appleCinemaProduct));
-        hoverAndClickWishlist(card, wp.appleCinemaWishlistBtn, "Apple Cinema 30");
+        waitForPageLoad();                                                   // BaseAction: page load
+        waitForVisibility(wp.appleCinemaProduct);                          // BaseAction: visibility wait
+        hoverAndClickWishlist(wp.appleCinemaProduct, wp.appleCinemaWishlistBtn, "Apple Cinema 30");
     }
 
+    /**
+     * Waits for the iPod Nano card, then hovers and clicks the wishlist button.
+     */
     public void addIpodNanoToWishlist() {
-        WebElement card = wait.until(ExpectedConditions.visibilityOf(wp.ipodNanoProduct));
-        hoverAndClickWishlist(card, wp.ipodNanoWishlistBtn, "iPod Nano");
+        waitForPageLoad();                                                   // BaseAction: page load
+        waitForVisibility(wp.ipodNanoProduct);                             // BaseAction: visibility wait
+        hoverAndClickWishlist(wp.ipodNanoProduct, wp.ipodNanoWishlistBtn, "iPod Nano");
     }
 
+    /**
+     * Dispatcher: routes a product name to the correct add-to-wishlist method.
+     * Throws ExceptionHandling.UnknownProductException for unrecognised names.
+     */
     public void hoverAndClickWishlistButton(String productName) {
         switch (productName.toLowerCase()) {
             case "imac":
@@ -172,11 +293,16 @@ public class WishListActions {
                 addIpodNanoToWishlist();
                 break;
             default:
-                Assert.fail("Unknown product [" + productName + "]. " +
-                        "Add a case in hoverAndClickWishlistButton() and a locator in WishListPage.java.");
+                // Custom exception: no case defined — add case + locator in WishListPage.java
+                throw new ExceptionHandling.UnknownProductException(
+                        "hoverAndClickWishlistButton", productName);
         }
     }
 
+    /**
+     * Alias dispatcher for adding by name — mirrors hoverAndClickWishlistButton.
+     * Used by step definitions phrased as "add [product] to wishlist".
+     */
     public void addProductToWishlistByName(String productName) {
         switch (productName.toLowerCase()) {
             case "apple cinema 30":
@@ -189,165 +315,235 @@ public class WishListActions {
                 addIMacToWishlist();
                 break;
             default:
-                Assert.fail("Unknown product [" + productName + "]. " +
-                        "Add a case in addProductToWishlistByName() and a locator in WishListPage.java.");
+                // Custom exception: no case defined — add case + locator in WishListPage.java
+                throw new ExceptionHandling.UnknownProductException(
+                        "addProductToWishlistByName", productName);
         }
     }
 
 
+    // =========================================================================
+    // SEARCH ACTIONS (on Wishlist context)
+    // =========================================================================
 
+    /**
+     * Types a search term into the wishlist-context search bar and submits with ENTER.
+     * Waits for page load and clickability, then uses BaseAction.sendKeys() to clear + type.
+     */
     public void searchForProduct(String searchTerm) {
+        waitForPageLoad();                                                   // BaseAction: page load
+        waitForClickable(wp.SearchBar);                                     // BaseAction: clickable wait
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(wp.SearchBar));
-            wp.SearchBar.clear();
-            wp.SearchBar.sendKeys(searchTerm);
+            sendKeys(wp.SearchBar, searchTerm);                             // BaseAction: clear + sendKeys
             wp.SearchBar.sendKeys(Keys.ENTER);
             System.out.println("Searched for: " + searchTerm);
         } catch (TimeoutException e) {
-            Assert.fail("Search bar not found or not clickable. " +
-                    "Locator: //div[@id='entry_217822']//input[@placeholder='Search For Products']");
+            ExceptionHandling.handleTimeout(
+                    "Search bar — Locator: //div[@id='entry_217822']" +
+                            "//input[@placeholder='Search For Products']", 15, e);
         }
     }
 
+    /**
+     * Clicks a product link from the search results grid.
+     * Scrolls into view and JS-clicks via BaseAction.
+     * Throws ExceptionHandling.UnknownProductException for unrecognised product names.
+     */
     public void clickProductFromSearchResults(String productName) {
         switch (productName.toLowerCase()) {
             case "ipod shuffle":
                 try {
-                    wait.until(ExpectedConditions.elementToBeClickable(wp.ipodShuffleProduct));
-                    ((JavascriptExecutor) DriverClass.getDriver())
-                            .executeScript("arguments[0].scrollIntoView({block:'center'});",
-                                    wp.ipodShuffleProduct);
+                    waitForPageLoad();                                       // BaseAction: page load
+                    waitForClickable(wp.ipodShuffleProduct);                // BaseAction: clickable wait
+                    scrollIntoView(wp.ipodShuffleProduct);                  // BaseAction: scroll
                     pause(400);
-                    ((JavascriptExecutor) DriverClass.getDriver())
-                            .executeScript("arguments[0].click();", wp.ipodShuffleProduct);
-                    System.out.println("Clicked product from search results: " + productName);
+                    jsClick(wp.ipodShuffleProduct);                         // BaseAction: jsClick
+                    System.out.println("Clicked from search results: " + productName);
                 } catch (TimeoutException e) {
-                    Assert.fail("iPod Shuffle not found in search results. " +
-                            "Locator: //a[@id='mz-product-grid-image-34-212469']//img[@title='iPod Shuffle']");
+                    ExceptionHandling.handleTimeout(
+                            "iPod Shuffle in search results — " +
+                                    "Locator: //a[@id='mz-product-grid-image-34-212469']" +
+                                    "//img[@title='iPod Shuffle']", 15, e);
                 }
                 break;
             default:
-                Assert.fail("Unknown search result product [" + productName + "]. " +
-                        "Add a case in clickProductFromSearchResults() and a locator in WishListPage.java.");
+                // Custom exception: product not mapped — add case + locator
+                throw new ExceptionHandling.UnknownProductException(
+                        "clickProductFromSearchResults", productName);
         }
     }
 
+    /**
+     * Clicks the heart/wishlist button on the iPod Shuffle product detail page.
+     * Handles the already-wishlisted state by toggling off first.
+     * Validates no AJAX error alert fires after the click.
+     */
     public void clickHeartButtonOnProductPage() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(wp.ipodShuffleWishlistBtn));
-            ((JavascriptExecutor) DriverClass.getDriver())
-                    .executeScript("arguments[0].scrollIntoView({block:'center'});",
-                            wp.ipodShuffleWishlistBtn);
+            waitForPageLoad();                                              // BaseAction: page load
+            waitForVisibility(wp.ipodShuffleWishlistBtn);                  // BaseAction: visibility wait
+            scrollIntoView(wp.ipodShuffleWishlistBtn);                     // BaseAction: scrollIntoView
             pause(400);
 
-            forceRevealElement(wp.ipodShuffleWishlistBtn, "iPod Shuffle - Product Page Heart");
+            // Force-reveal in case the button is hidden behind a CSS hover guard
+            forceRevealElement(wp.ipodShuffleWishlistBtn,
+                    "iPod Shuffle - Product Page Heart");
 
+            // ── Toggle off existing 'wished' state if needed ──────────────────
             try {
                 String btnClass = wp.ipodShuffleWishlistBtn.getAttribute("class");
                 if (btnClass != null && btnClass.contains("wished")) {
                     System.out.println("[iPod Shuffle] Already wishlisted — removing first...");
-                    ((JavascriptExecutor) DriverClass.getDriver())
-                            .executeScript("arguments[0].click();", wp.ipodShuffleWishlistBtn);
+                    jsClick(wp.ipodShuffleWishlistBtn);                    // BaseAction: jsClick
                     pause(1200);
                     dismissAlertIfPresent();
                     pause(500);
-                    forceRevealElement(wp.ipodShuffleWishlistBtn, "iPod Shuffle - Product Page Heart");
+                    forceRevealElement(wp.ipodShuffleWishlistBtn,
+                            "iPod Shuffle - Product Page Heart");
                     pause(300);
                 }
+            } catch (StaleElementReferenceException e) {
+                // Custom handler: DOM rebuilt after de-wish click — safe to continue
+                ExceptionHandling.handleStaleElement(
+                        "iPod Shuffle wishlist button (wished-state check on detail page)", e);
             } catch (Exception e) {
+                // Non-fatal: log and proceed to main click
                 System.out.println("[iPod Shuffle] Could not check wished state: " + e.getMessage());
             }
 
-            wait.until(ExpectedConditions.elementToBeClickable(wp.ipodShuffleWishlistBtn));
-            ((JavascriptExecutor) DriverClass.getDriver())
-                    .executeScript("arguments[0].click();", wp.ipodShuffleWishlistBtn);
+            // ── Main wishlist button click ────────────────────────────────────
+            waitForClickable(wp.ipodShuffleWishlistBtn);                   // BaseAction: clickable wait
+            jsClick(wp.ipodShuffleWishlistBtn);                            // BaseAction: jsClick
             System.out.println("Clicked heart button on product detail page for iPod Shuffle");
 
+            // ── Guard against AJAX error alert ────────────────────────────────
             String alertText = dismissAlertIfPresent();
             if (alertText != null) {
-                Assert.fail("[iPod Shuffle] AJAX error after heart click: " + alertText);
+                // Custom exception: AJAX error dialog appeared after heart click
+                throw new ExceptionHandling.UnexpectedJsAlertException(
+                        "iPod Shuffle heart button click on detail page", alertText);
             }
 
         } catch (TimeoutException e) {
-            Assert.fail("Heart/wishlist button not found on product detail page. " +
-                    "Locator: //div[@id='image-gallery-216811']//button[@title='Add to Wish List']");
+            // Custom handler: heart button never became visible — check locator
+            ExceptionHandling.handleTimeout(
+                    "iPod Shuffle heart button — " +
+                            "Locator: //div[@id='image-gallery-216811']" +
+                            "//button[@title='Add to Wish List']", 15, e);
         }
     }
 
 
+    // =========================================================================
+    // SUCCESS MESSAGE / TOAST HELPERS
+    // =========================================================================
 
-
+    /**
+     * Waits up to 25 seconds for the success toast in #notification-box-top.
+     * Falls back to a simpler //p locator if the primary is absent.
+     * Throws ExceptionHandling.ToastNotDisplayedException if neither appears.
+     */
     public String getWishlistSuccessMessageGeneric() {
-
-        By toastMsg = By.xpath("//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p");
-        By toastFallback = By.xpath("//div[@id='notification-box-top']//p");
+        By toastMsg      = By.xpath(
+                "//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p");
+        By toastFallback = By.xpath(
+                "//div[@id='notification-box-top']//p");
 
         try {
-            WebElement toast = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(25))
+            // Primary: standard toast-body paragraph
+            WebElement toast = new WebDriverWait(getDriver(), Duration.ofSeconds(25))
                     .until(ExpectedConditions.visibilityOfElementLocated(toastMsg));
-
-            return toast.getText().trim();
+            return getText(toast);                                          // BaseAction: getText
 
         } catch (TimeoutException e) {
-
+            // Fallback: simpler //p locator in the notification box
             try {
-                WebElement toast2 = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(10))
+                WebElement toast2 = new WebDriverWait(getDriver(), Duration.ofSeconds(10))
                         .until(ExpectedConditions.visibilityOfElementLocated(toastFallback));
+                return getText(toast2);                                     // BaseAction: getText
 
-                return toast2.getText().trim();
-
-            } catch (Exception ex) {
-                Assert.fail("No success toast appeared. Check #notification-box-top is present after wishlist action.");
-                return "";
+            } catch (TimeoutException ex) {
+                // Custom exception: no toast appeared after wishlist action
+                throw new ExceptionHandling.ToastNotDisplayedException(
+                        "getWishlistSuccessMessageGeneric", 35);
             }
         }
     }
 
+    /**
+     * Waits for a product-specific toast by matching the product name fragment.
+     * Falls back to the page-object fallback element on timeout.
+     * Throws ExceptionHandling.ToastNotDisplayedException if both strategies fail.
+     */
     public String getWishlistSuccessMessage(String productNameFragment) {
         By freshToast = By.xpath(
                 "//div[@id='notification-box-top']" +
                         "//*[contains(text(),'" + productNameFragment + "')]" +
                         "/ancestor::div[contains(@class,'toast')]//p"
         );
+
         try {
+            // Primary: product-name-specific toast locator
             wait.until(ExpectedConditions.visibilityOfElementLocated(freshToast));
-            return DriverClass.getDriver().findElement(freshToast).getText().trim();
+            return getText(getDriver().findElement(freshToast));            // BaseAction: getText
+
         } catch (TimeoutException e) {
+            // Fallback: generic success notification from page object
             try {
-                return wp.successNotificationFallback.getText().trim();
+                return getText(wp.successNotificationFallback);            // BaseAction: getText
             } catch (Exception ex) {
-                Assert.fail("No success toast found for [" + productNameFragment + "]. " +
-                        "Toast did not appear or AJAX call failed.");
-                return "";
+                // Custom exception: neither toast strategy returned a message
+                throw new ExceptionHandling.ToastNotDisplayedException(
+                        "getWishlistSuccessMessage - product: " + productNameFragment, 15);
             }
         }
     }
 
+    /**
+     * Clicks the "go to wishlist" link inside the success popup.
+     * Waits for clickability before using BaseAction.click().
+     */
     public void clickWishlistLinkFromPopup() {
-        wait.until(ExpectedConditions.elementToBeClickable(wp.wishlistPopupLink)).click();
+        waitForClickable(wp.wishlistPopupLink);                            // BaseAction: clickable wait
+        click(wp.wishlistPopupLink);                                       // BaseAction: click
         System.out.println("Clicked wishlist link from popup");
     }
 
 
+    // =========================================================================
+    // WISHLIST PAGE HELPERS
+    // =========================================================================
+
+    /**
+     * Dismisses any stale JS alert, then waits for the wishlist page title.
+     * Uses BaseAction.waitForVisibility() for the page title check.
+     */
     public void waitForWishlistPage() {
+        // Dismiss any leftover alert from a previous action
         String alertText = dismissAlertIfPresent();
         if (alertText != null) {
             System.out.println("Dismissed stale JS alert: " + alertText);
         }
-        wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+        waitForVisibility(wp.myWishListTitle);                             // BaseAction: visibility wait
     }
 
+    /** Returns the browser tab title — used in page-title step assertions. */
     public String getCurrentPageTitle() {
-        return DriverClass.getDriver().getTitle();
+        return getDriver().getTitle();                                      // BaseAction: getDriver()
     }
 
+    /**
+     * Collects all product name texts from the wishlist table.
+     * Waits for the page title and all name cells to be visible.
+     * Uses BaseAction.getText() for each cell.
+     */
     public List<String> getAllWishlistProductNames() {
-        wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+        waitForVisibility(wp.myWishListTitle);                             // BaseAction: visibility wait
         wait.until(ExpectedConditions.visibilityOfAllElements(wp.wishListProductNames));
 
         List<String> names = new ArrayList<>();
         for (WebElement el : wp.wishListProductNames) {
-            String name = el.getText().trim();
+            String name = getText(el).trim();                              // BaseAction: getText
             if (!name.isEmpty()) {
                 names.add(name);
                 System.out.println("  Wishlist row: " + name);
@@ -357,27 +553,39 @@ public class WishListActions {
         return names;
     }
 
+    /**
+     * Collects all price texts from the wishlist table.
+     * Waits for all price cells to be visible, then reads via BaseAction.getText().
+     */
     public List<String> getAllWishlistProductPrices() {
         wait.until(ExpectedConditions.visibilityOfAllElements(wp.wishListProductPrices));
 
         List<String> prices = new ArrayList<>();
         for (WebElement el : wp.wishListProductPrices) {
-            prices.add(el.getText().trim());
+            prices.add(getText(el).trim());                                // BaseAction: getText
         }
         return prices;
     }
 
+    /**
+     * Checks whether a named product is present in the wishlist table.
+     * Returns true/false — does not throw; callers use this for assertions.
+     */
     public boolean isProductPresentInWishlist(String productName) {
         By locator = By.xpath(
                 "//table[contains(@class,'table')]//tbody//tr//td[2]//a" +
                         "[contains(normalize-space(),'" + productName + "')]"
         );
-        return !DriverClass.getDriver().findElements(locator).isEmpty();
+        return !getDriver().findElements(locator).isEmpty();               // BaseAction: getDriver()
     }
 
-
+    /**
+     * Removes a product from the wishlist by clicking its Remove link.
+     * Waits for the row to go stale (page reload) to confirm removal.
+     * Throws ExceptionHandling timeout handler if the Remove button is not found.
+     */
     public void removeProductFromWishlist(String productName) {
-        wait.until(ExpectedConditions.visibilityOf(wp.myWishListTitle));
+        waitForVisibility(wp.myWishListTitle);                             // BaseAction: visibility wait
 
         By removeBtn = By.xpath(
                 "//table[contains(@class,'table')]//tbody//tr" +
@@ -386,41 +594,56 @@ public class WishListActions {
         );
 
         try {
-            WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(removeBtn));
-            ((JavascriptExecutor) DriverClass.getDriver()).executeScript("arguments[0].scrollIntoView(true);", btn);
+            WebElement btn = wait.until(
+                    ExpectedConditions.elementToBeClickable(removeBtn));
+            scrollIntoView(btn);                                           // BaseAction: scrollIntoView
             pause(300);
 
-            // Grab the row element to check for staleness (page reload)
-            WebElement row = DriverClass.getDriver().findElement(By.xpath("//table[contains(@class,'table')]//tbody//tr[.//td[2]//a[contains(normalize-space(),'" + productName + "')]]"));
+            // Capture row reference now to detect staleness after click
+            WebElement row = getDriver().findElement(By.xpath(
+                    "//table[contains(@class,'table')]//tbody//tr" +
+                            "[.//td[2]//a[contains(normalize-space(),'" + productName + "')]]"));
 
-            ((JavascriptExecutor) DriverClass.getDriver()).executeScript("arguments[0].click();", btn);
+            jsClick(btn);                                                  // BaseAction: jsClick
             System.out.println("Clicked remove for: " + productName);
 
-            // Wait for the page to reload by waiting for the row to become stale
+            // Wait for row staleness — confirms the page reloaded after removal
             try {
                 wait.until(ExpectedConditions.stalenessOf(row));
                 System.out.println("Page reloaded after removing: " + productName);
-            } catch (Exception e) {
-                System.out.println("Staleness wait timed out or failed, continuing...");
+            } catch (TimeoutException e) {
+                // Non-fatal: removal may still have succeeded
+                System.out.println("Staleness wait timed out, continuing...");
             }
+
         } catch (TimeoutException e) {
-            Assert.fail("Remove button not found for [" + productName + "]. " +
-                    "Confirm product exists in wishlist table before removing.");
+            // Custom handler: Remove button not found for the given product
+            ExceptionHandling.handleTimeout(
+                    "Remove button for [" + productName + "] — " +
+                            "confirm product exists in wishlist before removing", 15, e);
         }
     }
 
+    /**
+     * Reads the alert-success banner text after a wishlist removal.
+     * Uses JS to extract only raw text nodes, excluding the '×' close button.
+     * Falls back to getText() + strip if JS returns empty.
+     * Throws ExceptionHandling timeout handler if no banner appears.
+     */
     public String getRemovalSuccessMessage() {
         By alertDiv = By.xpath(
-                "//div[contains(@class,'alert-success') and contains(@class,'alert-dismissible')]"
+                "//div[contains(@class,'alert-success') " +
+                        "and contains(@class,'alert-dismissible')]"
         );
 
         try {
+            // Wait for the success banner to appear after removal
             wait.until(ExpectedConditions.visibilityOfElementLocated(alertDiv));
-            WebElement alert = DriverClass.getDriver().findElement(alertDiv);
+            WebElement alert = getDriver().findElement(alertDiv);          // BaseAction: getDriver()
 
-            String fullText = (String) ((JavascriptExecutor) DriverClass.getDriver()).executeScript(
-                    "var el = arguments[0];" +
-                            "var text = '';" +
+            // Extract raw text nodes only — avoids the '×' close-button text
+            String fullText = (String) ((JavascriptExecutor) getDriver()).executeScript(
+                    "var el = arguments[0]; var text = '';" +
                             "for (var i = 0; i < el.childNodes.length; i++) {" +
                             "  if (el.childNodes[i].nodeType === 3) {" +
                             "    text += el.childNodes[i].textContent;" +
@@ -430,19 +653,21 @@ public class WishListActions {
                     alert
             );
 
+            // Fallback to getText() if JS extraction returns nothing
             if (fullText == null || fullText.isEmpty()) {
-                fullText = alert.getText().trim();
-                fullText = fullText.replace("×", "").trim();
+                fullText = getText(alert).replace("×", "").trim();         // BaseAction: getText
             }
 
             System.out.println("Removal alert text: " + fullText);
             return fullText;
 
         } catch (TimeoutException e) {
-            Assert.fail("Removal success alert not found. " +
-                    "Expected: 'Success: You have modified your wish list!' " +
-                    "Locator: //div[contains(@class,'alert-success')]");
-            return "";
+            // Custom handler: success banner never appeared after removal click
+            ExceptionHandling.handleTimeout(
+                    "Removal success alert — " +
+                            "Expected: 'Success: You have modified your wish list!' — " +
+                            "Locator: //div[contains(@class,'alert-success')]", 15, e);
+            return ""; // unreachable — handleTimeout calls Assert.fail()
         }
     }
 }
