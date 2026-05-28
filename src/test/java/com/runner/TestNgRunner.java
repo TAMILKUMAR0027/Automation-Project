@@ -6,7 +6,6 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
 
-<<<<<<< HEAD
 		features = "src/test/resources/features/", 
 		glue = { "com.stepDefinitions", "com.hooks" }, 
 		plugin = { "pretty",
@@ -28,5 +27,4 @@ public class TestNgRunner extends AbstractTestNGCucumberTests {
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
-
 }
