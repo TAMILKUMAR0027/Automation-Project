@@ -59,4 +59,8 @@ public class LaunchPages {
 
 	@FindBy(xpath = "(//button[@title='Add to Cart'])[14]")
 	public WebElement cartThree;
+	@FindBy(xpath = "//span[normalize-space()='AddOns']")
+	public WebElement AddonsButton;
+	@FindBy(xpath = "//span[normalize-space()='Widgets']")
+	public WebElement widgetsButton;
 }
