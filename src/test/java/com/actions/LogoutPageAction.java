@@ -9,6 +9,7 @@ import com.driver.DriverClass;
 import com.pages.LoginPage;
 import com.pages.LogoutPage;
 
+
 public class LogoutPageAction extends BaseAction {
 
 	LogoutPage lout;
