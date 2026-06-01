@@ -3,6 +3,7 @@ package com.actions;
 import com.driver.DriverClass;
 import com.pages.CheckoutPage;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -128,10 +129,31 @@ public class CheckoutAction extends BaseAction {
 
     public boolean isCheckoutOrLoginPageDisplayed() {
 
-        String currentUrl = DriverClass.getDriver().getCurrentUrl();
+        // Before
+//        String currentUrl = DriverClass.getDriver().getCurrentUrl();
+//
+//        return currentUrl.contains("checkout")
+//                || currentUrl.contains("account/login");
 
-        return currentUrl.contains("checkout")
-                || currentUrl.contains("account/login");
+
+
+        // AFter for @E2E
+        // Dismiss any alert before calling getCurrentUrl()
+        // Firefox 150 throws UnhandledAlertException on any driver command when alert is present
+        try {
+            new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(3))
+                    .until(ExpectedConditions.alertIsPresent());
+            Alert alert = DriverClass.getDriver().switchTo().alert();
+            System.out.println("Alert dismissed in isCheckoutOrLoginPageDisplayed: " + alert.getText());
+            alert.dismiss();
+        } catch (Exception e) {
+            // No alert present — continue normally
+        }
+
+        // Original logic below — unchanged
+        String currentUrl = DriverClass.getDriver().getCurrentUrl();
+        return currentUrl.contains("checkout") || currentUrl.contains("login");
+
     }
 
     public void selectNewAddress() {
@@ -198,10 +220,26 @@ public class CheckoutAction extends BaseAction {
         System.out.println("Selected: Register Account");
     }
 
+    private void dismissAlertIfPresent() {
+        try {
+            WebDriverWait alertWait = new WebDriverWait(
+                    DriverClass.getDriver(), Duration.ofSeconds(3));
+            Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
+            System.out.println("Alert dismissed: " + alert.getText());
+            alert.dismiss();
+        } catch (Exception e) {
+            // No alert present — safe to continue
+        }
+    }
+
     // Wait for checkout page
     private void waitForCheckoutPageToLoad() {
 
-        wait.until(ExpectedConditions.urlContains("checkout"));
+        dismissAlertIfPresent();
+
+        new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15))
+                .until(ExpectedConditions.urlContains("checkout"));
+
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath(

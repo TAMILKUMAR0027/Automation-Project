@@ -22,6 +22,24 @@ public class CartPageActions {
 	CartPage cp = new CartPage(DriverClass.getDriver());
 
 	public String getProductName() {
+
+		// Before
+		//		ba.waitForVisibility(cp.productName);
+		//		return ba.getText(cp.productName);
+
+
+
+		// After
+		// Added for @E2E from try to catch
+		// Dismiss any alert present before interacting with the cart page
+		try {
+			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+			System.out.println("Alert dismissed in getProductName: " + alert.getText());
+			alert.dismiss();
+		} catch (Exception e) {
+			// No alert — safe to continue
+		}
+
 		ba.waitForVisibility(cp.productName);
 		return ba.getText(cp.productName);
 	}

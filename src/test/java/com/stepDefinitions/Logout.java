@@ -71,7 +71,12 @@ public class Logout {
 
         try {
 
-            lga.Clickaccount();
+            // Before
+//            lga.Clickaccount();
+//            lga.clickLogout();
+
+            // After - for @E2E
+
             lga.clickLogout();
 
             log.info("Logout link clicked successfully");

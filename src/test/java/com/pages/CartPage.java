@@ -15,7 +15,12 @@ public class CartPage extends BasePage {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//td[@class='text-left']//a[contains(text(),'HP LP3065')]")
+	// Modifed
+	// Older find
+	// @FindBy(xpath = "//td[contains(@class,'text-left')]//a[contains(text(), 'HP LP3065']")
+
+	// Modifyed for E2E
+	@FindBy(css = "td.text-left a")
 	public WebElement productName;
 
 	@FindBy(xpath = "//input[contains(@name,'quantity')]")
