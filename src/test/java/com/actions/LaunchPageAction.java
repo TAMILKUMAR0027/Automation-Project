@@ -4,11 +4,14 @@ import java.time.Duration;
 
 import com.exceptions.ExceptionHandling;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.driver.DriverClass;
 import com.pages.LaunchPages;
+
+import io.reactivex.rxjava3.functions.Action;
 
 public class LaunchPageAction extends BaseAction {
 
@@ -182,5 +185,16 @@ public class LaunchPageAction extends BaseAction {
 		} catch (TimeoutException e) {
 			ExceptionHandling.handleTimeout("Cart item 3 (cartThree) visibility/clickable", 20, e);
 		}
+	}
+	public void clickWidgets() {
+		click(lp.widgetsButton);
+	}
+
+
+	public void clickAddonButton() {
+		// TODO Auto-generated method stub
+		Actions act = new Actions(getDriver());
+
+	    act.moveToElement(lp.AddonsButton).perform();
 	}
 }
