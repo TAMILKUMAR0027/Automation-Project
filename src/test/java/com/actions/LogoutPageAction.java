@@ -88,7 +88,7 @@ public class LogoutPageAction extends BaseAction {
 
 		WebElement dropdownToggle = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(10))
 				.until(ExpectedConditions.elementToBeClickable(
-						By.xpath("//a[contains(@class,'nav-link') and contains(@class,'dropdown-toggle')][@role='button']")));
+						By.xpath("(//a[contains(@class,'nav-link') and contains(@class,'dropdown-toggle') and @role='button'])[3]")));
 
 		dropdownToggle.click();
 

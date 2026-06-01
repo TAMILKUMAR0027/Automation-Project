@@ -14,9 +14,7 @@ import org.testng.annotations.DataProvider;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:target/failedrerun.txt" },
 
-
 		tags = "@E2E",
-	
         monochrome = true
 )
 
