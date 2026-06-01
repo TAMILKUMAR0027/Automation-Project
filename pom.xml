@@ -135,7 +135,11 @@
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 
-					<!-- Allure Result Path -->
+<!--					-->
+<!--					<threadCount>3</threadCount>-->
+<!--					<forkCount>1</forkCount>-->
+<!--					<reuseForks>true</reuseForks>-->
+
 					<systemPropertyVariables>
 						<allure.results.directory>
 							target/allure-results

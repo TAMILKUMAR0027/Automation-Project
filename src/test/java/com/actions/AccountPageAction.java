@@ -17,43 +17,88 @@ public class AccountPageAction {
 	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
 	AccountPage ap = new AccountPage(DriverClass.getDriver());
 	LoginPage lp = new LoginPage(DriverClass.getDriver());
-	
-	
+
 	public void setVemail(String email) {
 		ba.waitForVisibility(lp.LoginEmail);
 		ba.sendKeys(lp.LoginEmail, email);
 	}
+
 	public void setVpass(String pass) {
 		ba.waitForVisibility(lp.LoginPassword);
 		ba.sendKeys(lp.LoginPassword, pass);
 	}
-	
-	public void clickEditAccInfo()
-	{
+
+	public void clickEditAccInfo() {
 		ba.waitForVisibility(ap.editAccInfo);
 		ba.click(ap.editAccInfo);
 	}
-	
-	public void updateDetails(DataTable db)
-	{
-		    ba.waitForVisibility(ap.telephoneEdit);
-		    List<Map<String, String>> data = db.asMaps(String.class, String.class);
-		    String telephone = data.get(0).get("telephone");
-		    ba.clear(ap.telephoneEdit);
-		    ba.sendKeys(ap.telephoneEdit, telephone);
-		
+
+	public void updateDetails(DataTable db) {
+		ba.waitForVisibility(ap.telephoneEdit);
+		List<Map<String, String>> data = db.asMaps(String.class, String.class);
+		String telephone = data.get(0).get("telephone");
+		ba.clear(ap.telephoneEdit);
+		ba.sendKeys(ap.telephoneEdit, telephone);
+
 	}
-	
-	public void clickEContinueBtn()
-	{
+
+	public void clickEContinueBtn() {
 		ba.click(ap.eContinueButton);
 	}
-	
-	public String successMsgE()
-	{
-		 ba.waitForVisibility(ap.editSuccess);
-		 return ba.getText(ap.editSuccess);
+
+	public String successMsgE() {
+		ba.waitForVisibility(ap.editSuccess);
+		return ba.getText(ap.editSuccess);
+	}
+
+	public void ivUpdateDetails(DataTable db) {
+		ba.waitForVisibility(ap.fnameEI);
+		List<Map<String, String>> data = db.asMaps(String.class, String.class);
+		String fname = data.get(0).get("fname");
+		ba.clear(ap.fnameEI);
+		ba.sendKeys(ap.fnameEI, fname);
+		String lname = data.get(0).get("lname");
+		ba.clear(ap.lnameEI);
+		ba.sendKeys(ap.lnameEI, lname);
+		String email = data.get(0).get("email");
+		ba.clear(ap.emailEI);
+		ba.sendKeys(ap.emailEI, email);
+		ba.clear(ap.telephoneEdit);
+	}
+
+	public String AccountEditMsg() {
+		ba.waitForVisibility(ap.errorMsgEI);
+		return ba.getText(ap.errorMsgEI);
 	}
 	
-
+	public void clickSubscribeNewsLetter()
+	{
+		ba.waitForVisibility(ap.newsLetterSubscribe);
+		ba.click(ap.newsLetterSubscribe);
+	}
+	
+	public void clickNlRadioButton()
+	{
+		try
+		{
+			ba.waitForVisibility(ap.yesRadioNewsLetter);
+			ba.click(ap.yesRadioNewsLetter);
+		}
+		catch(Exception e)
+		{
+			ba.waitForVisibility(ap.noRadioBtn);
+			ba.click(ap.noRadioBtn);
+		}
+	}
+	
+	public void clickNlContinueBtn()
+	{
+		ba.click(ap.clickContinueNL);
+	}
+	public String successMsgNLSubscribe()
+	{
+		ba.waitForVisibility(ap.sucessMsgNL);
+		return ba.getText(ap.sucessMsgNL);
+	}
 }
+

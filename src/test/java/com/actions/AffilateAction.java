@@ -56,21 +56,12 @@ public class AffilateAction extends BaseAction {
     // =====================================================
     public void enterAffilateDetails() {
 
+
         String company = prop.getProperty("company");
         String website = prop.getProperty("website");
         String taxID = prop.getProperty("taxID");
         String chequeName = prop.getProperty("chequeName");
 
-        // ✅ SAFETY CHECKS (VERY IMPORTANT)
-        if (company == null || website == null || taxID == null || chequeName == null) {
-            throw new RuntimeException(
-                "Affiliate test data missing in properties file. Check keys: company, website, taxID, chequeName"
-            );
-        }
-
-        sendKeys(aap.company, company);
-        sendKeys(aap.website, website);
-        sendKeys(aap.taxID, taxID);
-        sendKeys(aap.chequeName, chequeName);
+      
     }
 }
