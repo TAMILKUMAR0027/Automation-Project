@@ -13,10 +13,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ShopByCategory {
+public class ShopbyCategory {
 
     private static final Logger log =
-            LogManager.getLogger(ShopByCategory.class);
+            LogManager.getLogger(ShopbyCategory.class);
 
     WebDriver driver = DriverClass.getDriver();
 

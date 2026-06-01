@@ -54,17 +54,14 @@ public class BlogActions {
         JavascriptExecutor js =
                 (JavascriptExecutor) DriverClass.getDriver();
 
-        js.executeScript(
-                "arguments[0].scrollIntoView(true);",
+        js.executeScript( "arguments[0].scrollIntoView(true);",
                 blogPage.getCommentBox());
     }
 
     public void enterCommentDetails() {
 
         blogPage.getAuthorName().sendKeys("Samiha");
-
         blogPage.getAuthorEmail().sendKeys("samiha@gmail.com");
-
         blogPage.getCommentBox().sendKeys("Excellent article");
     }
 
