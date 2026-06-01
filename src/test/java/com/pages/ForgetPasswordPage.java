@@ -9,18 +9,18 @@ public class ForgetPasswordPage extends BasePage {
           super(driver);
     }
 
-	@FindBy(xpath="//div[@class='form-group']//a[normalize-space()='Forgotten Password']")
+	@FindBy(xpath="//label[@for='input-password']/following-sibling::a")
 	public WebElement forgetpassword;
 	
-	@FindBy(xpath="//input[@id='input-email']")
+	@FindBy(xpath="//div[@class='col-sm-10']/child::input")
 	public WebElement email;
 	
-	@FindBy(xpath="//button[normalize-space()='Continue']")
+	@FindBy(xpath="//div[@class='float-right']/child::button")
 	public WebElement button;
 	
-	@FindBy(xpath="//div[contains(@class,'alert-success')]")
+	@FindBy(xpath="//div[@class='row']/preceding-sibling::div")
 	public WebElement message;
 
-	@FindBy(xpath="//*[contains(text(),'E-Mail Address was not found')]")
+	@FindBy(xpath="//div[@id='account-forgotten']/child::div[1]")
 	public WebElement warningmsg;
 }

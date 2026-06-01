@@ -23,8 +23,7 @@ public class DriverClass {
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    private static final Logger logger =
-            LogManager.getLogger(DriverClass.class);
+    private static final Logger logger = LogManager.getLogger(DriverClass.class);
 
     public static WebDriver getDriver() {
 
@@ -35,17 +34,24 @@ public class DriverClass {
 
         try {
 
-            String browser =
-                    ConfigReader.getProperties()
-                            .getProperty("browser");
+            String browser = ConfigReader.getProperties().getProperty("browser");
 
-            String headlessValue =
-                    ConfigReader.getProperties()
-                            .getProperty("headless");
+            String headlessValue = ConfigReader.getProperties().getProperty("headless");
 
-            boolean headless =
-                    headlessValue != null
-                            && headlessValue.equalsIgnoreCase("true");
+            // ==========================================
+            // DEFAULT VALUES
+            // ==========================================
+
+            if (browser == null || browser.trim().isEmpty()) {
+
+                logger.warn("Browser value is null in properties file");
+                logger.warn("Defaulting browser to CHROME");
+
+                browser = "chrome";
+            }
+
+            boolean headless = headlessValue != null
+                    && headlessValue.equalsIgnoreCase("true");
 
             logger.info("Initializing Browser : " + browser);
 
@@ -73,10 +79,6 @@ public class DriverClass {
                 options.addArguments("--disable-save-password-bubble");
                 options.addArguments("--disable-password-generation");
 
-                // Disable Password Leak Detection Popup
-                options.addArguments(
-                        "--disable-features=PasswordLeakDetection");
-
                 // Disable Automation Banner
                 options.setExperimentalOption(
                         "excludeSwitches",
@@ -92,19 +94,12 @@ public class DriverClass {
 
                 Map<String, Object> prefs = new HashMap<>();
 
-                // Disable Save Password Popup
                 prefs.put("credentials_enable_service", false);
 
-                prefs.put(
-                        "profile.password_manager_enabled",
-                        false);
+                prefs.put("profile.password_manager_enabled", false);
 
-                // Disable Password Leak Detection
-                prefs.put(
-                        "profile.password_manager_leak_detection",
-                        false);
+                prefs.put("profile.password_manager_leak_detection", false);
 
-                // Disable Notifications
                 prefs.put(
                         "profile.default_content_setting_values.notifications",
                         2);
@@ -127,8 +122,7 @@ public class DriverClass {
 
                 driver.set(new ChromeDriver(options));
 
-                logger.info(
-                        "Chrome Browser Launched Successfully");
+                logger.info("Chrome Browser Launched Successfully");
             }
 
             // ==========================================
@@ -150,8 +144,7 @@ public class DriverClass {
 
                 driver.set(new FirefoxDriver(options));
 
-                logger.info(
-                        "Firefox Browser Launched Successfully");
+                logger.info("Firefox Browser Launched Successfully");
             }
 
             // ==========================================
@@ -160,8 +153,7 @@ public class DriverClass {
 
             else {
 
-                logger.error(
-                        "Invalid Browser Name : " + browser);
+                logger.error("Invalid Browser Name : " + browser);
 
                 throw new RuntimeException(
                         "Invalid Browser Name : " + browser);
@@ -173,6 +165,12 @@ public class DriverClass {
 
             getDriver().manage().timeouts()
                     .implicitlyWait(Duration.ofSeconds(10));
+
+            getDriver().manage().timeouts()
+                    .pageLoadTimeout(Duration.ofSeconds(30));
+
+            getDriver().manage().timeouts()
+                    .scriptTimeout(Duration.ofSeconds(30));
 
             if (!headless) {
 

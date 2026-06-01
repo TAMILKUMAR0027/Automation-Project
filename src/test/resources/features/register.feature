@@ -1,4 +1,4 @@
-@RegisterFeature
+@Rishwanth @RegisterFeature
 Feature: Rishwanth_Register_Feature_13_05_2026
 description:
 To validate the registration process of new user in ecommerce lambda test website

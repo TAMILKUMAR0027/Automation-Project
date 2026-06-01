@@ -1,9 +1,8 @@
-@Checkout
+@Samiha @Checkout
 Feature: Checkout Functionality
 
   Background:
     Given the user launches the ecommerce application
-
 
   @LoginCheckout
   Scenario: Verify checkout using existing login account
@@ -20,8 +19,7 @@ Feature: Checkout Functionality
     And the user enters the firstname, lastname, company, address1, city, postcode, country, Regionstate
     And the user clicks same billing address and cash on delivery and flat rate button
     And the user clicks the terms & conditions button and continue the checkout
-    Then the order should be successfully placed and application redirect to the order confirmation page
-
+    Then the order should be successfully placed and application redirect to the order confirmation
 
   @RegisterCheckout
   Scenario: Verify checkout without login
@@ -35,12 +33,11 @@ Feature: Checkout Functionality
     Then the application redirect to the chechkout
     And the user selects "Register Account" option
     And the user enters registration details
-      | firstName | lastName     | email               | telephone  | password | confirmPassword | company     | address1       | address2       | city    | postCode | country | region     |
-      | Samiha    | Muhabathulla | samiha123@gmail.com | 9876543210 | Test@123 | Test@123        | ABC Company | 12 Main Street | Near Bus Stand | Chennai | 600001   | India   | Tamil Nadu |
+      | firstName | lastName     | email                  | telephone  | password | confirmPassword | company     | address1       | address2       | city    | postCode | country | region     |
+      | Samiha    | Muhabathulla | samiha144109@gmail.com | 9876543210 | Test@123 | Test@123        | ABC Company | 12 Main Street | Near Bus Stand | Chennai | 600001   | India   | Tamil Nadu |
     And the user agrees to the privacy policy
     And the user clicks on Continue button
-    Then the order should be successfully placed and application redirect to the order confirmation page
-
+    Then the order should be successfully placed and application redirect to the order confirmation
 
   @EmptyCartCheckout
   Scenario: Verify checkout is blocked when cart is empty

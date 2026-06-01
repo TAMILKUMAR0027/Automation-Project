@@ -23,13 +23,13 @@ public class AddReviewPage extends BasePage {
 	@FindBy(css = "input#input-name")
 	public WebElement reviewname;
 
-	@FindBy(xpath = "//textarea[@name='text']")
+	@FindBy(xpath="//div[@class='form-group required']/child::textarea")
 	public WebElement reviewtext;
 
 	@FindBy(xpath = "//button[text()='Write Review']")
 	public WebElement writeReview;
 
-	@FindBy(xpath = "//div[contains(@class,'alert-success')]")
+	@FindBy(xpath = "//h5[@class='content-title mb-3']/following-sibling::div[1]")
 	public WebElement successMessage;
 
 	@FindBy(xpath = "//div[contains(@class,'alert-danger')]")

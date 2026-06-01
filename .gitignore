@@ -14,7 +14,11 @@ target/
 test-output/
 .~lock.SearchProduct.xlsx#
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 screenshots/
 >>>>>>> af71dcd70f5fe79547a807e7ae41e4395d0625eb
+=======
+screenshots/
+>>>>>>> main

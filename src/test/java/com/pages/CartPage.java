@@ -3,6 +3,7 @@ package com.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,15 +54,24 @@ public class CartPage extends BasePage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	public WebElement successMsgET;
 
+//	@FindBy(xpath = "//td[@class='text-left']/a")
+//	public List<WebElement> allProductName;
+	
 	@FindBy(xpath = "//td[@class='text-left']/a")
 	public List<WebElement> allProductName;
 
+	public By allProductNameLocator =
+	        By.xpath("//td[@class='text-left']/a");
+
 	public List<String> getProductName() {
-		List<String> pn = new ArrayList<>();
-		for (WebElement product : allProductName) {
-			pn.add(product.getText());
-		}
-		return pn;
+
+	    List<String> pn = new ArrayList<>();
+
+	    for (WebElement product : allProductName) {
+	        pn.add(product.getText().trim());
+	    }
+
+	    return pn;
 	}
 
 }

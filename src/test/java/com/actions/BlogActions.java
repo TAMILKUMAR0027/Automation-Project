@@ -1,26 +1,23 @@
 package com.actions;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 
+import com.driver.DriverClass;
 import com.pages.BlogPage;
 
 public class BlogActions {
 
-    WebDriver driver;
     BlogPage blogPage;
 
-    public BlogActions(WebDriver driver) {
+    public BlogActions() {
 
-        this.driver = driver;
-        blogPage = new BlogPage(driver);
+        blogPage = new BlogPage(DriverClass.getDriver());
     }
 
     public void clickBlogMenu() {
 
         blogPage.getBlogMenu().click();
     }
-
 
     public void clickFirstArticle() {
 
@@ -54,11 +51,13 @@ public class BlogActions {
 
     public void scrollToCommentSection() {
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js =
+                (JavascriptExecutor) DriverClass.getDriver();
 
         js.executeScript( "arguments[0].scrollIntoView(true);",
                 blogPage.getCommentBox());
     }
+
     public void enterCommentDetails() {
 
         blogPage.getAuthorName().sendKeys("Samiha");

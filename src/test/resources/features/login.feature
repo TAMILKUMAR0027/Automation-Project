@@ -1,4 +1,4 @@
-@LoginFeature
+@Rishwanth @LoginFeature
 Feature: Rishwanth_Login_Feature_13_05_2026
 description:
 To validate the login Functionality of ecommerce lambdaTest Application with both valid and invalid credentials

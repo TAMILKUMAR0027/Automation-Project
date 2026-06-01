@@ -139,7 +139,7 @@ public class CheckoutAction extends BaseAction {
         waitForCheckoutPageToLoad();
 
         By newAddressRadio = By.xpath(
-                "//label[@for='input-payment-address-new']");
+                "//label[@for = 'input-payment-address-new']");
 
         WebElement radio = wait.until(
                 ExpectedConditions.elementToBeClickable(newAddressRadio));
@@ -158,12 +158,28 @@ public class CheckoutAction extends BaseAction {
         System.out.println("Selected: I want to use a new address");
     }
 
+    public boolean isEmptyCartMessageDisplayed() {
+
+        return wait.until(
+                ExpectedConditions.visibilityOf(
+                        checkoutPage.emptyCartMessage))
+                .isDisplayed();
+    }
+
+    public String getConfirmOrder() {
+
+        return wait.until(
+                ExpectedConditions.visibilityOf(
+                        checkoutPage.confirmMessage))
+                .getText();
+    }
+
     public void selectRegisterAccount() {
 
         waitForCheckoutPageToLoad();
 
         By registerRadio = By.xpath(
-                "//label[@for='input-account-register']");
+                "//label[@for = 'input-account-register']");
 
         WebElement radio = wait.until(
                 ExpectedConditions.elementToBeClickable(registerRadio));
@@ -372,13 +388,5 @@ public class CheckoutAction extends BaseAction {
         js.executeScript(
                 "arguments[0].click();",
                 label);
-    }
-
-    public boolean isEmptyCartMessageDisplayed() {
-
-        return wait.until(
-                ExpectedConditions.visibilityOf(
-                        checkoutPage.emptyCartMessage))
-                .isDisplayed();
     }
 }

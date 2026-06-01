@@ -1,4 +1,4 @@
-@AddReview
+@Jothika @AddReview
 Feature: Add review to the product-Jothika 18/05/2026
 Description:This feature facilitates the user to add the feedback on the product as review with star rating ,name with feedback
 
@@ -15,7 +15,7 @@ Description:This feature facilitates the user to add the feedback on the product
   Scenario: Add review with Star ratings only
     When the user selects star rating
     And clicks on Write Review
-    Then the user should receive a warning message to wite review with characters more than 25 and less than 1000.
+    Then the user should receive a warning message to write review with characters more than 25 and less than 1000.
     
 @review
   Scenario: Add review without name
@@ -27,3 +27,9 @@ Description:This feature facilitates the user to add the feedback on the product
     When the user writes review with star rating and name
     And clicks on Write Review
     Then the user should receive a warning message Stating that characters must be between 25 and 1000
+    
+@Withoutrating
+Scenario:Add review without star rating
+When the user adds the review without the star rating 
+And clicks on Write Review to add the review
+Then the user should receive a warning message intimating the selection of star rating

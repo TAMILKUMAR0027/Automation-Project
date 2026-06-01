@@ -1,4 +1,4 @@
-@ShopByCategory
+@Samiha @ShopByCategory
 Feature: Shop By Category Navigation
   Description:
   Verify that the user is able to navigate to different product categories

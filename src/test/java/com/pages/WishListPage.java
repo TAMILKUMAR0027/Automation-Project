@@ -50,7 +50,7 @@ public class WishListPage extends BasePage {
     @FindBy(xpath = "//div[@id='notification-box-top']//p")
     public WebElement successNotificationFallback;
 
-    @FindBy(xpath = "//div[@id='notification-box-top']//a[contains(text(),'wish list')]")
+    @FindBy(xpath = "//a[@class='btn btn-secondary btn-block']")
     public WebElement wishlistPopupLink;
 
 

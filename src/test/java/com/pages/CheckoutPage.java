@@ -72,6 +72,7 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//button[@id='button-save']")
     public WebElement continueCheckoutBtn;
 
+
     @FindBy(xpath = "//button[@id='button-confirm']")
     public WebElement confirm;
 
@@ -118,6 +119,9 @@ public class CheckoutPage extends BasePage {
 
     @FindBy(xpath = "//select[@id='input-payment-zone']")
     public WebElement regRegionStateSelect;
+    
+    @FindBy(xpath = "//h1[@class='page-title mb-3']")
+    public WebElement confirmMessage;
 
     // Empty cart message
     @FindBy(xpath = "//div[@id='content']//p")
