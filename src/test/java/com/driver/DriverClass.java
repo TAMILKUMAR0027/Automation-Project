@@ -21,57 +21,60 @@ import java.util.Map;
 
 public class DriverClass {
 
-	private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-	private static final Logger logger = LogManager.getLogger(DriverClass.class);
+    private static final Logger logger = LogManager.getLogger(DriverClass.class);
 
-	public static WebDriver getDriver() {
+    public static WebDriver getDriver() {
 
-		return driver.get();
-	}
+        return driver.get();
+    }
 
-	public static void initDriver() {
+    public static void initDriver() {
 
-		try {
+        try {
 
-			String browser = ConfigReader.getProperties().getProperty("browser");
+            String browser = ConfigReader.getProperties().getProperty("browser");
 
+<<<<<<< HEAD
 			String headlessValue =
 					ConfigReader.getProperties().getProperty("headless");
 
 			boolean headless =
 					headlessValue != null
 							&& headlessValue.equalsIgnoreCase("true");
+=======
+            String headlessValue = ConfigReader.getProperties().getProperty("headless");
 
-			logger.info("Initializing Browser : " + browser);
+            // ==========================================
+            // DEFAULT VALUES
+            // ==========================================
+>>>>>>> 051a820305ae9eae876e05831b681177de288d9d
 
-			logger.info("Headless Mode : " + headless);
+            if (browser == null || browser.trim().isEmpty()) {
 
-			// ==========================================
-			// CHROME DRIVER
-			// ==========================================
+                logger.warn("Browser value is null in properties file");
+                logger.warn("Defaulting browser to CHROME");
 
-			if (browser.equalsIgnoreCase("chrome")) {
+                browser = "chrome";
+            }
 
-				WebDriverManager.chromedriver().setup();
+            boolean headless = headlessValue != null
+                    && headlessValue.equalsIgnoreCase("true");
 
-				ChromeOptions options = new ChromeOptions();
+            logger.info("Initializing Browser : " + browser);
 
-				// Browser Stability
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-dev-shm-usage");
-				options.addArguments("--disable-gpu");
-				options.addArguments("--remote-allow-origins=*");
+            logger.info("Headless Mode : " + headless);
 
-				// Disable Chrome Popups
-				options.addArguments("--disable-notifications");
-				options.addArguments("--disable-popup-blocking");
-				options.addArguments("--disable-save-password-bubble");
-				options.addArguments("--disable-password-generation");
+            // ==========================================
+            // CHROME DRIVER
+            // ==========================================
 
-				// Disable Password Leak Detection Popup
-				options.addArguments("--disable-features=PasswordLeakDetection");
+            if (browser.equalsIgnoreCase("chrome")) {
 
+                WebDriverManager.chromedriver().setup();
+
+<<<<<<< HEAD
 				// Disable Automation Banner
 				options.setExperimentalOption(
 						"excludeSwitches",
@@ -80,123 +83,168 @@ public class DriverClass {
 				options.setExperimentalOption(
 						"useAutomationExtension",
 						false);
+=======
+                ChromeOptions options = new ChromeOptions();
 
-				// ==========================================
-				// CHROME PREFERENCES
-				// ==========================================
+                // Browser Stability
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--remote-allow-origins=*");
+>>>>>>> 051a820305ae9eae876e05831b681177de288d9d
 
-				Map<String, Object> prefs = new HashMap<>();
+                // Disable Chrome Popups
+                options.addArguments("--disable-notifications");
+                options.addArguments("--disable-popup-blocking");
+                options.addArguments("--disable-save-password-bubble");
+                options.addArguments("--disable-password-generation");
 
-				// Disable Save Password Popup
-				prefs.put("credentials_enable_service", false);
+                // Disable Automation Banner
+                options.setExperimentalOption(
+                        "excludeSwitches",
+                        new String[] { "enable-automation" });
 
-				prefs.put("profile.password_manager_enabled", false);
+                options.setExperimentalOption(
+                        "useAutomationExtension",
+                        false);
 
-				// Disable Password Leak Detection
-				prefs.put("profile.password_manager_leak_detection", false);
+                // ==========================================
+                // CHROME PREFERENCES
+                // ==========================================
 
+                Map<String, Object> prefs = new HashMap<>();
+
+<<<<<<< HEAD
 				// Disable Notifications
 				prefs.put(
 						"profile.default_content_setting_values.notifications",
 						2);
+=======
+                prefs.put("credentials_enable_service", false);
+>>>>>>> 051a820305ae9eae876e05831b681177de288d9d
 
-				options.setExperimentalOption("prefs", prefs);
+                prefs.put("profile.password_manager_enabled", false);
 
-				// ==========================================
-				// HEADLESS MODE
-				// ==========================================
+                prefs.put("profile.password_manager_leak_detection", false);
 
-				if (headless) {
+                prefs.put(
+                        "profile.default_content_setting_values.notifications",
+                        2);
 
-					options.addArguments("--headless=new");
-					options.addArguments("--window-size=1920,1080");
+                options.setExperimentalOption("prefs", prefs);
 
-				} else {
+                // ==========================================
+                // HEADLESS MODE
+                // ==========================================
 
-					options.addArguments("--start-maximized");
-				}
+                if (headless) {
 
-				driver.set(new ChromeDriver(options));
+                    options.addArguments("--headless=new");
+                    options.addArguments("--window-size=1920,1080");
 
-				logger.info("Chrome Browser Launched Successfully");
-			}
+                } else {
 
-			// ==========================================
-			// FIREFOX DRIVER
-			// ==========================================
+                    options.addArguments("--start-maximized");
+                }
 
-			else if (browser.equalsIgnoreCase("firefox")) {
+                driver.set(new ChromeDriver(options));
 
-				WebDriverManager.firefoxdriver().setup();
+                logger.info("Chrome Browser Launched Successfully");
+            }
 
-				FirefoxOptions options = new FirefoxOptions();
+            // ==========================================
+            // FIREFOX DRIVER
+            // ==========================================
 
-				if (headless) {
+            else if (browser.equalsIgnoreCase("firefox")) {
 
-					options.addArguments("--headless");
-					options.addArguments("--width=1920");
-					options.addArguments("--height=1080");
-				}
+                WebDriverManager.firefoxdriver().setup();
 
-				driver.set(new FirefoxDriver(options));
+                FirefoxOptions options = new FirefoxOptions();
 
-				logger.info("Firefox Browser Launched Successfully");
-			}
+                if (headless) {
 
-			// ==========================================
-			// INVALID BROWSER
-			// ==========================================
+                    options.addArguments("--headless");
+                    options.addArguments("--width=1920");
+                    options.addArguments("--height=1080");
+                }
 
-			else {
+                driver.set(new FirefoxDriver(options));
 
-				logger.error("Invalid Browser Name : " + browser);
+                logger.info("Firefox Browser Launched Successfully");
+            }
 
+<<<<<<< HEAD
 				throw new RuntimeException(
 						"Invalid Browser Name : " + browser);
 			}
+=======
+            // ==========================================
+            // INVALID BROWSER
+            // ==========================================
+>>>>>>> 051a820305ae9eae876e05831b681177de288d9d
 
-			// ==========================================
-			// COMMON SETTINGS
-			// ==========================================
+            else {
 
+<<<<<<< HEAD
 			getDriver().manage().timeouts()
 					.implicitlyWait(Duration.ofSeconds(10));
+=======
+                logger.error("Invalid Browser Name : " + browser);
+>>>>>>> 051a820305ae9eae876e05831b681177de288d9d
 
-			if (!headless) {
+                throw new RuntimeException(
+                        "Invalid Browser Name : " + browser);
+            }
 
-				getDriver().manage().window().maximize();
-			}
+            // ==========================================
+            // COMMON SETTINGS
+            // ==========================================
 
-			logger.info("Browser launched successfully");
+            getDriver().manage().timeouts()
+                    .implicitlyWait(Duration.ofSeconds(10));
 
-		} catch (Exception e) {
+            getDriver().manage().timeouts()
+                    .pageLoadTimeout(Duration.ofSeconds(30));
 
-			logger.error("Driver Initialization Failed");
+            getDriver().manage().timeouts()
+                    .scriptTimeout(Duration.ofSeconds(30));
 
-			e.printStackTrace();
+            if (!headless) {
 
-			throw e;
-		}
-	}
+                getDriver().manage().window().maximize();
+            }
 
-	public static void quitDriver() {
+            logger.info("Browser launched successfully");
 
-		try {
+        } catch (Exception e) {
 
-			if (getDriver() != null) {
+            logger.error("Driver Initialization Failed");
 
-				logger.info("Closing Browser Session");
+            e.printStackTrace();
 
-				getDriver().quit();
+            throw e;
+        }
+    }
 
-				driver.remove();
-			}
+    public static void quitDriver() {
 
-		} catch (Exception e) {
+        try {
 
-			logger.error("Error while closing browser");
+            if (getDriver() != null) {
 
-			e.printStackTrace();
-		}
-	}
+                logger.info("Closing Browser Session");
+
+                getDriver().quit();
+
+                driver.remove();
+            }
+
+        } catch (Exception e) {
+
+            logger.error("Error while closing browser");
+
+            e.printStackTrace();
+        }
+    }
 }
