@@ -15,7 +15,7 @@ import org.testng.annotations.DataProvider;
 
 
 		
-        tags="@AccountFeature",
+        tags="@Jothika",
 
 
 
@@ -26,8 +26,7 @@ import org.testng.annotations.DataProvider;
 
         
         
-=======
->>>>>>> 96d9079cdde2ed4463588d7ec9cafed5a9ba3589
+
 
         monochrome = true
 )
