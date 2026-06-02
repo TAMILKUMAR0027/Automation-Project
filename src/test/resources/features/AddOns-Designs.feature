@@ -1,3 +1,4 @@
+@Jothika
 Feature:AddOns-components in  designs-Jothika 30/05/2026
 Description:This feature describes the components incorporated in design functionality of AddOns
 
@@ -19,4 +20,8 @@ Then the user is able to view a top panel appearing in the application
 
 Scenario:Clicking on Sticky Bottom button
 When the user clicks the Sticky Bottom button
-Then the user must view a bottom panel 
+Then the user must view a bottom panel in the application
+
+Scenario:Clicking on Popup button
+When the user clicks the popup
+Then the application displays a popup box in the middle of the application
