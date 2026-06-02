@@ -14,13 +14,13 @@ import org.testng.annotations.DataProvider;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"rerun:target/failedrerun.txt" },
 		
-        tags="@AccountFeature",
+        tags="@Rishwanth",
         monochrome = true
 )
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
