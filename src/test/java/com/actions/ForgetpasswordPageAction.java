@@ -21,7 +21,7 @@ public class ForgetpasswordPageAction extends BaseAction {
 
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-    // ✅ FIX: correct properties file
+   
     Properties prop = ConfigReader.getForgetPasswordProperties();
 
     public void launchWebUrl() {
@@ -36,7 +36,7 @@ public class ForgetpasswordPageAction extends BaseAction {
         click(fp.forgetpassword);
     }
 
-    // ✅ FIX: proper key usage (validEmail / InvalidEmail)
+    
     public void enterEmail(String emailKey) {
         wait.until(ExpectedConditions.visibilityOf(fp.email)).clear();
         fp.email.sendKeys(prop.getProperty(emailKey));

@@ -17,9 +17,9 @@ public class BaseAction {
 		return new WebDriverWait(getDriver(), Duration.ofSeconds(15));
 	}
 
-	// =========================
+	
 	// CLICK ACTIONS
-	// =========================
+	
 	public void click(WebElement element) {
 		getWait().until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
@@ -29,9 +29,9 @@ public class BaseAction {
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
 	}
 
-	// =========================
+	
 	// INPUT ACTIONS
-	// =========================
+	
 	public void sendKeys(WebElement element, String value) {
 		getWait().until(ExpectedConditions.visibilityOf(element));
 		element.clear();
@@ -44,9 +44,9 @@ public class BaseAction {
 		element.clear();
 	}
 
-	// =========================
+
 	// WAIT ACTIONS
-	// =========================
+	
 	public void waitForVisibility(WebElement element) {
 		getWait().until(ExpectedConditions.visibilityOf(element));
 	}
@@ -61,9 +61,9 @@ public class BaseAction {
 		getWait().until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
 	}
 
-	// =========================
+	
 	// UTILITIES
-	// =========================
+	
 	public String getText(WebElement element) {
 		return element.getText();
 	}
