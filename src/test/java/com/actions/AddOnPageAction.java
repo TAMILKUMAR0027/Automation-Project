@@ -1,5 +1,7 @@
 package com.actions;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import com.pages.AddsOnPage;
 
 public class AddOnPageAction extends BaseAction{
@@ -24,6 +26,10 @@ public class AddOnPageAction extends BaseAction{
 	public String getConfirmationMessage() {
 		scrollIntoView(aop.confirmMessage);
 		return getText(aop.confirmMessage).trim().replaceAll("x","");
+	}
+	public String getErrorMessage() {
+		getWait().until(ExpectedConditions.visibilityOf(aop.emailErrorMessage));
+		return getText(aop.emailErrorMessage);
 	}
 	
 }

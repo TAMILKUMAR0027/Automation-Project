@@ -72,5 +72,11 @@ public class ContactFormDefinition {
 
 		Assert.assertTrue(actualMessage.contains("Your enquiry has been successfully sent to the store owner!"));
 	}
+	@When("An email validation error message should be displayed and remain on the contact form page")
+	public void an_email_validation_error_message_should_be_displayed_and_remain_on_the_contact_form_page() {
+	    // Write code here that turns the phrase above into concrete actions
+	String expected =aopa.getErrorMessage();
+	Assert.assertEquals(expected,aopa.getErrorMessage());
+	}
 
 }

@@ -23,5 +23,6 @@ public class AddsOnPage extends BasePage {
 	public WebElement clickSubmit;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-notification w-50 alert-dismissible']")
 	public WebElement confirmMessage;
-
+	@FindBy(xpath = "//div[@class='error text-danger']")
+	public WebElement emailErrorMessage;
 }
