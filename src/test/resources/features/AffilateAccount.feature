@@ -1,4 +1,4 @@
-Feature: Affiliate Account
+Feature: TamilKumar_29_05_2026 Affiliate Account
 
   @Tamil @AffilateAccount @LoginAffilateAccount
   Scenario: Login and register affiliate account with valid inputs
