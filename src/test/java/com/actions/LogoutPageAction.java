@@ -86,23 +86,7 @@ public class LogoutPageAction extends BaseAction {
 		// Re-locate fresh every time — avoids StaleElementReferenceException
 		// after page navigation during the E2E session
 
-		WebElement dropdownToggle = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(10))
-				.until(ExpectedConditions.elementToBeClickable(
-						By.xpath("//a[contains(@class,'nav-link') and contains(@class,'dropdown-toggle')][@role='button']")));
-
-		dropdownToggle.click();
-
-		// Step 2 — wait for dropdown to open (ul gets 'show' class)
-		new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//ul[contains(@class,'dropdown-menu') and contains(@class,'show')]")));
-
-		// Step 3 — click Logout directly by its href (most reliable, no text matching)
-		WebElement logoutLink = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(10))
-				.until(ExpectedConditions.elementToBeClickable(
-						By.xpath("//a[contains(@href,'route=account/logout')]")));
-
-		logoutLink.click();
+		getWait().until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Logout')]"))).click();
 
 	}
 
