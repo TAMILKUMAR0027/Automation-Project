@@ -67,7 +67,7 @@ Thanks to all our contributors who have helped build and improve this project:
 | Rank | Contributor                        | Commits |
 |------|------------------------------------|---------|
 | 1    | **TAMILKUMAR0027**                 | 190     |
-| 2    | **14-Prasanna** (Prasanna Venkatesh K) | 122 |
+| 2    | **14-Prasanna** (Prasanna Venkatesh K) | 140 |
 | 3    | **Rishwanth-Adhishwar**            | 102     |
 | 4    | **samihamuhabathulla**             | 61      |
 | 5    | **raviravi31799-crypto**           | 35      |
