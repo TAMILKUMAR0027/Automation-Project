@@ -135,38 +135,36 @@ CI/CD
 GitHub Actions: Automatically runs on every push and PR
 Jenkins: Configured for scheduled and manual builds
 
+## Using as Maven Dependency
+
+You can use this framework as a dependency in other projects via **GitHub Packages**.
+
+### 1. Add Repository
+
+Add the following in your project's `pom.xml`:
+
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/TAMILKUMAR0027/Automation-Project</url>
+    </repository>
+</repositories>
+
+
+<dependency>
+    <groupId>com.ecom</groupId>
+    <artifactId>automation-framework</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
+# Run all tests
+mvn clean test
+
+# Run specific E2E suite
+mvn clean test -Dcucumber.filter.tags="@WishlistE2E"
+
+# Run with Chrome
+mvn clean test -Dbrowser=chrome
 
 Made with ❤️ by Defect Defenders LambdaTesters Team
-
-## License
-
-This project is developed for educational and automation testing purposes only.
-
----
-
-*Built with Selenium WebDriver + Cucumber BDD + TestNG + Maven*
-```---
-
-# 📜 License
-
-This project is licensed under the **MIT License**.
-
-Copyright (c) 2026 Prasanna Venkatesh K
-
-Permission is hereby granted, free of charge, to any person obtaining a copy  
-of this software and associated documentation files (the "Software"), to deal  
-in the Software without restriction, including without limitation the rights  
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
-copies of the Software, and to permit persons to whom the Software is  
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all  
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
-SOFTWARE.
