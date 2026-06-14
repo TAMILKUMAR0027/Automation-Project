@@ -8,7 +8,7 @@
 
 # Automation Project — LambdaTest Ecommerce Playground
 
-> A production-grade **BDD + POM** automation framework built with **Java, Selenium, Cucumber, TestNG & Maven**.
+> A production-grade **BDD + POM** automation framework built with **Java, Selenium, Cucumber, TestNG & Maven Developed For Learning Purpose**.
 
 **Application Under Test:** [LambdaTest Ecommerce Playground](https://ecommerce-playground.lambdatest.io/)
 
