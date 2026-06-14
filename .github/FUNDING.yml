@@ -1,0 +1,24 @@
+# =============================================
+# GitHub Funding Configuration
+# =============================================
+# Enables the "Sponsor" button on the repository
+
+github: Prasanna-14
+
+# Buy Me a Coffee for Prasanna
+buy_me_a_coffee: prasanna_14
+
+# Optional custom links
+custom:
+  - https://www.buymeacoffee.com/prasanna_14
+
+# Disabled platforms (clean config)
+patreon: null
+open_collective: null
+ko_fi: null
+tidelift: null
+community_bridge: null
+issuehunt: null
+lfx_crowdfunding: null
+polar: null
+thanks_dev: null

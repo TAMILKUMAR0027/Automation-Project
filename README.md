@@ -6,397 +6,137 @@
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
 ![Allure](https://img.shields.io/badge/Allure-5C2D91?style=for-the-badge&logoColor=white)
-![ExtentReports](https://img.shields.io/badge/Extent%20Reports-0A66C2?style=for-the-badge&logo=googlechrome&logoColor=white)
 
----
+# Automation Project — LambdaTest Ecommerce Playground
 
-# Automation Project — LambdaTest Playground
-
-> A production-grade Selenium BDD automation framework built with Java, Cucumber, TestNG, and Maven.  
-> Designed for scalability, maintainability, and CI/CD integration.
+> A production-grade **BDD + POM** automation framework built with **Java, Selenium, Cucumber, TestNG & Maven**.
 
 **Application Under Test:** [LambdaTest Ecommerce Playground](https://ecommerce-playground.lambdatest.io/)
 
 ---
 
 ## Table of Contents
-
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
+- [Contributors](#contributors)
+- [Default Reviewer](#default-reviewer)
 - [Prerequisites](#prerequisites)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
 - [Running Tests](#running-tests)
 - [Reports](#reports)
-- [Logging](#logging)
-- [Jenkins Integration](#jenkins-integration)
-- [Contributors](#contributors)
+- [How to Contribute](#how-to-contribute)
+- [Raising Issues & Pull Requests](#raising-issues--pull-requests)
+- [CI/CD](#cicd)
 
 ---
 
 ## Project Overview
 
-This framework automates end-to-end UI test scenarios for the LambdaTest Ecommerce Playground using a hybrid architecture combining BDD, Page Object Model, and data-driven testing.
+This is a **Hybrid Automation Framework** designed for the LambdaTest Ecommerce Playground. It follows **Behavior Driven Development (BDD)** using Cucumber, **Page Object Model (POM)** design pattern, and TestNG for execution.
 
-| Key                  | Value                                   |
-|----------------------|-----------------------------------------|
-| Project Name         | Automation-Project                      |
-| Framework Type       | Hybrid — BDD + POM + TestNG             |
-| Application Under Test | LambdaTest Ecommerce Playground       |
-| Team                 | Defect Defenders LambdaTesters          |
-| Build Tool           | Maven                                   |
-| Version Control      | GitHub                                  |
-
-**Core capabilities:**
-
-- Page Object Model (POM) design pattern
-- Cucumber BDD feature files with Gherkin syntax
-- TestNG test runner with parallel execution support
-- Cross-browser execution — Chrome and Firefox
-- Data-driven testing via CSV and Excel
-- Centralized configuration via `config.properties`
+**Key Features:**
+- Cross-browser support (Chrome & Firefox)
+- Data-driven testing using CSV and DataTables
+- End-to-End Smoke & Regression suites
+- Parallel execution support
 - Structured logging with Log4j2
-- Jenkins CI/CD pipeline integration
-- Multiple report formats — HTML, JSON, Extent, Allure, Surefire
+- Multiple reporting tools (Extent Reports, Allure, Surefire)
+- Jenkins & GitHub Actions ready
 
 ---
 
 ## Tech Stack
 
-| Technology         | Purpose                        |
-|--------------------|--------------------------------|
-| Java 17 / 21       | Programming language           |
-| Selenium WebDriver | Browser automation             |
-| Cucumber           | BDD framework                  |
-| TestNG             | Test execution and assertions  |
-| Maven              | Build and dependency management|
-| WebDriverManager   | Automatic driver management    |
-| Log4j2             | Structured logging             |
-| Extent Reports     | Advanced HTML reporting        |
-| Allure Reports     | Dashboard reporting            |
-| Jenkins            | CI/CD pipeline                 |
-
----
-
-## Prerequisites
-
-Ensure the following are installed before running the project:
-
-| Requirement         | Recommended Version |
-|---------------------|---------------------|
-| Java JDK            | 17 or 21            |
-| Apache Maven        | 3.x                 |
-| Git                 | Latest              |
-| Google Chrome       | Latest stable       |
-| Mozilla Firefox     | Latest stable       |
-| IDE (optional)      | IntelliJ IDEA       |
-
-**Verify installed versions:**
-
-```bash
-# Java
-java -version
-
-# Maven
-mvn -version
-
-# Git
-git --version
-
-# Firefox (Windows)
-wmic datafile where name="C:\\Program Files\\Mozilla Firefox\\firefox.exe" get Version
-
-# Chrome (Windows)
-wmic datafile where name="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" get Version
-```
-
----
-
-## Project Structure
-
-```
-Automation-Project/
-│
-├── src/
-│   └── test/
-│       ├── java/
-│       │   ├── com.actions/          # Action layer — reusable browser interactions
-│       │   ├── com.driver/           # WebDriver initialization and management
-│       │   ├── com.hooks/            # Cucumber Before/After hooks
-│       │   ├── com.pages/            # Page Object Model classes
-│       │   ├── com.runner/           # TestNG Cucumber runner classes
-│       │   ├── com.stepDefinitions/  # Cucumber step definitions
-│       │   └── com.utils/            # Utilities — CSV reader, config reader, etc.
-│       │
-│       └── resources/
-│           ├── features/             # Cucumber .feature files
-│           ├── config.properties     # Browser, URL, and execution config
-│           ├── extent.properties     # Extent report configuration
-│           ├── extent-config.xml     # Extent report theme and metadata
-│           ├── log4j2.xml            # Log4j2 logging configuration
-│           └── wishlist_data.csv     # Test data for data-driven scenarios
-│
-├── logs/                             # Execution log files
-│
-├── target/
-│   ├── allure-results/               # Raw Allure report data
-│   ├── cucumber-report.html          # Cucumber HTML report
-│   ├── cucumber-report.json          # Cucumber JSON report
-│   └── failedrerun.txt               # Failed scenario URIs for rerun
-│
-├── pom.xml                           # Maven project descriptor
-├── testng.xml                        # Main TestNG suite
-├── testng-failed.xml                 # Failed scenarios rerun suite
-├── Jenkinsfile                       # Jenkins pipeline definition
-└── README.md
-```
-
----
-
-## Configuration
-
-All execution settings are managed in a single properties file:
-
-**`src/test/resources/config.properties`**
-
-```properties
-browser=chrome
-headless=false
-url=https://ecommerce-playground.lambdatest.io/index.php?route=common/home
-```
-
-| Property   | Accepted Values                                                  |
-|------------|------------------------------------------------------------------|
-| `browser`  | `chrome`, `firefox`                                              |
-| `headless` | `true`, `false`                                                  |
-| `url`      | Any valid application URL                                        |
-
----
-
-## Running Tests
-
-### Full test suite
-
-```bash
-mvn clean test
-```
-
-Executes all scenarios configured in `testng.xml`.
-
----
-
-### Run with a specific browser
-
-Update `browser` in `config.properties`, then run:
-
-```bash
-mvn clean test
-```
-
----
-
-### Run by Cucumber tag
-
-Update the `tags` value in `TestNgRunner.java`:
-
-```java
-tags = "@Smoke"
-```
-
-Then run:
-
-```bash
-mvn clean test
-```
-
-**Available tags:**
-
-| Tag                | Description                              |
-|--------------------|------------------------------------------|
-| `@WishlistFeature` | All wishlist scenarios                   |
-| `@Smoke`           | Critical path scenarios                  |
-| `@Regression`      | Full regression suite                    |
-| `@ProductAdded`    | Add product to wishlist scenarios        |
-| `@MultipleProduct` | Multiple product wishlist scenarios      |
-| `@RemoveProduct`   | Remove product from wishlist scenarios   |
-
----
-
-### Rerun failed scenarios
-
-Failed scenarios are automatically captured in `target/failedrerun.txt` after each run.
-
-**Step 1 — Run the full suite:**
-
-```bash
-mvn clean test
-```
-
-**Step 2 — Rerun only failed scenarios:**
-
-```bash
-mvn test -Dtest=Failed_TestNgRunner
-```
-
-**Step 3 — Run full suite and rerun failures in sequence:**
-
-```bash
-mvn clean test -Dsurefire.suiteXmlFiles=testng.xml,testng-failed.xml
-```
-
-**Step 4 - Check the Dependency-Update
-```bash
-mvn versions:display-dependency-updates
-```
-
-**Step 5 - Check Update only property versions
-```bash
-mvn versions:update-properties
-```
-
-`testng-failed.xml` configuration:
-
-```xml
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed Test Suite">
-    <test name="Failed Scenarios Rerun">
-        <classes>
-            <class name="com.runner.Failed_TestNgRunner"/>
-        </classes>
-    </test>
-</suite>
-```
-
----
-
-## Reports
-
-Reports are generated automatically after each execution run.
-
-| Report Type          | Location                              |
-|----------------------|---------------------------------------|
-| Cucumber HTML        | `target/cucumber-report.html`         |
-| Cucumber JSON        | `target/cucumber-report.json`         |
-| Extent Spark Report  | `test-output/ExtentReport.html`       |
-| Allure Results       | `target/allure-results/`             |
-| TestNG Surefire      | `target/surefire-reports/`           |
-
-**Serve Allure report locally:**
-
-```bash
-allure serve target/allure-results
-```
-
-**Generate static Allure HTML report:**
-
-```bash
-allure generate target/allure-results --clean -o target/allure-report
-```
-
----
-
-## Logging
-
-Log4j2 is configured to write structured logs to:
-
-```
-logs/logs.log
-```
-
-Log configuration file: `src/test/resources/log4j2.xml`
-
-Logs capture step-level execution details, browser events, assertion results, and error stack traces.
-
----
-
-## Jenkins Integration
-
-This framework is fully compatible with Jenkins CI/CD pipelines.
-
-**Required Jenkins plugins:**
-
-| Plugin              | Purpose                        |
-|---------------------|--------------------------------|
-| Git Plugin          | Source code checkout           |
-| Maven Integration   | Build execution                |
-| Allure Plugin       | Allure report dashboard        |
-| HTML Publisher      | Cucumber/Extent HTML reports   |
-
-**Pipeline execution via Jenkinsfile:**
-
-```groovy
-pipeline {
-    agent any
-    tools {
-        maven 'Maven3'
-        jdk 'JDK21'
-    }
-    stages {
-        stage('Checkout') {
-            steps { checkout scm }
-        }
-        stage('Execute Tests') {
-            steps { sh 'mvn clean test' }
-        }
-        stage('Allure Report') {
-            steps {
-                allure includeProperties: false,
-                       results: [[path: 'target/allure-results']]
-            }
-        }
-    }
-    post {
-        always {
-            publishHTML(target: [
-                reportName : 'Cucumber Report',
-                reportDir  : 'target',
-                reportFiles: 'cucumber-report.html'
-            ])
-        }
-    }
-}
-```
-
----
-
-## Execution Command Reference
-
-| Purpose                          | Command                                                                 |
-|----------------------------------|-------------------------------------------------------------------------|
-| Run full suite                   | `mvn clean test`                                                        |
-| Run failed scenarios only        | `mvn test -Dtest=Failed_TestNgRunner`                                   |
-| Run full suite + rerun failures  | `mvn clean test -Dsurefire.suiteXmlFiles=testng.xml,testng-failed.xml` |
-| Serve Allure dashboard locally   | `allure serve target/allure-results`                                    |
-| Generate static Allure report    | `allure generate target/allure-results --clean -o target/allure-report` |
-
----
-
-## Troubleshooting
-
-| Issue                          | Resolution                                                   |
-|--------------------------------|--------------------------------------------------------------|
-| Tests not running              | Verify `tags` in `TestNgRunner.java` match feature file tags |
-| Browser not launching          | Check `browser` value in `config.properties`                 |
-| Driver error                   | WebDriverManager auto-manages drivers — ensure internet access |
-| CSV data not found             | Confirm `wishlist_data.csv` exists in `src/test/resources/`  |
-| Allure report not generating   | Install Allure CLI and verify `target/allure-results/` exists |
-| Failed rerun not working       | Confirm `target/failedrerun.txt` has content after a failed run |
+| Technology          | Purpose                          |
+|---------------------|----------------------------------|
+| Java 17 / 21        | Programming Language             |
+| Selenium WebDriver  | Browser Automation               |
+| Cucumber            | BDD Framework                    |
+| TestNG              | Test Execution & Assertions      |
+| Maven               | Build & Dependency Management    |
+| Log4j2              | Logging                          |
+| Extent Reports + Allure | Advanced Reporting           |
+| Jenkins / GitHub Actions | CI/CD                        |
 
 ---
 
 ## Contributors
 
-| Name                 | Role                         |
-|----------------------|------------------------------|
-| Tamilkumar           | Automation Engineer          |
-| Rishwanth            | Automation Engineer          |
-| Prasanna Venkatesh K | Automation Engineer          |
-| Samiha               | Automation Engineer          |
-| Jothika              | Automation Engineer          |
+Thanks to all our contributors who have helped build and improve this project:
 
-**Team:** Defect Defenders LambdaTesters
+| Rank | Contributor                        | Commits |
+|------|------------------------------------|---------|
+| 1    | **TAMILKUMAR0027**                 | 190     |
+| 2    | **14-Prasanna** (Prasanna Venkatesh K) | 122 |
+| 3    | **Rishwanth-Adhishwar**            | 102     |
+| 4    | **samihamuhabathulla**             | 61      |
+| 5    | **raviravi31799-crypto**           | 35      |
 
 ---
+
+## Default Reviewer
+
+**Tamilkumar (@TAMILKUMAR0027)** — All Pull Requests should be reviewed by Tamilkumar.
+
+---
+
+## Prerequisites
+
+- **JDK 17 or 21**
+- **Apache Maven 3.8+**
+- **Git**
+- Chrome / Firefox browsers
+
+Verify installation:
+```bash
+java -version
+mvn -version
+
+Running Tests
+Bash# Clean and run all tests
+mvn clean test
+
+# Run specific tag (E2E Wishlist)
+mvn clean test -Dcucumber.filter.tags="@WishlistE2E"
+
+# Run with specific browser
+mvn clean test -Dbrowser=chrome -Dheadless=false
+
+Reports
+
+Extent Reports: target/ExtentReports/
+Allure Reports: Run allure serve allure-results
+Surefire Reports: target/surefire-reports/
+
+
+How to Contribute
+We welcome contributions from everyone! Whether you're fixing a bug, adding new test scenarios, improving documentation, or enhancing the framework — your help is appreciated.
+Contribution Guidelines
+
+Fork the repository
+Create a new branch (git checkout -b feature/your-feature-name)
+Make your changes
+Test your changes thoroughly (mvn clean test)
+Commit your changes with clear messages
+Push to your branch and open a Pull Request
+
+
+Raising Issues & Pull Requests
+
+Found a bug? → Please raise an Issue
+Want to add a feature? → Open an Issue first for discussion, then submit a Pull Request
+Documentation improvement? → Feel free to raise a PR directly
+
+Please follow the issue and PR templates available in .github folder.
+
+CI/CD
+
+GitHub Actions: Automatically runs on every push and PR
+Jenkins: Configured for scheduled and manual builds
+
+
+Made with ❤️ by Defect Defenders LambdaTesters Team
 
 ## License
 
