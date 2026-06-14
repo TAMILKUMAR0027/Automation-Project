@@ -135,6 +135,37 @@ CI/CD
 GitHub Actions: Automatically runs on every push and PR
 Jenkins: Configured for scheduled and manual builds
 
+## Using as Maven Dependency
+
+You can use this framework as a dependency in other projects via **GitHub Packages**.
+
+### 1. Add Repository
+
+Add the following in your project's `pom.xml`:
+
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/TAMILKUMAR0027/Automation-Project</url>
+    </repository>
+</repositories>
+
+
+<dependency>
+    <groupId>com.ecom</groupId>
+    <artifactId>automation-framework</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
+# Run all tests
+mvn clean test
+
+# Run specific E2E suite
+mvn clean test -Dcucumber.filter.tags="@WishlistE2E"
+
+# Run with Chrome
+mvn clean test -Dbrowser=chrome
 
 Made with ❤️ by Defect Defenders LambdaTesters Team
 
