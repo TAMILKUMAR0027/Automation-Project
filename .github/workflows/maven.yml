@@ -23,8 +23,17 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build and Test with Maven
-        run: mvn clean verify -DskipTests=false
+      - name: Setup Firefox
+        uses: browser-actions/setup-firefox@v1
+
+      - name: Verify Firefox Installation
+        run: firefox --version
+
+      - name: Build and Test with Maven (Firefox Headless)
+        run: |
+          mvn clean verify \
+          -Dbrowser=firefox \
+          -Dheadless=true
 
       - name: SonarQube Analysis
         env:
