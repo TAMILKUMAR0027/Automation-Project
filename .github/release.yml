@@ -1,0 +1,36 @@
+changelog:
+  exclude:
+    labels:
+      - dependencies
+      - B-dependencies
+    authors:
+      - selenium-ci
+      - dependabot
+
+  categories:
+    - title: 🚀 Features
+      labels:
+        - enhancement
+        - feature
+
+    - title: 🐛 Bug Fixes
+      labels:
+        - bug
+        - fix
+
+    - title: 📝 Documentation
+      labels:
+        - documentation
+        - docs
+
+    - title: 🔧 Maintenance
+      labels:
+        - maintenance
+        - refactor
+
+    - title: 📦 Dependencies
+      labels:
+        - dependencies
+
+  # Optional: Hide empty sections
+  hide_empty: true
