@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 
 import com.actions.AddOnPageAction;
 import com.actions.AddOnsDesignPageAction;
+import com.driver.DriverClass;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -136,8 +138,26 @@ public class AddOnsDesigns {
 
 	    log.info("Records displayed : {}", records);
 	}
+	@When("the user enters an email address in the newsletter field")
+	public void the_user_enters_an_email_address_in_the_newsletter_field() {
+	    // Write code here that turns the phrase above into concrete actions
+		adpa.clickAnyWidgets();
+		adpa.setEmail();
+	}
 
+	@When("the user clicks the Subscribe button")
+	public void the_user_clicks_the_subscribe_button() {
+	    // Write code here that turns the phrase above into concrete actions
+	    adpa.clickSubcribe();
+	}
 
+	
+	@Then("the alert message should contain {string}")
+	public void the_alert_message_should_contain(String expectedMessage) {
+		
+
+	    adpa.handleAlert();
+	}
 
 
 }

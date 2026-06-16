@@ -10,11 +10,11 @@ public class BlogPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//a[contains(text(),'Blog')]")
+    @FindBy(xpath = "//ul[@class='navbar-nav horizontal']//span[@class='title'][normalize-space()='Blog']")
     private WebElement blogMenu;
 
-    @FindBy(xpath = "//h1[contains(text(),'Latest Articles')]")
-    private WebElement latestArticleText;
+    @FindBy(xpath = "(//a[text()='amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus'])[1]")
+	public WebElement latestArticleText;
 
     @FindBy(xpath = "(//div[contains(@class,'article')]//a[contains(text(),'Read More')])[1]")
     private WebElement firstArticleReadMore;
@@ -48,7 +48,16 @@ public class BlogPage extends BasePage {
 
     @FindBy(id = "submit")
     private WebElement postCommentButton;
-
+    @FindBy(xpath = "//input[@id='input-name']")
+    public WebElement name;
+    @FindBy(xpath = "//input[@id='input-email']")
+    public WebElement email;
+    @FindBy(xpath = "//textarea[@id='input-comment']")
+    public WebElement comment;
+    @FindBy(xpath = "//button[@id='button-comment']")
+    public WebElement submitComment;
+    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    public WebElement submissionMessage;
     public WebElement getBlogMenu() {
         return blogMenu;
     }

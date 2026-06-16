@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import com.actions.AccountPageAction;
+import com.actions.AddressBookAction;
 import com.actions.LaunchPageAction;
 import com.actions.LoginPageAction;
 import com.utils.ConfigReader;
@@ -19,7 +20,7 @@ public class AccountSD {
 	AccountPageAction apa = new AccountPageAction();
 	LoginPageAction lpa = new LoginPageAction();
 	LaunchPageAction lp = new LaunchPageAction();
-
+    AddressBookAction adpa=new AddressBookAction();
 	private static final Logger log = LogManager.getLogger(AccountSD.class);
 
 	@Given("The user is in HomePage of Ecommerce Lambda TestWebsite")
@@ -141,4 +142,24 @@ public class AccountSD {
 			throw e;
 		}
 	}
+	@When("click the address book and click new address")
+	public void click_the_address_book_and_click_new_address() {
+	    // Write code here that turns the phrase above into concrete actions
+	    apa.clickAddressBook();
+	    apa.clickNewAddress();
+	}
+
+	@When("enter the valid details")
+	public void enter_the_valid_details() {
+		// Write code here that turns the phrase above into concrete actions
+	    adpa.enterAddressDetails();
+	}
+
+	@Then("user can the see the successfully address added message")
+	public void user_can_the_see_the_successfully_address_added_message() {
+	    // Write code here that turns the phrase above into concrete actions
+		assert(adpa.getSuccessMessage().contains("Your address has been successfully added"));
+	}
+
+
 }

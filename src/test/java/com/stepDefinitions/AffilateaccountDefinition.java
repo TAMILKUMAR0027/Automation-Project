@@ -53,4 +53,23 @@ public class AffilateaccountDefinition {
                 "Success: Your account has been successfully updated."
         );
     }
+    @When("the user clicks on custom affilate tracking link")
+    public void the_user_clicks_on_custom_affilate_tracking_link() {
+        // Write code here that turns the phrase above into concrete actions
+    	aa.clickCustomAffilateLink();
+    }
+
+    @When("enter the product name and click generate link button")
+    public void enter_the_product_name_and_click_generate_link_button() {
+        // Write code here that turns the phrase above into concrete actions
+    	aa.seTTrackingProduct();
+    }
+
+    @Then("user can see the generated affilate link for the product")
+    public void user_can_see_the_generated_affilate_link_for_the_product() {
+        // Write code here that turns the phrase above into concrete actions
+    	assert(aa.getGeneratedLink().contains("https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=28&tracking=MUXFTM6EfJwdL7hoVCNEIPAOOTKw9WGCpnFfIa2p2erVyagMsTCN7238lp8ei5Es"));
+    }
+
+
 }

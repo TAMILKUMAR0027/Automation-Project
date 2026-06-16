@@ -57,8 +57,11 @@ public class AccountPage extends BasePage {
 	@FindBy (xpath="//div[@id='account-account']/child::div[1]")
 	public WebElement sucessMsgNL;
 	
-	
-	
+	@FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Address Book']")
+	public WebElement AddressBook;
+	@FindBy(xpath = "//a[@class='btn btn-primary']")
+	public WebElement newAddress;
+
 	
 
 }

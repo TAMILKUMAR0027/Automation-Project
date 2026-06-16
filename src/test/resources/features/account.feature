@@ -37,3 +37,14 @@ description:To verify the fuctionality of edit account information
     And check the radio Button as yes
     And Click The  Continue Button
     Then The user Should be Successfully Subscribed and a Success Message should be Displayed
+
+  @AddNewAddress
+  Scenario: As a Login in user i need add a new address in the address book
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+	And click the address book and click new address
+	And enter the valid details 
+	And click continue Button
+	Then user can the see the successfully address added message 
+	

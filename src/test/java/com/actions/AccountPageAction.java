@@ -100,5 +100,18 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.sucessMsgNL);
 		return ba.getText(ap.sucessMsgNL);
 	}
+	public void clickAddressBook()
+	{
+		ba.waitForVisibility(ap.AddressBook);
+		ba.click(ap.AddressBook);
+	}
+	public void clickNewAddress()
+	{
+		ba.waitForVisibility(ap.newAddress);
+		ba.click(ap.newAddress);
+	}
+
+	
+
 }
 
