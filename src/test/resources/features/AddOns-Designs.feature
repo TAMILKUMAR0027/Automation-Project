@@ -1,5 +1,5 @@
 @Jothika
-Feature: AddOns-components in  designs-Jothika 30/05/2026
+Feature: AddOns-components in  designs-Jothika 30/05/2026 updated on 14/05/2026
 Description:This feature describes the components incorporated in design functionality of AddOns
 
   Background:
