@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 		"pretty", "html:target/cucumber-report.html", "json:target/cucumber-report.json",
 		"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-		"rerun:target/failedrerun.txt" },monochrome = true)
+		"rerun:target/failedrerun.txt" },tags="@Tamil",monochrome = true)
 
 public class TestNgRunner extends AbstractTestNGCucumberTests {
 
