@@ -1,4 +1,4 @@
-Feature: TamilKumar_29_05_2026 Affiliate Account
+Feature: TamilKumar_29_05_2026 Affiliate Account updated on 15/06/2026
 
   Background:
     Given the user on home page

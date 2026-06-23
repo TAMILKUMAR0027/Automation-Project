@@ -1,5 +1,5 @@
 @Samiha @BlogFeature
-Feature: SAMIHA_Blog_Feature_21_05_2026
+Feature: SAMIHA_Blog_Feature_21_05_2026 updated on 15/06/2026
 Description:
 To validate the Blog functionality of Ecommerce LambdaTest Website
 

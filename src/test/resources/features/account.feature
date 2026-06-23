@@ -1,5 +1,5 @@
 @AccountFeature @Rishwanth
-Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature
+Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature updated on 15/06/2026
 description:To verify the fuctionality of edit account information
 
   Background:
