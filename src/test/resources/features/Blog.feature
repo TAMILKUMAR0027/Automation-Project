@@ -1,5 +1,5 @@
 @Samiha @BlogFeature
-Feature: SAMIHA_Blog_Feature_21_05_2026
+Feature: SAMIHA_Blog_Feature_21_05_2026 updated on 15/06/2026
 Description:
 To validate the Blog functionality of Ecommerce LambdaTest Website
 
@@ -44,3 +44,14 @@ To validate the Blog functionality of Ecommerce LambdaTest Website
     And clicks on Fashion category from left side menu
     And clicks on Read More button in Fashion article
     Then Fashion article page should be displayed successfully
+
+  @PostComment
+  Scenario: To verify that user can post comment in the article with valid details
+    When The user clicks on Blog menu in navBar
+    And clicks on first article in Latest Articles page
+    And enter the name of user
+    And enter the email 
+    And enter the message 
+    And click the post comment Button 
+    Then user can see the Thank you for your comment. It has been submitted to the webmaster for approval. Message
+

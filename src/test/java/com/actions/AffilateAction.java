@@ -64,4 +64,15 @@ public class AffilateAction extends BaseAction {
 
       
     }
+    public void clickCustomAffilateLink() {
+		click(aap.CustomAffilateLink);
+	}
+    public void seTTrackingProduct() {
+    	sendKeys(aap.TrackingLinkGenerator, "HTC Touch HD");
+    	click(aap.productLink);
+    }
+    public String getGeneratedLink() {
+		return (aap.trackingLink).getAttribute("value");
+	}
+    
 }

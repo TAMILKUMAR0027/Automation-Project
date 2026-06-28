@@ -1,4 +1,3 @@
-```markdown
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 ![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
@@ -9,7 +8,7 @@
 
 # Automation Project — LambdaTest Ecommerce Playground
 
-> A production-grade **BDD + POM** automation framework built with **Java, Selenium, Cucumber, TestNG & Maven**.
+> A production-grade **BDD + POM** automation framework built with **Java, Selenium, Cucumber, TestNG & Maven Developed For Learning Purpose**.
 
 **Application Under Test:** [LambdaTest Ecommerce Playground](https://ecommerce-playground.lambdatest.io/)
 
@@ -68,7 +67,7 @@ Thanks to all our contributors who have helped build and improve this project:
 | Rank | Contributor                        | Commits |
 |------|------------------------------------|---------|
 | 1    | **TAMILKUMAR0027**                 | 190     |
-| 2    | **14-Prasanna** (Prasanna Venkatesh K) | 122 |
+| 2    | **14-Prasanna** (Prasanna Venkatesh K) | 140 |
 | 3    | **Rishwanth-Adhishwar**            | 102     |
 | 4    | **samihamuhabathulla**             | 61      |
 | 5    | **raviravi31799-crypto**           | 35      |
