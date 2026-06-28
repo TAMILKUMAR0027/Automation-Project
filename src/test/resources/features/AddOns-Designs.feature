@@ -38,7 +38,7 @@ Description:This feature describes the components incorporated in design functio
     And the user clicks the Subscribe button
     Then the alert message should contain "Internal Server Error"
 
-  @jothika @ListHandling
+  @Tamil @ListHandling
   Scenario: Verify the list items in the Design page
     When user gets the list items from the Design page
     Then verify the list items with the expected data
