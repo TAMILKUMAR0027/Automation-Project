@@ -31,8 +31,14 @@ Description:This feature describes the components incorporated in design functio
     When the user views the Dark Heading table
     Then the table should display all expected column headers
     And the table should display one or more records
-@Jothika @Newsletter
+
+  @Jothika @Newsletter
   Scenario: Verifying error alert appears when subscribing to newsletter
     When the user enters an email address in the newsletter field
     And the user clicks the Subscribe button
     Then the alert message should contain "Internal Server Error"
+
+  @Tamil @ListHandling
+  Scenario: Verify the list items in the Design page
+    When user gets the list items from the Design page
+    Then verify the list items with the expected data
