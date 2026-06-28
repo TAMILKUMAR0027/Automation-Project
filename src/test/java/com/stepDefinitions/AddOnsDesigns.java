@@ -11,6 +11,7 @@ import org.testng.Assert;
 import com.actions.AddOnPageAction;
 import com.actions.AddOnsDesignPageAction;
 import com.driver.DriverClass;
+import com.utils.ConfigReader;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,6 +22,7 @@ public class AddOnsDesigns {
 	 private static final Logger log = LogManager.getLogger(Forgetpassword.class);
 	AddOnsDesignPageAction adpa=new AddOnsDesignPageAction();
 	AddOnPageAction aopa=new AddOnPageAction();
+	private List<String> actualList;
 	@Given("the user clicks on AddOns and selects designs")
 	public void the_user_clicks_on_add_ons_and_selects_designs() {
 	    adpa.clickAddOns();
@@ -158,6 +160,30 @@ public class AddOnsDesigns {
 
 	    adpa.handleAlert();
 	}
+	@When("user gets the list items from the Design page")
+	public void user_gets_the_list_items_from_the_design_page() {
+
+	    actualList = adpa.getListItems();
+
+	    System.out.println("Actual List Items: " + actualList);
+	}
+
+	@Then("verify the list items with the expected data")
+	public void verify_the_list_items_with_the_expected_data() {
+
+	    List<String> expectedList = new ArrayList<>();
+
+	    expectedList.add(ConfigReader.getListProperties().getProperty("list.item1"));
+	    expectedList.add(ConfigReader.getListProperties().getProperty("list.item2"));
+	    expectedList.add(ConfigReader.getListProperties().getProperty("list.item3"));
+
+	    Assert.assertEquals(actualList, expectedList, "List items are not matching");
+
+	    log.info("Expected List : {}", expectedList);
+	    log.info("Actual List   : {}", actualList);
+	    log.info("List items verified successfully.");
+	}
+
 
 
 }

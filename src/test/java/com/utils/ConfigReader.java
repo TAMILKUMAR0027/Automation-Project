@@ -9,6 +9,7 @@ public class ConfigReader {
     private static Properties affiliateProp;
     private static Properties registerInvalidProp;
     private static Properties forgetPasswordProp;
+    private static Properties listProp;
 
     // =========================
     // MAIN CONFIG FILE
@@ -132,5 +133,36 @@ public class ConfigReader {
         }
 
         return forgetPasswordProp;
+    }
+
+    // =========================
+    // LIST TEST DATA
+    // =========================
+    public static Properties getListProperties() {
+
+        if (listProp == null) {
+
+            try {
+
+                listProp = new Properties();
+
+                String path =
+                        System.getProperty("user.dir")
+                        + "/src/test/resources/list.properties";
+
+                FileInputStream fis =
+                        new FileInputStream(path);
+
+                listProp.load(fis);
+
+            } catch (Exception e) {
+
+                throw new RuntimeException(
+                        "Failed to load ListTestData.properties file", e
+                );
+            }
+        }
+
+        return listProp;
     }
 }
