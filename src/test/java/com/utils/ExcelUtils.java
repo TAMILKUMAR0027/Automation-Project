@@ -27,7 +27,7 @@ public class ExcelUtils {
 
 	private static final DataFormatter formatter = new DataFormatter();
 
-	public static Map<String, String> getSearchData(String sheetName, int rowNumber) {
+		public static Map<String, String> getSearchData(String sheetName, int rowNumber) {
 
 		Map<String, String> data = new HashMap<>();
 

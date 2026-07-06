@@ -1,4 +1,4 @@
-@Smoke @E2E
+@Smoke @E2E @Prasanna
 Feature: Smoke_E2E_Test_Suite - Prasanna Venkatesh K - 30-05-2025
   Description:
   End-to-End smoke test covering the critical happy path across all major modules —
