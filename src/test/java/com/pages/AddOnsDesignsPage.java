@@ -61,5 +61,7 @@ public class AddOnsDesignsPage extends BasePage {
 	public WebElement subcribe;
 	@FindBy(xpath = "//h5[@id='mz-accordion-label-214969-2']//i[@class='ml-auto fas fa-plus']")
 	public WebElement clickAnyWidgets;
+	@FindBy(xpath = "//div[@id='entry_215071']//ul[@class='list-group']/li")
+	public List<WebElement> listItems;
 
 }
