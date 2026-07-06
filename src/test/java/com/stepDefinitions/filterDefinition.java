@@ -225,4 +225,31 @@ public class filterDefinition {
         Assert.assertTrue(price < 2000,
                 "Price is greater than 2000. Actual price: " + price);
     }
+    @When("User selects {string} from the sort by dropdown")
+    public void userSelectsSortOption(String option) {
+
+        fpa.selectOption(option);
+    }
+
+    @Then("Products should be displayed based on {string}")
+    public void verifySorting(String option) {
+
+        switch (option) {
+
+            case "Name (A - Z)":
+                Assert.assertTrue(
+                        fpa.verifyNameAscending(),
+                        "Products are not sorted in ascending order");
+                break;
+
+            case "Name (Z - A)":
+                Assert.assertTrue(
+                        fpa.verifyNameDescending(),
+                        "Products are not sorted in descending order");
+                break;
+
+            default:
+                throw new IllegalArgumentException("Invalid sort option: " + option);
+        }
+    }
 }

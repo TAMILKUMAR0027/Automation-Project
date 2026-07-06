@@ -37,3 +37,14 @@ Feature: TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026
   Scenario: Validate the price based on Slider
     When move the slider
     Then the price should be updated in filter page
+
+  @sortBy
+  Scenario Outline: Validate product sorting functionality
+    When User selects "<SortOption>" from the sort by dropdown
+    Then Products should be displayed based on "<SortOption>"
+
+    Examples:
+      | SortOption         |
+      | Name (A - Z)       |
+      | Name (Z - A)       |
+      

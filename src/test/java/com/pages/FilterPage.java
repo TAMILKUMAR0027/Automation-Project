@@ -50,4 +50,18 @@ public class FilterPage extends BasePage {
         }
         return productNames;
     }
+    @FindBy(xpath = "//select[@id='input-sort-212403']")
+    public WebElement selectOption;
+    @FindBy(xpath = "//h4[@class='title']")
+    public List<WebElement> productNames;
+    public List<String> getSortedNameProduct() {
+
+        List<String> names = new ArrayList<>();
+
+        for (WebElement product : productNames) {
+            names.add(product.getText().trim());
+        }
+
+        return names;
+    }
 }
