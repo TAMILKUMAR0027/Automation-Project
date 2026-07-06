@@ -2,6 +2,7 @@ package com.actions;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -393,20 +394,21 @@ public class FilterPageAction extends BaseAction {
 
 	    List<String> actualNames = fp.getSortedNameProduct();
 
-	    List<String> expectedNames = new ArrayList<>(actualNames);
+	    List<String> sortedNames = new ArrayList<>(actualNames);
 
-	    expectedNames.sort(String.CASE_INSENSITIVE_ORDER);
+	    Collections.sort(sortedNames);
 
-	    return actualNames.equals(expectedNames);
+	    return actualNames.equals(sortedNames);
 	}
 	public boolean verifyNameDescending() {
 
 	    List<String> actualNames = fp.getSortedNameProduct();
 
-	    List<String> expectedNames = new ArrayList<>(actualNames);
+	    List<String> sortedNames = new ArrayList<>(actualNames);
 
-	    expectedNames.sort(String.CASE_INSENSITIVE_ORDER.reversed());
+	    Collections.sort(sortedNames);
+	    Collections.reverse(sortedNames);
 
-	    return actualNames.equals(expectedNames);
+	    return actualNames.equals(sortedNames);
 	}
 }
