@@ -61,6 +61,14 @@ public class AccountPage extends BasePage {
 	public WebElement AddressBook;
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
 	public WebElement newAddress;
+	
+	@FindBy(xpath = "//tbody/tr[2]/td[2]/a[2]")
+	public WebElement DeleteAddressInBookBtn;
+	
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	public WebElement DeleteAddressSuccessMessage;
+	
+	
 
 	
 

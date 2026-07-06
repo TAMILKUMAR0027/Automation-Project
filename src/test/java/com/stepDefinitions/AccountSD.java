@@ -160,6 +160,21 @@ public class AccountSD {
 	    // Write code here that turns the phrase above into concrete actions
 		assert(adpa.getSuccessMessage().contains("Your address has been successfully added"));
 	}
+	@When("The User Clicks on address Book Link")
+	public void the_user_clicks_on_address_book_link() {
+		apa.clickAddressBook();
+	}
+
+	@When("Clicks Delete Button on Address")
+	public void clicks_delete_button_on_address() {
+	    apa.clickDeleteAddress();
+	}
+
+	@Then("the user should see a Delete Success Message")
+	public void the_user_should_see_a_delete_success_message() {
+	    assert(apa.DelteSuccessMsg().contains("Your address has been successfully deleted"));
+	}
+
 
 
 }

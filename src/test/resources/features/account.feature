@@ -47,4 +47,14 @@ description:To verify the fuctionality of edit account information
 	And enter the valid details 
 	And click continue Button
 	Then user can the see the successfully address added message 
+
+@DeleteAddressInBook
+Scenario:As a login in user i need to delete existing address in Address book
+	When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on address Book Link
+    And Clicks Delete Button on Address
+    Then the user should see a Delete Success Message
+
 	
