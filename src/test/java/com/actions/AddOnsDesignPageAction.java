@@ -1,7 +1,12 @@
 package com.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -85,5 +90,15 @@ public class AddOnsDesignPageAction extends BaseAction {
 
 	        alert.accept();
 	  }
+	  public List<String> getListItems() {
+
+		    List<String> actualList = new ArrayList<>();
+
+		    for (WebElement element : adp.listItems) {
+		        actualList.add(element.getText().trim());
+		    }
+
+		    return actualList;
+		}
 	  
 }
