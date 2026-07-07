@@ -1,53 +1,39 @@
 package com.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BlogPage extends BasePage {
+public class BlogPage {
 
-    public BlogPage(WebDriver driver) {
-        super(driver);
-    }
+	@FindBy(xpath = "//a[contains(@href,'blog/home')]")
+	public WebElement blogMenu;
+	
+	@FindBy(xpath="(//h4[contains(@class,'article-title')])[1]")
+	public WebElement firstArticle;
+	
+    @FindBy(xpath = "//h3[contains(text(),'Latest Articles')]")
+    public WebElement latestArticleText;
 
-    @FindBy(xpath = "//a[contains(text(),'Blog')]")
-    private WebElement blogMenu;
+    @FindBy(xpath = "(//h4[contains(@class,'article-title')])[1]")
+    public WebElement firstArticleReadMore;
 
-    @FindBy(xpath = "//h1[contains(text(),'Latest Articles')]")
-    private WebElement latestArticleText;
+    @FindBy(xpath = "//*[contains(normalize-space(),'Business')]")
+    public WebElement businessCategory;
 
-    @FindBy(xpath = "(//div[contains(@class,'article')]//a[contains(text(),'Read More')])[1]")
-    private WebElement firstArticleReadMore;
+    @FindBy(xpath = "//*[contains(normalize-space(),'Electronics')]")
+    public WebElement electronicsCategory;
 
-    @FindBy(xpath = "//a[contains(text(),'Business')]")
-    private WebElement businessCategory;
+    @FindBy(xpath = "//*[contains(normalize-space(),'Technology')]")
+    public WebElement technologyCategory;
 
-    @FindBy(xpath = "//a[contains(text(),'Electronics')]")
-    private WebElement electronicsCategory;
-
-    @FindBy(xpath = "//a[contains(text(),'Technology')]")
-    private WebElement technologyCategory;
-
-    @FindBy(xpath = "//a[contains(text(),'Fashion')]")
-    private WebElement fashionCategory;
-
-    @FindBy(xpath = "(//a[contains(text(),'Read More')])[1]")
-    private WebElement readMoreButton;
-
-    @FindBy(xpath = "//div[contains(@class,'entry-content')]")
-    private WebElement articleContent;
-
-    @FindBy(id = "comment")
-    private WebElement commentBox;
-
-    @FindBy(id = "author")
-    private WebElement authorName;
-
-    @FindBy(id = "email")
-    private WebElement authorEmail;
-
-    @FindBy(id = "submit")
-    private WebElement postCommentButton;
+    @FindBy(xpath = "//*[contains(normalize-space(),'Fashion')]")
+    public WebElement fashionCategory;
+    
+    @FindBy(xpath = "(//a[contains(.,'Read More')])[1]")
+    public WebElement readMoreButton;
+    
+    @FindBy(xpath = "//h1 | //article | //div[contains(@class,'entry-content')]")
+    public WebElement articleContent;
 
     public WebElement getBlogMenu() {
         return blogMenu;
@@ -83,21 +69,5 @@ public class BlogPage extends BasePage {
 
     public WebElement getArticleContent() {
         return articleContent;
-    }
-
-    public WebElement getCommentBox() {
-        return commentBox;
-    }
-
-    public WebElement getAuthorName() {
-        return authorName;
-    }
-
-    public WebElement getAuthorEmail() {
-        return authorEmail;
-    }
-
-    public WebElement getPostCommentButton() {
-        return postCommentButton;
     }
 }
