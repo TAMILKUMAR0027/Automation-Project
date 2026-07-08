@@ -119,6 +119,9 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.DeleteAddressSuccessMessage);
 		return ba.getText(ap.DeleteAddressSuccessMessage);
 	}
+	
+
+	
 
 	
 

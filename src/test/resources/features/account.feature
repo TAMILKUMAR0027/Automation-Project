@@ -56,5 +56,16 @@ Scenario:As a login in user i need to delete existing address in Address book
     And The User Clicks on address Book Link
     And Clicks Delete Button on Address
     Then the user should see a Delete Success Message
+ @EditAddressBook
+ Scenario Outline::As a logeed in User i need to edit an existing address in Address book
+ 	When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on address Book Link
+    And Clicks Edit Button on Address
+    And The User Change The Change the Address Details 
+    And The User Clicks on Continue Button
+    Then the user should see a AddressEdit Success Message
+    
 
 	

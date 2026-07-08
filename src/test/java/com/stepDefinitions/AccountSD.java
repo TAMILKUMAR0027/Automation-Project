@@ -1,11 +1,13 @@
 package com.stepDefinitions;
 
 import org.apache.logging.log4j.LogManager;
+
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import com.actions.AccountPageAction;
 import com.actions.AddressBookAction;
+import com.actions.EditAddressPageAction;
 import com.actions.LaunchPageAction;
 import com.actions.LoginPageAction;
 import com.utils.ConfigReader;
@@ -21,6 +23,7 @@ public class AccountSD {
 	LoginPageAction lpa = new LoginPageAction();
 	LaunchPageAction lp = new LaunchPageAction();
     AddressBookAction adpa=new AddressBookAction();
+    EditAddressPageAction eapa=new EditAddressPageAction();
 	private static final Logger log = LogManager.getLogger(AccountSD.class);
 
 	@Given("The user is in HomePage of Ecommerce Lambda TestWebsite")
@@ -174,6 +177,32 @@ public class AccountSD {
 	public void the_user_should_see_a_delete_success_message() {
 	    assert(apa.DelteSuccessMsg().contains("Your address has been successfully deleted"));
 	}
+	
+	@When("Clicks Edit Button on Address")
+	public void clicks_edit_button_on_address() {
+	    adpa.clickEditAddressBtn();
+	}
+
+	@When("The User Change The Change the Address Details")
+	public void the_user_change_the_change_the_address_details() {
+		 String fname = ConfigReader.getEditAddressProperties().getProperty("edit1");
+		    String lname = ConfigReader.getEditAddressProperties().getProperty("edit2");
+		    String address = ConfigReader.getEditAddressProperties().getProperty("edit3");
+		    String city = ConfigReader.getEditAddressProperties().getProperty("edit4");
+		    eapa.enterAddressChange(fname, lname, address, city);
+	}
+
+	@When("The User Clicks on Continue Button")
+	public void the_user_clicks_on_continue_button() {
+	    eapa.clickEditSubmit();
+	}
+
+	@Then("the user should see a AddressEdit Success Message")
+	public void the_user_should_see_a_address_edit_success_message() {
+		 assert(eapa.getEditAddressSuccessMsg().contains("Your address has been successfully updated"));
+	}
+
+
 
 
 

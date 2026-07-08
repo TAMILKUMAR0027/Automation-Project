@@ -59,6 +59,7 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Address Book']")
 	public WebElement AddressBook;
+	
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
 	public WebElement newAddress;
 	
@@ -68,6 +69,7 @@ public class AccountPage extends BasePage {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	public WebElement DeleteAddressSuccessMessage;
 	
+
 	
 
 	
