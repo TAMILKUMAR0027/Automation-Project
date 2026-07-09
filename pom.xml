@@ -19,16 +19,24 @@
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <selenium.version>4.43.0</selenium.version>
-        <cucumber.version>7.34.2</cucumber.version>
+        <selenium.version>4.45.0</selenium.version>
+        <cucumber.version>7.34.4</cucumber.version>
         <testng.version>7.12.0</testng.version>
-        <webdrivermanager.version>6.1.0</webdrivermanager.version>
+        <webdrivermanager.version>6.3.4</webdrivermanager.version>
+
+        <!-- Keep stable version. Do not use 3.0.0-beta -->
         <log4j.version>2.25.4</log4j.version>
+
         <extentreports.version>5.1.2</extentreports.version>
-        <allure.version>2.29.0</allure.version>
+        <extentreports.cucumber.version>1.14.0</extentreports.cucumber.version>
+
+        <allure.version>2.35.3</allure.version>
+        <opencsv.version>5.12.0</opencsv.version>
+
         <sonar.version>5.0.0.4389</sonar.version>
     </properties>
 
@@ -87,7 +95,7 @@
         <dependency>
             <groupId>tech.grasshopper</groupId>
             <artifactId>extentreports-cucumber7-adapter</artifactId>
-            <version>1.14.0</version>
+            <version>${extentreports.cucumber.version}</version>
         </dependency>
 
         <!-- Allure -->
@@ -106,8 +114,9 @@
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
-            <version>5.9</version>
+            <version>${opencsv.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
