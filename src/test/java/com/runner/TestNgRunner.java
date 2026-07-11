@@ -2,6 +2,7 @@ package com.runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import io.qameta.allure.testng.Tags;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(features = "src/test/resources/features/", glue = { "com.stepDefinitions", "com.hooks" }, plugin = {
@@ -9,7 +10,9 @@ import org.testng.annotations.DataProvider;
 		"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 
-		"rerun:target/failedrerun.txt" },
+		"rerun:target/failedrerun.txt"
+},
+		tags = "@Prasanna",
 		monochrome = true)
 
 
