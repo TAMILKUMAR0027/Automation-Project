@@ -61,7 +61,9 @@ public class AccountPage extends BasePage {
 	public WebElement AddressBook;
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
 	public WebElement newAddress;
-
-	
+	@FindBy(xpath = "//span[normalize-space()='My voucher']")
+	public WebElement myVoucher;
+	@FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
+	public WebElement voucherSuccessMsg;
 
 }

@@ -110,8 +110,20 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.newAddress);
 		ba.click(ap.newAddress);
 	}
-
-	
+	public void clickMyVoucher()
+	{
+		ba.waitForVisibility(ap.myVoucher);
+		ba.click(ap.myVoucher);
+	}
+	public void moveToElementOfMyAccount() {
+		ba.waitForVisibility(lp.myAccLink);
+		ba.moveToElement(lp.myAccLink);
+	}
+	public String getVoucherSuccessMsg()
+	{
+		ba.waitForVisibility(ap.voucherSuccessMsg);
+		return ba.getText(ap.voucherSuccessMsg);
+	}
 
 }
 
