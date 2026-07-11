@@ -3,6 +3,7 @@ package com.actions;
 import java.time.Duration;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import com.driver.DriverClass;
@@ -80,4 +81,8 @@ public class BaseAction {
 	public void scrollIntoView(WebElement element) {
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
+	public void moveToElement(WebElement element) {
+		Actions actions = new Actions(getDriver());
+		actions.moveToElement(element).perform();
+	}	
 }
