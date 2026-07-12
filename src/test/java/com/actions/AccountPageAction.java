@@ -110,12 +110,12 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.newAddress);
 		ba.click(ap.newAddress);
 	}
-<<<<<<< HEAD
 	
 	public void clickDeleteAddress() {
 		ba.waitForVisibility(ap.DeleteAddressInBookBtn);
 		ba.click(ap.DeleteAddressInBookBtn);
 	}
+	
 	public String DelteSuccessMsg() {
 		ba.waitForVisibility(ap.DeleteAddressSuccessMessage);
 		return ba.getText(ap.DeleteAddressSuccessMessage);
@@ -132,11 +132,6 @@ public class AccountPageAction {
 		return ba.getText(ap.RewardSuccess);
 	}
 	
-
-	
-
-	
-=======
 	public void clickMyVoucher()
 	{
 		ba.waitForVisibility(ap.myVoucher);
@@ -151,7 +146,6 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.voucherSuccessMsg);
 		return ba.getText(ap.voucherSuccessMsg);
 	}
->>>>>>> 99fc790fa5cdec591775cc5321030ba84bb6cc76
 
 }
 

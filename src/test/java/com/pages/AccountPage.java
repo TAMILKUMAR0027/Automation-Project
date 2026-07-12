@@ -62,7 +62,6 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
 	public WebElement newAddress;
-<<<<<<< HEAD
 	
 	@FindBy(xpath = "//tbody/tr[2]/td[2]/a[2]")
 	public WebElement DeleteAddressInBookBtn;
@@ -75,14 +74,11 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath="//h1[text()='Your Reward Points']")
 	public WebElement RewardSuccess;
-	
 
-	
-=======
 	@FindBy(xpath = "//span[normalize-space()='My voucher']")
 	public WebElement myVoucher;
 	@FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
 	public WebElement voucherSuccessMsg;
->>>>>>> 99fc790fa5cdec591775cc5321030ba84bb6cc76
+
 
 }
