@@ -1,5 +1,5 @@
 @AccountFeature @Rishwanth
-Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature updated on 15/06/2026
+Feature: Rishwanth_Adhishwar_12_07_2026_AccountFeature updated on 15/06/2026
 description:To verify the fuctionality of edit account information
 
   Background:
@@ -74,7 +74,14 @@ Scenario:As a login in user i need to delete existing address in Address book
     And Clicks on Login Button
     And The User Clicks on your Reward points in Account Page
     Then The User Should Redirected to Reward Poitns Page
-  
-    
 
-	
+  @Tamil
+  Scenario: User purchase a gift Certficate with valid details
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    When The user move to myAccount link in navBar
+    And click My voucher navbar
+    And fill all the valid details for purchase gift certificate
+    And I understand that gift certificates are non-refundable and click continue button
+    Then you can see the message Thank you for purchasing a gift certificate!

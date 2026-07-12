@@ -1,5 +1,8 @@
 package com.stepDefinitions;
 
+import java.util.Map;
+
+
 import org.apache.logging.log4j.LogManager;
 
 import org.apache.logging.log4j.Logger;
@@ -7,10 +10,13 @@ import org.testng.Assert;
 
 import com.actions.AccountPageAction;
 import com.actions.AddressBookAction;
+
 import com.actions.EditAddressPageAction;
+import com.actions.GiftCertificateAction;
 import com.actions.LaunchPageAction;
 import com.actions.LoginPageAction;
 import com.utils.ConfigReader;
+import com.utils.ExcelUtils;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -24,7 +30,9 @@ public class AccountSD {
 	LaunchPageAction lp = new LaunchPageAction();
     AddressBookAction adpa=new AddressBookAction();
     EditAddressPageAction eapa=new EditAddressPageAction();
+    GiftCertificateAction gca=new GiftCertificateAction();
 	private static final Logger log = LogManager.getLogger(AccountSD.class);
+	private static Map<String, String> giftData = ExcelUtils.getGiftData();
 
 	@Given("The user is in HomePage of Ecommerce Lambda TestWebsite")
 	public void the_user_is_in_home_page_of_ecommerce_lambda_test_website() {
@@ -211,7 +219,37 @@ public class AccountSD {
 	    assert(apa.rewardPointRedirection().contains("Your Reward Points"));
 	}
 
+	@When("The user move to myAccount link in navBar")
+	public void the_user_move_to_my_account_link_in_nav_bar() {
+	    // Write code here that turns the phrase above into concrete actions
+	    apa.moveToElementOfMyAccount();
+	}
+	@When("click My voucher navbar")
+	public void click_my_voucher_navbar() {
+	    // Write code here that turns the phrase above into concrete actions
+	    apa.clickMyVoucher();
+	}
 
+	@When("fill all the valid details for purchase gift certificate")
+	public void fill_all_the_valid_details_for_purchase_gift_certificate() {
+	    // Write code here that turns the phrase above into concrete actions
+	    gca.enterToName(giftData.get("Name"));
+	    gca.enterToEmail(giftData.get("Email"));
+	    gca.selectGiftCertificateTheme();
+	    
+	}
 
+	@When("I understand that gift certificates are non-refundable and click continue button")
+	public void i_understand_that_gift_certificates_are_non_refundable_and_click_continue_button() {
+	    // Write code here that turns the phrase above into concrete actions
+	   gca.checkAgreeCheckbox();
+	   gca.checkAgreeCheckbox();
+	}
+
+	@Then("you can see the message Thank you for purchasing a gift certificate!")
+	public void you_can_see_the_message_thank_you_for_purchasing_a_gift_certificate() {
+	    // Write code here that turns the phrase above into concrete actions
+	    assert(apa.getVoucherSuccessMsg().contains(giftData.get("Expected")));
+	}
 
 }
