@@ -81,3 +81,5 @@ credentials.properties
 # Specific to this Project
 # =============================================
 src/test/resources/testdata/*.lock
+/.apt_generated/
+/.apt_generated_tests/

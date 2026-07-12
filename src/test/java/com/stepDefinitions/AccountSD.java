@@ -201,7 +201,15 @@ public class AccountSD {
 	public void the_user_should_see_a_address_edit_success_message() {
 		 assert(eapa.getEditAddressSuccessMsg().contains("Your address has been successfully updated"));
 	}
+	@When("The User Clicks on your Reward points in Account Page")
+	public void the_user_clicks_on_your_reward_points_in_account_page() {
+	    apa.clickRewardPointsLink();
+	}
 
+	@Then("The User Should Redirected to Reward Poitns Page")
+	public void the_user_should_redirected_to_reward_poitns_page() {
+	    assert(apa.rewardPointRedirection().contains("Your Reward Points"));
+	}
 
 
 

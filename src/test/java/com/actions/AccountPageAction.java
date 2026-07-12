@@ -120,6 +120,17 @@ public class AccountPageAction {
 		return ba.getText(ap.DeleteAddressSuccessMessage);
 	}
 	
+	public void clickRewardPointsLink() {
+		ba.waitForVisibility(ap.RewardPointsLink);
+		ba.click(ap.RewardPointsLink);
+		
+	}
+	
+	public String rewardPointRedirection() {
+		ba.waitForVisibility(ap.RewardSuccess);
+		return ba.getText(ap.RewardSuccess);
+	}
+	
 
 	
 

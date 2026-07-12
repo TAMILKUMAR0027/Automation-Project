@@ -67,5 +67,14 @@ Scenario:As a login in user i need to delete existing address in Address book
     And The User Clicks on Continue Button
     Then the user should see a AddressEdit Success Message
     
+  @RewardPoint
+  Scenario: As a Registered i need to See my Reward Points 
+  	When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on your Reward points in Account Page
+    Then The User Should Redirected to Reward Poitns Page
+  
+    
 
 	

@@ -69,7 +69,11 @@ public class AccountPage extends BasePage {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	public WebElement DeleteAddressSuccessMessage;
 	
-
+	@FindBy(xpath="//a[text()=' Your Reward Points']")
+	public WebElement RewardPointsLink;
+	
+	@FindBy(xpath="//h1[text()='Your Reward Points']")
+	public WebElement RewardSuccess;
 	
 
 	
