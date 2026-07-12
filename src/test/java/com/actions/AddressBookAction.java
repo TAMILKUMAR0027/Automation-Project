@@ -22,6 +22,10 @@ public class AddressBookAction extends BaseAction {
     public String getSuccessMessage() {
         return getText(abp.successMessage);
     }
+    
+    public void clickEditAddressBtn() {
+    	click(abp.addressEditBtn);
+    }
 
 	
 

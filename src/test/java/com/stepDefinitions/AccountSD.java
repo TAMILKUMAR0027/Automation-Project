@@ -2,12 +2,16 @@ package com.stepDefinitions;
 
 import java.util.Map;
 
+
 import org.apache.logging.log4j.LogManager;
+
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import com.actions.AccountPageAction;
 import com.actions.AddressBookAction;
+
+import com.actions.EditAddressPageAction;
 import com.actions.GiftCertificateAction;
 import com.actions.LaunchPageAction;
 import com.actions.LoginPageAction;
@@ -25,6 +29,7 @@ public class AccountSD {
 	LoginPageAction lpa = new LoginPageAction();
 	LaunchPageAction lp = new LaunchPageAction();
     AddressBookAction adpa=new AddressBookAction();
+    EditAddressPageAction eapa=new EditAddressPageAction();
     GiftCertificateAction gca=new GiftCertificateAction();
 	private static final Logger log = LogManager.getLogger(AccountSD.class);
 	private static Map<String, String> giftData = ExcelUtils.getGiftData();
@@ -166,6 +171,54 @@ public class AccountSD {
 	    // Write code here that turns the phrase above into concrete actions
 		assert(adpa.getSuccessMessage().contains("Your address has been successfully added"));
 	}
+	@When("The User Clicks on address Book Link")
+	public void the_user_clicks_on_address_book_link() {
+		apa.clickAddressBook();
+	}
+
+	@When("Clicks Delete Button on Address")
+	public void clicks_delete_button_on_address() {
+	    apa.clickDeleteAddress();
+	}
+
+	@Then("the user should see a Delete Success Message")
+	public void the_user_should_see_a_delete_success_message() {
+	    assert(apa.DelteSuccessMsg().contains("Your address has been successfully deleted"));
+	}
+	
+	@When("Clicks Edit Button on Address")
+	public void clicks_edit_button_on_address() {
+	    adpa.clickEditAddressBtn();
+	}
+
+	@When("The User Change The Change the Address Details")
+	public void the_user_change_the_change_the_address_details() {
+		 String fname = ConfigReader.getEditAddressProperties().getProperty("edit1");
+		    String lname = ConfigReader.getEditAddressProperties().getProperty("edit2");
+		    String address = ConfigReader.getEditAddressProperties().getProperty("edit3");
+		    String city = ConfigReader.getEditAddressProperties().getProperty("edit4");
+		    eapa.enterAddressChange(fname, lname, address, city);
+	}
+
+	@When("The User Clicks on Continue Button")
+	public void the_user_clicks_on_continue_button() {
+	    eapa.clickEditSubmit();
+	}
+
+	@Then("the user should see a AddressEdit Success Message")
+	public void the_user_should_see_a_address_edit_success_message() {
+		 assert(eapa.getEditAddressSuccessMsg().contains("Your address has been successfully updated"));
+	}
+	@When("The User Clicks on your Reward points in Account Page")
+	public void the_user_clicks_on_your_reward_points_in_account_page() {
+	    apa.clickRewardPointsLink();
+	}
+
+	@Then("The User Should Redirected to Reward Poitns Page")
+	public void the_user_should_redirected_to_reward_poitns_page() {
+	    assert(apa.rewardPointRedirection().contains("Your Reward Points"));
+	}
+
 	@When("The user move to myAccount link in navBar")
 	public void the_user_move_to_my_account_link_in_nav_bar() {
 	    // Write code here that turns the phrase above into concrete actions
@@ -198,6 +251,5 @@ public class AccountSD {
 	    // Write code here that turns the phrase above into concrete actions
 	    assert(apa.getVoucherSuccessMsg().contains(giftData.get("Expected")));
 	}
-
 
 }

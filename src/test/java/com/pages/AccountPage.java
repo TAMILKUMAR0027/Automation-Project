@@ -59,11 +59,26 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Address Book']")
 	public WebElement AddressBook;
+	
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
 	public WebElement newAddress;
+	
+	@FindBy(xpath = "//tbody/tr[2]/td[2]/a[2]")
+	public WebElement DeleteAddressInBookBtn;
+	
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	public WebElement DeleteAddressSuccessMessage;
+	
+	@FindBy(xpath="//a[text()=' Your Reward Points']")
+	public WebElement RewardPointsLink;
+	
+	@FindBy(xpath="//h1[text()='Your Reward Points']")
+	public WebElement RewardSuccess;
+
 	@FindBy(xpath = "//span[normalize-space()='My voucher']")
 	public WebElement myVoucher;
 	@FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
 	public WebElement voucherSuccessMsg;
+
 
 }

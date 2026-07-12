@@ -1,5 +1,5 @@
 @AccountFeature @Rishwanth
-Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature updated on 15/06/2026
+Feature: Rishwanth_Adhishwar_12_07_2026_AccountFeature updated on 15/06/2026
 description:To verify the fuctionality of edit account information
 
   Background:
@@ -43,10 +43,37 @@ description:To verify the fuctionality of edit account information
     When The user clicks on myAccount link in navBar
     And The user Enters valid email and valid passwords
     And Clicks on Login Button
-    And click the address book and click new address
-    And enter the valid details
-    And click continue Button
-    Then user can the see the successfully address added message
+	And click the address book and click new address
+	And enter the valid details 
+	And click continue Button
+	Then user can the see the successfully address added message 
+
+@DeleteAddressInBook
+Scenario:As a login in user i need to delete existing address in Address book
+	When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on address Book Link
+    And Clicks Delete Button on Address
+    Then the user should see a Delete Success Message
+ @EditAddressBook
+ Scenario Outline::As a logeed in User i need to edit an existing address in Address book
+ 	When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on address Book Link
+    And Clicks Edit Button on Address
+    And The User Change The Change the Address Details 
+    And The User Clicks on Continue Button
+    Then the user should see a AddressEdit Success Message
+    
+  @RewardPoint
+  Scenario: As a Registered i need to See my Reward Points 
+  	When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on your Reward points in Account Page
+    Then The User Should Redirected to Reward Poitns Page
 
   @Tamil
   Scenario: User purchase a gift Certficate with valid details
