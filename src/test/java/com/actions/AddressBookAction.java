@@ -13,8 +13,9 @@ public class AddressBookAction extends BaseAction {
         sendKeys(abp.address1, "123 Anna Nagar");
         sendKeys(abp.city, "Salem");
         sendKeys(abp.postCode, "636001");
-        click(abp.regionState);
-        sendKeys(abp.regionState,"conway");
+//        click(abp.regionState);
+//        sendKeys(abp.regionState,"conway");
+        selectByText(abp.regionState,"Fife");
 
         click(abp.continueBtn);
     }

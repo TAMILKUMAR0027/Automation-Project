@@ -40,7 +40,7 @@ public class RegisterSD {
 	public void enter_your_personal_details() {
 		rpa.setFname(registerData.get("fname"));
 		rpa.setLname(registerData.get("lname"));
-		rpa.setEmail(registerData.get("email"));
+		rpa.setDynamicEmail();
 		rpa.setTelephone(registerData.get("telephone"));
 		rpa.setPassword(registerData.get("password"));
 		rpa.setConfirmPassword(registerData.get("confirmpassword"));
