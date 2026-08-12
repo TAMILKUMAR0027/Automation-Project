@@ -151,6 +151,7 @@ public class AccountPageAction {
 	
 	public void clickOrderHistory() {
 		ba.waitForVisibility(ap.orderHistoryLink);	
+		ba.waitForClickable(ap.orderHistoryLink);
 		ba.click(ap.orderHistoryLink);
 		
 	}
