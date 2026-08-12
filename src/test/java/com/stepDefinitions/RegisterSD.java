@@ -74,7 +74,7 @@ public class RegisterSD {
 		String pass = ConfigReader.getRegisterDataProperties().getProperty("pass");
 		String cpass = ConfigReader.getRegisterDataProperties().getProperty("cpass");
 		rpa.setLname(lname);
-		rpa.setEmail(email);
+		rpa.setDynamicEmail();
 		rpa.setTelephone(telephone);
 		rpa.setPassword(pass);
 		rpa.setConfirmPassword(cpass);
