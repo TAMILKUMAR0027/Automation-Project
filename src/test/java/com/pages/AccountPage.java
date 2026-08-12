@@ -27,6 +27,7 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath = "//i[@class='fas fa-2x mb-1 fa-bullhorn']")
 	public WebElement affilateAccountLink;
+	
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	public WebElement accountCreatedMessage;
 	

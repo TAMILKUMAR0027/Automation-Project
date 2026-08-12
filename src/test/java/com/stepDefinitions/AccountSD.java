@@ -171,6 +171,11 @@ public class AccountSD {
 	    // Write code here that turns the phrase above into concrete actions
 		assert(adpa.getSuccessMessage().contains("Your address has been successfully added"));
 	}
+	@When("click Account continue Button")
+	public void click_account_continue_button() {
+	    adpa.clickAddressCtnBtn();
+	}
+
 	@When("The User Clicks on address Book Link")
 	public void the_user_clicks_on_address_book_link() {
 		apa.clickAddressBook();
