@@ -5,7 +5,7 @@
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
 ![Allure](https://img.shields.io/badge/Allure-5C2D91?style=for-the-badge&logoColor=white)
-
+ 
 # Automation Project — LambdaTest Ecommerce Playground
 
 > A production-grade **BDD + POM** automation framework built with **Java, Selenium, Cucumber, TestNG & Maven Developed For Learning Purpose**.
