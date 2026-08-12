@@ -2,7 +2,6 @@ package com.stepDefinitions;
 
 import java.util.Map;
 
-
 import org.apache.logging.log4j.LogManager;
 
 import org.apache.logging.log4j.Logger;
@@ -28,11 +27,12 @@ public class AccountSD {
 	AccountPageAction apa = new AccountPageAction();
 	LoginPageAction lpa = new LoginPageAction();
 	LaunchPageAction lp = new LaunchPageAction();
-    AddressBookAction adpa=new AddressBookAction();
-    EditAddressPageAction eapa=new EditAddressPageAction();
-    GiftCertificateAction gca=new GiftCertificateAction();
+	AddressBookAction adpa = new AddressBookAction();
+	EditAddressPageAction eapa = new EditAddressPageAction();
+	GiftCertificateAction gca = new GiftCertificateAction();
 	private static final Logger log = LogManager.getLogger(AccountSD.class);
 	private static Map<String, String> giftData = ExcelUtils.getGiftData();
+	
 
 	@Given("The user is in HomePage of Ecommerce Lambda TestWebsite")
 	public void the_user_is_in_home_page_of_ecommerce_lambda_test_website() {
@@ -116,27 +116,26 @@ public class AccountSD {
 			String expected = "Telephone must be between 3 and 32 characters!";
 			Assert.assertTrue(actual.contains(expected));
 			log.info("Error Message has Thrown has Expected");
-		}
-		catch(AssertionError e)
-		{
-			log.error("Error message Not Thrown"+e.getMessage());
+		} catch (AssertionError e) {
+			log.error("Error message Not Thrown" + e.getMessage());
 			throw e;
 		}
 
 	}
+
 	@When("The User clicks on Subscribe newsletter Link in Account Page")
 	public void the_user_clicks_on_subscribe_newsletter_link_in_account_page() {
-	   apa.clickSubscribeNewsLetter();
+		apa.clickSubscribeNewsLetter();
 	}
 
 	@When("check the radio Button as yes")
 	public void check_the_radio_button_as_yes() {
-	    apa.clickNlRadioButton();
+		apa.clickNlRadioButton();
 	}
 
 	@When("Click The  Continue Button")
 	public void click_the_continue_button() {
-	    apa.clickNlContinueBtn();
+		apa.clickNlContinueBtn();
 	}
 
 	@Then("The user Should be Successfully Subscribed and a Success Message should be Displayed")
@@ -146,34 +145,34 @@ public class AccountSD {
 			String expected = "Success: Your newsletter subscription has been successfully updated!";
 			Assert.assertTrue(actual.contains(expected));
 			log.info("Success Message Displayed");
-		}
-		catch(AssertionError e)
-		{
-			log.error("Success message Not Dispalyed"+e.getMessage());
+		} catch (AssertionError e) {
+			log.error("Success message Not Dispalyed" + e.getMessage());
 			throw e;
 		}
 	}
+
 	@When("click the address book and click new address")
 	public void click_the_address_book_and_click_new_address() {
-	    // Write code here that turns the phrase above into concrete actions
-	    apa.clickAddressBook();
-	    apa.clickNewAddress();
+		// Write code here that turns the phrase above into concrete actions
+		apa.clickAddressBook();
+		apa.clickNewAddress();
 	}
 
 	@When("enter the valid details")
 	public void enter_the_valid_details() {
 		// Write code here that turns the phrase above into concrete actions
-	    adpa.enterAddressDetails();
+		adpa.enterAddressDetails();
 	}
 
 	@Then("user can the see the successfully address added message")
 	public void user_can_the_see_the_successfully_address_added_message() {
-	    // Write code here that turns the phrase above into concrete actions
-		assert(adpa.getSuccessMessage().contains("Your address has been successfully added"));
+		// Write code here that turns the phrase above into concrete actions
+		assert (adpa.getSuccessMessage().contains("Your address has been successfully added"));
 	}
+
 	@When("click Account continue Button")
 	public void click_account_continue_button() {
-	    adpa.clickAddressCtnBtn();
+		adpa.clickAddressCtnBtn();
 	}
 
 	@When("The User Clicks on address Book Link")
@@ -183,78 +182,88 @@ public class AccountSD {
 
 	@When("Clicks Delete Button on Address")
 	public void clicks_delete_button_on_address() {
-	    apa.clickDeleteAddress();
+		apa.clickDeleteAddress();
 	}
 
 	@Then("the user should see a Delete Success Message")
 	public void the_user_should_see_a_delete_success_message() {
-	    assert(apa.DelteSuccessMsg().contains("Your address has been successfully deleted"));
+		assert (apa.DelteSuccessMsg().contains("Your address has been successfully deleted"));
 	}
-	
+
 	@When("Clicks Edit Button on Address")
 	public void clicks_edit_button_on_address() {
-	    adpa.clickEditAddressBtn();
+		adpa.clickEditAddressBtn();
 	}
 
 	@When("The User Change The Change the Address Details")
 	public void the_user_change_the_change_the_address_details() {
-		 String fname = ConfigReader.getEditAddressProperties().getProperty("edit1");
-		    String lname = ConfigReader.getEditAddressProperties().getProperty("edit2");
-		    String address = ConfigReader.getEditAddressProperties().getProperty("edit3");
-		    String city = ConfigReader.getEditAddressProperties().getProperty("edit4");
-		    eapa.enterAddressChange(fname, lname, address, city);
+		String fname = ConfigReader.getEditAddressProperties().getProperty("edit1");
+		String lname = ConfigReader.getEditAddressProperties().getProperty("edit2");
+		String address = ConfigReader.getEditAddressProperties().getProperty("edit3");
+		String city = ConfigReader.getEditAddressProperties().getProperty("edit4");
+		eapa.enterAddressChange(fname, lname, address, city);
 	}
 
 	@When("The User Clicks on Continue Button")
 	public void the_user_clicks_on_continue_button() {
-	    eapa.clickEditSubmit();
+		eapa.clickEditSubmit();
 	}
 
 	@Then("the user should see a AddressEdit Success Message")
 	public void the_user_should_see_a_address_edit_success_message() {
-		 assert(eapa.getEditAddressSuccessMsg().contains("Your address has been successfully updated"));
+		assert (eapa.getEditAddressSuccessMsg().contains("Your address has been successfully updated"));
 	}
+
 	@When("The User Clicks on your Reward points in Account Page")
 	public void the_user_clicks_on_your_reward_points_in_account_page() {
-	    apa.clickRewardPointsLink();
+		apa.clickRewardPointsLink();
 	}
 
 	@Then("The User Should Redirected to Reward Poitns Page")
 	public void the_user_should_redirected_to_reward_poitns_page() {
-	    assert(apa.rewardPointRedirection().contains("Your Reward Points"));
+		assert (apa.rewardPointRedirection().contains("Your Reward Points"));
 	}
 
 	@When("The user move to myAccount link in navBar")
 	public void the_user_move_to_my_account_link_in_nav_bar() {
-	    // Write code here that turns the phrase above into concrete actions
-	    apa.moveToElementOfMyAccount();
+		// Write code here that turns the phrase above into concrete actions
+		apa.moveToElementOfMyAccount();
 	}
+
 	@When("click My voucher navbar")
 	public void click_my_voucher_navbar() {
-	    // Write code here that turns the phrase above into concrete actions
-	    apa.clickMyVoucher();
+		// Write code here that turns the phrase above into concrete actions
+		apa.clickMyVoucher();
 	}
 
 	@When("fill all the valid details for purchase gift certificate")
 	public void fill_all_the_valid_details_for_purchase_gift_certificate() {
-	    // Write code here that turns the phrase above into concrete actions
-	    gca.enterToName(giftData.get("Name"));
-	    gca.enterToEmail(giftData.get("Email"));
-	    gca.selectGiftCertificateTheme();
-	    
+		// Write code here that turns the phrase above into concrete actions
+		gca.enterToName(giftData.get("Name"));
+		gca.enterToEmail(giftData.get("Email"));
+		gca.selectGiftCertificateTheme();
+
 	}
 
 	@When("I understand that gift certificates are non-refundable and click continue button")
 	public void i_understand_that_gift_certificates_are_non_refundable_and_click_continue_button() {
-	    // Write code here that turns the phrase above into concrete actions
-	   gca.checkAgreeCheckbox();
-	   gca.checkAgreeCheckbox();
+		// Write code here that turns the phrase above into concrete actions
+		gca.checkAgreeCheckbox();
+		gca.checkAgreeCheckbox();
 	}
 
 	@Then("you can see the message Thank you for purchasing a gift certificate!")
 	public void you_can_see_the_message_thank_you_for_purchasing_a_gift_certificate() {
-	    // Write code here that turns the phrase above into concrete actions
-	    assert(apa.getVoucherSuccessMsg().contains(giftData.get("Expected")));
+		// Write code here that turns the phrase above into concrete actions
+		assert (apa.getVoucherSuccessMsg().contains(giftData.get("Expected")));
 	}
+
+//oh
+	@When("Clicks on Order History Link")
+	public void clicks_on_order_history_link() {
+		apa.clickOrderHistory();
+	}
+
+
 
 }
