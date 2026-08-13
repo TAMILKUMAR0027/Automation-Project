@@ -1,5 +1,6 @@
-@Smoke @E2E @WishlistE2E
-Feature: Smoke_E2E_Test_Suite_With_Wishlist - Prasanna Venkatesh K - 14-06-2026
+@Smoke @E2E @WishlistE2E @Prasanna
+Feature: Smoke_E2E_Test_Suite_With_Wishlist - Prasanna Venkatesh K - Created at 14-06-2026 Modify at 05/07/2026
+
   Description:
   End-to-End smoke test: Homepage → Login → Search → Product Details →
   Add to Wishlist (Heart Button) → Logout

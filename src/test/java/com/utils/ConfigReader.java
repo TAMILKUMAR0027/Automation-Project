@@ -10,6 +10,7 @@ public class ConfigReader {
     private static Properties registerInvalidProp;
     private static Properties forgetPasswordProp;
     private static Properties listProp;
+    private static Properties editAddress;
 
     // =========================
     // MAIN CONFIG FILE
@@ -74,7 +75,7 @@ public class ConfigReader {
     }
 
     // =========================
-    // INVALID REGISTER DATA
+    // INVALID REGISTER DATA / LOGIN DATA
     // =========================
     public static Properties getRegisterDataProperties() {
 
@@ -158,11 +159,42 @@ public class ConfigReader {
             } catch (Exception e) {
 
                 throw new RuntimeException(
-                        "Failed to load ListTestData.properties file", e
+                        "Failed to load list.properties file", e
                 );
             }
         }
 
         return listProp;
+    }
+
+    // =========================
+    // EDIT ADDRESS TEST DATA
+    // =========================
+    public static Properties getEditAddressProperties() {
+
+        if (editAddress == null) {
+
+            try {
+
+                editAddress = new Properties();
+
+                String path =
+                        System.getProperty("user.dir")
+                        + "/src/test/resources/testdata/editAddress.properties";
+
+                FileInputStream fis =
+                        new FileInputStream(path);
+
+                editAddress.load(fis);
+
+            } catch (Exception e) {
+
+                throw new RuntimeException(
+                        "Failed to load editAddress.properties file", e
+                );
+            }
+        }
+
+        return editAddress;
     }
 }

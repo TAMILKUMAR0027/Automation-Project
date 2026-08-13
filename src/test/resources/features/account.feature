@@ -58,3 +58,14 @@ description:To verify the fuctionality of edit account information
     And fill all the valid details for purchase gift certificate
     And I understand that gift certificates are non-refundable and click continue button
     Then you can see the message Thank you for purchasing a gift certificate!
+    
+@Tamil
+Scenario: User tries to purchase a gift certificate with invalid recipient email
+  When The user clicks on myAccount link in navBar
+  And The user Enters valid email and valid passwords
+  And Clicks on Login Button
+  When The user move to myAccount link in navBar
+  And click My voucher navbar
+  And fill the gift certificate details with invalid recipient email
+  And I understand that gift certificates are non-refundable and click continue button
+  Then The user should see an error message for invalid recipient email
