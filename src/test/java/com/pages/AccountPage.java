@@ -10,7 +10,6 @@ public class AccountPage extends BasePage {
 		super(driver);
 		
 	}
-
 	@FindBy(linkText="Register")
 	public WebElement registerLink;
 
@@ -28,7 +27,6 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath = "//i[@class='fas fa-2x mb-1 fa-bullhorn']")
 	public WebElement affilateAccountLink;
-	
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	public WebElement accountCreatedMessage;
 	
@@ -59,31 +57,11 @@ public class AccountPage extends BasePage {
 	@FindBy (xpath="//div[@id='account-account']/child::div[1]")
 	public WebElement sucessMsgNL;
 	
-	@FindBy(xpath = "//a[normalize-space()='Address Book']/i")
+	@FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Address Book']")
 	public WebElement AddressBook;
-	
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
 	public WebElement newAddress;
-	
-	@FindBy(xpath = "//tbody/tr[2]/td[2]/a[2]")
-	public WebElement DeleteAddressInBookBtn;
-	
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	public WebElement DeleteAddressSuccessMessage;
-	
-	@FindBy(xpath="//a[text()=' Your Reward Points']")
-	public WebElement RewardPointsLink;
-	
-	@FindBy(xpath="//h1[text()='Your Reward Points']")
-	public WebElement RewardSuccess;
 
-	@FindBy(xpath = "//span[normalize-space()='My voucher']")
-	public WebElement myVoucher;
-
-	@FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
-	public WebElement voucherSuccessMsg;
 	
-	@FindBy(xpath="//a[text()=' Order History']/i")
-	public WebElement orderHistoryLink;
 
 }
