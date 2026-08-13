@@ -88,7 +88,7 @@ Thanks to all our contributors who have helped build and improve this project:
 - Chrome / Firefox browsers
 
 Verify installation:
-```bash
+
 java -version
 mvn -version
 
@@ -156,6 +156,8 @@ Add the following in your project's `pom.xml`:
     <artifactId>automation-framework</artifactId>
     <version>1.0.0</version>
 </dependency>
+
+```
 
 # Run all tests
 mvn clean test

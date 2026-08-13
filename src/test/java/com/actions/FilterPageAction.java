@@ -1,6 +1,8 @@
 package com.actions;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -371,5 +373,42 @@ public class FilterPageAction extends BaseAction {
 					"Failed to get software title",
 					e);
 		}
+	}
+	public void selectOption(String option) {
+	    try {
+	        log.info("Selecting sort option: {}", option);
+
+	        waitForClickable(fp.selectOption);
+
+	        Select select = new Select(fp.selectOption);
+	        select.selectByVisibleText(option);
+
+	        log.info("Sort option selected successfully");
+
+	    } catch (Exception e) {
+	        log.error("Failed to select sort option", e);
+	        throw new RuntimeException("Failed to select sort option", e);
+	    }
+	}
+	public boolean verifyNameAscending() {
+
+	    List<String> actualNames = fp.getSortedNameProduct();
+
+	    List<String> sortedNames = new ArrayList<>(actualNames);
+
+	    Collections.sort(sortedNames);
+
+	    return actualNames.equals(sortedNames);
+	}
+	public boolean verifyNameDescending() {
+
+	    List<String> actualNames = fp.getSortedNameProduct();
+
+	    List<String> sortedNames = new ArrayList<>(actualNames);
+
+	    Collections.sort(sortedNames);
+	    Collections.reverse(sortedNames);
+
+	    return actualNames.equals(sortedNames);
 	}
 }

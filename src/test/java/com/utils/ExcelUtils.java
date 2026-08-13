@@ -24,7 +24,8 @@ public class ExcelUtils {
 
 	private static final String QUESTION_EXCEL_PATH =
 			System.getProperty("user.dir") + "/src/test/resources/QuestionData.xlsx";
-
+	private static final String Gift_ExcelPath=
+			System.getProperty("user.dir") + "/src/test/resources/GiftData.xlsx";
 	private static final DataFormatter formatter = new DataFormatter();
 
 		public static Map<String, String> getSearchData(String sheetName, int rowNumber) {
@@ -163,6 +164,42 @@ public class ExcelUtils {
 
 			throw new RuntimeException(
 					"Error reading Excel file: " + QUESTION_EXCEL_PATH, e);
+		}
+
+		return data;
+	}
+	public static Map<String, String> getGiftData() {
+
+		Map<String, String> data = new HashMap<>();
+
+		try (FileInputStream fis = new FileInputStream(Gift_ExcelPath);
+			 Workbook workbook = new XSSFWorkbook(fis)) {
+
+			Sheet sheet = workbook.getSheetAt(0);
+
+			Row headerRow = sheet.getRow(0);
+			Row dataRow = sheet.getRow(1);
+
+			if (headerRow == null || dataRow == null) {
+				throw new RuntimeException(
+						"Excel header or data row is missing");
+			}
+
+			for (int i = 0; i < headerRow.getLastCellNum(); i++) {
+
+				String key =
+						formatter.formatCellValue(headerRow.getCell(i)).trim();
+
+				String value =
+						formatter.formatCellValue(dataRow.getCell(i)).trim();
+
+				data.put(key, value);
+			}
+
+		} catch (IOException e) {
+
+			throw new RuntimeException(
+					"Error reading Excel file: " + Gift_ExcelPath, e);
 		}
 
 		return data;

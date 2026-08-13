@@ -287,4 +287,23 @@ public class BaseAction {
 						element
 				);
 	}
+	public void moveToElement(WebElement element) {
+		Actions actions = new Actions(getDriver());
+		actions.moveToElement(element).perform();
+	}	
+	// DROPDOWN ACTIONS
+
+	// Select dropdown option by visible text
+	public void selectByText(WebElement element, String text) {
+	    getWait().until(ExpectedConditions.visibilityOf(element));
+	    Select select = new Select(element);
+	    select.selectByVisibleText(text);
+	}
+
+	// Select dropdown option by value attribute
+	public void selectByValue(WebElement element, String value) {
+	    getWait().until(ExpectedConditions.visibilityOf(element));
+	    Select select = new Select(element);
+	    select.selectByValue(value);
+	}
 }

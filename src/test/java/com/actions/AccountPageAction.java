@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.driver.DriverClass;
 import com.pages.AccountPage;
 import com.pages.LoginPage;
+import com.pages.OrderHistoryPage;
 
 import io.cucumber.datatable.DataTable;
 
@@ -17,6 +18,7 @@ public class AccountPageAction {
 	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
 	AccountPage ap = new AccountPage(DriverClass.getDriver());
 	LoginPage lp = new LoginPage(DriverClass.getDriver());
+	OrderHistoryPage ohp=new OrderHistoryPage(DriverClass.getDriver());
 
 	public void setVemail(String email) {
 		ba.waitForVisibility(lp.LoginEmail);
@@ -111,7 +113,45 @@ public class AccountPageAction {
 		ba.click(ap.newAddress);
 	}
 
+	public void clickDeleteAddress() {
+		ba.waitForVisibility(ap.DeleteAddressInBookBtn);
+		ba.click(ap.DeleteAddressInBookBtn);
+	}
 	
+	public String DelteSuccessMsg() {
+		ba.waitForVisibility(ap.DeleteAddressSuccessMessage);
+		return ba.getText(ap.DeleteAddressSuccessMessage);
+	}
+	
+	public void clickRewardPointsLink() {
+		ba.waitForVisibility(ap.RewardPointsLink);
+		ba.click(ap.RewardPointsLink);
+		
+	}
+	
+	public String rewardPointRedirection() {
+		ba.waitForVisibility(ap.RewardSuccess);
+		return ba.getText(ap.RewardSuccess);
+	}
+	
+	public void clickMyVoucher()
+	{
+		ba.waitForVisibility(ap.myVoucher);
+		ba.click(ap.myVoucher);
+	}
+	public void moveToElementOfMyAccount() {
+		ba.waitForVisibility(lp.myAccLink);
+		ba.moveToElement(lp.myAccLink);
+	}
+	public String getVoucherSuccessMsg()
+	{
+		ba.waitForVisibility(ap.voucherSuccessMsg);
+		return ba.getText(ap.voucherSuccessMsg);
+	}
+	public String getInvalidEmailMessage() {
+		ba.waitForVisibility(ap.invalidEmailMessage);
+		return ba.getText(ap.invalidEmailMessage);
+	}
 
 }
 

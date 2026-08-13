@@ -33,5 +33,12 @@ public class AddressBookPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class,'alert-success')]")
     public WebElement successMessage;
+    
+    @FindBy(xpath = "(//a[text()=\"Edit\"])[3]")
+    public WebElement addressEditBtn;
+    
+
+    
+    
 
 }
