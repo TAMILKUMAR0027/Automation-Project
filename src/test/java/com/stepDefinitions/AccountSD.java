@@ -365,9 +365,7 @@ public class AccountSD {
 
         gca.enterToName(giftData.get("Name"));
 
-        // IMPORTANT:
-        // Do NOT use giftData.get("Name") here.
-        // Enter an invalid email address.
+        // Invalid email intentionally entered
         gca.enterToEmail("invalidemail");
 
         gca.selectGiftCertificateTheme();

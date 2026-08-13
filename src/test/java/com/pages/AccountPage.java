@@ -44,7 +44,7 @@ public class AccountPage extends BasePage {
     public WebElement accountCreatedMessage;
 
     // =========================================================
-    // INVALID EDIT ACCOUNT INFORMATION
+    // EDIT ACCOUNT - INVALID DETAILS
     // =========================================================
 
     @FindBy(xpath = "//input[@id='input-firstname']")
@@ -82,7 +82,7 @@ public class AccountPage extends BasePage {
     // ADDRESS BOOK
     // =========================================================
 
-    @FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Address Book']")
+    @FindBy(xpath = "//a[normalize-space()='Address Book']/i")
     public WebElement AddressBook;
 
     @FindBy(xpath = "//a[@class='btn btn-primary']")
