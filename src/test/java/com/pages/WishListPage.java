@@ -1,10 +1,7 @@
 package com.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class WishListPage extends BasePage {
 
@@ -12,77 +9,209 @@ public class WishListPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//img[@alt='Poco Electro']")
-    public WebElement homeLogo;
+    // ============================================================
+    // HOME
+    // ============================================================
 
-    @FindBy(xpath = "//a[contains(@class,'navbar-brand')]")
-    public WebElement homeLogoAlt;
+    public By homeLogo =
+            By.xpath("//img[@alt='Poco Electro']");
 
-    @FindBy(xpath = "//h3[contains(text(),'Top Products')]")
-    public WebElement topProductsHeading;
-
-    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iMac']]")
-    public WebElement imacListingBox;
-
-    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iMac']]//button[contains(@class,'wishlist')]")
-    public WebElement imacWishlistBtn;
-
-    @FindBy(xpath = "//h3[contains(text(),'Top Collection')]")
-    public WebElement topCollectionHeading;
-
-    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[contains(normalize-space(),'Apple Cinema')]]")
-    public WebElement appleCinemaProduct;
-
-    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[contains(normalize-space(),'Apple Cinema')]]//button[contains(@class,'wishlist')]")
-    public WebElement appleCinemaWishlistBtn;
-
-    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iPod Nano']]")
-    public WebElement ipodNanoProduct;
-
-    @FindBy(xpath = "//div[contains(@class,'product-thumb') and .//a[normalize-space()='iPod Nano']]//button[contains(@class,'wishlist')]")
-    public WebElement ipodNanoWishlistBtn;
+    public By homeLogoAlt =
+            By.xpath("//a[contains(@class,'navbar-brand')]");
 
 
+    // ============================================================
+    // TOP PRODUCTS
+    // ============================================================
 
-    @FindBy(xpath = "//div[@id='notification-box-top']//div[contains(@class,'toast-body')]//p")
-    public WebElement successNotification;
-
-    @FindBy(xpath = "//div[@id='notification-box-top']//p")
-    public WebElement successNotificationFallback;
-
-    @FindBy(xpath = "//a[@class='btn btn-secondary btn-block']")
-    public WebElement wishlistPopupLink;
+    public By topProductsHeading =
+            By.xpath("//h3[contains(text(),'Top Products')]");
 
 
+    // ============================================================
+    // iMAC
+    // ============================================================
 
-    @FindBy(xpath = "//div[contains(@class,'alert-success') and contains(@class,'alert-dismissible')]")
-    public WebElement removalSuccessAlert;
+    public By imacListingBox =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[normalize-space()='iMac']]"
+            );
 
-
-
-    @FindBy(xpath = "//h1[contains(text(),'My Wish List')]")
-    public WebElement myWishListTitle;
-
-    @FindBy(xpath = "//table[@class = 'table table-hover border']//child::td[2]")
-    public List<WebElement> wishListProductNames;
-
-    @FindBy(xpath = "//table[@class = 'table table-hover border']//child::td[5]")
-    public List<WebElement> wishListProductPrices;
-
-    @FindBy(xpath = "//table[@class = 'table table-hover border']//tbody//tr")
-    public List<WebElement> wishListRows;
-
-
-    @FindBy(xpath = "//aside[@id='column-right']//a[contains(@href,'account/wishlist')]")
-    public WebElement wishListbtn;
+    public By imacWishlistBtn =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[normalize-space()='iMac']]" +
+                            "//button[contains(@class,'wishlist')]"
+            );
 
 
-    @FindBy(xpath = "//div[@id='entry_217822']//input[@placeholder='Search For Products']")
-    public WebElement SearchBar;
+    // ============================================================
+    // TOP COLLECTION
+    // ============================================================
 
-    @FindBy(xpath = "//a[@id='mz-product-grid-image-34-212469']//div[@class='carousel-item active']//img[@title='iPod Shuffle']")
-    public WebElement ipodShuffleProduct;
+    public By topCollectionHeading =
+            By.xpath("//h3[contains(text(),'Top Collection')]");
 
-    @FindBy(xpath = "//div[@id = 'image-gallery-216811']//child::button")
-    public WebElement ipodShuffleWishlistBtn;
+
+    // ============================================================
+    // APPLE CINEMA
+    // ============================================================
+
+    public By appleCinemaProduct =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[contains(normalize-space(),'Apple Cinema')]]"
+            );
+
+    public By appleCinemaWishlistBtn =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[contains(normalize-space(),'Apple Cinema')]]" +
+                            "//button[contains(@class,'wishlist')]"
+            );
+
+
+    // ============================================================
+    // iPOD NANO
+    // ============================================================
+
+    public By ipodNanoProduct =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[normalize-space()='iPod Nano']]"
+            );
+
+    public By ipodNanoWishlistBtn =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[normalize-space()='iPod Nano']]" +
+                            "//button[contains(@class,'wishlist')]"
+            );
+
+
+    // ============================================================
+    // CANON EOS 5D   (NEW — was missing, caused UnknownProductException)
+    // ============================================================
+
+    public By canonEOS5DProduct =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[normalize-space()='Canon EOS 5D']]"
+            );
+
+    public By canonEOS5DWishlistBtn =
+            By.xpath(
+                    "//div[contains(@class,'product-thumb') " +
+                            "and .//a[normalize-space()='Canon EOS 5D']]" +
+                            "//button[contains(@class,'wishlist')]"
+            );
+
+
+    // ============================================================
+    // NOTIFICATIONS
+    // ============================================================
+
+    public By successNotification =
+            By.xpath(
+                    "//div[@id='notification-box-top']" +
+                            "//div[contains(@class,'toast-body')]//p"
+            );
+
+    public By successNotificationFallback =
+            By.xpath(
+                    "//div[@id='notification-box-top']//p"
+            );
+
+
+    // ============================================================
+    // WISHLIST POPUP
+    // ============================================================
+
+    public By wishlistPopupLink =
+            By.xpath(
+                    "//a[@class='btn btn-secondary btn-block']"
+            );
+
+
+    // ============================================================
+    // REMOVAL SUCCESS
+    // ============================================================
+
+    public By removalSuccessAlert =
+            By.xpath(
+                    "//div[contains(@class,'alert-success') " +
+                            "and contains(@class,'alert-dismissible')]"
+            );
+
+
+    // ============================================================
+    // MY WISHLIST PAGE
+    // ============================================================
+
+    public By myWishListTitle =
+            By.xpath("//h1[contains(text(),'My Wish List')]");
+
+
+    // ============================================================
+    // WISHLIST TABLE
+    // ============================================================
+
+    public By wishListProductNames =
+            By.xpath(
+                    "//table[@class='table table-hover border']" +
+                            "//tbody//tr//td[2]"
+            );
+
+    public By wishListProductPrices =
+            By.xpath(
+                    "//table[@class='table table-hover border']" +
+                            "//tbody//tr//td[5]"
+            );
+
+    public By wishListRows =
+            By.xpath(
+                    "//table[@class='table table-hover border']" +
+                            "//tbody//tr"
+            );
+
+
+    // ============================================================
+    // WISHLIST SIDEBAR
+    // ============================================================
+
+    public By wishListbtn =
+            By.xpath(
+                    "//aside[@id='column-right']" +
+                            "//a[contains(@href,'account/wishlist')]"
+            );
+
+
+    // ============================================================
+    // SEARCH
+    // ============================================================
+
+    public By SearchBar =
+            By.xpath(
+                    "//div[@id='entry_217822']" +
+                            "//input[@placeholder='Search For Products']"
+            );
+
+
+    // ============================================================
+    // iPOD SHUFFLE
+    // ============================================================
+
+    public By ipodShuffleProduct =
+            By.xpath(
+                    "//a[@id='mz-product-grid-image-34-212469']" +
+                            "//div[@class='carousel-item active']" +
+                            "//img[@title='iPod Shuffle']"
+            );
+
+    public By ipodShuffleWishlistBtn =
+            By.xpath(
+                    "//div[@id='image-gallery-216811']" +
+                            "//button"
+            );
 }

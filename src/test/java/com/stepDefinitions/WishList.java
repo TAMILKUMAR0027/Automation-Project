@@ -11,6 +11,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public class WishList {
     /**
      * Launches the application and validates the home page URL.
      * Reads the base URL from config.properties.
+     * Retries navigation once on a page-load timeout before failing, since the
+     * public demo site occasionally stalls on the very first request of a
+     * fresh browser session.
      * Fails with a descriptive message if the home page does not load.
      */
     @Given("the user is on the home page")
@@ -47,7 +51,15 @@ public class WishList {
         Assert.assertFalse(url.trim().isEmpty(),
                 "[CONFIG ERROR] 'url' property is empty in config.properties.");
 
-        lp.launchApplication(url);
+        try {
+            lp.launchApplication(url);
+        } catch (TimeoutException e) {
+            // Non-fatal on first attempt: retry once — the demo site
+            // occasionally stalls loading a brand-new session.
+            logger.warn("Navigation timed out on first attempt — retrying once...");
+            lp.launchApplication(url);
+        }
+
         logger.info("Launched application URL: {}", url);
 
         String actualUrl = DriverClass.getDriver().getCurrentUrl();
@@ -134,6 +146,31 @@ public class WishList {
     public void the_user_navigates_to_the_wishlist_page_via_account_menu() {
         wla.navigateToWishlistViaAccount();
         logger.info("Navigated to wishlist page via account menu.");
+    }
+
+    /**
+     * Scrolls to whichever homepage section actually contains the given
+     * product, so self-heal "add before remove" flows don't wait on a card
+     * that is invisible because the wrong carousel was scrolled into view.
+     *   - iMac, iPod Nano                -> Top Products section
+     *   - Apple Cinema 30, Canon EOS 5D  -> Top Collection section
+     * Falls back to Top Collection for any unmapped name, matching prior
+     * behavior for products not explicitly listed here.
+     */
+    private void scrollToSectionForProduct(String productName) {
+        switch (productName.toLowerCase()) {
+            case "imac":
+            case "ipod nano":
+                wla.scrollToTopProducts();
+                logger.info("Scrolled to Top Products section for '{}'.", productName);
+                break;
+            case "apple cinema 30":
+            case "canon eos 5d":
+            default:
+                wla.scrollToTopCollection();
+                logger.info("Scrolled to Top Collection section for '{}'.", productName);
+                break;
+        }
     }
 
 
@@ -477,6 +514,10 @@ public class WishList {
      * Reads the product name from CSV, ensures it is in the wishlist
      * (adding it if absent), then removes it.
      * Fails if the CSV row or productName is missing.
+     * Self-heal now scrolls to the section that actually contains the
+     * product before adding it (see scrollToSectionForProduct), instead of
+     * always scrolling to Top Collection regardless of where the product
+     * card actually lives.
      */
     @And("the user removes the product {string} from the wishlist")
     public void the_user_removes_the_product_from_the_wishlist(String csvScenario) {
@@ -503,7 +544,7 @@ public class WishList {
 
         if (!presentBefore) {
             logger.warn("'{}' not in wishlist — adding it before removal.", productName);
-            wla.scrollToTopCollection();
+            scrollToSectionForProduct(productName);
             wla.addProductToWishlistByName(productName);
             wla.navigateToWishlistViaAccount();
         }
@@ -516,6 +557,8 @@ public class WishList {
      * Reads product names from an inline DataTable, ensures each is in the wishlist
      * (adding it if absent), then removes each in sequence.
      * Fails if the DataTable is empty or a ProductName cell is blank.
+     * Self-heal now scrolls to the section that actually contains each
+     * product before adding it (see scrollToSectionForProduct).
      */
     @And("the user removes the following products from the wishlist")
     public void the_user_removes_the_following_products_from_the_wishlist(DataTable dataTable) {
@@ -541,7 +584,7 @@ public class WishList {
 
             if (!presentBefore) {
                 logger.warn("'{}' not in wishlist — adding it before removal.", productName);
-                wla.scrollToTopCollection();
+                scrollToSectionForProduct(productName);
                 wla.addProductToWishlistByName(productName);
                 wla.navigateToWishlistViaAccount();
             }
