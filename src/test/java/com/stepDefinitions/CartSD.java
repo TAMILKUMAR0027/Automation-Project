@@ -153,7 +153,7 @@ public class CartSD {
 		System.out.println(allproduct);
 		List<String> expectedProduct = new ArrayList<>();
 		expectedProduct.add("HTC Touch HD");
-		expectedProduct.add("iPod Nano");
+		expectedProduct.add("iPhone");
 		expectedProduct.add("HP LP3065");
 		Collections.sort(allproduct);
 		Collections.sort(expectedProduct);

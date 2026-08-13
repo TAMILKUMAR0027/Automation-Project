@@ -27,6 +27,7 @@ public class AccountPage extends BasePage {
 	
 	@FindBy(xpath = "//i[@class='fas fa-2x mb-1 fa-bullhorn']")
 	public WebElement affilateAccountLink;
+	
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	public WebElement accountCreatedMessage;
 	
@@ -57,7 +58,7 @@ public class AccountPage extends BasePage {
 	@FindBy (xpath="//div[@id='account-account']/child::div[1]")
 	public WebElement sucessMsgNL;
 	
-	@FindBy(xpath = "//a[@class='list-group-item'][normalize-space()='Address Book']")
+	@FindBy(xpath = "//a[normalize-space()='Address Book']/i")
 	public WebElement AddressBook;
 	
 	@FindBy(xpath = "//a[@class='btn btn-primary']")
@@ -79,6 +80,9 @@ public class AccountPage extends BasePage {
 	public WebElement myVoucher;
 	@FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
 	public WebElement voucherSuccessMsg;
+	
+	@FindBy(xpath="//a[text()=' Order History']/i")
+	public WebElement orderHistoryLink;
 
 
 }

@@ -18,7 +18,7 @@ import com.stepDefinitions.CartSD;
 
 import io.cucumber.datatable.DataTable;
 
-public class RegisterPageAction {
+public class RegisterPageAction extends BaseAction{
 	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(20));
 	AccountPage ap = new AccountPage(DriverClass.getDriver());
 	LoginPage lp = new LoginPage(DriverClass.getDriver());
@@ -48,8 +48,12 @@ public class RegisterPageAction {
 		ba.waitForVisibility(rp.lname);
 		rp.lname.sendKeys(lname);
 	}
-	public void setEmail(String email) {
-		rp.email.sendKeys(email);
+//	public void setEmail(String email) {
+//		rp.email.sendKeys(email);
+//	}
+	public void setDynamicEmail() {
+	    String email = "test" + System.currentTimeMillis() + "@gmail.com";
+	    sendKeys(rp.email, email);
 	}
 	public void setTelephone(String telephone) {
 		rp.telephone.sendKeys(telephone);

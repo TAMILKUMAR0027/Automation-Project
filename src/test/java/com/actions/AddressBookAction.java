@@ -13,20 +13,20 @@ public class AddressBookAction extends BaseAction {
         sendKeys(abp.address1, "123 Anna Nagar");
         sendKeys(abp.city, "Salem");
         sendKeys(abp.postCode, "636001");
-        click(abp.regionState);
-        sendKeys(abp.regionState,"conway");
-
-        click(abp.continueBtn);
+//      click(abp.regionState);
+//      sendKeys(abp.regionState,"conway");
+        selectByText(abp.regionState,"Fife");
     }
+	
+	public void clickAddressCtnBtn() {
+		click(abp.continueBtn);
+	}
 
     public String getSuccessMessage() {
         return getText(abp.successMessage);
     }
-    
+  
     public void clickEditAddressBtn() {
     	click(abp.addressEditBtn);
     }
-
-	
-
 }
