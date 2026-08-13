@@ -40,7 +40,7 @@ public class RegisterSD {
 	public void enter_your_personal_details() {
 		rpa.setFname(registerData.get("fname"));
 		rpa.setLname(registerData.get("lname"));
-		rpa.setEmail(registerData.get("email"));
+		rpa.setDynamicEmail();
 		rpa.setTelephone(registerData.get("telephone"));
 		rpa.setPassword(registerData.get("password"));
 		rpa.setConfirmPassword(registerData.get("confirmpassword"));
@@ -74,7 +74,7 @@ public class RegisterSD {
 		String pass = ConfigReader.getRegisterDataProperties().getProperty("pass");
 		String cpass = ConfigReader.getRegisterDataProperties().getProperty("cpass");
 		rpa.setLname(lname);
-		rpa.setEmail(email);
+		rpa.setDynamicEmail();
 		rpa.setTelephone(telephone);
 		rpa.setPassword(pass);
 		rpa.setConfirmPassword(cpass);

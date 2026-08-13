@@ -45,27 +45,52 @@ description:To verify the fuctionality of edit account information
     And Clicks on Login Button
     And click the address book and click new address
     And enter the valid details
-    And click continue Button
+    And click Account continue Button
     Then user can the see the successfully address added message
 
-  @Tamil
-  Scenario: User purchase a gift Certficate with valid details
+  @DeleteAddressInBook
+  Scenario: As a login in user i need to delete existing address in Address book
     When The user clicks on myAccount link in navBar
     And The user Enters valid email and valid passwords
     And Clicks on Login Button
-    When The user move to myAccount link in navBar
-    And click My voucher navbar
-    And fill all the valid details for purchase gift certificate
-    And I understand that gift certificates are non-refundable and click continue button
-    Then you can see the message Thank you for purchasing a gift certificate!
-    
-@Tamil
-Scenario: User tries to purchase a gift certificate with invalid recipient email
-  When The user clicks on myAccount link in navBar
-  And The user Enters valid email and valid passwords
-  And Clicks on Login Button
-  When The user move to myAccount link in navBar
-  And click My voucher navbar
-  And fill the gift certificate details with invalid recipient email
-  And I understand that gift certificates are non-refundable and click continue button
-  Then The user should see an error message for invalid recipient email
+    And The User Clicks on address Book Link
+    And Clicks Delete Button on Address
+    Then the user should see a Delete Success Message
+
+  @EditAddressBook
+  Scenario Outline: :As a logeed in User i need to edit an existing address in Address book
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on address Book Link
+    And Clicks Edit Button on Address
+    And The User Change The Change the Address Details
+    And The User Clicks on Continue Button
+    Then the user should see a AddressEdit Success Message
+
+  @RewardPoint
+  Scenario: As a Registered i need to See my Reward Points
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And The User Clicks on your Reward points in Account Page
+    Then The User Should Redirected to Reward Poitns Page
+
+ @Tamil
+ Scenario: User purchase a gift Certficate with valid details
+  When The user clicks on myAccount link in navBar#   And The user Enters valid email and valid passwords
+   And Clicks on Login Button
+   When The user move to myAccount link in navBar
+   And click My voucher navbar
+  And fill all the valid details for purchase gift certificate
+ And I understand that gift certificates are non-refundable and click continue button
+ Then you can see the message Thank you for purchasing a gift certificate!
+
+  @ViewOrderHistory
+  Scenario: To Check Whether the User Can View The Specific Order History
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And Clicks on Order History Link
+    And The User Clicks on View Button
+    Then The Order Information Page Should Be Visisble
