@@ -119,6 +119,5 @@ description:To verify the fuctionality of edit account information
     And fill the gift certificate details with invalid recipient email
     And I understand that gift certificates are non-refundable and click continue button
     Then The user should see an error message for invalid recipient email
-    And Clicks on Order History Link
     And The User Clicks on View Button
     Then The Order Information Page Should Be Visisble
