@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.driver.DriverClass;
 import com.pages.AccountPage;
 import com.pages.LoginPage;
+import com.pages.OrderHistoryPage;
 
 import io.cucumber.datatable.DataTable;
 
@@ -17,6 +18,7 @@ public class AccountPageAction {
 	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
 	AccountPage ap = new AccountPage(DriverClass.getDriver());
 	LoginPage lp = new LoginPage(DriverClass.getDriver());
+	OrderHistoryPage ohp=new OrderHistoryPage(DriverClass.getDriver());
 
 	public void setVemail(String email) {
 		ba.waitForVisibility(lp.LoginEmail);

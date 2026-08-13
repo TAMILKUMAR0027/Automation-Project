@@ -10,6 +10,10 @@ public class AccountPage extends BasePage {
         super(driver);
     }
 
+    // =========================================================
+    // REGISTER
+    // =========================================================
+
     @FindBy(linkText = "Register")
     public WebElement registerLink;
 
@@ -101,7 +105,7 @@ public class AccountPage extends BasePage {
     public WebElement RewardSuccess;
 
     // =========================================================
-    // MY VOUCHER
+    // MY VOUCHER / GIFT CERTIFICATE
     // =========================================================
 
     @FindBy(xpath = "//span[normalize-space()='My voucher']")
@@ -109,7 +113,15 @@ public class AccountPage extends BasePage {
 
     @FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
     public WebElement voucherSuccessMsg;
+
+    // Invalid recipient email error message
     @FindBy(xpath = "//div[@class='text-danger']")
     public WebElement invalidEmailMessage;
 
+    // =========================================================
+    // ORDER HISTORY
+    // =========================================================
+
+    @FindBy(xpath = "//a[text()=' Order History']/i")
+    public WebElement orderHistoryLink;
 }
