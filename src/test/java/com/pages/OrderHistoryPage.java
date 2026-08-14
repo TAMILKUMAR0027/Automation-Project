@@ -12,6 +12,7 @@ public class OrderHistoryPage extends BasePage {
 	@FindBy(xpath="//table[@class='table table-bordered table-hover']/tbody/tr[1]/td[1]")
 	public WebElement orderIdHistory;
 	
+
 	@FindBy(xpath="//tbody/tr[1]/td[7]/a[1]/i[1]")
 	public WebElement viewBtn;
 	
