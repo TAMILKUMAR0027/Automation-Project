@@ -48,6 +48,16 @@ public class OrderHistorySD {
 	    String actual=ohpa.getProductReturnSuccess();
 	    Assert.assertTrue(actual.contains("Product Returns"));
 	}
+	
+	@When("The User Clicks on reorder Button")
+	public void the_user_clicks_on_reorder_button() {
+	    ohpa.clickReorderBtn();
+	}
+	@Then("The User Should be displayed with an Success Message")
+	public void the_user_should_be_displayed_with_an_success_message() {
+		String actual=ohpa.reOrderSuccessMsg();
+	    Assert.assertTrue(actual.contains("Success: You have added"));
+	}
 
 
 }

@@ -12,7 +12,7 @@ public class OrderHistoryPage extends BasePage {
 	@FindBy(xpath="//table[@class='table table-bordered table-hover']/tbody/tr[1]/td[1]")
 	public WebElement orderIdHistory;
 	
-	@FindBy(xpath="(//tbody/tr/td)[11]/child::a")
+	@FindBy(xpath="//tbody/tr[1]/td[7]/a[1]/i[1]")
 	public WebElement viewBtn;
 	
 	@FindBy(xpath="(//td)[6]")
@@ -29,6 +29,12 @@ public class OrderHistoryPage extends BasePage {
 	
 	@FindBy(xpath="//h1[text()=' Product Returns']")
 	public WebElement returnSuccessMsg;
+	
+	@FindBy(xpath="//i[@class='fa fa-shopping-cart']")
+	public WebElement reorderBtn;
+	
+	@FindBy(css=".alert-success")
+	public WebElement reorderSuccessMsg;
 
 
 }

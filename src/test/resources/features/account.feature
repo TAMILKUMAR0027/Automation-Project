@@ -97,7 +97,7 @@ description:To verify the fuctionality of edit account information
     Then The Order Information Page Should Be Visisble
 
   @returnOrder
-  Scenario: To Check whether the product return fuctionality
+  Scenario: To Check whether the return fuctionality of an product on orderHistory
     When The user clicks on myAccount link in navBar
     And The user Enters valid email and valid passwords
     And Clicks on Login Button
@@ -107,4 +107,13 @@ description:To verify the fuctionality of edit account information
     And The User Check the Retorn Reason on Check Box
     And The User Clicks on Submit Button in return Details
     Then The User should see a Product Return Success Message
-    Then The Order Information Page Should Be Visisble
+    
+    @reOrder
+    Scenario:To Check the Reorder Functionality of an product on orderHistory
+     When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And Clicks on Order History Link
+    And The User Clicks on View Button
+    And The User Clicks on reorder Button
+    Then The User Should be displayed with an Success Message
