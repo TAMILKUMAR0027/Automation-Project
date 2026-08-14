@@ -16,7 +16,7 @@ public class OrderHistoryPage extends BasePage {
 	@FindBy(xpath="//tbody/tr[1]/td[7]/a[1]/i[1]")
 	public WebElement viewBtn;
 	
-	@FindBy(xpath="(//td)[6]")
+	@FindBy(xpath="//b[text()='Order ID:']/parent::td")
 	public WebElement orderIdInfo;
 	
 	@FindBy(xpath="//a[@class='btn btn-danger']")
