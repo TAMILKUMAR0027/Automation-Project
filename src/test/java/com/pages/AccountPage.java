@@ -82,7 +82,7 @@ public class AccountPage extends BasePage {
     // ADDRESS BOOK
     // =========================================================
 
-    @FindBy(xpath = "//a[normalize-space()='Address Book']")
+    @FindBy(xpath = "//a[normalize-space()='Address Book']/i")
     public WebElement AddressBook;
 
     @FindBy(xpath = "//a[@class='btn btn-primary']")

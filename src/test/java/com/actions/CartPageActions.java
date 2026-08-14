@@ -157,8 +157,7 @@ public class CartPageActions {
 	public void checkRadioButton() {
 		ba.waitForVisibility(cp.radioButton);
 		if (!cp.radioButton.isSelected()) {
-			ba.scrollIntoView(cp.radioButton);
-			ba.jsClick(cp.radioButton);
+			ba.click(cp.radioButton);
 		}
 	}
 

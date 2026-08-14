@@ -9,7 +9,7 @@ public class OrderHistoryPage extends BasePage {
 	public OrderHistoryPage(WebDriver driver) {
 		super(driver);
 	}
-	@FindBy(xpath="(//tbody/tr/td)[5]")
+	@FindBy(xpath="//table[@class='table table-bordered table-hover']/tbody/tr[1]/td[1]")
 	public WebElement orderIdHistory;
 	
 	@FindBy(xpath="(//tbody/tr/td)[11]/child::a")
