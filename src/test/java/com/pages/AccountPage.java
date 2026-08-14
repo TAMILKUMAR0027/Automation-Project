@@ -44,7 +44,7 @@ public class AccountPage extends BasePage {
     public WebElement accountCreatedMessage;
 
     // =========================================================
-    // INVALID EDIT ACCOUNT INFORMATION
+    // EDIT ACCOUNT - INVALID DETAILS
     // =========================================================
 
     @FindBy(xpath = "//input[@id='input-firstname']")
@@ -105,7 +105,7 @@ public class AccountPage extends BasePage {
     public WebElement RewardSuccess;
 
     // =========================================================
-    // MY VOUCHER
+    // MY VOUCHER / GIFT CERTIFICATE
     // =========================================================
 
     @FindBy(xpath = "//span[normalize-space()='My voucher']")
@@ -113,7 +113,7 @@ public class AccountPage extends BasePage {
 
     @FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
     public WebElement voucherSuccessMsg;
-    
+
     @FindBy(xpath = "//div[@class='text-danger']")
     public WebElement invalidEmailMessage;
 

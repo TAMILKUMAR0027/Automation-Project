@@ -321,6 +321,10 @@ public class AccountSD {
         apa.clickMyVoucher();
     }
 
+    // =========================================================
+    // VALID GIFT CERTIFICATE
+    // =========================================================
+
     @When("fill all the valid details for purchase gift certificate")
     public void fill_all_the_valid_details_for_purchase_gift_certificate() {
 
@@ -329,22 +333,33 @@ public class AccountSD {
         gca.enterToEmail(giftData.get("Email"));
 
         gca.selectGiftCertificateTheme();
+
+        log.info("Entered valid gift certificate details");
     }
 
     @When("I understand that gift certificates are non-refundable and click continue button")
     public void i_understand_that_gift_certificates_are_non_refundable_and_click_continue_button() {
 
         gca.checkAgreeCheckbox();
+
         gca.clickContinueButton();
+
+        log.info("Accepted gift certificate terms and clicked Continue");
     }
 
     @Then("you can see the message Thank you for purchasing a gift certificate!")
     public void you_can_see_the_message_thank_you_for_purchasing_a_gift_certificate() {
 
+        String actual = apa.getVoucherSuccessMsg();
+
+        String expected = giftData.get("Expected");
+
         Assert.assertTrue(
-                apa.getVoucherSuccessMsg()
-                        .contains(giftData.get("Expected"))
+                actual.contains(expected),
+                "Expected: " + expected + " but Actual: " + actual
         );
+
+        log.info("Gift certificate success message verified");
     }
 
     // =========================================================
@@ -355,6 +370,32 @@ public class AccountSD {
     public void fill_the_gift_certificate_details_with_invalid_recipient_email() {
 
         gca.enterToName(giftData.get("Name"));
+
+
+        // Invalid email intentionally entered
+        gca.enterToEmail("invalidemail");
+
+        gca.selectGiftCertificateTheme();
+
+        log.info("Entered invalid recipient email");
+    }
+
+  
+    @Then("The user should see an error message for invalid recipient email")
+    public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
+
+        String actual = apa.getInvalidEmailMessage();
+
+        String expected =
+                "E-Mail Address does not appear to be valid!";
+
+        Assert.assertTrue(
+                actual.contains(expected),
+                "Expected error message: " + expected
+                        + " but Actual: " + actual
+        );
+
+        log.info("Invalid recipient email error message verified");
 
         gca.enterToEmail(giftData.get("Name"));
 
