@@ -11,7 +11,7 @@ import com.pages.OrderHistoryPage;
 
 public class OrderHistoryPageAction extends BaseAction {
 	BaseAction ba = new BaseAction();
-	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(15));
+	WebDriverWait wait = new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(25));
 	AccountPage ap = new AccountPage(DriverClass.getDriver());
 	OrderHistoryPage ohp=new OrderHistoryPage(DriverClass.getDriver());
 	
@@ -22,7 +22,7 @@ public class OrderHistoryPageAction extends BaseAction {
 	
 	public void clickViewOrderHistoryBtn() {
 		ba.waitForVisibility(ohp.viewBtn);
-		ba.click(ohp.viewBtn);
+		ba.jsClick(ohp.viewBtn);
 	}
 	public String orderInformationPage() {
 		ba.waitForVisibility(ohp.orderIdInfo);
