@@ -25,7 +25,6 @@ Feature: Search Feature - LambdaTest Playground
     Examples:
       | keyword |
       | iMac    |
-      |         |
 
   @Smoke @NoResultSearch
   Scenario Outline: Validate no-results message for unmatched keywords
