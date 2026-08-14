@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.driver.DriverClass;
@@ -104,8 +105,13 @@ public class AccountPageAction {
 	}
 	public void clickAddressBook()
 	{
-		ba.waitForVisibility(ap.AddressBook);
-		ba.click(ap.AddressBook);
+		try {
+	        ba.waitForVisibility(ap.AddressBook);
+	        ba.click(ap.AddressBook);
+	    } catch (StaleElementReferenceException e) {
+	        ba.waitForVisibility(ap.AddressBook);
+	        ba.click(ap.AddressBook);
+	    }
 	}
 	public void clickNewAddress()
 	{
@@ -150,8 +156,13 @@ public class AccountPageAction {
 	}
 	
 	public void clickOrderHistory() {
-		ba.waitForVisibility(ap.orderHistoryLink);	
-		ba.click(ap.orderHistoryLink);
+		try {
+	        ba.waitForVisibility(ap.orderHistoryLink);
+	        ba.click(ap.orderHistoryLink);
+	    } catch (StaleElementReferenceException e) {
+	        ba.waitForVisibility(ap.orderHistoryLink);
+	        ba.click(ap.orderHistoryLink);
+	    }
 	}
 
 	public String getInvalidEmailMessage() {

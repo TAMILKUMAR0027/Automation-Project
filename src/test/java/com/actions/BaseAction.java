@@ -47,6 +47,7 @@ public class BaseAction {
 	// WAIT ACTIONS
 	
 	public void waitForVisibility(WebElement element) {
+
 		getWait().until(ExpectedConditions.visibilityOf(element));
 	}
 
