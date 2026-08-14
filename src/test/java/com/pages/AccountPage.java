@@ -113,6 +113,9 @@ public class AccountPage extends BasePage {
 
     @FindBy(xpath = "//p[contains(text(),'Thank you for purchasing a gift certificate! Once ')]")
     public WebElement voucherSuccessMsg;
+    
+    @FindBy(xpath = "//div[@class='text-danger']")
+    public WebElement invalidEmailMessage;
 
     // =========================================================
     // ORDER HISTORY
