@@ -153,6 +153,7 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.orderHistoryLink);	
 		ba.waitForClickable(ap.orderHistoryLink);
 		ba.click(ap.orderHistoryLink);
+	}
 
 	public String getInvalidEmailMessage() {
 		ba.waitForVisibility(ap.invalidEmailMessage);
