@@ -112,7 +112,7 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.newAddress);
 		ba.click(ap.newAddress);
 	}
-	
+
 	public void clickDeleteAddress() {
 		ba.waitForVisibility(ap.DeleteAddressInBookBtn);
 		ba.click(ap.DeleteAddressInBookBtn);
@@ -153,7 +153,11 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.orderHistoryLink);	
 		ba.waitForClickable(ap.orderHistoryLink);
 		ba.click(ap.orderHistoryLink);
-		
+
+	public String getInvalidEmailMessage() {
+		ba.waitForVisibility(ap.invalidEmailMessage);
+		return ba.getText(ap.invalidEmailMessage);
+
 	}
 
 }

@@ -1,5 +1,5 @@
 @AccountFeature @Rishwanth
-Feature: Rishwanth_Adhishwar_12_07_2026_AccountFeature updated on 15/06/2026
+Feature: Rishwanth_Adhishwar_23_05_2026_AccountFeature updated on 15/06/2026
 description:To verify the fuctionality of edit account information
 
   Background:
@@ -75,16 +75,16 @@ description:To verify the fuctionality of edit account information
     And Clicks on Login Button
     And The User Clicks on your Reward points in Account Page
     Then The User Should Redirected to Reward Poitns Page
-# @Tamil
-# Scenario: User purchase a gift Certficate with valid details
-# When The user clicks on myAccount link in navBar
-# And The user Enters valid email and valid passwords
-# And Clicks on Login Button
-# When The user move to myAccount link in navBar
-# And click My voucher navbar
-# And fill all the valid details for purchase gift certificate
-# And I understand that gift certificates are non-refundable and click continue button
-# Then you can see the message Thank you for purchasing a gift certificate!
+
+ @Tamil
+ Scenario: User purchase a gift Certficate with valid details
+  When The user clicks on myAccount link in navBar#   And The user Enters valid email and valid passwords
+   And Clicks on Login Button
+   When The user move to myAccount link in navBar
+   And click My voucher navbar
+  And fill all the valid details for purchase gift certificate
+ And I understand that gift certificates are non-refundable and click continue button
+ Then you can see the message Thank you for purchasing a gift certificate!
 
   @ViewOrderHistory
   Scenario: To Check Whether the User Can View The Specific Order History
@@ -106,3 +106,4 @@ description:To verify the fuctionality of edit account information
     And The User Check the Retorn Reason on Check Box
     And The User Clicks on Submit Button in return Details
     Then The User should see a Product Return Success Message
+    Then The Order Information Page Should Be Visisble

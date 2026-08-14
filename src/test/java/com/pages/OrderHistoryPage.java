@@ -30,4 +30,5 @@ public class OrderHistoryPage extends BasePage {
 	@FindBy(xpath="//h1[text()=' Product Returns']")
 	public WebElement returnSuccessMsg;
 
+
 }
