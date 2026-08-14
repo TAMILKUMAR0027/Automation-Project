@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 
 		"rerun:target/failedrerun.txt"
 },
-		tags = "@E2E",
+		tags = "@Prasanna",
 		monochrome = true)
 
 
