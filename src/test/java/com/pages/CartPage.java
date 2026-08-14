@@ -50,7 +50,7 @@ public class CartPage extends BasePage {
 	@FindBy(xpath = "//button[@id='button-quote']")
 	public WebElement getQuotesBUtton;
 
-	@FindBy(xpath = "//input[@name='shipping_method']")
+	@FindBy(xpath = "//div[@class='form-check']/child::label/child::input")
 	public WebElement radioButton;
 
 	@FindBy(xpath = "//button[@id='button-shipping']")

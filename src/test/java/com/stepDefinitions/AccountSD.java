@@ -211,6 +211,12 @@ public class AccountSD {
         );
     }
 
+    @When("click Account continue Button")
+    public void click_account_continue_button() {
+
+        adpa.clickAddressCtnBtn();
+    }
+
     @When("The User Clicks on address Book Link")
     public void the_user_clicks_on_address_book_link() {
 
@@ -365,6 +371,7 @@ public class AccountSD {
 
         gca.enterToName(giftData.get("Name"));
 
+
         // Invalid email intentionally entered
         gca.enterToEmail("invalidemail");
 
@@ -388,5 +395,28 @@ public class AccountSD {
         );
 
         log.info("Invalid recipient email error message verified");
+
+        gca.enterToEmail(giftData.get("Name"));
+
+        gca.selectGiftCertificateTheme();
+    }
+
+    @Then("The user should see an error message for invalid recipient email")
+    public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
+
+        Assert.assertEquals(
+                "E-Mail Address does not appear to be valid!",
+                apa.getInvalidEmailMessage()
+        );
+    }
+
+    // =========================================================
+    // ORDER HISTORY
+    // =========================================================
+
+    @When("Clicks on Order History Link")
+    public void clicks_on_order_history_link() {
+
+        apa.clickOrderHistory();
     }
 }
