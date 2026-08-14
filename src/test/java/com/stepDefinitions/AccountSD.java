@@ -211,6 +211,12 @@ public class AccountSD {
         );
     }
 
+    @When("click Account continue Button")
+    public void click_account_continue_button() {
+
+        adpa.clickAddressCtnBtn();
+    }
+
     @When("The User Clicks on address Book Link")
     public void the_user_clicks_on_address_book_link() {
 
@@ -328,10 +334,6 @@ public class AccountSD {
     @When("I understand that gift certificates are non-refundable and click continue button")
     public void i_understand_that_gift_certificates_are_non_refundable_and_click_continue_button() {
 
-        /*
-         * Call this only once.
-         * Your old code was calling it twice.
-         */
         gca.checkAgreeCheckbox();
         gca.clickContinueButton();
     }
@@ -345,23 +347,36 @@ public class AccountSD {
         );
     }
 
-@When("fill the gift certificate details with invalid recipient email")
-public void fill_the_gift_certificate_details_with_invalid_recipient_email() {
-    // Write code here that turns the phrase above into concrete actions
-	gca.enterToName(giftData.get("Name"));
+    // =========================================================
+    // INVALID GIFT CERTIFICATE EMAIL
+    // =========================================================
 
-    gca.enterToEmail(giftData.get("Name"));
+    @When("fill the gift certificate details with invalid recipient email")
+    public void fill_the_gift_certificate_details_with_invalid_recipient_email() {
 
-    gca.selectGiftCertificateTheme();
-}
+        gca.enterToName(giftData.get("Name"));
 
-@Then("The user should see an error message for invalid recipient email")
-public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
-    // Write code here that turns the phrase above into concrete actions
-    Assert.assertEquals("E-Mail Address does not appear to be valid!", apa.getInvalidEmailMessage());
-}
+        gca.enterToEmail(giftData.get("Name"));
 
+        gca.selectGiftCertificateTheme();
+    }
 
+    @Then("The user should see an error message for invalid recipient email")
+    public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
 
+        Assert.assertEquals(
+                "E-Mail Address does not appear to be valid!",
+                apa.getInvalidEmailMessage()
+        );
+    }
 
+    // =========================================================
+    // ORDER HISTORY
+    // =========================================================
+
+    @When("Clicks on Order History Link")
+    public void clicks_on_order_history_link() {
+
+        apa.clickOrderHistory();
+    }
 }
