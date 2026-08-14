@@ -29,5 +29,24 @@ public class OrderHistorySD {
 		String actual=ohpa.orderInformationPage();
 		Assert.assertTrue(actual.contains(orderId));
 	}
+	
+	
+	@When("The User Clicks on Return Button")
+	public void the_user_clicks_on_return_button() {
+	   ohpa.clickReturn();
+	}
+	@When("The User Check the Retorn Reason on Check Box")
+	public void the_user_check_the_retorn_reason_on_check_box() {
+	   ohpa.clickReturnReason();
+	}
+	@When("The User Clicks on Submit Button in return Details")
+	public void the_user_clicks_on_submit_button_in_return_details() {
+	   ohpa.clickReturnDetailSubmit();
+	}
+	@Then("The User should see a Product Return Success Message")
+	public void the_user_should_see_a_product_return_success_message() {
+	    String actual=ohpa.getProductReturnSuccess();
+	    Assert.assertTrue(actual.contains("Product Returns"));
+	}
 
 }

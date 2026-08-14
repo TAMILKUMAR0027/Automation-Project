@@ -28,5 +28,29 @@ public class OrderHistoryPageAction extends BaseAction {
 		ba.waitForVisibility(ohp.orderIdInfo);
 		return ba.getText(ohp.orderIdInfo);
 	}
+	
+	public void clickReturn() {
+		ba.waitForVisibility(ohp.returnBtn);
+		ba.scrollIntoView(ohp.returnBtn);
+		ba.jsClick(ohp.returnBtn);
+	}
+	
+	public void clickReturnReason() {
+		ba.waitForVisibility(ohp.returnReason);
+		ba.click(ohp.returnReason);
+	}
+	
+	public void clickReturnDetailSubmit() {
+		ba.waitForVisibility(ohp.returnDeatilsSubmitBtn);
+		ba.click(ohp.returnDeatilsSubmitBtn);
+	}
+	
+	public String getProductReturnSuccess() {
+		ba.waitForVisibility(ohp.returnSuccessMsg);
+		return ba.getText(ohp.returnSuccessMsg);
+	}
+	
+	
+	
 
 }

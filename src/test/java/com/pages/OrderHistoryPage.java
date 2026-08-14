@@ -17,5 +17,17 @@ public class OrderHistoryPage extends BasePage {
 	
 	@FindBy(xpath="(//td)[6]")
 	public WebElement orderIdInfo;
+	
+	@FindBy(xpath="//a[@class='btn btn-danger']")
+	public WebElement returnBtn;
+	
+	@FindBy(xpath="//label[text()=' Order Error']/child::input")
+	public WebElement returnReason;
+	
+	@FindBy(xpath="//input[@type='submit']")
+	public WebElement returnDeatilsSubmitBtn;
+	
+	@FindBy(xpath="//h1[text()=' Product Returns']")
+	public WebElement returnSuccessMsg;
 
 }
