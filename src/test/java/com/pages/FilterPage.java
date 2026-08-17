@@ -33,6 +33,8 @@ public class FilterPage extends BasePage {
     public WebElement canonProduct;
     @FindBy(xpath = "//img[@title='HTC Touch HD']")
     public WebElement HTCTouchHDProduct;
+    @FindBy(xpath = "//a[@id='mz-product-grid-image-44-212408']//div[@class='carousel-item active']//img[@title='MacBook Air']")
+    public WebElement mac;
     @FindBy(xpath = "//a[contains(@id,'mz-product-grid-image') and @title='HP LP3065']")
     public WebElement hpProduct;
     @FindBy(xpath = "//*[@id='mz-filter-panel-0-0']/div/div[1]/span[2]")
@@ -54,7 +56,7 @@ public class FilterPage extends BasePage {
     }
     @FindBy(xpath = "//select[@id='input-sort-212403']")
     public WebElement selectOption;
-    @FindBy(xpath = "//h4[@class='title'])")
+    @FindBy(xpath = "//h4[@class='title']")
     public List<WebElement> productNames;
     public List<String> getSortedNameProduct() {
         List<String> names = new ArrayList<>();

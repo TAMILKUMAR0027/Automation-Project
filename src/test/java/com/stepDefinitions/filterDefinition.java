@@ -188,7 +188,7 @@ public class filterDefinition {
         DriverClass.getDriver().navigate().refresh();
 
         fpa.clickOutofStockOption();
-        fpa.clickHTCTouchHD();
+        fpa.clickMac();
     }
 
     @Then("Out-of-stock products should display availability status in product description")

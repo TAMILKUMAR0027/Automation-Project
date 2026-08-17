@@ -215,7 +215,9 @@ public class FilterPageAction extends BaseAction {
 					e);
 		}
 	}
-
+	public void clickMac() {
+		click(fp.mac);
+	}
 	public void clickHTCTouchHD() {
 
 		try {
