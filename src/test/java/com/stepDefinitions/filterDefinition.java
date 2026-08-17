@@ -252,4 +252,19 @@ public class filterDefinition {
                 throw new IllegalArgumentException("Invalid sort option: " + option);
         }
     }
+    @When("user enters {string} in the search field on the filter page")
+    public void user_enters_in_the_search_field_on_the_filter_page(String string) {
+        // Write code here that turns the phrase above into concrete actions
+       fpa.setSearchKeyword(string);
+    }
+
+    @Then("only products related to {string} should be displayed")
+    public void only_products_related_to_should_be_displayed(String keyword) {
+        boolean result = fpa.verifySearchResults(keyword);
+        
+        Assert.assertTrue(
+                !result,
+                "Search results are not related to the keyword: " + keyword
+        );
+    }
 }

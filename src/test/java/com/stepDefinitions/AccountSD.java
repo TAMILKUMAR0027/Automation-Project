@@ -40,6 +40,7 @@ public class AccountSD {
 
     @Given("The user is in HomePage of Ecommerce Lambda TestWebsite")
     public void the_user_is_in_home_page_of_ecommerce_lambda_test_website() {
+
         lpa.launchWebUrl();
     }
 
@@ -209,6 +210,12 @@ public class AccountSD {
                 adpa.getSuccessMessage()
                         .contains("Your address has been successfully added")
         );
+    }
+
+    @When("click Account continue Button")
+    public void click_account_continue_button() {
+
+        adpa.clickAddressCtnBtn();
     }
 
     @When("The User Clicks on address Book Link")
@@ -388,5 +395,17 @@ public class AccountSD {
         );
 
         log.info("Invalid recipient email error message verified");
+    }
+
+    // =========================================================
+    // ORDER HISTORY
+    // =========================================================
+
+    @When("Clicks on Order History Link")
+    public void clicks_on_order_history_link() {
+
+        apa.clickOrderHistory();
+
+        log.info("Clicked Order History link");
     }
 }

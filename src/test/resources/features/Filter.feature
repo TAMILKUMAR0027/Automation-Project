@@ -1,5 +1,5 @@
 @Tamil @smoke
-Feature: TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026
+Feature: TamilKumar_13_05_2026_Product Filter Functionality updated _17_08_2026
 
   Background:
     Given User is on Home page
@@ -44,7 +44,16 @@ Feature: TamilKumar_13_05_2026_Product Filter Functionality updated _19_05_2026
     Then Products should be displayed based on "<SortOption>"
 
     Examples:
-      | SortOption         |
-      | Name (A - Z)       |
-      | Name (Z - A)       |
-      
+      | SortOption   |
+      | Name (A - Z) |
+      | Name (Z - A) |
+
+  @SearchFilter
+  Scenario Outline: Verify user can search for a valid product in the filter page
+    When user enters "<keyword>" in the search field on the filter page
+    Then only products related to "<keyword>" should be displayed
+
+    Examples:
+      | keyword       |
+      | HTC Touch HD  |
+      | Palm Treo Pro |

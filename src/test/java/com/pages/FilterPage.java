@@ -3,9 +3,11 @@ package com.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class FilterPage extends BasePage {
 
@@ -52,10 +54,9 @@ public class FilterPage extends BasePage {
     }
     @FindBy(xpath = "//select[@id='input-sort-212403']")
     public WebElement selectOption;
-    @FindBy(xpath = "//h4[@class='title']")
+    @FindBy(xpath = "//h4[@class='title'])")
     public List<WebElement> productNames;
     public List<String> getSortedNameProduct() {
-
         List<String> names = new ArrayList<>();
 
         for (WebElement product : productNames) {
@@ -64,4 +65,7 @@ public class FilterPage extends BasePage {
 
         return names;
     }
+    @FindBy(xpath = "//div[@id='mz-filter-panel-0-3']//input[@placeholder='Search']")
+    public WebElement searchFilter;
+    
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -177,9 +178,9 @@ public class FilterPageAction extends BaseAction {
 
 			log.info("Clicking Canon product");
 
-			waitForClickable(fp.canonProduct);
+			waitForClickable(fp.HTCTouchHDProduct);
 
-			click(fp.canonProduct);
+			click(fp.HTCTouchHDProduct);
 
 			log.info("Canon product clicked successfully");
 
@@ -410,5 +411,26 @@ public class FilterPageAction extends BaseAction {
 	    Collections.reverse(sortedNames);
 
 	    return actualNames.equals(sortedNames);
+	}
+	public void setSearchKeyword(String keyword) {
+
+	    sendKeys(fp.searchFilter, keyword);
+
+	    Actions act = new Actions(getDriver());
+
+	    act.sendKeys(Keys.ENTER).perform();
+	}
+	public boolean verifySearchResults(String keyword) {
+		
+	    List<String> actualNames = fp.getProductNames();
+
+	    for (String productName : actualNames) {
+
+	        if (!productName.toLowerCase().contains(keyword.toLowerCase())) {
+	            return false;
+	        }
+	    }
+
+	    return true;
 	}
 }

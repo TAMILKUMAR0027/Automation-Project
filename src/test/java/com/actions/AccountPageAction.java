@@ -148,9 +148,17 @@ public class AccountPageAction {
 		ba.waitForVisibility(ap.voucherSuccessMsg);
 		return ba.getText(ap.voucherSuccessMsg);
 	}
+	
+	public void clickOrderHistory() {
+		ba.waitForVisibility(ap.orderHistoryLink);	
+		ba.waitForClickable(ap.orderHistoryLink);
+		ba.click(ap.orderHistoryLink);
+	}
+
 	public String getInvalidEmailMessage() {
 		ba.waitForVisibility(ap.invalidEmailMessage);
 		return ba.getText(ap.invalidEmailMessage);
+
 	}
 
 }
