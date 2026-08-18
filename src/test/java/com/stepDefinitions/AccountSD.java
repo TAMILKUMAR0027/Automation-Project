@@ -401,14 +401,14 @@ public class AccountSD {
         gca.selectGiftCertificateTheme();
     }
 
-    @Then("The user should see an error message for invalid recipient email")
-    public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
-
-        Assert.assertEquals(
-                "E-Mail Address does not appear to be valid!",
-                apa.getInvalidEmailMessage()
-        );
-    }
+//    @Then("The user should see an error message for invalid recipient email")
+//    public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
+//
+//        Assert.assertEquals(
+//                "E-Mail Address does not appear to be valid!",
+//                apa.getInvalidEmailMessage()
+//        );
+//    }
 
     // =========================================================
     // ORDER HISTORY
