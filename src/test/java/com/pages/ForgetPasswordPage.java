@@ -21,6 +21,6 @@ public class ForgetPasswordPage extends BasePage {
 	@FindBy(xpath="//div[@class='row']/preceding-sibling::div")
 	public WebElement message;
 
-	@FindBy(xpath="//div[@id='account-forgotten']/child::div[1]")
+	@FindBy(xpath="//div[@class='alert.alert-danger.alert-dismissible']")
 	public WebElement warningmsg;
 }
