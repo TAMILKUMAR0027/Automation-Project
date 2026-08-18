@@ -47,8 +47,6 @@ description:To verify the fuctionality of edit account information
     And enter the valid details
     And click continue Button
     Then user can the see the successfully address added message
-    And click Account continue Button
-    Then user can the see the successfully address added message
 
   @DeleteAddressInBook
   Scenario: As a login in user i need to delete existing address in Address book
