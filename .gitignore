@@ -1,24 +1,83 @@
+# =============================================
+# IDE & Editor Files
+# =============================================
 .metadata
-.idea
+.idea/
+*.iml
+*.ipr
+*.iws
 .project
 .classpath
-com.ecom.iml
-.settings
-.gitignore
-.git
-bin/
-logs/
+.settings/
 .factorypath
-src/test/java/com/runner/TestNgRunner.java
-target/
-test-output/
-.~lock.SearchProduct.xlsx#
-<<<<<<< HEAD
-<<<<<<< HEAD
+*.log
 
-=======
+# =============================================
+# Build & Compilation
+# =============================================
+target/
+bin/
+out/
+*.class
+
+# =============================================
+# Maven
+# =============================================
+.mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# =============================================
+# Test & Runtime Artifacts
+# =============================================
+test-output/
 screenshots/
->>>>>>> af71dcd70f5fe79547a807e7ae41e4395d0625eb
+allure-results/
+allure-report/
+ExtentReports/
+logs/
+*.csv.lock
+.~lock.*.xlsx#
+
+# =============================================
+# Git Merge Conflicts
+# =============================================
+<<<<<<< HEAD
 =======
-screenshots/
->>>>>>> main
+>>>>>>> 
+
+# =============================================
+# OS & Temporary Files
+# =============================================
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# =============================================
+# Environment & Secrets
+# =============================================
+*.env
+config-local.properties
+credentials.properties
+
+# =============================================
+# Miscellaneous
+# =============================================
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# =============================================
+# Specific to this Project
+# =============================================
+src/test/resources/testdata/*.lock

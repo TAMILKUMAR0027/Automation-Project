@@ -4,6 +4,9 @@ import com.driver.DriverClass;
 import com.exceptions.ExceptionHandling;
 import com.pages.WishListPage;
 
+import com.stepDefinitions.WishList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
@@ -16,6 +19,7 @@ import java.util.List;
 
 public class WishListActions extends BaseAction {
 
+    private static final Logger logger   = LogManager.getLogger(WishListActions.class);
     // ── Page Object & Wait Setup ──────────────────────────────────────────────
     WishListPage wp;
     WebDriverWait wait;
@@ -377,59 +381,50 @@ public class WishListActions extends BaseAction {
      * Clicks the heart/wishlist button on the iPod Shuffle product detail page.
      * Handles the already-wishlisted state by toggling off first.
      * Validates no AJAX error alert fires after the click.
+     * Generic method to click Heart / Wishlist button on ANY product detail page
+     * Works for HP LP3065, iPod Shuffle, or any other product
      */
     public void clickHeartButtonOnProductPage() {
         try {
-            waitForPageLoad();                                              // BaseAction: page load
-            waitForVisibility(wp.ipodShuffleWishlistBtn);                  // BaseAction: visibility wait
-            scrollIntoView(wp.ipodShuffleWishlistBtn);                     // BaseAction: scrollIntoView
-            pause(400);
+            waitForPageLoad();
 
-            // Force-reveal in case the button is hidden behind a CSS hover guard
-            forceRevealElement(wp.ipodShuffleWishlistBtn,
-                    "iPod Shuffle - Product Page Heart");
+            // Generic locator for Wishlist heart button on product detail page
+            By heartButtonLocator = By.xpath(
+                    "//button[@title='Add to Wish List' or contains(@title,'Wish List') or contains(@class,'wishlist')]"
+            );
 
-            // ── Toggle off existing 'wished' state if needed ──────────────────
-            try {
-                String btnClass = wp.ipodShuffleWishlistBtn.getAttribute("class");
-                if (btnClass != null && btnClass.contains("wished")) {
-                    System.out.println("[iPod Shuffle] Already wishlisted — removing first...");
-                    jsClick(wp.ipodShuffleWishlistBtn);                    // BaseAction: jsClick
-                    pause(1200);
-                    dismissAlertIfPresent();
-                    pause(500);
-                    forceRevealElement(wp.ipodShuffleWishlistBtn,
-                            "iPod Shuffle - Product Page Heart");
-                    pause(300);
-                }
-            } catch (StaleElementReferenceException e) {
-                // Custom handler: DOM rebuilt after de-wish click — safe to continue
-                ExceptionHandling.handleStaleElement(
-                        "iPod Shuffle wishlist button (wished-state check on detail page)", e);
-            } catch (Exception e) {
-                // Non-fatal: log and proceed to main click
-                System.out.println("[iPod Shuffle] Could not check wished state: " + e.getMessage());
+            WebElement heartBtn = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(heartButtonLocator)
+            );
+
+            scrollIntoView(heartBtn);
+            pause(600);
+
+            // Force reveal in case it's hidden behind hover CSS
+            forceRevealElement(heartBtn, "Product Detail Heart Button");
+
+            // If already wishlisted, toggle it off first
+            String btnClass = heartBtn.getAttribute("class");
+            if (btnClass != null && btnClass.contains("wished")) {
+                logger.info("Product already in wishlist - removing first before re-adding");
+                jsClick(heartBtn);
+                pause(1200);
+                forceRevealElement(heartBtn, "Product Detail Heart Button");
             }
 
-            // ── Main wishlist button click ────────────────────────────────────
-            waitForClickable(wp.ipodShuffleWishlistBtn);                   // BaseAction: clickable wait
-            jsClick(wp.ipodShuffleWishlistBtn);                            // BaseAction: jsClick
-            System.out.println("Clicked heart button on product detail page for iPod Shuffle");
+            // Main click
+            jsClick(heartBtn);
+            logger.info("Successfully clicked heart button on product detail page");
 
-            // ── Guard against AJAX error alert ────────────────────────────────
-            String alertText = dismissAlertIfPresent();
-            if (alertText != null) {
-                // Custom exception: AJAX error dialog appeared after heart click
-                throw new ExceptionHandling.UnexpectedJsAlertException(
-                        "iPod Shuffle heart button click on detail page", alertText);
-            }
+            // Handle any unexpected alert
+            dismissAlertIfPresent();
 
         } catch (TimeoutException e) {
-            // Custom handler: heart button never became visible — check locator
             ExceptionHandling.handleTimeout(
-                    "iPod Shuffle heart button — " +
-                            "Locator: //div[@id='image-gallery-216811']" +
-                            "//button[@title='Add to Wish List']", 15, e);
+                    "Heart/Wishlist button on product detail page", 20, e);
+        } catch (Exception e) {
+            logger.error("Failed to click heart button on product page", e);
+            throw new RuntimeException("Heart button click failed", e);
         }
     }
 

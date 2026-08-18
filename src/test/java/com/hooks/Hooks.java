@@ -107,84 +107,72 @@ public class Hooks {
 
     private static final Logger log = LogManager.getLogger(Hooks.class);
 
-    // Tracks whether the current run is an E2E suite
-    // so the browser stays open across all E2E scenarios
-    private static boolean isE2ESession = false;
+    // This will track if browser was opened for E2E (shared session)
+    private static boolean e2eBrowserOpened = false;
 
     @Before
     public void setUp(Scenario scenario) {
-
         boolean isE2E = scenario.getSourceTagNames().contains("@E2E");
 
         if (isE2E) {
-
-            // First E2E scenario — open the browser once
-            if (DriverClass.getDriver() == null) {
-
+            // Open browser only once for all E2E scenarios
+            if (!e2eBrowserOpened) {
                 DriverClass.initDriver();
-                isE2ESession = true;
-                log.info("E2E session started — browser opened once for all E2E scenarios");
-
+                e2eBrowserOpened = true;
+                log.info(" E2E Browser Session Started (Shared across all E2E scenarios)");
             } else {
-
-                log.info("E2E reusing existing browser session for : {}", scenario.getName());
+                log.info(" Reusing existing E2E browser session for: {}", scenario.getName());
             }
-
-        } else {
-
-            // Non-E2E scenario — open a fresh browser as normal
+        }
+        else {
+            // Normal smoke/regression tests - fresh browser per scenario
             DriverClass.initDriver();
-            isE2ESession = false;
-            log.info("Browser launched successfully for : {}", scenario.getName());
+            log.info(" Browser launched for normal scenario: {}", scenario.getName());
         }
     }
 
     @After
     public void tearDown(Scenario scenario) {
+        boolean isE2E = scenario.getSourceTagNames().contains("@E2E");
 
         try {
-
             if (DriverClass.getDriver() == null) {
-                log.error("Driver is NULL — skipping screenshot.");
+                log.warn("Driver is null, skipping teardown for: {}", scenario.getName());
                 return;
             }
 
+            // Take screenshot on failure
             if (scenario.isFailed()) {
                 captureScreenshot(scenario);
-                log.error("Scenario Failed : {}", scenario.getName());
+                log.error(" Scenario Failed: {}", scenario.getName());
             } else {
-                log.info("Scenario Passed : {}", scenario.getName());
+                log.info(" Scenario Passed: {}", scenario.getName());
             }
 
-        } catch (IOException e) {
-            log.error("Screenshot capture failed : {}", e.getMessage());
+        } catch (Exception e) {
+            log.error("Error during teardown: {}", e.getMessage());
         }
 
-        boolean isE2E = scenario.getSourceTagNames().contains("@E2E");
-
+        // Close browser logic
         if (isE2E) {
+            boolean isLastE2EScenario = scenario.getSourceTagNames().contains("@E2EEnd");
 
-            // Check if this is the LAST E2E scenario by tag @E2EEnd
-            boolean isLastE2E = scenario.getSourceTagNames().contains("@E2EEnd");
-
-            if (isLastE2E) {
+            if (isLastE2EScenario) {
                 DriverClass.quitDriver();
-                isE2ESession = false;
-                log.info("E2E session ended — browser closed after final E2E scenario");
+                e2eBrowserOpened = false;
+                log.info(" E2E Session Completed & Browser Closed");
             } else {
-                log.info("E2E keeping browser alive — scenario complete : {}", scenario.getName());
+                log.info(" Keeping browser open for next E2E scenario");
             }
-
-        } else {
-
-            // Non-E2E — always close after each scenario
+        }
+        else {
+            // Non-E2E scenarios always close browser
             DriverClass.quitDriver();
-            log.info("Browser closed successfully");
+            log.info("Browser closed after normal scenario");
         }
     }
 
-    private void captureScreenshot(Scenario scenario) throws IOException {
-
+    private void captureScreenshot(Scenario scenario) {
         try {
             File screenshotFolder = new File("screenshots");
             if (!screenshotFolder.exists()) {
@@ -194,18 +182,20 @@ public class Hooks {
             File screenshot = ((TakesScreenshot) DriverClass.getDriver())
                     .getScreenshotAs(OutputType.FILE);
 
-            File destinationFile = new File("screenshots/"
-                    + scenario.getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png");
+            String fileName = scenario.getName().replaceAll("[^a-zA-Z0-9.-]", "_") + ".png";
+            File destinationFile = new File("screenshots/" + fileName);
 
             FileUtils.copyFile(screenshot, destinationFile);
 
+            // Attach to Cucumber report
             byte[] screenshotBytes = ((TakesScreenshot) DriverClass.getDriver())
                     .getScreenshotAs(OutputType.BYTES);
-
             scenario.attach(screenshotBytes, "image/png", "Failure Screenshot");
 
-        } catch (Exception e) {
-            log.error("Could not take screenshot : {}", e.getMessage());
+            log.info(" Screenshot saved: {}", fileName);
+
+        } catch (IOException e) {
+            log.error("Failed to capture screenshot: {}", e.getMessage());
         }
     }
 }

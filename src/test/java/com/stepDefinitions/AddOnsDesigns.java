@@ -1,9 +1,13 @@
 package com.stepDefinitions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
+import com.actions.AddOnPageAction;
 import com.actions.AddOnsDesignPageAction;
 
 import io.cucumber.java.en.Given;
@@ -14,6 +18,7 @@ import io.cucumber.java.en.When;
 public class AddOnsDesigns {
 	 private static final Logger log = LogManager.getLogger(Forgetpassword.class);
 	AddOnsDesignPageAction adpa=new AddOnsDesignPageAction();
+	AddOnPageAction aopa=new AddOnPageAction();
 	@Given("the user clicks on AddOns and selects designs")
 	public void the_user_clicks_on_add_ons_and_selects_designs() {
 	    adpa.clickAddOns();
@@ -104,6 +109,34 @@ public class AddOnsDesigns {
 	    else 
 	    	log.error("popup button click failed");
 	}
+	@When("the user views the Dark Heading table")
+	public void the_user_views_the_dark_heading_table() {
+	    // Write code here that turns the phrase above into concrete actions
+	    aopa.moveDarkHeading();
+	}
+
+	@Then("the table should display all expected column headers")
+	public void the_table_should_display_all_expected_column_headers() {
+
+	    List<String> headers = aopa.getData();
+
+	    Assert.assertNotNull(headers, "Headers list is null");
+	    Assert.assertFalse(headers.isEmpty(), "No headers found");
+
+	    log.info("Headers displayed : {}", headers);
+	}
+
+	@Then("the table should display one or more records")
+	public void the_table_should_display_one_or_more_records() {
+
+	    List<String> records = aopa.getValues();
+
+	    Assert.assertNotNull(records, "Records list is null");
+	    Assert.assertFalse(records.isEmpty(), "No records found in the table");
+
+	    log.info("Records displayed : {}", records);
+	}
+
 
 
 
