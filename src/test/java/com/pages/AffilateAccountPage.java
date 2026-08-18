@@ -22,7 +22,7 @@ public class AffilateAccountPage extends BasePage {
 	public WebElement chequeName;
 	@FindBy(xpath = "//input[@name='agree']")
 	public WebElement agreeCheckBox;
-	@FindBy(xpath = "//input[@value='Continue']")
+	@FindBy(xpath = "//input[@type='submit']")
 	public WebElement continueButton;
 	@FindBy(xpath = "//i[@class='fas fa-2x mb-1 fa-location-arrow']")
 	public WebElement CustomAffilateLink;
