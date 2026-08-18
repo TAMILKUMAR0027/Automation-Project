@@ -9,6 +9,8 @@ public class ConfigReader {
     private static Properties affiliateProp;
     private static Properties registerInvalidProp;
     private static Properties forgetPasswordProp;
+    private static Properties listProp;
+    private static Properties editAddress;
 
     // =========================
     // MAIN CONFIG FILE
@@ -73,7 +75,7 @@ public class ConfigReader {
     }
 
     // =========================
-    // INVALID REGISTER DATA
+    // INVALID REGISTER DATA / LOGIN DATA
     // =========================
     public static Properties getRegisterDataProperties() {
 
@@ -132,5 +134,67 @@ public class ConfigReader {
         }
 
         return forgetPasswordProp;
+    }
+
+    // =========================
+    // LIST TEST DATA
+    // =========================
+    public static Properties getListProperties() {
+
+        if (listProp == null) {
+
+            try {
+
+                listProp = new Properties();
+
+                String path =
+                        System.getProperty("user.dir")
+                        + "/src/test/resources/list.properties";
+
+                FileInputStream fis =
+                        new FileInputStream(path);
+
+                listProp.load(fis);
+
+            } catch (Exception e) {
+
+                throw new RuntimeException(
+                        "Failed to load list.properties file", e
+                );
+            }
+        }
+
+        return listProp;
+    }
+
+    // =========================
+    // EDIT ADDRESS TEST DATA
+    // =========================
+    public static Properties getEditAddressProperties() {
+
+        if (editAddress == null) {
+
+            try {
+
+                editAddress = new Properties();
+
+                String path =
+                        System.getProperty("user.dir")
+                        + "/src/test/resources/testdata/editAddress.properties";
+
+                FileInputStream fis =
+                        new FileInputStream(path);
+
+                editAddress.load(fis);
+
+            } catch (Exception e) {
+
+                throw new RuntimeException(
+                        "Failed to load editAddress.properties file", e
+                );
+            }
+        }
+
+        return editAddress;
     }
 }

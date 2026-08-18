@@ -5,7 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import com.driver.DriverClass;
 import com.pages.BlogPage;
 
-public class BlogActions {
+public class BlogActions extends BaseAction {
 
     BlogPage blogPage;
 
@@ -64,9 +64,23 @@ public class BlogActions {
         blogPage.getAuthorEmail().sendKeys("samiha@gmail.com");
         blogPage.getCommentBox().sendKeys("Excellent article");
     }
-
+    public void clickLatestArticle() {
+    	click(blogPage.latestArticleText);
+    }
+   
+    public void setName() {
+    	sendKeys(blogPage.name, "Samiha");
+    }
+    public void setEmail() {
+    	sendKeys(blogPage.email, "samiha@gmail.com");
+    }
+    public void setMessage() {
+    	sendKeys(blogPage.comment, "The article was really good and excellent");
+    }
     public void clickPostComment() {
-
-        blogPage.getPostCommentButton().click();
+    	click(blogPage.submitComment);
+    }
+    public String getSubmissionMessage() {
+    	return getText(blogPage.submissionMessage);
     }
 }

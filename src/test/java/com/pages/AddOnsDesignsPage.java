@@ -55,5 +55,13 @@ public class AddOnsDesignsPage extends BasePage {
 	public List<WebElement> Headings;
 	@FindBy(xpath = "//table[.//thead[@class='thead-dark']]//tbody/child::tr/td")
 	public List<WebElement> datas;
+	@FindBy(xpath = "//input[@placeholder='Join for best deals']")
+	public WebElement email;
+	@FindBy(xpath = "//button[@name='subscribe']")
+	public WebElement subcribe;
+	@FindBy(xpath = "//h5[@id='mz-accordion-label-214969-2']//i[@class='ml-auto fas fa-plus']")
+	public WebElement clickAnyWidgets;
+	@FindBy(xpath = "//div[@id='entry_215071']//ul[@class='list-group']/li")
+	public List<WebElement> listItems;
 
 }

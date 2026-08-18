@@ -3,6 +3,7 @@ package com.actions;
 import java.time.Duration;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import com.driver.DriverClass;
@@ -28,8 +29,6 @@ public class BaseAction {
 	public void jsClick(WebElement element) {
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
 	}
-
-	
 	// INPUT ACTIONS
 	
 	public void sendKeys(WebElement element, String value) {
@@ -79,5 +78,24 @@ public class BaseAction {
 
 	public void scrollIntoView(WebElement element) {
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+	public void moveToElement(WebElement element) {
+		Actions actions = new Actions(getDriver());
+		actions.moveToElement(element).perform();
+	}	
+	// DROPDOWN ACTIONS
+
+	// Select dropdown option by visible text
+	public void selectByText(WebElement element, String text) {
+	    getWait().until(ExpectedConditions.visibilityOf(element));
+	    Select select = new Select(element);
+	    select.selectByVisibleText(text);
+	}
+
+	// Select dropdown option by value attribute
+	public void selectByValue(WebElement element, String value) {
+	    getWait().until(ExpectedConditions.visibilityOf(element));
+	    Select select = new Select(element);
+	    select.selectByValue(value);
 	}
 }
