@@ -59,6 +59,12 @@ public class OrderHistorySD {
 		String actual=ohpa.reOrderSuccessMsg();
 	    Assert.assertTrue(actual.contains("Success: You have added"));
 	}
+	
+	@Then("The User Should see a warning message to choose a reason fo return")
+	public void the_user_should_see_a_warning_message_to_choose_a_reason_fo_return() {
+	    String actual=ohpa.getReturnReasonWarnMsg();
+	    Assert.assertTrue(actual.contains("You must select a return product reason!"));
+	}
 
 
 

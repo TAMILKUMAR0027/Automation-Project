@@ -61,5 +61,10 @@ public class OrderHistoryPageAction extends BaseAction {
 		ba.waitForVisibility(ohp.reorderSuccessMsg);
 		return ba.getText(ohp.reorderSuccessMsg);
 	}
+	
+	public String getReturnReasonWarnMsg() {
+		ba.waitForVisibility(ohp.reasonWarnMsg);
+		return ba.getText(ohp.reasonWarnMsg);
+	}
 
 }

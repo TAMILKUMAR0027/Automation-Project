@@ -36,6 +36,9 @@ public class OrderHistoryPage extends BasePage {
 	
 	@FindBy(css=".alert-success")
 	public WebElement reorderSuccessMsg;
+	
+	@FindBy(xpath="//div[@class='text-danger']")
+	public WebElement reasonWarnMsg;
 
 
 }
