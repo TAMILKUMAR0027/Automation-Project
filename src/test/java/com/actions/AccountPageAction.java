@@ -170,6 +170,17 @@ public class AccountPageAction {
 		return ba.getText(ap.invalidEmailMessage);
 
 	}
+	public void clickReturnsLink() {
+		ba.waitForVisibility(ap.returnsLink);
+		DriverClass.getDriver().navigate().refresh();
+		ba.click(ap.returnsLink);
+	}
+	
+	public void clickPasswordsLink() {
+		ba.waitForVisibility(ap.passwordLink);
+		DriverClass.getDriver().navigate().refresh();
+		ba.click(ap.passwordLink);
+	}
 
 }
 

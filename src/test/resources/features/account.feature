@@ -142,3 +142,37 @@ description:To verify the fuctionality of edit account information
     And The User Clicks on Return Button
     And The User Clicks on Submit Button in return Details
     Then The User Should see a warning message to choose a reason fo return
+
+  @returns
+  Scenario: To check whether the returns link redirects to product return page
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And the user clicks on returns link
+    Then the user should redirected to product returns page
+
+  @returns
+  Scenario: To check whether Clicking on Specific Returns redirects to Return Information page
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And the user clicks on returns link
+    And the user clicks on first return product view Button
+    Then the user should redirected to return Information page
+
+  @passwords
+  Scenario: To Check whether the fuctionality of changing password with different inputs
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And the user clicks on passwords link
+    And the user enters the current password as "<currentPassword>"
+    And the user enters the new password as "<newPassword>"
+    And the user clicks on Continue Button in Password Page
+    Then the user should notified with warning or Success Message as "<successMsg>"
+
+    Examples:
+      | currentPassword | newPassword | successMsg                                            |
+      | testlogin       | testlogin   | Success: Your password has been successfully updated. |
+      |                 | testlogin   | Password must be between 4 and 20 characters!         |
+      | testlogin       |             | Password confirmation does not match password!        |

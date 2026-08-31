@@ -123,4 +123,12 @@ public class AccountPage extends BasePage {
 
     @FindBy(xpath = "//a[text()=' Order History']/i")
     public WebElement orderHistoryLink;
+    
+    @FindBy(xpath="//a[text()=' Returns']/child::i")
+    public WebElement returnsLink;
+    @FindBy(xpath="//a[text()=' Password']/child::i")
+    public WebElement passwordLink;
+    
+   
+    
 }
