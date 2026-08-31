@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.driver.DriverClass;
@@ -104,8 +105,13 @@ public class AccountPageAction {
 	}
 	public void clickAddressBook()
 	{
-		ba.waitForVisibility(ap.AddressBook);
-		ba.click(ap.AddressBook);
+		try {
+	        ba.waitForVisibility(ap.AddressBook);
+	        ba.click(ap.AddressBook);
+	    } catch (StaleElementReferenceException e) {
+	        ba.waitForVisibility(ap.AddressBook);
+	        ba.click(ap.AddressBook);
+	    }
 	}
 	public void clickNewAddress()
 	{
@@ -150,15 +156,30 @@ public class AccountPageAction {
 	}
 	
 	public void clickOrderHistory() {
-		ba.waitForVisibility(ap.orderHistoryLink);	
-		ba.waitForClickable(ap.orderHistoryLink);
-		ba.click(ap.orderHistoryLink);
+		try {
+	        ba.waitForVisibility(ap.orderHistoryLink);
+	        ba.click(ap.orderHistoryLink);
+	    } catch (StaleElementReferenceException e) {
+	        ba.waitForVisibility(ap.orderHistoryLink);
+	        ba.click(ap.orderHistoryLink);
+	    }
 	}
 
 	public String getInvalidEmailMessage() {
 		ba.waitForVisibility(ap.invalidEmailMessage);
 		return ba.getText(ap.invalidEmailMessage);
 
+	}
+	public void clickReturnsLink() {
+		ba.waitForVisibility(ap.returnsLink);
+		DriverClass.getDriver().navigate().refresh();
+		ba.click(ap.returnsLink);
+	}
+	
+	public void clickPasswordsLink() {
+		ba.waitForVisibility(ap.passwordLink);
+		DriverClass.getDriver().navigate().refresh();
+		ba.click(ap.passwordLink);
 	}
 
 }

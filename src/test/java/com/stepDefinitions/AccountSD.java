@@ -8,6 +8,7 @@ import org.testng.Assert;
 
 import com.actions.AccountPageAction;
 import com.actions.AddressBookAction;
+import com.actions.ChangePasswordPageAction;
 import com.actions.EditAddressPageAction;
 import com.actions.GiftCertificateAction;
 import com.actions.LaunchPageAction;
@@ -28,6 +29,7 @@ public class AccountSD {
     AddressBookAction adpa = new AddressBookAction();
     EditAddressPageAction eapa = new EditAddressPageAction();
     GiftCertificateAction gca = new GiftCertificateAction();
+    ChangePasswordPageAction cpa=new ChangePasswordPageAction();
 
     private static final Logger log = LogManager.getLogger(AccountSD.class);
 
@@ -380,6 +382,7 @@ public class AccountSD {
         log.info("Entered invalid recipient email");
     }
 
+  
     @Then("The user should see an error message for invalid recipient email")
     public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
 
@@ -401,15 +404,6 @@ public class AccountSD {
         gca.selectGiftCertificateTheme();
     }
 
-    @Then("The user should see an error message for invalid recipient email")
-    public void the_user_should_see_an_error_message_for_invalid_recipient_email() {
-
-        Assert.assertEquals(
-                "E-Mail Address does not appear to be valid!",
-                apa.getInvalidEmailMessage()
-        );
-    }
-
     // =========================================================
     // ORDER HISTORY
     // =========================================================
@@ -419,4 +413,87 @@ public class AccountSD {
 
         apa.clickOrderHistory();
     }
+    
+ // =========================================================
+ // PASSWORD
+ // =========================================================
+
+ @When("the user clicks on passwords link")
+ public void the_user_clicks_on_passwords_link() {
+
+     apa.clickPasswordsLink();
+
+     log.info("Clicked on passwords link");
+ }
+
+ @When("the user enters the current password as {string}")
+ public void the_user_enters_the_current_password_as(String currentPassword) {
+
+     cpa.enterCurrentPassword(currentPassword);
+
+     log.info("Entered current password");
+ }
+
+ @When("the user enters the new password as {string}")
+ public void the_user_enters_the_new_password_as(String newPassword) {
+
+     cpa.enterNewPassword(newPassword);
+
+     log.info("Entered new password");
+ }
+
+ @When("the user clicks on Continue Button in Password Page")
+ public void the_user_clicks_on_continue_button_in_password_page() {
+
+     cpa.clickContinueBtn();
+
+     log.info("Clicked Continue button in Password Page");
+ }
+
+ @Then("the user should notified with warning or Success Message as {string}")
+ public void the_user_should_notified_with_warning_or_success_message_as(String expectedMessage) {
+
+     try {
+
+         String actualMessage;
+
+         if (expectedMessage.equals(
+                 "Success: Your password has been successfully updated.")) {
+
+             actualMessage = cpa.getPasswordChangeSuccessMsg();
+
+         } else if (expectedMessage.equals(
+                 "Password must be between 4 and 20 characters!")) {
+
+             actualMessage = cpa.getPasswordFieldWarnMsg();
+
+         } else if (expectedMessage.equals(
+                 "Password confirmation does not match password!")) {
+
+             actualMessage = cpa.getConfirmPasswordFieldWarnMsg();
+
+         } else {
+
+             Assert.fail("Unexpected message: " + expectedMessage);
+             return;
+         }
+
+         Assert.assertTrue(
+                 actualMessage.contains(expectedMessage),
+                 "Expected: " + expectedMessage
+                         + " but Actual: " + actualMessage
+         );
+
+         log.info("Password validation message verified successfully: "
+                 + actualMessage);
+
+     } catch (AssertionError e) {
+
+         log.error("Password validation failed. Expected: "
+                 + expectedMessage + " | Error: " + e.getMessage());
+
+         throw e;
+     }
+ }
+
 }

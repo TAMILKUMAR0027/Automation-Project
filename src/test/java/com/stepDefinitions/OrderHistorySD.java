@@ -49,5 +49,23 @@ public class OrderHistorySD {
 	    Assert.assertTrue(actual.contains("Product Returns"));
 	}
 
+	
+	@When("The User Clicks on reorder Button")
+	public void the_user_clicks_on_reorder_button() {
+	    ohpa.clickReorderBtn();
+	}
+	@Then("The User Should be displayed with an Success Message")
+	public void the_user_should_be_displayed_with_an_success_message() {
+		String actual=ohpa.reOrderSuccessMsg();
+	    Assert.assertTrue(actual.contains("Success: You have added"));
+	}
+	
+	@Then("The User Should see a warning message to choose a reason fo return")
+	public void the_user_should_see_a_warning_message_to_choose_a_reason_fo_return() {
+	    String actual=ohpa.getReturnReasonWarnMsg();
+	    Assert.assertTrue(actual.contains("You must select a return product reason!"));
+	}
+
+
 
 }

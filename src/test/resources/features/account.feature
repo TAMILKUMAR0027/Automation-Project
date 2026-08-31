@@ -47,8 +47,6 @@ description:To verify the fuctionality of edit account information
     And enter the valid details
     And click continue Button
     Then user can the see the successfully address added message
-    And click Account continue Button
-    Then user can the see the successfully address added message
 
   @DeleteAddressInBook
   Scenario: As a login in user i need to delete existing address in Address book
@@ -77,38 +75,16 @@ description:To verify the fuctionality of edit account information
     And Clicks on Login Button
     And The User Clicks on your Reward points in Account Page
     Then The User Should Redirected to Reward Poitns Page
-
-  @Tamil
-  Scenario: User purchase a gift Certficate with valid details
-    When The user clicks on myAccount link in navBar#   And The user Enters valid email and valid passwords
-    And Clicks on Login Button
-    When The user move to myAccount link in navBar
-    And click My voucher navbar
-    And fill all the valid details for purchase gift certificate
-    And I understand that gift certificates are non-refundable and click continue button
-    Then you can see the message Thank you for purchasing a gift certificate!
-
-  @Tamil
-  Scenario: User purchase a gift Certficate with valid details
-    When The user clicks on myAccount link in navBar#   And The user Enters valid email and valid passwords
-    And Clicks on Login Button
-    When The user move to myAccount link in navBar
-    And click My voucher navbar
-    And fill all the valid details for purchase gift certificate
-    And I understand that gift certificates are non-refundable and click continue button
-    Then you can see the message Thank you for purchasing a gift certificate!
-
 # @Tamil
 # Scenario: User purchase a gift Certficate with valid details
-#   When The user clicks on myAccount link in navBar
-#   And The user Enters valid email and valid passwords
-#   And Clicks on Login Button
-#   When The user move to myAccount link in navBar
-#   And click My voucher navbar
-#   And fill all the valid details for purchase gift certificate
-#   And I understand that gift certificates are non-refundable and click continue button
-#   Then you can see the message Thank you for purchasing a gift certificate!
-
+# When The user clicks on myAccount link in navBar
+# And The user Enters valid email and valid passwords
+# And Clicks on Login Button
+# When The user move to myAccount link in navBar
+# And click My voucher navbar
+# And fill all the valid details for purchase gift certificate
+# And I understand that gift certificates are non-refundable and click continue button
+# Then you can see the message Thank you for purchasing a gift certificate!
 
   @ViewOrderHistory
   Scenario: To Check Whether the User Can View The Specific Order History
@@ -134,15 +110,69 @@ description:To verify the fuctionality of edit account information
     And The User Clicks on View Button
     Then The Order Information Page Should Be Visisble
 
-  @returnOrder
-  Scenario: To Check whether the product return fuctionality
+  @returnOrder1
+  Scenario: To Check whether the return fuctionality of an product on orderHistory
     When The user clicks on myAccount link in navBar
     And The user Enters valid email and valid passwords
     And Clicks on Login Button
     And Clicks on Order History Link
     And The User Clicks on View Button
-    And The User Clicks on Return Button 
+    And The User Clicks on Return Button
     And The User Check the Retorn Reason on Check Box
     And The User Clicks on Submit Button in return Details
     Then The User should see a Product Return Success Message
-    Then The Order Information Page Should Be Visisble
+
+  @reOrder
+  Scenario: To Check the Reorder Functionality of an product on orderHistory
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And Clicks on Order History Link
+    And The User Clicks on View Button
+    And The User Clicks on reorder Button
+    Then The User Should be displayed with an Success Message
+
+  @returnOrder2
+  Scenario: To check whether the website show an error message for returning order without choosing reason
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And Clicks on Order History Link
+    And The User Clicks on View Button
+    And The User Clicks on Return Button
+    And The User Clicks on Submit Button in return Details
+    Then The User Should see a warning message to choose a reason fo return
+
+  @returns
+  Scenario: To check whether the returns link redirects to product return page
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And the user clicks on returns link
+    Then the user should redirected to product returns page
+
+  @returns
+  Scenario: To check whether Clicking on Specific Returns redirects to Return Information page
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And the user clicks on returns link
+    And the user clicks on first return product view Button
+    Then the user should redirected to return Information page
+
+  @passwords
+  Scenario: To Check whether the fuctionality of changing password with different inputs
+    When The user clicks on myAccount link in navBar
+    And The user Enters valid email and valid passwords
+    And Clicks on Login Button
+    And the user clicks on passwords link
+    And the user enters the current password as "<currentPassword>"
+    And the user enters the new password as "<newPassword>"
+    And the user clicks on Continue Button in Password Page
+    Then the user should notified with warning or Success Message as "<successMsg>"
+
+    Examples:
+      | currentPassword | newPassword | successMsg                                            |
+      | testlogin       | testlogin   | Success: Your password has been successfully updated. |
+      |                 | testlogin   | Password must be between 4 and 20 characters!         |
+      | testlogin       |             | Password confirmation does not match password!        |

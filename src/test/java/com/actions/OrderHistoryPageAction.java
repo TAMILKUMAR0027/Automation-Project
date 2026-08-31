@@ -50,8 +50,21 @@ public class OrderHistoryPageAction extends BaseAction {
 		return ba.getText(ohp.returnSuccessMsg);
 	}
 	
-	
-	
 
+	public void clickReorderBtn() {
+		ba.waitForVisibility(ohp.reorderBtn);
+		ba.scrollIntoView(ohp.reorderBtn);
+		ba.jsClick(ohp.reorderBtn);
+	}
+	
+	public String reOrderSuccessMsg() {
+		ba.waitForVisibility(ohp.reorderSuccessMsg);
+		return ba.getText(ohp.reorderSuccessMsg);
+	}
+	
+	public String getReturnReasonWarnMsg() {
+		ba.waitForVisibility(ohp.reasonWarnMsg);
+		return ba.getText(ohp.reasonWarnMsg);
+	}
 
 }
